@@ -1,0 +1,13 @@
+{
+  "bounds": [
+    -25,
+    24,
+    55,
+    72
+  ],
+  "maxzoom": 7,
+  "tiles": 1195,
+  "source": "https://registry.opendata.aws/terrain-tiles/",
+  "accessed": "2026-09-10",
+  "geometry": "Negative elevations clamped to sea level; original elevations used for colors"
+}
