@@ -1,0 +1,69 @@
+import {medievalPlaces,medievalDetails} from './medieval-details';
+import {classicalCoursePlaces,classicalCourseDetails} from './classical-course-details';
+import type {GazetteerPlace} from './model';
+import type {HistoricalDetail,HistoricalFact} from './history-details';
+import {courseSources,type ReadingReference} from './course-sources';
+
+type Source=keyof typeof courseSources;
+const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
+const dms=(d:number,m:number,s:number)=>d+m/60+s/3600;
+const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'历史地点参考'});
+export const coursePlaces:GazetteerPlace[]=[
+ ...classicalCoursePlaces,...medievalPlaces,
+ site('nicomedia','尼科米底亚','土耳其 · 伊兹米特',['Nicomedia','Nikomedeia','İzmit','Izmit','尼科美底亚'],[29.919887,40.7651905],'nicomedia','马尔马拉海东端的古城，今伊兹米特。不要与爱琴海岸的伊兹密尔混淆。'),
+ site('aachen','亚琛','德国 · 亚琛',['Aachen','Aix-la-Chapelle','查理曼','加洛林'],[dms(6,5,2.112),dms(50,46,29.089)],'aachenSite','查理曼的宫廷驻地之一。以大教堂代表点定位，宫殿位置与帝国疆界分别理解。'),
+ site('cordoba','科尔多瓦','西班牙 · 科尔多瓦',['Córdoba','Cordoba','Qurtuba','库尔图巴','后倭马亚','安达卢斯'],[-4.770004,37.879999],'cityCoordinates','瓜达尔基维尔河畔的城市。埃米尔国、哈里发国和城市本身是不同对象。坐标采用现代城市代表点。'),
+ site('avignon','阿维尼翁','法国 · 阿维尼翁',['Avignon','Avenio','亚维农','阿维农','教皇之囚'],[dms(4,48,22),dms(43,57,10)],'avignon','罗讷河畔的教廷驻地，以历史中心代表点定位。今天位于法国，不等于十四世纪已经受法国国王直接统治。'),
+ site('granada','格拉纳达','西班牙 · 格拉纳达',['Granada','Gharnata','纳斯里德','阿尔罕布拉'],[-dms(3,35,23.7),dms(37,10,36.4)],'granadaSite','伊比利亚南部的纳斯里德王朝中心。以阿尔罕布拉古迹代表点定位，不将宫城轮廓当作王国边界。'),
+ site('wittenberg','维滕贝格','德国 · 路德城维滕贝格',['Wittenberg','Lutherstadt Wittenberg','威登堡','维腾堡','路德','九十五条论纲'],[dms(12,38,15.165),dms(51,51,58.044)],'wittenberg','易北河畔的宗教改革地点，取城堡教堂代表坐标。与路德出生地艾斯莱本分别定位。'),
+ site('prague','布拉格','捷克 · 布拉格',['Prague','Praha','Prag','波希米亚','波西米亚','掷窗事件','扔出窗外'],[14.422939,50.086967],'cityCoordinates','伏尔塔瓦河畔的波希米亚政治中心。坐标是城市代表点，并非掷窗事件发生的窗口。'),
+];
+
+interface Seed {id:string;placeId:string;title:string;from:number;to:number;period:string;kind:HistoricalDetail['kind'];polity:HistoricalFact;territory:HistoricalFact;people:HistoricalFact;language:HistoricalFact;nameNote:HistoricalFact;reading:ReadingReference[];related:string[];displayName?:string;focusYear?:number;readingNote?:string;readingNoteSource?:Source}
+const entry=(s:Seed):HistoricalDetail=>s;
+const unknownPeople=fact('现有条目未收录居民构成的可靠比例。统治者、驻军和本地居民需要分开，不能把政权名称用作全城人口标签。');
+const unknownLanguage=fact('尚未收录这一时段本地居民的语言统计。宗教、政治归属和居民日常语言并非一一对应。');
+const cityScale=fact('标记表示城市位置。城墙、城市辖区、君主领地和整个帝国分属不同尺度；本条不提供精确辖区多边形。');
+const byzantineReading:ReadingReference[]=[{chapter:99,pages:[803,805]},{chapter:122,pages:[1030,1030]}];
+const byzantineBase={placeId:'byzantium',title:'君士坦丁堡',displayName:'Constantinopolis / Constantinople',kind:'帝国都城' as const,
+ territory:fact('城市位于博斯普鲁斯海峡的欧洲一侧，连接黑海与地中海航路。城市长期延续，而帝国的领土在此期间多次变化。','byzantine'),
+ people:fact('“罗马人”也可以是一种政治与文化认同。后世称作拜占庭的人群以罗马继承者自居，不应被简单替换成现代国籍标签。','byzantine'),
+ language:fact('希腊语在东部社会与文化中地位重要；拉丁语、希腊语的行政地位经历长期变化，本条不设一个全体居民同时换语言的年份。','byzantine'),
+ nameNote:fact('拜占庭城是较早地名，君士坦丁堡是帝国都城名称；“拜占庭帝国”是后世史学名称。现代位置对应伊斯坦布尔。','byzantine'),reading:byzantineReading,related:['rome','ravenna','nicomedia'],
+};
+const ravennaBase={placeId:'ravenna',title:'拉文纳',displayName:'Ravenna',kind:'宫廷驻地' as const,territory:fact('意大利东北部、亚得里亚海沿岸的行政中心。对皇帝权威的承认和实际军事控制分开记录。','ravenna'),people:unknownPeople,language:unknownLanguage,
+ nameNote:fact('沿用拉文纳这一通行名；西罗马朝廷、东哥特王国和拜占庭统治是同一地点的不同时期。','ravenna'),reading:[{chapter:132,pages:[1120,1121]}] as ReadingReference[],related:['milan','rome','byzantium'],
+};
+const cordobaBase={placeId:'cordoba',title:'科尔多瓦',displayName:'Córdoba / Qurtuba',kind:'王国中心' as const,territory:fact('安达卢斯表示伊比利亚穆斯林统治空间，其范围随年代变化；不能直接套用今天西班牙安达卢西亚自治区边界。','umayyad'),
+ people:fact('阿拉伯人、柏柏尔人、本地改宗者与基督徒、犹太人是不同层次的分类；“穆斯林”不是单一人种。此处不据此绘制族群比例。','umayyad'),language:fact('阿拉伯语具有宗教、书写与文化地位；本条不把它推定为所有居民唯一使用的语言。','umayyad'),nameNote:fact('科尔多瓦对应现代 Córdoba，阿拉伯语名常转写为 Qurtuba。地名延续不等于政权延续。'),reading:[{chapter:148,pages:[1245,1246],note:'课程提供进入伊比利亚的阅读背景；埃米尔国和哈里发国的具体分期另参下列来源。'}] as ReadingReference[],related:['granada','byzantium'],
+};
+const avignonBase={placeId:'avignon',title:'阿维尼翁',displayName:'Avignon',kind:'教廷驻地' as const,territory:fact('罗讷河两岸的政治地位要分开。教皇驻在这里、教皇拥有这座城、法国国王的影响力，是三种不同关系。','avignonHistory'),people:fact('教皇宫廷、教士、艺术家与城市居民共同构成这个宗教和行政中心；没有可用于此年居民比例的统计。','avignon'),language:unknownLanguage,nameNote:fact('今名仍为阿维尼翁。用今天的法国位置辅助定位，不把现代法国边界提前用于十四世纪。','avignon'),reading:[{chapter:187,pages:[1600,1601]}] as ReadingReference[],related:['rome','naples'],
+};
+export const courseDetails:HistoricalDetail[]=[
+ ...classicalCourseDetails,...medievalDetails,
+ entry({...byzantineBase,id:'constantinople-330',from:330,to:394,focusYear:330,period:'新罗马：330—394 年',polity:fact('330 年新都落成后的罗马帝国政治中心；此时不能把它自动当作独立东罗马国家的首都。','byzantine')}),
+ entry({...byzantineBase,id:'constantinople-east',from:395,to:641,focusYear:395,period:'东部朝廷：395—641 年',polity:fact('罗马帝国东部朝廷的中心。东西部朝廷分掌并不等于划出两个民族国家。','byzantine')}),
+ entry({...byzantineBase,id:'constantinople-medieval',from:642,to:1203,focusYear:800,period:'中世纪东罗马都城：642—1203 年',polity:fact('仍是东罗马帝国的政治中心。课程以 642 年作叙事分期；地图不将这一分期视为帝国正式更名或重新建国。','byzantine'),readingNote:'第 122 讲以 642 年区分“东罗马”和“拜占庭”；这是课程叙事口径。地图采用政治共同体延续、名称另作说明的方式。'}),
+ entry({...byzantineBase,id:'constantinople-latin',from:1204,to:1260,focusYear:1204,period:'拉丁帝国控制：1204—1260 年',polity:fact('按 1204 年十字军攻陷之后记录：城市成为拉丁帝国中心；尼西亚等地另有延续东罗马传统的政治实体。','byzantine'),people:fact('统治集团变化和战争造成迁徙、流离与政治分裂，不代表全城居民立即变成拉丁人。','byzantine'),language:unknownLanguage,reading:[{chapter:165,pages:[1409,1410]}],readingNote:'课程在这里连续叙述 1203 年复位干预与后续洗劫；地图把 1204 年攻陷、拉丁帝国建立单独划为节点。'}),
+ entry({...byzantineBase,id:'constantinople-restored',from:1261,to:1452,focusYear:1261,period:'东罗马复都：1261—1452 年',polity:fact('1261 年恢复东罗马统治，成为巴列奥略王朝都城。复都不等于恢复查士丁尼时代的广大疆域。','byzantine'),reading:[{chapter:165,pages:[1409,1410],note:'课程相关战争的后续沿革，复都年份由博物馆历史分期补充。'}]}),
+ entry({...byzantineBase,id:'constantinople-1453',from:1453,to:1453,focusYear:1453,period:'1453 年征服之后',polity:fact('按奥斯曼攻陷之后记录：君士坦丁堡进入奥斯曼统治，东罗马在此的皇权终结。年份视图没有复原年内每一天的围城战线。','byzantine'),people:unknownPeople,language:unknownLanguage,reading:[{chapter:122,pages:[1030,1030],note:'相关名称问题的后续节点；1453 年征服另据博物馆分期。'}]}),
+ entry({...ravennaBase,id:'ravenna-west',from:402,to:475,focusYear:410,period:'西部皇帝驻地：402—475 年',polity:fact('402 年西部朝廷从米兰迁驻拉文纳，此后它是西部皇帝的重要政治中心。','ravenna')}),
+ entry({...ravennaBase,id:'ravenna-odoacer',from:476,to:492,focusYear:476,period:'奥多亚塞统治：476—492 年',polity:fact('按 476 年西部皇帝被废之后记录：实际控制归奥多亚塞。对君士坦丁堡皇帝的名义承认，不能直接当作东部朝廷的直接行政管辖。'),readingNote:'课程讨论的是皇权“道统”；本条另外列出实际控制，以免将名义权威画成实控边界。'}),
+ entry({...ravennaBase,id:'ravenna-ostrogoth',from:493,to:539,focusYear:500,period:'东哥特王国中心：493—539 年',polity:fact('狄奥多里克取得拉文纳后，这里成为东哥特王国的中心。','ravenna'),people:fact('东哥特统治集团与当地罗马社会需要分别理解。拉文纳保留的不同基督教礼拜建筑可以帮助观察宗教差异。','ravennaArt')}),
+ entry({...ravennaBase,id:'ravenna-east',from:540,to:583,focusYear:540,period:'东罗马取得城市：540—583 年',polity:fact('按 540 年贝利撒留进入拉文纳之后记录：城市由东罗马控制。意大利的战争并未因此立即结束。','ravenna'),reading:[{chapter:120,pages:[1013,1015]},{chapter:132,pages:[1120,1121]}]}),
+ entry({...ravennaBase,id:'ravenna-exarchate',from:584,to:750,focusYear:600,period:'拉文纳总督区中心：584—750 年',polity:fact('拉文纳是拜占庭在意大利的总督区中心；总督区与伦巴第控制区交错，不等于统一控制整个半岛。','ravenna')}),
+ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',displayName:'Nicomedia / Nikomedeia',from:293,to:305,focusYear:300,period:'四帝共治背景：293—305 年',kind:'宫廷驻地',polity:fact('戴克里先在帝国东部的行政中心；用来与后来君士坦丁选择的海峡都城比较。'),territory:cityScale,people:unknownPeople,language:unknownLanguage,nameNote:fact('尼科米底亚对应伊兹米特（İzmit），位于马尔马拉海东端；伊兹密尔（İzmir）则在爱琴海岸，是另一个城市。','izmit','nicomedia'),reading:[{chapter:99,pages:[803,804]}],readingNote:'PDF 第 803 页将尼科米底亚对应为伊兹密尔。本条按地名资料校正为伊兹米特。',related:['byzantium','milan']}),
+ entry({id:'aachen-charlemagne',placeId:'aachen',title:'亚琛',displayName:'Aachen / Aix-la-Chapelle',from:800,to:814,focusYear:800,period:'查理曼晚期宫廷：800—814 年',kind:'宫廷驻地',polity:fact('查理曼的主要宫廷驻地与加洛林权力中心。800 年皇帝加冕发生在罗马，宫廷驻地和加冕地点要分开看。','aachen'),territory:fact('今天位于德国的亚琛，当时属于加洛林统治空间，不能据今天的国籍把查理曼的帝国缩成德国。','aachen'),people:fact('宫廷人员、教士与本地居民并不是一个与现代民族国籍相同的分类。此条没有全城人口构成比例。'),language:unknownLanguage,nameNote:fact('Aachen 是德语名，Aix-la-Chapelle 是法语名；两者指向同一地点。'),reading:[{chapter:141,pages:[1185,1187]},{chapter:141,pages:[1191,1191]}],related:['rome','byzantium']}),
+ entry({id:'rome-charlemagne',placeId:'rome',title:'罗马',displayName:'Roma',from:800,to:800,period:'800 年皇帝加冕',kind:'事件地点',polity:fact('查理曼在罗马接受教皇利奥三世加冕。教皇举行加冕、法兰克统治者取得皇帝称号，不意味着皇帝把主要宫廷搬到这里。','aachen'),territory:cityScale,people:unknownPeople,language:unknownLanguage,nameNote:fact('这里是罗马城；“罗马人的皇帝”是政治称号，不是只统治这座城市。'),reading:[{chapter:141,pages:[1185,1186]}],related:['aachen','byzantium']}),
+ entry({...cordobaBase,id:'cordoba-emirate',from:756,to:928,focusYear:800,period:'后倭马亚埃米尔国：756—928 年',polity:fact('倭马亚家族在伊比利亚建立的埃米尔国中心，独立于阿拔斯统治；不能因同属伊斯兰世界就与巴格达涂成同一国家。','umayyad')}),
+ entry({...cordobaBase,id:'cordoba-caliphate',from:929,to:1008,focusYear:950,period:'科尔多瓦哈里发国：929—1008 年',polity:fact('929 年阿卜杜拉赫曼三世称哈里发，科尔多瓦成为这一哈里发国的中心。本条将 1009 年后的内乱另列。','cordoba','umayyad')}),
+ entry({...cordobaBase,id:'cordoba-fitna',from:1009,to:1031,focusYear:1031,period:'哈里发国内乱与终结：1009—1031 年',polity:fact('内乱使哈里发权力衰落，统治者多次更换，1031 年哈里发国终结。不能把这个阶段视作疆界和中央控制始终稳定。','umayyad')}),
+ entry({...avignonBase,id:'avignon-residence',from:1309,to:1347,focusYear:1309,period:'教皇移驻：1309—1347 年',polity:fact('教廷在阿维尼翁活动，但城市尚非教皇购得的领地。课程提到它与那不勒斯王室的领有关系；1348 年的购买另列为节点。','avignonHistory')}),
+ entry({...avignonBase,id:'avignon-papal',from:1348,to:1366,focusYear:1350,period:'教皇购城之后：1348—1366 年',polity:fact('1348 年克莱孟六世购得阿维尼翁，教皇驻地和领有权在这里重合。本段止于乌尔班五世赴罗马之前，不把整个十四世纪视作连续驻留。','avignonHistory')}),
+ entry({id:'granada-war',placeId:'granada',title:'格拉纳达',displayName:'Granada / Gharnata',from:1482,to:1491,focusYear:1491,period:'格拉纳达战争：1482—1491 年',kind:'王国中心',polity:fact('纳斯里德王朝的格拉纳达王国仍存在，但处于战争中，控制范围不断收缩。','granada'),territory:fact('城市、阿尔罕布拉宫城和纳斯里德王国不是同一个边界；本图没有逐年战线数据。','granadaSite'),people:fact('这里的穆斯林居民不能与整个伊比利亚人口合并为一个“人种”；宗教身份也不能直接说明祖源。'),language:unknownLanguage,nameNote:fact('格拉纳达王国是具体政权；“安达卢斯”是更广泛且随时期变化的历史地理名称。'),reading:[{chapter:233,pages:[2014,2015]}],related:['cordoba']}),
+ entry({id:'granada-1492',placeId:'granada',title:'格拉纳达',displayName:'Granada / Gharnata',from:1492,to:1492,period:'1492 年投降之后',kind:'历史城市',polity:fact('按 1492 年投降之后记录：纳斯里德王国终结，格拉纳达转入天主教双王一方的控制。','granada'),territory:fact('卡斯蒂利亚和阿拉贡的王朝联合不意味着立即形成一套统一制度，也不能直接使用今天西班牙的国界。'),people:fact('政权易手后穆斯林居民仍存在。课程后面讲到的 1502 年改宗政策不能提前套到 1492 年。'),language:unknownLanguage,nameNote:fact('同一座城的政权发生改变，不意味着地名、语言和居民在一天内全部替换。'),reading:[{chapter:233,pages:[2013,2015]}],related:['cordoba']}),
+ entry({id:'wittenberg-theses',placeId:'wittenberg',title:'维滕贝格',displayName:'Wittenberg',from:1517,to:1517,period:'1517 年宗教改革论争',kind:'事件地点',polity:fact('神圣罗马帝国中萨克森选帝侯领地内的大学城市，路德在这里任教并提出九十五条论纲。'),territory:fact('选帝侯的领地、帝国范围和后来新教传播地区必须分开；1517 年不能直接画出后来宗派版图。'),people:fact('大学教师、学生、教士、印刷从业者和城市居民具有不同身份。对论纲的支持不等于全城在该年已统一改宗。'),language:fact('九十五条论纲以拉丁文撰写；它的传播还涉及翻译与印刷。书写语言不等于居民的全部日常语言。','theses'),nameNote:fact('维滕贝格又见译名威登堡；今天的路德城维滕贝格与艾斯莱本不是同一座城市。','wittenberg'),reading:[{chapter:209,pages:[1811,1816]}],readingNoteSource:'luther',readingNote:'“钉在教堂门上”的具体场景有史学争议。地图以论纲与这座城市的联系定位，不把戏剧化场面当作已确定事实。',related:['rome','prague']}),
+ entry({id:'prague-1618',placeId:'prague',title:'布拉格',displayName:'Praha / Prague',from:1618,to:1618,period:'1618 年掷窗事件与波希米亚反叛',kind:'事件地点',polity:fact('波希米亚王国的政治中心，反叛者与哈布斯堡王权冲突；1618 年布拉格城堡掷窗事件成为三十年战争的开端。','prague'),territory:fact('波希米亚、哈布斯堡王朝领地和神圣罗马帝国是相互嵌套但不同的政治空间，不等于现代捷克国界。'),people:fact('课程涉及新教贵族、王室官员和城市群体。贵族的宗教与政治选择，不能代替全体居民的民族、宗派统计。'),language:unknownLanguage,nameNote:fact('Praha、Prague 与布拉格指向同一城市；“波西米亚／波希米亚”则是区域及王国名称。'),reading:[{chapter:213,pages:[1848,1849]},{chapter:214,pages:[1856,1859]}],related:['wittenberg','london']}),
+ entry({id:'london-norman',placeId:'london',title:'伦敦',displayName:'London',from:1070,to:1087,focusYear:1080,period:'诺曼征服后的伦敦：1070—1087 年',kind:'历史城市',polity:fact('威廉一世统治下的英格兰城市。伦敦塔的建设体现诺曼王权对城市的控制，英格兰并非因此并入法国。','norman'),territory:fact('伦敦城、英格兰王国与海峡对岸诺曼底公国是三个尺度；同一君主持有多个称号不等于领地自动合并。'),people:fact('城堡建设可见来自诺曼底的石匠与英格兰本地劳动者；“诺曼征服”不意味着本地居民消失。','norman'),language:unknownLanguage,nameNote:fact('本时期显示“伦敦”，而非地图古罗马条目中的“伦底尼乌姆”。定位沿用伦敦历史核心代表点。'),reading:[{chapter:179,pages:[1530,1531]}],related:['rome','avignon']}),
+ entry({id:'london-civilwar',placeId:'london',title:'伦敦',displayName:'London',from:1642,to:1642,period:'1642 年英格兰内战开端',kind:'历史城市',polity:fact('伦敦是议会一方的重要政治与动员中心。国王与议会交战，不表示在开战时就出现两个正式独立国家。','civilwar'),territory:fact('这里标记政治中心。战线与控制区会随军事行动变化，不能用城内政治倾向填充整个英格兰。'),people:fact('商人、工匠、教士、议员和妇女都参与了战争时期的政治生活；各群体内部也有分歧。','civilPeople'),language:unknownLanguage,nameNote:fact('采用这一时期的伦敦名称。旧罗马地名只作为古今定位线索保留。'),reading:[{chapter:258,pages:[2215,2217]}],related:['prague','wittenberg']}),
+];

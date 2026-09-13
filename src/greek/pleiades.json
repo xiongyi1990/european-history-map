@@ -1,0 +1,314 @@
+{
+  "579885": {
+    "title": "Athenae",
+    "coords": [
+      23.723914356100423,
+      37.97163725472171
+    ],
+    "precision": "rough",
+    "description": "A major Greek city-state and the principal city of Attika. Modern Athens in Greece.",
+    "url": "https://pleiades.stoa.org/places/579885",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570685": {
+    "title": "Sparta",
+    "coords": [
+      22.424672282445528,
+      37.0817824552019
+    ],
+    "precision": "precise",
+    "description": "Sparta was a prominent city-state (polis) of ancient Greece.",
+    "url": "https://pleiades.stoa.org/places/570685",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570182": {
+    "title": "Corinthus/Korinthos",
+    "coords": [
+      22.878614390874485,
+      37.90564164345828
+    ],
+    "precision": "precise",
+    "description": "The ancient Greek and Roman city of Corinth, located in the Peloponnese, Greece. Also known today as Archaia Korinthos and not to be confused with the nearby modern town.",
+    "url": "https://pleiades.stoa.org/places/570182",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "541138": {
+    "title": "Thebai/Thebae",
+    "coords": [
+      23.317653433333334,
+      38.319948833333335
+    ],
+    "precision": "precise",
+    "description": "The ancient city of Thebes in Boeotia (modern Greece).",
+    "url": "https://pleiades.stoa.org/places/541138",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570106": {
+    "title": "Argos",
+    "coords": [
+      22.720380240841404,
+      37.63104688932719
+    ],
+    "precision": "precise",
+    "description": "Argos was a city of ancient Greece that reached its cultural highpoint under Pheidon in the seventh century BC.",
+    "url": "https://pleiades.stoa.org/places/570106",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570468": {
+    "title": "Megara",
+    "coords": [
+      23.340163,
+      37.985078
+    ],
+    "precision": "precise",
+    "description": "Megara was an important ancient city of Greece, located in the northern part of the the Isthmus of Corinth opposite the island of Salamis.",
+    "url": "https://pleiades.stoa.org/places/570468",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "541063": {
+    "title": "Plataea",
+    "coords": [
+      23.27353775,
+      38.221075299999995
+    ],
+    "precision": "precise",
+    "description": "Plataea is an ancient city of Boeotia, located south of Thebes. In 479 BC Plataea was the site of the Battle of Plataea, in which an allied Greek army defeated the Persians. Plataea was destroyed in the Peloponnesian War by Thebes and Sparta in 427 BC and rebuilt in 386 BC.",
+    "url": "https://pleiades.stoa.org/places/541063",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "540960": {
+    "title": "Naupactus",
+    "coords": [
+      21.831267,
+      38.399726
+    ],
+    "precision": "precise",
+    "description": "Originally a city of the Ozolian Locrians, Naupactus eventually fell to Athens; under Macedonian rule, Philip II ceded it to the Aetolians.",
+    "url": "https://pleiades.stoa.org/places/540960",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "530834": {
+    "title": "Corcyra (settlement)",
+    "coords": [
+      19.906703,
+      39.60813
+    ],
+    "precision": "precise",
+    "description": "The eponymous settlement of the island of Corcyra (modern Korfu).",
+    "url": "https://pleiades.stoa.org/places/530834",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "550496": {
+    "title": "Chios (settlement)",
+    "coords": [
+      26.132979,
+      38.3722387
+    ],
+    "precision": "precise",
+    "description": "The principal ancient city on the Aegean island of Chios.",
+    "url": "https://pleiades.stoa.org/places/550496",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "550763": {
+    "title": "Mytilene",
+    "coords": [
+      26.547048,
+      39.110475
+    ],
+    "precision": "precise",
+    "description": "An ancient settlement. The early fortified core of the city was located on an islet off the east coast of Lesbos, now joined to the mainland. That site is dominated by the remains of a Byzantine fortress with Ottoman and Genoese repairs and additions. This original city later expanded onto the main island.",
+    "url": "https://pleiades.stoa.org/places/550763",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570474": {
+    "title": "Melos (settlement)",
+    "coords": [
+      24.423276,
+      36.743864
+    ],
+    "precision": "precise",
+    "description": "An ancient place, cited: BAtlas 58 G4 Melos",
+    "url": "https://pleiades.stoa.org/places/570474",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "599971": {
+    "title": "Thera",
+    "coords": [
+      25.47843030068955,
+      36.363279190867146
+    ],
+    "precision": "precise",
+    "description": "An ancient settlement located atop the modern Messavouno mountain on the island that shared its name in antiquity (modern Thira/Santorini).",
+    "url": "https://pleiades.stoa.org/places/599971",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570707": {
+    "title": "Tegea",
+    "coords": [
+      22.420672,
+      37.455301
+    ],
+    "precision": "precise",
+    "description": "Tegea was an ancient city of Arcadia. It is especially noted for its sanctuary dedicated to Athena Alea.",
+    "url": "https://pleiades.stoa.org/places/570707",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570668": {
+    "title": "Sicyon/Demetrias",
+    "coords": [
+      22.712193310834493,
+      37.983819217860635
+    ],
+    "precision": "precise",
+    "description": "Sicyon/Demetrias was an important ancient city of the Corinthiad, located some 26 km to the west of Corinth. The city had a long history, beginning in the Archaic period when Orthagorid tyrants ruled it. It flourished in later Archaic and Classical times, was a member of the Peloponnesian League, and became a center of Theban power after 371 B.C. The city was long noted for its association with fine arts and during the fourth century B.C. produced the famous sculptor Lysippos. Under Aratos, Sicyon joined the Achaean League in 251 B.C. By the time Pausanias visited the site, declining political fortunes and disastrous earthquakes had reduced it to a ruinous state.",
+    "url": "https://pleiades.stoa.org/places/570668",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570220": {
+    "title": "Elis (city)",
+    "coords": [
+      21.37435885393905,
+      37.8912684129855
+    ],
+    "precision": "precise",
+    "description": "Elis was an ancient Greek city of the northwest Peloponnese that served as the capital of the district of the same name.",
+    "url": "https://pleiades.stoa.org/places/570220",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "580062": {
+    "title": "Peiraieus/Piraeus",
+    "coords": [
+      23.644609,
+      37.937222
+    ],
+    "precision": "precise",
+    "description": "The ancient, fortified port settlement of ancient Athens. It was also the coastal deme of the tribe Hippothoontis.",
+    "url": "https://pleiades.stoa.org/places/580062",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "580021": {
+    "title": "Marathon",
+    "coords": [
+      23.970146,
+      38.1465515
+    ],
+    "precision": "precise",
+    "description": "Marathon was a coastal deme of the tribe Aiantis, in northeastern Attica, the site of the Battle of Marathon in 490 BC, and capital of the Marathon tetrapolis.",
+    "url": "https://pleiades.stoa.org/places/580021",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "580100": {
+    "title": "Salamis (settlement)",
+    "coords": [
+      23.53033145,
+      37.9487647
+    ],
+    "precision": "precise",
+    "description": "The ancient city of Salamis was located on the Saronic island of the same name, overlooking the modern Ampelaki Bay to the east. The site was likely largely in the area now covered by the modern city of Ambelaki/Ampelaki.",
+    "url": "https://pleiades.stoa.org/places/580100",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "540726": {
+    "title": "Delphi",
+    "coords": [
+      22.501169,
+      38.482289
+    ],
+    "precision": "precise",
+    "description": "The ancient panhellenic sanctuary of Delphi in Greece, seat of the oracle of Apollo.",
+    "url": "https://pleiades.stoa.org/places/540726",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570531": {
+    "title": "Olympia",
+    "coords": [
+      21.630814397906708,
+      37.63868350172758
+    ],
+    "precision": "precise",
+    "description": "Ancient sanctuary of Zeus and home of the ancient Olympic games.",
+    "url": "https://pleiades.stoa.org/places/570531",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "599587": {
+    "title": "Delos (settlement)",
+    "coords": [
+      25.268194,
+      37.397274
+    ],
+    "precision": "precise",
+    "description": "The ancient settlement of Delos, located on the Aegean island of the same name.",
+    "url": "https://pleiades.stoa.org/places/599587",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "599925": {
+    "title": "Samos (settlement)",
+    "coords": [
+      26.944483,
+      37.68825
+    ],
+    "precision": "precise",
+    "description": "An ancient place, cited: BAtlas 61 D2 Samos",
+    "url": "https://pleiades.stoa.org/places/599925",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "599799": {
+    "title": "Miletus",
+    "coords": [
+      27.27880848386269,
+      37.53046444003695
+    ],
+    "precision": "precise",
+    "description": "A major ancient city in Ionia.",
+    "url": "https://pleiades.stoa.org/places/599799",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "599612": {
+    "title": "Ephesus/Arsinoe(ia)",
+    "coords": [
+      27.34240298195866,
+      37.940164271971945
+    ],
+    "precision": "precise",
+    "description": "Ephesus/Arsinoe(ia) was the most important ancient metropolis of Ionian Asia Minor.",
+    "url": "https://pleiades.stoa.org/places/599612",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "462503": {
+    "title": "Syracusae/Syrakousai",
+    "coords": [
+      15.283335658142617,
+      37.070078971013665
+    ],
+    "precision": "rough",
+    "description": "An important ancient city on the island of Sicily.",
+    "url": "https://pleiades.stoa.org/places/462503",
+    "retrieved": "2026-09-07",
+    "license": "CC BY 3.0; Pleiades contributors"
+  }
+}

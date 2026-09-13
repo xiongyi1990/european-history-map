@@ -1,0 +1,302 @@
+{
+  "423025": {
+    "title": "Roma",
+    "coords": [
+      12.491258174554883,
+      41.8899769864849
+    ],
+    "precision": "rough",
+    "description": "The capital of the Roman Republic and Empire.",
+    "url": "https://pleiades.stoa.org/places/423025",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "422995": {
+    "title": "Ostia",
+    "coords": [
+      12.289357418323796,
+      41.753575752221614
+    ],
+    "precision": "precise",
+    "description": "The port city of ancient Rome located at the mouth of the river Tiber.",
+    "url": "https://pleiades.stoa.org/places/422995",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "432754": {
+    "title": "Capua",
+    "coords": [
+      14.250207,
+      41.0860925
+    ],
+    "precision": "precise",
+    "description": "An important ancient city of Campania with Villanovan and Etruscan origins.",
+    "url": "https://pleiades.stoa.org/places/432754",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "433014": {
+    "title": "Parthenope/Neapolis",
+    "coords": [
+      14.25287,
+      40.839995
+    ],
+    "precision": "precise",
+    "description": "Founded as Parthenope by Greeks in the eighth century B.C., the site eventually gave rise to Neapolis in the sixth century B.C. and was one of the most prominent cities of Magna Graecia. Present-day Naples, Italy.",
+    "url": "https://pleiades.stoa.org/places/433014",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "442509": {
+    "title": "Brundisium/Brentesion",
+    "coords": [
+      17.9429115,
+      40.638663
+    ],
+    "precision": "precise",
+    "description": "A Greek and Roman port, terminus of the Via Appia.",
+    "url": "https://pleiades.stoa.org/places/442509",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "393480": {
+    "title": "Ravenna",
+    "coords": [
+      12.196604,
+      44.415718
+    ],
+    "precision": "precise",
+    "description": "A city of northern Adriatic Italy that served as the capital of the Western Roman Empire from A.D. 402 until 476.",
+    "url": "https://pleiades.stoa.org/places/393480",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "383706": {
+    "title": "Mediolan(i)um",
+    "coords": [
+      9.18806,
+      45.463746
+    ],
+    "precision": "precise",
+    "description": "A Celtic settlement and crossroads, later a Western Roman capital. Now modern Milan, Italy.",
+    "url": "https://pleiades.stoa.org/places/383706",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "393379": {
+    "title": "Ariminum",
+    "coords": [
+      12.5631945,
+      44.0589565
+    ],
+    "precision": "precise",
+    "description": "Ariminum (Rimini) is a Roman colony founded on the Adriatic coast in 268 BC.",
+    "url": "https://pleiades.stoa.org/places/393379",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "314921": {
+    "title": "Carthago",
+    "coords": [
+      10.323056,
+      36.853056
+    ],
+    "precision": "precise",
+    "description": "The ancient city of Carthage, located in modern Tunis (Tunisia). Carthage engaged the Roman state in a series of wars conventionally referred to as the Punic Wars by scholars.",
+    "url": "https://pleiades.stoa.org/places/314921",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "315248": {
+    "title": "Utica",
+    "coords": [
+      10.060007765147134,
+      37.05587745032564
+    ],
+    "precision": "precise",
+    "description": "A Punic center located west of Carthage.",
+    "url": "https://pleiades.stoa.org/places/315248",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "344448": {
+    "title": "Neapolis/Lepcis Magna",
+    "coords": [
+      14.297093517366152,
+      32.636447832647285
+    ],
+    "precision": "precise",
+    "description": "Originally a Phoenician colony founded ca. 1100 B.C., Lepcis Magna became a prominent Roman city and birthplace of the emperor Septimius Severus.",
+    "url": "https://pleiades.stoa.org/places/344448",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "265849": {
+    "title": "Carthago Nova/Col. Urbs Iulia",
+    "coords": [
+      -0.9879534999999999,
+      37.602787
+    ],
+    "precision": "precise",
+    "description": "Carthago Nova/Col. Urbs Iulia (modern Cartagena, Spain) was originally an indigenous settlement that was subsequently refounded first as a Punic site Qart Hadasht (\"New City\") in 228 BC and later as a Roman city.",
+    "url": "https://pleiades.stoa.org/places/265849",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "256177": {
+    "title": "Gadeira/Gades/Col. Augusta Gaditana",
+    "coords": [
+      -6.293120666666667,
+      36.529277666666665
+    ],
+    "precision": "precise",
+    "description": "Gadeira/Gades/Col. Augusta Gaditana (modern Cadiz, Spain) is an ancient city of Spain and one of the oldest continuously occupied cities of Europe. Its origins may be Phoenician (Gadir (Phoenician: גדר)).",
+    "url": "https://pleiades.stoa.org/places/256177",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "246349": {
+    "title": "Col. Tarraco",
+    "coords": [
+      1.2583375,
+      41.116892
+    ],
+    "precision": "precise",
+    "description": "An Iberian site in contact with Greek and Phoenician merchants that became a major Roman center from the third century BC onward.",
+    "url": "https://pleiades.stoa.org/places/246349",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "148127": {
+    "title": "Massalia/Massilia",
+    "coords": [
+      5.382499,
+      43.296854
+    ],
+    "precision": "precise",
+    "description": "Massalia/Massilia (modern Marseille, France) was founded by Phocaean Greeks ca. 600 B.C. as a trading outpost. Massalia, in turn, established its own secondary colonies. During the Punic Wars Massalia, was allied to Rome and, following the sacking of Carthage in 146 B.C., the settlement enjoyed increased economic vitality.",
+    "url": "https://pleiades.stoa.org/places/148127",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "167717": {
+    "title": "Col. Lugdunum",
+    "coords": [
+      4.8194815,
+      45.758866
+    ],
+    "precision": "precise",
+    "description": "Lugdunum (modern Lyon in France) was a Roman military colony from 43 B.C. and a major center in Gaul. Marcus Agrippa was involved in its expansion and two Roman emperors, Claudius and Caracalla, were born there.",
+    "url": "https://pleiades.stoa.org/places/167717",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "108894": {
+    "title": "Col. Augusta Treverorum",
+    "coords": [
+      6.641692916579501,
+      49.75223387300047
+    ],
+    "precision": "rough",
+    "description": "The chief ancient city (civitas) of the Treveri. Modern Trier in Germany.",
+    "url": "https://pleiades.stoa.org/places/108894",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "79574": {
+    "title": "Londinium/Augusta",
+    "coords": [
+      -0.088949,
+      51.513335
+    ],
+    "precision": "precise",
+    "description": "Roman London was established ca. A.D. 43.",
+    "url": "https://pleiades.stoa.org/places/79574",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "89175": {
+    "title": "Eburacum",
+    "coords": [
+      -1.082304,
+      53.957672
+    ],
+    "precision": "precise",
+    "description": "The site of a Roman legionary fortress, municipium, and colonia at modern-day York, England.",
+    "url": "https://pleiades.stoa.org/places/89175",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "579885": {
+    "title": "Athenae",
+    "coords": [
+      23.723914356100423,
+      37.97163725472171
+    ],
+    "precision": "rough",
+    "description": "A major Greek city-state and the principal city of Attika. Modern Athens in Greece.",
+    "url": "https://pleiades.stoa.org/places/579885",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "570182": {
+    "title": "Corinthus/Korinthos",
+    "coords": [
+      22.878614390874485,
+      37.90564164345828
+    ],
+    "precision": "precise",
+    "description": "The ancient Greek and Roman city of Corinth, located in the Peloponnese, Greece. Also known today as Archaia Korinthos and not to be confused with the nearby modern town.",
+    "url": "https://pleiades.stoa.org/places/570182",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "462503": {
+    "title": "Syracusae/Syrakousai",
+    "coords": [
+      15.283335658142617,
+      37.070078971013665
+    ],
+    "precision": "rough",
+    "description": "An important ancient city on the island of Sicily.",
+    "url": "https://pleiades.stoa.org/places/462503",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "727070": {
+    "title": "Alexandria",
+    "coords": [
+      29.909773,
+      31.201435
+    ],
+    "precision": "precise",
+    "description": "The ancient port city in Egypt's Nile Delta, founded by Alexander the Great in 332/331 BCE.",
+    "url": "https://pleiades.stoa.org/places/727070",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "658381": {
+    "title": "Antiochia/Theoupolis",
+    "coords": [
+      36.183214,
+      36.222551499999994
+    ],
+    "precision": "precise",
+    "description": "A city founded ca. 300 BC by Seleucus I Nicator, a successor of Alexander the Great. Antioch was a great trading center and numbered as one of the four cities of the Syrian tetrapolis. Justinian I renamed the city 'Theoupolis' in the sixth century AD.",
+    "url": "https://pleiades.stoa.org/places/658381",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  },
+  "520985": {
+    "title": "Byzantium",
+    "coords": [
+      28.973881499999997,
+      41.005902
+    ],
+    "precision": "precise",
+    "description": "An ancient Greek settlement at the southern end of the Bosphorus, where modern-day Istanbul, Turkey, now stands. It flourished and grew throughout the Greek and Roman periods. The city was renamed Constantinopolis (q.v..) and much expanded by the fourth-century emperor, Constantine, and his successors.",
+    "url": "https://pleiades.stoa.org/places/520985",
+    "retrieved": "2026-09-09",
+    "license": "CC BY 3.0; Pleiades contributors"
+  }
+}
