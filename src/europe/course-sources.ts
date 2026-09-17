@@ -2,6 +2,14 @@
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ paviaEarly:{title:'帕维亚旅游局：伦巴第王都的遗产',url:'https://www.visitpavia.com/it/eredita-longobarda-di-pavia'},
+ toledoEarly:{title:'UNESCO：托莱多历史城市',url:'https://whc.unesco.org/en/list/379/'},
+ toledoChurch:{title:'托莱多总教区：西哥特王都与教会沿革',url:'https://www.architoledo.org/archidiocesis/historia/'},
+ damascusEarly:{title:'UNESCO：大马士革古城',url:'https://whc.unesco.org/en/list/20/'},
+ kairouanEarly:{title:'UNESCO：凯鲁万及 670 年建城',url:'https://whc.unesco.org/en/list/499/'},
+ gregoryEarly:{title:'梵蒂冈：大格列高利、伦巴第人与罗马',url:'https://www.vatican.va/content/benedict-xvi/en/audiences/2008/documents/hf_ben-xvi_aud_20080528.html'},
+ transitionEarly:{title:'大都会博物馆：拜占庭与伊斯兰的过渡时代',url:'https://www.metmuseum.org/exhibitions/listings/2012/byzantium-and-islam'},
+ umayyadEarly:{title:'大都会博物馆：倭马亚时期（661—750）',url:'https://www.metmuseum.org/essays/the-art-of-the-umayyad-period-661-750'},
  trierLate:{title:'UNESCO：特里尔与晚期罗马皇帝驻地',url:'https://whc.unesco.org/en/list/367/'},
  galerius:{title:'希腊文化部：塞萨洛尼基伽列里乌斯宫殿',url:'https://galeriuspalace.culture.gr/'},
  toulouseLate:{title:'图卢兹圣雷蒙考古博物馆：罗马城市与西哥特王都',url:'https://saintraymond.toulouse.fr/en/the-permanent-tour/'},

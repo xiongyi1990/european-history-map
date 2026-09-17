@@ -10,6 +10,17 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('switches from 600 to 700 and opens the Umayyad capital with course references',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=600');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.click(screen.getByRole('button',{name:'700 年'}));
+  expect(location.search).toContain('year=700');
+  fireEvent.click(screen.getByRole('button',{name:/倭马亚都城 → 大马士革/}));
+  expect(location.search).toContain('place=damascus');
+  expect(screen.getByText('第 150 讲 · PDF 第 1256—1263 页')).toBeTruthy();
+  expect(screen.getByText(/此时还不能使用后来阿拔斯时代的巴格达/)).toBeTruthy();
+  await act(async()=>{});
+ });
  it('opens a late antique kingdom from the year guide and retains its year',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=500');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
