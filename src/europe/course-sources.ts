@@ -2,6 +2,14 @@
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ trierLate:{title:'UNESCO：特里尔与晚期罗马皇帝驻地',url:'https://whc.unesco.org/en/list/367/'},
+ galerius:{title:'希腊文化部：塞萨洛尼基伽列里乌斯宫殿',url:'https://galeriuspalace.culture.gr/'},
+ toulouseLate:{title:'图卢兹圣雷蒙考古博物馆：罗马城市与西哥特王都',url:'https://saintraymond.toulouse.fr/en/the-permanent-tour/'},
+ tournaiLate:{title:'图尔奈旅游局：希尔德里克与克洛维',url:'https://en.visittournai.be/exciting/tournai-berceau-clovis/'},
+ lyonLate:{title:'里昂市档案馆：勃艮第统治与 534 年征服',url:'https://www.archives-lyon.fr/arrive-a-lyon'},
+ africaLate:{title:'大都会博物馆：北非 1—500 年',url:'https://www.metmuseum.org/toah/ht/05/afw.html'},
+ africaVandal:{title:'大都会博物馆：汪达尔与东罗马时期的北非',url:'https://www.metmuseum.org/toah/ht/06/afw.html'},
+ britainLate:{title:'英国遗产保护机构：罗马统治如何在不列颠结束',url:'https://www.english-heritage.org.uk/visit/inspire-me/why-did-the-romans-leave-britain/'},
  verdun:{title:'莱茵地区历史门户：843 年凡尔登条约',url:'https://www.rheinische-geschichte.lvr.de/chronicle/843'},
  william:{title:'英国皇家宫殿管理机构：征服者威廉',url:'https://www.hrp.org.uk/tower-of-london/history-and-stories/william-the-conqueror/'},
  jerusalemCoords:{title:'联合国教科文组织：耶路撒冷古城定位',url:'https://whc.unesco.org/en/list/148/maps'},

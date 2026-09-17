@@ -10,6 +10,15 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens a late antique kingdom from the year guide and retains its year',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=500');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.click(screen.getByRole('button',{name:/汪达尔 → 迦太基/}));
+  expect(location.search).toContain('year=500');expect(location.search).toContain('place=carthage');
+  expect(screen.getByText(/500 年这里已经不受西罗马/)).toBeTruthy();
+  expect(screen.getByText('第 133 讲 · PDF 第 1125—1129 页')).toBeTruthy();
+  await act(async()=>{});
+ });
  it('opens Byzantium by search, retains the topic through 1204 and 1261, and removes obsolete empire boundaries after 1453',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(fc('Byzantine Empire'))));render(<EuropeApp/>);
   fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));

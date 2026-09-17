@@ -46,7 +46,7 @@ describe('course material enriches the shared time atlas',()=>{
   }
   for(const w of historyWindows)expect(historicalDetails.some(d=>d.from<=w.year&&d.to>=w.year)).toBe(true);
   expect(detailHistory('byzantium')).toHaveLength(6);
-  expect(coursePlaces).toHaveLength(11);
-  expect(courseDetails).toHaveLength(54);
+  expect(new Set(courseDetails.map(d=>d.id)).size).toBe(courseDetails.length);
+  for(const p of coursePlaces)expect(historicalDetails.some(d=>d.placeId===p.id)).toBe(true);
  });
 });

@@ -37,3 +37,5 @@
 
 
 .h-reading{border-top:1px solid #edf0f2;padding-top:16px;margin-top:22px}.h-reading>div{margin:12px 0}.h-reading strong{font-size:12px;font-weight:500}.h-reading p{font-size:12px;line-height:1.8;color:#56656d}.h-reading small{font-size:10px;line-height:1.6;color:#77868d}.h-reading aside{background:#fff8e9;padding:12px;border-left:3px solid #d9ae56;margin:14px 0;border-radius:4px}.maps-ui .h-reading a{font-size:11px;line-height:1.7}
+
+.maps-ui .late-guide{padding:16px;border:1px solid #d9e5f7;border-radius:12px;background:#f7faff;margin-bottom:24px}.maps-ui .late-guide h2{font-size:18px;line-height:1.6;margin:0 0 12px;color:#202124}.maps-ui .late-guide h3{font-size:15px;margin:16px 0 6px}.maps-ui .late-guide p{font-size:14px;line-height:1.85;color:#3c4043}.maps-ui .late-guide a,.maps-ui .late-guide small{display:block;font-size:12px;line-height:1.8}.maps-ui .late-guide a{color:#1967d2}.maps-ui .late-year-links{display:flex;gap:8px;margin:10px 0}.maps-ui .late-year-links button{border:1px solid #dadce0;border-radius:18px;padding:8px 14px;background:white;color:#1967d2}.maps-ui .late-year-links button[aria-pressed=true]{background:#1967d2;color:white}
