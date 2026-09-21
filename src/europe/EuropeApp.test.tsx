@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+import raw300 from '../../public/historical-boundaries/world_300.geojson?raw';
 import {afterEach,describe,it,expect,vi} from 'vitest';
 import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
 import {EuropeApp} from './EuropeApp';
@@ -10,6 +11,18 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('renders the real 300 Roman divisions without enabling reference areas and opens the eastern neighbor',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async(url)=>response(String(url).includes('world_300')?JSON.parse(raw300):empty)));
+  history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  await waitFor(()=>expect(screen.getByTestId('drawn-areas').textContent).toContain('Rome (Diocletianus)'));
+  expect(screen.getByTestId('drawn-areas').textContent).toContain('Rome (Constantinus)');
+  expect(screen.getByTestId('drawn-areas').textContent).not.toContain('Parthian Empire');
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  expect(screen.getByRole('region',{name:'政权与地域组成'}).textContent).toContain('北非沿海');
+  fireEvent.click(screen.getByRole('button',{name:/萨珊宫廷：泰西封/}));
+  expect(location.search).toContain('year=300');expect(location.search).toContain('place=ctesiphon');
+  expect(screen.getByText(/不能仍把 300 年的波斯称为帕提亚帝国/)).toBeTruthy();
+ });
  it('opens the Norman century and locates Sicily without creating an early kingdom',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=1066');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));

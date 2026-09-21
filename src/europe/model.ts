@@ -1,3 +1,4 @@
+import {roman300Boundaries,tetrarchNames,type BoundaryContext} from './roman-300-boundaries';
 import chineseNames from './chinese-names.json';
 import {boundarySnapshots} from '../atlas-data/historical-boundaries';
 import {places as greekPlaces,sourceWar} from '../greek/data';
@@ -46,7 +47,7 @@ export const centuryGuides=[
  {year:-300,title:'公元前 3 世纪',hint:'亚历山大继业者与地中海西部',people:'希腊化城市居民、埃及人、叙利亚人、意大利半岛居民等重叠社群。'},
  {year:-100,title:'公元前 1 世纪',hint:'罗马共和国晚期与地中海征服',people:'罗马公民、意大利盟邦与各地本地社群。'},
  {year:100,title:'公元 1 世纪',hint:'罗马帝国的地中海秩序',people:'罗马化程度不同的地方社群；希腊语与拉丁语并存。'},
- {year:300,title:'公元 3 世纪',hint:'三世纪危机与帝国行政重组',people:'帝国各行省居民、军队与跨区域商贸社群。'},
+ {year:300,title:'公元 3 世纪',hint:'四帝共治、罗马诸地域与萨珊邻国',people:'帝国各行省居民、军队与跨区域商贸社群。'},
  {year:400,title:'公元 4 世纪',hint:'基督教帝国与东西部朝廷',people:'罗马政治身份与地方语言、宗教社群交错。'},
  {year:500,title:'公元 5 世纪',hint:'西罗马解体、东罗马与日耳曼王国',people:'罗马地方社会、哥特人、汪达尔人、法兰克人等不能互相替代。'},
  {year:600,title:'公元 6 世纪',hint:'查士丁尼战争与伦巴第进入意大利',people:'东罗马统治区、日耳曼王国与地方罗马社会并存。'},
@@ -70,12 +71,12 @@ const names:Record<string,string>={ 'Bosporian Kingdom':'博斯普鲁斯王国',
  'Greek city-states':'希腊城邦（合并区域）','Saami':'萨米人区域','Sámi':'萨米人区域','Franks':'法兰克人区域','Visigoths':'西哥特人区域','Alamans':'阿勒曼尼人区域','Burgunds':'勃艮第人区域','Etrurians':'伊特鲁里亚人区域','Illyrians':'伊利里亚人区域','Slavic tribes':'斯拉夫部落区域','Slavonic tribes':'斯拉夫部落区域','Baltic tribes':'波罗的海部落区域','Finno-Ugric taiga hunter-gatherers':'芬兰—乌戈尔森林狩猎采集区域','Paleo-Siberian hunter-gatherers':'古西伯利亚狩猎采集区域','Arctic marine mammal hunters':'北极海兽狩猎区域','Saharan Pastoral Nomads':'撒哈拉游牧区域','Alans':'阿兰人区域','Scythians':'斯基泰人区域','Guanches':'关切人区域','Blemmyes':'布莱米人区域',
 };
 const nonPolities=new Set(['Greek city-states','Saami','Sámi','Franks','Visigoths','Alamans','Burgunds','Etrurians','Illyrians','Slavic tribes','Slavonic tribes','Baltic tribes','Finno-Ugric taiga hunter-gatherers','Paleo-Siberian hunter-gatherers','Arctic marine mammal hunters','Saharan Pastoral Nomads','Alans','Scythians','Guanches','Blemmyes']);
-export function classify(name:string):'polity'|'reference'{return !nonPolities.has(name)&&(!!names[name]||/Empire|Kingdom|Caliphate|Sultanate|Emirate|Republic|Duchy/.test(name))?'polity':'reference'}
+export function classify(name:string):'polity'|'reference'{return !nonPolities.has(name)&&(!!names[name]||tetrarchNames.includes(name)||/Empire|Kingdom|Caliphate|Sultanate|Emirate|Republic|Duchy/.test(name))?'polity':'reference'}
 export const translate=(name:string)=>names[name.trim()]??(chineseNames as Record<string,string>)[name.trim()]??(name.trim()==='?'||/^\d*$/.test(name.trim())?'未命名区域':name);
 const palette=['#e9ba78','#8fc6bb','#c6adc9','#92b2d3','#d9a193','#bfc38c','#dcb47b','#a1c8ce'];
 export function colorFor(name:string){return palette[[...name].reduce((v,c)=>(v*31+c.charCodeAt(0))>>>0,0)%palette.length]}
 type AreaGeometry=GeoJSON.Polygon|GeoJSON.MultiPolygon;
-export interface Area {id:string;name:string;original:string;subject:string;kind:'polity'|'reference';color:string;coords:Coordinate;bounds:[Coordinate,Coordinate];feature:GeoJSON.Feature<AreaGeometry>;source:string}
+export interface Area {id:string;name:string;original:string;subject:string;kind:'polity'|'reference';color:string;coords:Coordinate;bounds:[Coordinate,Coordinate];feature:GeoJSON.Feature<AreaGeometry>;source:string;context?:BoundaryContext}
 function rings(g:AreaGeometry){return g.type==='Polygon'?[g.coordinates[0]]:g.coordinates.map(p=>p[0])}
 export function areaLocation(g:AreaGeometry):{coords:Coordinate;bounds:[Coordinate,Coordinate]}|undefined {
  // Prefer a substantial polygon intersecting the atlas; overseas pieces do not move France away from Europe.
@@ -88,14 +89,15 @@ export function areaLocation(g:AreaGeometry):{coords:Coordinate;bounds:[Coordina
  }
  return {coords:best?.coords??[(c.x0+c.x1)/2,(c.y0+c.y1)/2],bounds:[[c.x0,c.y0],[c.x1,c.y1]]};
 }
-export function makeAreas(fc:GeoJSON.FeatureCollection,modern=false):Area[]{
+export function makeAreas(fc:GeoJSON.FeatureCollection,modern=false,snapshotYear?:number):Area[]{
  return fc.features.flatMap((f,i)=>{
   if(f.geometry.type!=='Polygon'&&f.geometry.type!=='MultiPolygon')return [];
   const location=areaLocation(f.geometry);if(!location)return [];
   const p=f.properties??{}, original=String(modern?p.ADMIN:p.name),subject=String(modern?p.ADMIN:p.subject??p.name);
-  const id=`${modern?'modern':'history'}:${i}`,kind=modern?'polity':classify(subject);
-  const name=modern?String(p.NAME_ZH||p.NAME||original):translate(original),color=kind==='polity'?colorFor(subject):'#9ca9a4';
-  return [{id,name,original,subject,kind,color,...location,feature:{...f,properties:{...p,atlasId:id,atlasColor:color}} as GeoJSON.Feature<AreaGeometry>,source:modern?MODERN_SOURCE:HISTORY_SOURCE}];
+  const context=!modern&&snapshotYear===300?roman300Boundaries[original]:undefined;
+  const id=`${modern?'modern':'history'}:${i}`,kind=modern?'polity':context?.reference?'reference':classify(subject);
+  const name=modern?String(p.NAME_ZH||p.NAME||original):context?.name??translate(original),color=kind==='polity'?colorFor(tetrarchNames.includes(subject)?'Roman Empire':subject):'#9ca9a4';
+  return [{id,name,original,subject,kind,color,context,...location,feature:{...f,properties:{...p,atlasId:id,atlasColor:color}} as GeoJSON.Feature<AreaGeometry>,source:modern?MODERN_SOURCE:HISTORY_SOURCE}];
  });
 }
 export interface GazetteerPlace {id:string;name:string;modern:string;aliases:string[];coords:Coordinate;description:string;source:string;kind:string;viewBounds?:[Coordinate,Coordinate]}

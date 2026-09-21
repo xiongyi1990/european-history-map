@@ -45,7 +45,7 @@ describe('course material enriches the shared time atlas',()=>{
    if(d.focusYear!==undefined){expect(d.focusYear).toBeGreaterThanOrEqual(d.from);expect(d.focusYear).toBeLessThanOrEqual(d.to);}
   }
   for(const w of historyWindows)expect(historicalDetails.some(d=>d.from<=w.year&&d.to>=w.year)).toBe(true);
-  expect(detailHistory('byzantium')).toHaveLength(6);
+  expect(detailHistory('byzantium').some(d=>d.from===300&&d.title==='拜占庭城')).toBe(true);
   expect(new Set(courseDetails.map(d=>d.id)).size).toBe(courseDetails.length);
   for(const p of coursePlaces)expect(historicalDetails.some(d=>d.placeId===p.id)).toBe(true);
  });

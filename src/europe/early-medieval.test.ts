@@ -15,7 +15,7 @@ describe('sixth and seventh century reading coverage',()=>{
   expect(historicalDetail('kairouan',700)?.polity.text).toContain('670 年');
  });
  it('changes Egypt from Eastern Roman to Umayyad between the century anchors',()=>{
-  expect(historicalDetail('alexandria',600)?.polity.text).toContain('东部帝国');
+  expect(historicalDetail('alexandria',600)?.polity.text).toContain('395 年以后处于东部朝廷一侧');
   expect(historicalDetail('alexandria',700)?.polity.text).toContain('倭马亚');
   expect(easternRegionStatus('egypt',600)).toContain('仍属帝国');
   expect(easternRegionStatus('egypt',700)).toContain('不再属东罗马');
