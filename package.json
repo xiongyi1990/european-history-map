@@ -29,5 +29,18 @@
     "@types/topojson-client": "^3.1.5",
     "jsdom": "^25.0.0",
     "vitest": "^2.1.0"
+  },
+  "description": "A Chinese-language interactive historical atlas of Europe",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiongyi1990/european-history-map.git"
+  },
+  "homepage": "https://european-history-map.tangallen96.chatgpt.site",
+  "bugs": {
+    "url": "https://github.com/xiongyi1990/european-history-map/issues"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

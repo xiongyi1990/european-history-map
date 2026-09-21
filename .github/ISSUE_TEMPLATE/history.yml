@@ -1,0 +1,26 @@
+name: 史实与地图纠错
+description: 补充或修正年代、疆界、地点、居民及资料来源
+title: '[史料] '
+labels: ['historical-data']
+body:
+  - type: input
+    id: location
+    attributes:
+      label: 年代、地点与地图链接
+      placeholder: 公元 843 年，亚琛；粘贴当前地图链接
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 当前内容与建议修正
+      description: 写清楚看到什么、哪里不清楚、建议如何改。没有把握也可以提出问题。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 依据与不确定之处
+      description: 提供公开链接、书名与页码；请勿上传课程全文或整本书。无来源时注明待核查。
+    validations:
+      required: true

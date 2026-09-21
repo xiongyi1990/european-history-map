@@ -1,0 +1,20 @@
+name: 功能建议或使用问题
+description: 帮助地图更易读、更易用
+title: '[体验] '
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: 你想完成什么，遇到了什么问题？
+      description: 尽量用一次具体的读书或看地图过程说明。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 复现步骤、地图链接及设备
+      description: 若为故障，补充浏览器、手机或电脑型号；截图中请隐藏个人信息。
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 期望的效果
