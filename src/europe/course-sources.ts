@@ -2,6 +2,17 @@
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ prum:{title:'莱茵地区历史门户：855 年中部王国再次分割',url:'https://www.rheinische-geschichte.lvr.de/chronicle/855'},
+ carolingian:{title:'大都会博物馆：加洛林时代与查理曼',url:'https://www.metmuseum.org/essays/carolingian-art'},
+ regensburg:{title:'德国 UNESCO 委员会：雷根斯堡与东法兰克宫廷',url:'https://www.unesco.de/staette/altstadt-von-regensburg-mit-stadtamhof/'},
+ oviedo:{title:'西班牙文化部：奥维耶多与阿斯图里亚斯王国',url:'https://www.cultura.gob.es/cultura/areas/patrimonio/mc/patrimoniomundial/bienes-declarados/por-ano-de-inscripcion/1985/asturias.html'},
+ abbasid:{title:'大都会博物馆：阿拔斯时期与两座都城',url:'https://www.metmuseum.org/essays/the-art-of-the-abbasid-period-750-1258'},
+ samarra:{title:'UNESCO：萨迈拉考古城',url:'https://whc.unesco.org/en/list/276/'},
+ ribemont:{title:'莱茵地区历史门户：880 年里伯蒙条约',url:'https://www.rheinische-geschichte.lvr.de/chronicle/880'},
+ lotharingia:{title:'莱茵地区历史门户：法兰克分裂后的莱茵地区',url:'https://rheinische-geschichte.lvr.de/Epochen-und-Themen/Epochen/500-bis-785---die-rheinlande-im-fruehmittelalter/DE-2086/lido/57ab21f57328c2.42556102'},
+ parisMedieval:{title:'巴黎市：中世纪的城市与地方权力',url:'https://www.paris.fr/pages/paris-des-carolingiens-aux-revolutionnaires-22384'},
+ paviaItalian:{title:'帕维亚旅游局：意大利王国的加冕中心',url:'https://www.visitpavia.com/it/visitare-pavia/turismo-culturale-pavia/basilica-di-san-michele-maggiore'},
+ italyEarly:{title:'大都会博物馆：意大利半岛 500—1000 年',url:'https://www.metmuseum.org/toah/ht/06/eust.html'},
  paviaEarly:{title:'帕维亚旅游局：伦巴第王都的遗产',url:'https://www.visitpavia.com/it/eredita-longobarda-di-pavia'},
  toledoEarly:{title:'UNESCO：托莱多历史城市',url:'https://whc.unesco.org/en/list/379/'},
  toledoChurch:{title:'托莱多总教区：西哥特王都与教会沿革',url:'https://www.architoledo.org/archidiocesis/historia/'},

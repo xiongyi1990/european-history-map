@@ -19,6 +19,9 @@ export const easternNodes=[
  {year:600,title:'意大利分治，南方行省仍在',text:'帕维亚是伦巴第王权中心；东罗马仍保有拉文纳、罗马等意大利据点，埃及和迦太基也仍在帝国统治下。'},
  {year:650,title:'失去叙利亚与埃及后的帝国',text:'七世纪战争和阿拉伯征服改变了东地中海格局。埃及与大部分叙利亚已脱离帝国，小亚细亚和巴尔干的重要性进一步上升。'},
  {year:700,title:'北非再失，帝国核心仍延续',text:'东罗马已经失去迦太基，倭马亚政治中心在大马士革；君士坦丁堡、小亚细亚以及部分欧洲和意大利据点仍维持帝国的延续。'},
+ {year:800,title:'西方加冕，东方帝国继续',text:'查理曼在罗马加冕没有终结君士坦丁堡的帝国。把两处皇权中心与意大利分治并列观察，不能画成重新统一的罗马帝国。'},
+ {year:843,title:'圣像恢复，与凡尔登分割是两件事',text:'君士坦丁堡恢复圣像敬礼；同年西方发生凡尔登分割。宗教争论的结束和西方法兰克的王朝分割不属于同一个政权变化。'},
+ {year:900,title:'宗教影响不等于领土扩张',text:'拜占庭与保加利亚之间的宗教、文字和文化联系增强，但保加利亚仍是不同的政治实体。埃及与北非也没有因基督徒社群的延续而恢复帝国归属。'},
  {year:1025,title:'中期恢复与扩展',text:'巴西尔二世统治末期，帝国在巴尔干与东方取得扩展。但不能据此认为叙利亚全境、埃及或旧罗马全部领土已经恢复。'},
  {year:1071,title:'曼齐刻尔特与小亚细亚转折',text:'战败、内争与后续突厥扩张共同改变小亚细亚。1071 年不是整个半岛在同一天全部失去的日期。'},
  {year:1204,title:'首都陷落与继承政权',text:'第四次十字军攻占君士坦丁堡，拉丁帝国建立。尼西亚、伊庇鲁斯和特拉布宗等政权分别延续或争夺东罗马传统，不能画成一个仍由首都统一控制的帝国。'},
@@ -43,5 +46,5 @@ export function EasternEmpire({year,selected,onYear,onRegion,onCity,onClose}:{ye
  {region&&<section ref={panel} aria-label="历史地区说明"><h3>{region.name}</h3>{easternRegionStatus(region.id,year)&&<p><strong>{year} 年：</strong>{easternRegionStatus(region.id,year)}</p>}{"period" in region&&<p><strong>时段：</strong>{String(region.period)}</p>}<p><strong>对应今天：</strong>{region.modern}</p><p><strong>在帝国中的位置：</strong>{region.role}</p><p><strong>得失与延续：</strong>{region.after}</p><div className="h-related">{region.cities.map((id,i)=><button key={id} onClick={()=>onCity(id)}>{region.cityNames[i]}<span>查看城市 →</span></button>)}</div>{"source" in region&&"locationSource" in region&&<p><a href={String(region.source)} target="_blank" rel="noreferrer">政权沿革依据 ↗</a> · <a href={String(region.locationSource)} target="_blank" rel="noreferrer">古今地点依据 ↗</a></p>}</section>}
  <h3>居民、语言与身份</h3><p>早期帝国使用拉丁语与希腊语，后来希腊语在国家与教会中居于主导。不同地区还有多种语言、宗教传统与地方身份；地图不把政权颜色当作族群边界。</p>
  <p className="e-note">地区标签用于跨年代定位，镜头范围不是行政边界。疆界仍使用页面标明的参考快照，尚未新增精确行省多边形。{year>=1453&&'此年隐藏仍以东罗马或拜占庭帝国命名的旧参考区域；相关继承政权需要分别查看。'}</p>
- <details><summary>查看本专题依据</summary><p><a href="https://www.metmuseum.org/essays/byzantium-ca-330-1453" target="_blank" rel="noreferrer">大都会博物馆：拜占庭的早、中、晚期 ↗</a></p><p><a href="https://en.wikipedia.org/wiki/Byzantine_Empire" target="_blank" rel="noreferrer">东罗马的政治与领土沿革 ↗</a></p></details></article>;
+ <details><summary>查看本专题依据</summary><p><a href="https://www.metmuseum.org/essays/byzantium-ca-330-1453" target="_blank" rel="noreferrer">大都会博物馆：拜占庭的早、中、晚期 ↗</a></p><p><a href="https://www.metmuseum.org/toah/ht/06/eusb.html" target="_blank" rel="noreferrer">大都会博物馆：巴尔干、保加利亚与圣像恢复 ↗</a></p><p><a href="https://www.metmuseum.org/toah/ht/06/eust.html" target="_blank" rel="noreferrer">大都会博物馆：意大利与西西里的政治变化 ↗</a></p><p><a href="https://en.wikipedia.org/wiki/Byzantine_Empire" target="_blank" rel="noreferrer">东罗马的政治与领土沿革 ↗</a></p></details></article>;
 }

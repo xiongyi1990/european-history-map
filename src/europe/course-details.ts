@@ -1,6 +1,7 @@
 import {medievalPlaces,medievalDetails} from './medieval-details';
 import {lateAntiquePlaces,lateAntiqueDetails} from './late-antiquity';
 import {earlyMedievalPlaces,earlyMedievalDetails} from './early-medieval';
+import {carolingianPlaces,carolingianDetails} from './carolingian-details';
 import {classicalCoursePlaces,classicalCourseDetails} from './classical-course-details';
 import type {GazetteerPlace} from './model';
 import type {HistoricalDetail,HistoricalFact} from './history-details';
@@ -11,7 +12,7 @@ const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
 const dms=(d:number,m:number,s:number)=>d+m/60+s/3600;
 const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'历史地点参考'});
 export const coursePlaces:GazetteerPlace[]=[
- ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,
+ ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,...carolingianPlaces,
  site('nicomedia','尼科米底亚','土耳其 · 伊兹米特',['Nicomedia','Nikomedeia','İzmit','Izmit','尼科美底亚'],[29.919887,40.7651905],'nicomedia','马尔马拉海东端的古城，今伊兹米特。不要与爱琴海岸的伊兹密尔混淆。'),
  site('aachen','亚琛','德国 · 亚琛',['Aachen','Aix-la-Chapelle','查理曼','加洛林'],[dms(6,5,2.112),dms(50,46,29.089)],'aachenSite','查理曼的宫廷驻地之一。以大教堂代表点定位，宫殿位置与帝国疆界分别理解。'),
  site('cordoba','科尔多瓦','西班牙 · 科尔多瓦',['Córdoba','Cordoba','Qurtuba','库尔图巴','后倭马亚','安达卢斯'],[-4.770004,37.879999],'cityCoordinates','瓜达尔基维尔河畔的城市。埃米尔国、哈里发国和城市本身是不同对象。坐标采用现代城市代表点。'),
@@ -42,7 +43,7 @@ const cordobaBase={placeId:'cordoba',title:'科尔多瓦',displayName:'Córdoba 
 const avignonBase={placeId:'avignon',title:'阿维尼翁',displayName:'Avignon',kind:'教廷驻地' as const,territory:fact('罗讷河两岸的政治地位要分开。教皇驻在这里、教皇拥有这座城、法国国王的影响力，是三种不同关系。','avignonHistory'),people:fact('教皇宫廷、教士、艺术家与城市居民共同构成这个宗教和行政中心；没有可用于此年居民比例的统计。','avignon'),language:unknownLanguage,nameNote:fact('今名仍为阿维尼翁。用今天的法国位置辅助定位，不把现代法国边界提前用于十四世纪。','avignon'),reading:[{chapter:187,pages:[1600,1601]}] as ReadingReference[],related:['rome','naples'],
 };
 export const courseDetails:HistoricalDetail[]=[
- ...classicalCourseDetails,...medievalDetails,...lateAntiqueDetails,...earlyMedievalDetails,
+ ...classicalCourseDetails,...medievalDetails,...lateAntiqueDetails,...earlyMedievalDetails,...carolingianDetails,
  entry({...byzantineBase,id:'constantinople-330',from:330,to:394,focusYear:330,period:'新罗马：330—394 年',polity:fact('330 年新都落成后的罗马帝国政治中心；此时不能把它自动当作独立东罗马国家的首都。','byzantine')}),
  entry({...byzantineBase,id:'constantinople-east',from:395,to:641,focusYear:395,period:'东部朝廷：395—641 年',polity:fact('罗马帝国东部朝廷的中心。东西部朝廷分掌并不等于划出两个民族国家。','byzantine')}),
  entry({...byzantineBase,id:'constantinople-medieval',from:642,to:1203,focusYear:800,period:'中世纪东罗马都城：642—1203 年',polity:fact('仍是东罗马帝国的政治中心。课程以 642 年作叙事分期；地图不将这一分期视为帝国正式更名或重新建国。','byzantine'),readingNote:'第 122 讲以 642 年区分“东罗马”和“拜占庭”；这是课程叙事口径。地图采用政治共同体延续、名称另作说明的方式。'}),

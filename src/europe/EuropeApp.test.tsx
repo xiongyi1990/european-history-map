@@ -10,6 +10,17 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('navigates the partition guide and keeps the selected year when opening its regions',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=800');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.click(screen.getByRole('button',{name:'843 年'}));
+  expect(screen.getByRole('region',{name:'政权与地域组成'}).textContent).toContain('中部王国 · 洛泰尔一世');
+  fireEvent.click(screen.getByRole('button',{name:/南段：帕维亚/}));
+  expect(location.search).toContain('year=843');expect(location.search).toContain('place=pavia');
+  expect(screen.getByText(/它与亚琛同在中部体系/)).toBeTruthy();
+  expect(screen.getByText('第 144 讲 · PDF 第 1209—1211 页')).toBeTruthy();
+  await act(async()=>{});
+ });
  it('switches from 600 to 700 and opens the Umayyad capital with course references',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=600');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
