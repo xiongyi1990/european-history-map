@@ -31,7 +31,7 @@
 
 ## 新增一个地点的常见路径
 
-1. 参照 `src/europe/turn-of-millennium-details.ts` 或对应时期模块，添加 `GazetteerPlace`：稳定 ID、中文名、古今异名、代表坐标与定位来源。
+1. 参照 `src/europe/turn-of-millennium.ts` 或对应时期模块，添加 `GazetteerPlace`：稳定 ID、中文名、古今异名、代表坐标与定位来源。
 2. 添加该时期的 `HistoricalDetail`：`from` / `to`、政权、地域、居民、语言、地名说明。每条事实使用可解析的来源 ID；未知项明确写未知。
 3. 在 `src/europe/course-sources.ts` 注册必要来源，并检查 `course-details.ts`、`history-details.ts` 中的汇总路径。
 4. 如需出现在年代导览中，补充对应时期的导览配置，确保引用的地点 ID 存在且在该年有适用资料。

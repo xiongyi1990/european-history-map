@@ -2,6 +2,16 @@
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ normanKing:{title:'英国王室：威廉一世、诺曼底与英格兰征服',url:'https://www.royal.uk/william-the-conqueror'},
+ henryNormandy:{title:'英国王室：亨利一世与 1106 年诺曼底征服',url:'https://www.royal.uk/henry-i'},
+ rouenNorman:{title:'鲁昂旅游局：诺曼底公国的历史城市',url:'https://en.visiterouen.com/heritages/'},
+ pevensey1066:{title:'英国遗产：佩文西登陆与城堡沿革',url:'https://www.english-heritage.org.uk/visit/places/pevensey-castle/history/'},
+ normanCrossing:{title:'英国遗产教学资料：1066 年渡海路线与佩文西',url:'https://www.english-heritage.org.uk/siteassets/home/visit/places-to-visit/pevensey-castle/schools/pevensey-teachers-kit-2023.pdf'},
+ hastingsSite:{title:'Historic England：1066 年黑斯廷斯战场登记',url:'https://historicengland.org.uk/listing/the-list/list-entry/1000013'},
+ normanBari:{title:'Treccani 意大利百科：罗贝尔·吉斯卡尔与 1071 年巴里',url:'https://www.treccani.it/enciclopedia/roberto-guiscardo_(Enciclopedia-Italiana)/'},
+ seljuqAnatolia:{title:'大都会博物馆：曼齐刻尔与安纳托利亚的塞尔柱时期',url:'https://www.metmuseum.org/essays/the-art-of-the-seljuq-period-in-anatolia-1081-1307'},
+ normanSicily:{title:'UNESCO：阿拉伯—诺曼巴勒莫与西西里王国',url:'https://whc.unesco.org/en/list/1487/'},
+ sicilyNomination:{title:'UNESCO 申遗档案：巴勒莫历史与 1072 年诺曼征服',url:'https://whc.unesco.org/uploads/nominations/1487.pdf'},
  ottonian:{title:'大都会博物馆：奥托王朝、962 年加冕与帝国地域',url:'https://www.metmuseum.org/essays/ottonian-art'},
  magdeburg:{title:'马格德堡大教堂：十世纪的主教座与奥托王朝',url:'https://magdeburgerdom.de/index.php?call=dom&menu=geschichte&umenu=10jh'},
  magdeburgCharter:{title:'萨克森-安哈尔特州档案馆：965 年犹太人与商人的特许状',url:'https://lha.sachsen-anhalt.de/onlineangebote/juedisches-leben-in-sachsen-anhalt-eine-archivische-spurensuche/spuren/privilegien-kaiser-ottos-i-an-das-mauritiusstift-in-magdeburg-965'},

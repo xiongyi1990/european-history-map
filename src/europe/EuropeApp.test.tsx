@@ -10,6 +10,28 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens the Norman century and locates Sicily without creating an early kingdom',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=1066');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.click(screen.getByRole('button',{name:'1100 年'}));
+  expect(screen.getByRole('region',{name:'政权与地域组成'}).textContent).toContain('不同君主');
+  fireEvent.click(screen.getByRole('button',{name:/岛屿一侧：巴勒莫/}));
+  expect(location.search).toContain('year=1100');expect(location.search).toContain('place=palermo');
+  expect(screen.getByText(/西西里王国到 1130 年才成立/)).toBeTruthy();
+  expect(screen.getByText('第 164 讲 · PDF 第 1391—1396 页')).toBeTruthy();
+  await act(async()=>{});
+ });
+ it('finds the Norman route and moves from a later year to its dated stages',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=1100');render(<EuropeApp/>);
+  fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));
+  fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'诺曼征服'}});
+  fireEvent.click(screen.getByRole('button',{name:/诺曼征服与黑斯廷斯战役/}));
+  expect(location.search).toContain('year=1066');
+  fireEvent.click(screen.getByRole('button',{name:'阶段 3：战役之后：伦敦加冕'}));
+  expect(screen.getByRole('button',{name:'阶段 3：战役之后：伦敦加冕'}).getAttribute('aria-current')).toBe('step');
+  expect(screen.getByText(/不能拿来判断实际进军道路/)).toBeTruthy();
+  await act(async()=>{});
+ });
  it('opens the millennium realm comparison and its Polish checkpoint with course references',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=962');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));

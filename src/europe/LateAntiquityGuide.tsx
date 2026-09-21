@@ -1,6 +1,7 @@
 import {courseSources} from './course-sources';
 import {carolingianGuides} from './carolingian-details';
 import {millenniumGuides} from './turn-of-millennium';
+import {normanGuides} from './norman-century';
 export interface ReadingGuide {
  title:string;orientation:string;people:string;reading:string;source:keyof typeof courseSources;places:[string,string][];
  realms?:{name:string;time:string;regions:string;source:keyof typeof courseSources;places:[string,string][]}[];
@@ -8,6 +9,7 @@ export interface ReadingGuide {
 export const periodGuides:Record<number,ReadingGuide>={
  ...carolingianGuides,
  ...millenniumGuides,
+ ...normanGuides,
  600:{title:'600 年：意大利分治，西哥特王都在托莱多',orientation:'在意大利先看帕维亚的伦巴第王权、拉文纳的东罗马总督和罗马主教，再向西找到伊比利亚内陆的托莱多。地中海南岸的迦太基和埃及此时仍属东罗马。',people:'教士、地方罗马居民与伦巴第统治集团并存；国王的身份不能代替当地全部人口。罗马教会参与救济和交涉，也不意味着八世纪的教皇国已提前建立。',reading:'第 135 讲「大格列高利」、第 145 讲「意大利 600 年」、第 148 讲「西班牙」· PDF 1137—1143、1216—1222、1238—1246 页',source:'gregoryEarly',places:[['pavia','伦巴第王权 → 帕维亚'],['ravenna','东罗马总督 → 拉文纳'],['rome','大格列高利 → 罗马'],['toledo','西哥特王都 → 托莱多'],['carthage','东罗马北非 → 迦太基'],['alexandria','东罗马埃及 → 亚历山大里亚']]},
  700:{title:'700 年：东地中海南岸易主，伊比利亚尚未被征服',orientation:'大马士革是倭马亚王朝的政治中心，亚历山大里亚、耶路撒冷已不属东罗马，北非内陆出现凯鲁万。托莱多仍属西哥特王国，711 年的征服尚未发生；君士坦丁堡的东罗马继续存在。',people:'政治归属改变后，基督徒、犹太人及不同地方社群仍持续存在。阿拉伯语的行政地位、伊斯兰信仰的传播和居民身份变化不能画成同一条边界。',reading:'第 148 讲「西班牙」、第 149 讲「阿拉伯帝国」、第 150 讲「迪旺制」· PDF 1238—1246、1247—1255、1256—1263 页',source:'transitionEarly',places:[['damascus','倭马亚都城 → 大马士革'],['alexandria','埃及港口 → 亚历山大里亚'],['jerusalem','圣城 → 耶路撒冷'],['kairouan','北非内陆基地 → 凯鲁万'],['toledo','西哥特仍存 → 托莱多'],['pavia','伦巴第仍存 → 帕维亚'],['byzantium','东罗马继续 → 君士坦丁堡']]},
  300:{title:'300 年：一个帝国，多处朝廷驻地',orientation:'先看西北的特里尔和意大利北部的米兰，再看海峡东侧的尼科米底亚与爱琴海北岸的塞萨洛尼基。罗马城仍存在，君士坦丁堡此时尚未成为新都。',people:'朝廷、军队与当地城市居民分别理解。“罗马”既是政治身份，也涉及各地不同的社会传统；驻地位置不表示族群边界。',reading:'第 98 讲「四帝共治」· PDF 792—798 页',source:'trierLate',places:[['trier','特里尔：高卢与莱茵方向'],['milan','米兰：意大利北部'],['nicomedia','尼科米底亚：今伊兹米特'],['thessaloniki','塞萨洛尼基：爱琴海北岸']]},
