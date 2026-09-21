@@ -2,6 +2,16 @@
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ ottonian:{title:'大都会博物馆：奥托王朝、962 年加冕与帝国地域',url:'https://www.metmuseum.org/essays/ottonian-art'},
+ magdeburg:{title:'马格德堡大教堂：十世纪的主教座与奥托王朝',url:'https://magdeburgerdom.de/index.php?call=dom&menu=geschichte&umenu=10jh'},
+ magdeburgCharter:{title:'萨克森-安哈尔特州档案馆：965 年犹太人与商人的特许状',url:'https://lha.sachsen-anhalt.de/onlineangebote/juedisches-leben-in-sachsen-anhalt-eine-archivische-spurensuche/spuren/privilegien-kaiser-ottos-i-an-das-mauritiusstift-in-magdeburg-965'},
+ capet:{title:'法国国家图书馆：于格·卡佩及其统治年代',url:'https://catalogue.bnf.fr/ark:/12148/cb12049595b'},
+ capetPower:{title:'法国国家图书馆：早期卡佩王朝与地方权力',url:'https://pret.bnf.fr/resources/6425a0d8d10d1e00018cd26b'},
+ winchester:{title:'温彻斯特旅游局：王室中心与盎格鲁—撒克逊教堂',url:'https://www.visitwinchester.co.uk/blog/king-and-scribes-the-birth-of-a-nation'},
+ aethelred:{title:'英国王室：埃塞尔雷德二世的统治年代',url:'https://www.royal.uk/ethelred-ii-unready-r-978-1013-and-1014-1016'},
+ gniezno:{title:'格涅兹诺市：1000 年会晤与 1025 年波兰加冕',url:'https://www.gniezno.eu/cms/20471/boleslaw_chrobry'},
+ esztergom:{title:'埃斯泰尔戈姆市：王室驻地与伊什特万加冕日期',url:'https://www.esztergom.hu/turizmus/tortenelem/19-esztergom_ahol_a_tortenelem_jar'},
+ kyivVolodymyr:{title:'加拿大乌克兰研究所：弗拉基米尔、基辅与基督教化',url:'https://www.encyclopediaofukraine.com/display.asp?linkpath=pages%5CV%5CO%5CVolodymyrtheGreat.htm'},
  prum:{title:'莱茵地区历史门户：855 年中部王国再次分割',url:'https://www.rheinische-geschichte.lvr.de/chronicle/855'},
  carolingian:{title:'大都会博物馆：加洛林时代与查理曼',url:'https://www.metmuseum.org/essays/carolingian-art'},
  regensburg:{title:'德国 UNESCO 委员会：雷根斯堡与东法兰克宫廷',url:'https://www.unesco.de/staette/altstadt-von-regensburg-mit-stadtamhof/'},

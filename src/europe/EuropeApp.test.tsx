@@ -10,6 +10,17 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens the millennium realm comparison and its Polish checkpoint with course references',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=962');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.click(screen.getByRole('button',{name:'1000 年'}));
+  expect(screen.getByRole('region',{name:'政权与地域组成'}).textContent).toContain('法兰西王国与王室领地');
+  fireEvent.click(screen.getByRole('button',{name:/查看会晤与王号/}));
+  expect(location.search).toContain('year=1000');expect(location.search).toContain('place=gniezno');
+  expect(screen.getByText(/1025 年正式加冕为波兰国王是两个节点/)).toBeTruthy();
+  expect(screen.getByText('第 155 讲 · PDF 第 1304—1306 页')).toBeTruthy();
+  await act(async()=>{});
+ });
  it('navigates the partition guide and keeps the selected year when opening its regions',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=800');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
