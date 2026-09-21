@@ -4,8 +4,26 @@ import {makeAreas,ancientPlaces} from './model';
 import {historicalDetails,historicalDetail,historySources} from './history-details';
 import {roman300Details} from './roman-300';
 import {roman300Boundaries,tetrarchNames} from './roman-300-boundaries';
+import {roman300Regions,cityRegions300,region300ById} from './roman-300-regions';
+import {roman300ExtraPlaces,roman300ExtraDetails} from './roman-300-cities';
 const snapshot=JSON.parse(raw300) as GeoJSON.FeatureCollection;
 describe('AD 300 real boundary snapshot and reading content',()=>{
+ it('connects every region and new city without leaking geography or affiliations to other years',()=>{
+  const ids=new Set(ancientPlaces.map(p=>p.id));
+  expect(new Set(roman300Regions.map(r=>r.id)).size).toBe(roman300Regions.length);
+  for(const r of roman300Regions){
+   expect(r.sources.length,r.id).toBeGreaterThan(0);
+   expect(r.bounds[0][0]).toBeLessThan(r.bounds[1][0]);expect(r.bounds[0][1]).toBeLessThan(r.bounds[1][1]);
+   for(const id of r.cities){expect(ids.has(id),`${r.id}: ${id}`).toBe(true);expect(historicalDetails.filter(d=>d.placeId===id&&d.from<=300&&d.to>=300),`${r.id}: ${id} at 300`).toHaveLength(1)}
+   for(const key of r.sources)expect(historySources[key]).toBeDefined();
+  }
+  for(const d of roman300ExtraDetails){expect(d.from).toBe(300);expect(d.to).toBe(300);expect(region300ById(cityRegions300[d.placeId]),d.id).toBeDefined()}
+  for(const p of roman300ExtraPlaces){expect(p.coords[0]).not.toBe(0);expect(p.coords[1]).toBeGreaterThan(20);expect(ancientPlaces.filter(a=>a.id===p.id)).toHaveLength(1)}
+  expect(historicalDetail('volubilis',300)?.polity.text).toContain('不宜继续标为罗马直接控制');
+  expect(historicalDetail('jerusalem',300)?.title).toContain('埃利亚');
+  expect(historicalDetail('gortyn',300)?.polity.text).toContain('罗马');
+  expect(historicalDetail('gortyn',400)).toBeUndefined();
+ });
  it('shows all four Roman divisions by default as one empire and preserves original geometry',()=>{
   const areas=makeAreas(snapshot,false,300);
   const roman=areas.filter(a=>tetrarchNames.includes(a.original));

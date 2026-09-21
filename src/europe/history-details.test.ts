@@ -28,10 +28,10 @@ describe('historical facts stay attached to their evidence period',()=>{
   const places=new Set(ancientPlaces.map(p=>p.id));
   expect(new Set(historicalDetails.map(d=>d.id)).size).toBe(historicalDetails.length);
   for(const d of historicalDetails){
-   expect(places.has(d.placeId)).toBe(true);expect(d.from).toBeLessThanOrEqual(d.to);
-   for(const other of historicalDetails.filter(v=>v!==d&&v.placeId===d.placeId))expect(d.to<other.from||other.to<d.from).toBe(true);
+   expect(places.has(d.placeId),d.id).toBe(true);expect(d.from).toBeLessThanOrEqual(d.to);
+   for(const other of historicalDetails.filter(v=>v!==d&&v.placeId===d.placeId))expect(d.to<other.from||other.to<d.from,`${d.id} overlaps ${other.id}`).toBe(true);
    for(const f of [d.nameNote,d.polity,d.territory,d.people,d.language])for(const id of f.sources)expect(historySources[id].url).toMatch(/^https:\/\//);
-   for(const id of d.related)expect(places.has(id)).toBe(true);
+   for(const id of d.related)expect(places.has(id),`${d.id} links ${id}`).toBe(true);
   }
   expect(bronzePlaces).toHaveLength(5);
   expect(detailsAt(-1500).map(d=>d.placeId).sort()).toEqual(['knossos','malia','mycenae','phaistos']);

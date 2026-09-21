@@ -1,7 +1,9 @@
+import {roman300Sources} from './roman-300-sources';
 // Page numbers refer to the user-supplied PDF, counted from its first page.
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ ...roman300Sources,
  tetrarchy300:{title:'Livius：四帝共治的皇帝与分工',url:'https://www.livius.org/articles/concept/tetrarchy/'},
  provinces300:{title:'大都会博物馆：罗马行省的地方社会与文化',url:'https://www.metmuseum.org/essays/art-of-the-roman-provinces-1-500-a-d'},
  sasanian300:{title:'大都会博物馆：萨珊帝国（224—651）',url:'https://www.metmuseum.org/essays/the-sasanian-empire-224-651-a-d'},

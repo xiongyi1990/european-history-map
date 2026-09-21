@@ -1,3 +1,4 @@
+import {region300ById} from './roman-300-regions';
 import type {GazetteerPlace} from './model';
 import type {HistoricalDetail,HistoricalFact} from './history-details';
 import {courseSources,type ReadingReference} from './course-sources';
@@ -17,11 +18,11 @@ export const lateAntiquePlaces:GazetteerPlace[]=[
 export const lateAntiqueDetails:HistoricalDetail[]=[
  {id:'trier-300',placeId:'trier',title:'特里尔',displayName:'Augusta Treverorum',from:300,to:300,period:'300 年：四帝共治的西北驻地',kind:'宫廷驻地',
   polity:fact('君士坦提乌斯担任西部凯撒时的重要驻地。四帝分担统治事务，不能把他们的辖区看成四个独立国家。','trierLate'),
-  territory:fact('位于摩泽尔河谷，联系高卢与莱茵边防。与米兰、尼科米底亚对照，能看出朝廷靠近边疆的布局。','trierLate'),people:noCensus,language:noLanguage,
+  territory:fact('位于摩泽尔河谷，联系高卢与莱茵边防。与米兰、尼科米底亚对照，能看出朝廷靠近边疆的布局。','trierLate'),people:fact('地域背景：'+region300ById('gaul')!.people,...region300ById('gaul')!.sources),language:fact(region300ById('gaul')!.language,...region300ById('gaul')!.sources),
   nameNote:fact('奥古斯塔·特雷维罗鲁姆对应今天德国的特里尔；当时属于罗马统治空间。','trierLate'),reading:reading(98,[794,795]),related:['milan','nicomedia','thessaloniki']},
  {id:'thessaloniki-300',placeId:'thessaloniki',title:'塞萨洛尼基',displayName:'Thessalonica',from:300,to:300,period:'约 300 年：伽列里乌斯宫殿建设时期',kind:'宫廷驻地',
   polity:fact('伽列里乌斯在这里建设宫殿建筑群，城市成为四帝共治时代重要的皇帝活动地点。','galerius'),
-  territory:fact('在爱琴海北岸连接巴尔干与海路。四帝时期皇帝会移动驻地，宫殿所在地不是一条固定行政国界。','galerius'),people:noCensus,language:noLanguage,
+  territory:fact('在爱琴海北岸连接巴尔干与海路。四帝时期皇帝会移动驻地，宫殿所在地不是一条固定行政国界。','galerius'),people:fact('地域背景：'+region300ById('greece')!.people,...region300ById('greece')!.sources),language:fact(region300ById('greece')!.language,...region300ById('greece')!.sources),
   nameNote:fact('塞萨洛尼基又译萨洛尼卡、帖撒罗尼迦。宫殿始建于三世纪末至四世纪初，本条用 300 年作近似定位。','galerius'),reading:reading(98,[792,798]),related:['trier','nicomedia','milan']},
  {id:'thessaloniki-400',placeId:'thessaloniki',title:'塞萨洛尼基',from:400,to:400,period:'400 年：东部帝国的巴尔干港口',kind:'历史城市',
   polity:fact('罗马帝国东部朝廷统治下的重要城市；应与海峡边的君士坦丁堡分别定位。','byzantine'),territory:fact('从这里向北进入巴尔干，向南通爱琴海；宫殿遗迹体现四世纪皇帝曾在此活动。','galerius'),people:noCensus,language:noLanguage,

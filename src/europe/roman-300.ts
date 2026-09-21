@@ -1,3 +1,4 @@
+import {cityRegions300,region300ById} from './roman-300-regions';
 import type {GazetteerPlace} from './model';
 import type {HistoricalDetail,HistoricalFact} from './history-details';
 import type {ReadingGuide} from './LateAntiquityGuide';
@@ -12,8 +13,8 @@ const entry=(placeId:string,title:string,region:string,territory:string,nameNote
  id:`${placeId}-300`,placeId,title,from:300,to:300,focusYear:300,period:'公元 300 年 · 第一轮四帝共治',kind:'历史城市',
  polity:fact(`罗马帝国的${region}。此时处于四帝共治，不是 395 年以后的东西部朝廷格局。`,'tetrarchy300',source),
  territory:fact(territory,source),
- people:fact('当地居民、罗马公民、军人和往来商人可能具有不同地域背景；罗马政治身份与地方文化并存。本条不提供未经核实的族群人数或比例。','provinces300'),
- language:fact('行政与书面文化、家庭日常语言需要分别理解。本条尚无公元 300 年该城语言比例的可靠统计，不能从皇帝或政权名称推断全城居民语言。'),
+ people:fact('地域背景：'+region300ById(cityRegions300[placeId])!.people,...region300ById(cityRegions300[placeId])!.sources),
+ language:fact('地域语言背景：'+region300ById(cityRegions300[placeId])!.language,...region300ById(cityRegions300[placeId])!.sources),
  nameNote:fact(nameNote,source),reading:[{chapter:98,pages:[792,798],note:'结合四帝共治的空间背景阅读；地域解释据公开资料独立整理。'}],related,
 });
 export const roman300Details:HistoricalDetail[]=[
@@ -29,8 +30,8 @@ export const roman300Details:HistoricalDetail[]=[
  {id:'ctesiphon-300',placeId:'ctesiphon',title:'泰西封',from:300,to:300,focusYear:300,period:'公元 300 年 · 萨珊帝国（224—651）',kind:'宫廷驻地',
   polity:fact('萨珊帝国的重要宫廷中心。帕提亚王朝已在 224 年被取代，不能仍把 300 年的波斯称为帕提亚帝国。','sasanian300'),
   territory:fact('位于底格里斯河畔、今巴格达以南约 30 千米。向西北看尼西比斯与安条克，可建立波斯腹地、罗马边防、地中海东岸的空间关系；本条不重建萨珊精确边界。','sasanian300'),
-  people:fact('萨珊是王朝名称，不能代表帝国内每一位居民的族群。这里分别展示王朝与城市，不推算居民构成或同质的人种区域。'),
-  language:fact('王朝名称不能说明两河流域城市居民的全部语言；本条暂未收录 300 年泰西封的居民语言统计。'),
+  people:fact(region300ById('persia')!.people,'sasanian300','aramaic300'),
+  language:fact(region300ById('persia')!.language,'aramaic300','narseh300'),
   nameNote:fact('泰西封长期是政治中心；著名的后期宫殿建筑不能全部倒推为 300 年已有的城市形态。','sasanian300'),related:['nisibis','antioch'],reading:[{chapter:98,pages:[792,798],note:'作为罗马东方邻国的补充背景。'}]},
 ];
 export const roman300Guide:ReadingGuide={

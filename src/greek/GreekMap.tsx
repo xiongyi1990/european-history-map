@@ -15,7 +15,7 @@ export interface Camera { center:[number,number]; zoom:number; pitch:number; bea
 export interface MapCommand { ids:string[]; nonce:number; camera?:Camera; coordinates?:Coordinate[] }
 export interface AtlasPlace {id:string; name:string; modern:string; coords:Coordinate; camp?:Camp; color?:string}
 export interface MapAtlas {places:AtlasPlace[]; terrainPrefix:string; surfacePrefix:string; bounds:[number,number,number,number]; maxzoom:number; center:Coordinate; zoom:number; minZoom:number; extent:[Coordinate,Coordinate]; landforms:Landform[]; presets:Landform[]; attribution:string; title:string; pitch?:number; bearing?:number; overviewBounds?:[Coordinate,Coordinate]; detailInSidebar?:boolean; theme?:'light'|'dark'}
-export interface AreaLabel {id:string;name:string;coords:Coordinate;color:string}
+export interface AreaLabel {id:string;name:string;coords:Coordinate;color:string;minZoom?:number;kind?:'region'}
 export interface AtlasOverlay {areas:GeoJSON.FeatureCollection; rivers:GeoJSON.FeatureCollection; labels:AreaLabel[]}
 interface Props {
   atlas?:MapAtlas;
@@ -101,7 +101,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     (m.getSource('atlasRivers') as GeoJSONSource).setData(overlay?.rivers??empty);
     m.setFilter('atlas-area-selected',['==',['get','atlasId'],selectedArea??'']);
     const nodes=(overlay?.labels??[]).map(p=>{
-      const e=document.createElement('button');e.className='e-area-label';e.textContent=p.name;
+      const e=document.createElement('button');e.className='e-area-label'+(p.kind==='region'?' r300-map-label':'');e.textContent=p.name;
       e.setAttribute('aria-label',`区域：${p.name}`);e.style.setProperty('--area',p.color);
       e.onclick=event=>{event.stopPropagation();handlers.current.onAreaSelect?.(p.id)};
       const marker=new maplibregl.Marker({element:e,opacityWhenCovered:1}).setLngLat(p.coords).addTo(m);
@@ -110,7 +110,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     const layout=()=>{
       const boxes:{x:number;y:number;w:number}[]=[];
       for(const {p,e} of nodes){const q=m.project(p.coords),w=Math.min(180,Math.max(70,p.name.length*12));
-        const visible=p.id===selectedArea||!boxes.some(b=>Math.abs(b.y-q.y)<35&&Math.abs(b.x-q.x)<(b.w+w)/2+8);
+        const visible=p.id===selectedArea||m.getZoom()>=(p.minZoom??0)&&!boxes.some(b=>Math.abs(b.y-q.y)<35&&Math.abs(b.x-q.x)<(b.w+w)/2+8);
         e.style.display=visible?'':'none';if(visible)boxes.push({x:q.x,y:q.y,w});}
     };
     m.on('move',layout);layout();return()=>{m.off('move',layout);nodes.forEach(n=>n.marker.remove())};

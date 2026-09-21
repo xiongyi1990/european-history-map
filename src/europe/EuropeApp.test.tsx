@@ -3,7 +3,7 @@ import raw300 from '../../public/historical-boundaries/world_300.geojson?raw';
 import {afterEach,describe,it,expect,vi} from 'vitest';
 import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
 import {EuropeApp} from './EuropeApp';
-vi.mock('../greek/GreekMap',()=>({GreekMap:({overlay}:{overlay:{areas:GeoJSON.FeatureCollection}})=><div data-testid="drawn-areas">{overlay.areas.features.map(f=>f.properties?.name).join(',')}</div>}));
+vi.mock('../greek/GreekMap',()=>({GreekMap:({overlay,onAreaSelect}:{overlay:{areas:GeoJSON.FeatureCollection;labels:{id:string;name:string}[]};onAreaSelect:(id:string)=>void})=><div><div data-testid="drawn-areas">{overlay.areas.features.map(f=>f.properties?.name).join(',')}</div><div data-testid="map-labels">{overlay.labels.map(p=><button key={p.id} aria-label={'地图标签：'+p.name} onClick={()=>onAreaSelect(p.id)}>{p.name}</button>)}</div></div>}));
 HTMLDialogElement.prototype.showModal=function(){this.open=true};
 HTMLDialogElement.prototype.close=function(){this.open=false};
 const empty={type:'FeatureCollection',features:[]};
@@ -11,6 +11,35 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens a geographic label, a local city, and returns to the same 300 region',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:'地图标签：潘诺尼亚与达尔马提亚'}));
+  expect(location.search).toContain('region=pannonia');expect(screen.getByRole('article',{name:'300 年地域详情'}).textContent).toContain('萨瓦河');
+  fireEvent.click(screen.getByRole('button',{name:/西尔米乌姆.*查看地域内或相邻城市/}));
+  expect(location.search).toContain('place=sirmium');expect(location.search).not.toContain('region=');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：潘诺尼亚与达尔马提亚/}));
+  expect(location.search).toContain('region=pannonia');expect(location.search).not.toContain('place=');
+  await act(async()=>{});
+ });
+ it('restores a shared region and removes its labels and URL when changing years',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300&region=armenia');render(<EuropeApp/>);
+  expect(screen.getByRole('article',{name:'300 年地域详情'}).textContent).toContain('阿尔沙克');
+  fireEvent.click(screen.getByRole('button',{name:/返回 300 年地域索引/}));
+  fireEvent.click(screen.getByRole('button',{name:'400 年'}));
+  expect(location.search).not.toContain('region=');expect(screen.queryByRole('button',{name:'地图标签：亚美尼亚王国'})).toBeNull();
+  await act(async()=>{});
+ });
+ it('finds historical regions in search and toggles their map labels',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));
+  fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'高加索伊比利亚'}});
+  fireEvent.submit(screen.getByRole('search'));
+  expect(location.search).toContain('region=iberia-caucasus');
+  fireEvent.click(screen.getByRole('button',{name:'图层'}));
+  fireEvent.click(screen.getByRole('checkbox',{name:/300 年地域标签/}));
+  expect(screen.queryByRole('button',{name:'地图标签：高加索伊比利亚'})).toBeNull();
+  await act(async()=>{});
+ });
  it('renders the real 300 Roman divisions without enabling reference areas and opens the eastern neighbor',async()=>{
   vi.stubGlobal('fetch',vi.fn(async(url)=>response(String(url).includes('world_300')?JSON.parse(raw300):empty)));
   history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
