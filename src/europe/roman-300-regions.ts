@@ -2,11 +2,14 @@ import type {Coordinate} from '../greek/battles';
 import type {courseSources} from './course-sources';
 export type Region300Group='roman'|'frontier'|'neighbor';
 export interface Region300 {
- id:string;name:string;group:Region300Group;coords:Coordinate;bounds:[Coordinate,Coordinate];modern:string;
+ id:string;name:string;group:Region300Group;coords:Coordinate;bounds:[Coordinate,Coordinate];modern:string;parent?:string;mapName?:string;
  polity:string;parts:string;people:string;language:string;change:string;cities:string[];sources:(keyof typeof courseSources)[];
 }
 const r=(id:string,name:string,group:Region300Group,coords:Coordinate,bounds:[Coordinate,Coordinate],modern:string,polity:string,parts:string,people:string,language:string,change:string,cities:string[],sources:Region300['sources']):Region300=>({id,name,group,coords,bounds,modern,polity,parts,people,language,change,cities,sources});
 export const roman300Regions:Region300[]=[
+ {...r('asoristan','阿索里斯坦：巴比伦尼亚','neighbor',[44.5,32.1],[[43,30],[47.5,34]],'今伊拉克中南部的底格里斯河—幼发拉底河低地；位于伊朗高原以西。','萨珊帝国内部地域。阿索里斯坦是萨珊时期用于巴比伦尼亚的省名，见于纳尔塞时期的铭文。','以泰西封为定位点观察两河低地；这里的省名不要与北部古亚述地区或现代亚述人身份直接画等号。','两河城镇和农业社会包含不同宗教社群；宫廷属于伊朗王朝，并不表示当地居民全部来自伊朗高原。','阿拉米语及其不同书写传统在两河延续；中古波斯语属于王朝统治和书写背景。','泰西封是萨珊王廷的重要驻地，位于今天伊拉克，而非今天伊朗境内。298／299 年和议后的罗马边境在更北面；不能因两地都在“两河流域”，就把泰西封归入罗马。',['ctesiphon'],['asoristan300','sasanian300','aramaic300']),parent:'persia',mapName:'阿索里斯坦'},
+ {...r('pars','帕尔斯：法尔斯王朝腹地','neighbor',[53.1,30.2],[[50.5,28],[54,31]],'今伊朗西南部法尔斯地区，位于扎格罗斯山地南段、波斯湾以北。','萨珊帝国的王朝发源地。帕尔斯与今天法尔斯名称相承；它只是整个帝国的一部分。','阿尔达希尔的圆形王城在菲鲁扎巴德附近，比沙普尔在更西北。二城早于 300 年已经建立。','地方居民、王室及相关服务人口生活于此；比沙普尔的建筑艺术呈现跨地域交流，不能据此推算居民族群比例。','中古波斯语与萨珊王朝的本土背景密切相关；王室铭文语言不能视为所有居民的语言普查。','阿尔达希尔一世从这一地区崛起，224 年建立萨珊王朝；至 300 年统治已扩及两河和更广的伊朗地区。',['bishapur','firuzabad'],['fars300','firuzabad300','bishapur300']),parent:'persia',mapName:'帕尔斯（法尔斯）'},
+ {...r('khuzestan','胡齐斯坦：苏萨与卡伦河低地','neighbor',[48.8,31.1],[[47.5,30],[50.5,33]],'今伊朗西南部胡齐斯坦，扎格罗斯山脉西南麓、两河低地以东。','萨珊帝国内的西南低地区域，联系两河平原与伊朗高原。','苏萨在内陆平原，舒什塔尔位于卡伦河水利网络。此地域卡用于定位，不重建每一条萨珊行省边界。','地方城镇与灌溉农业社群并存；苏萨在约 300 年已有基督教社群记载，不能把萨珊王朝的宗教背景等同于全部居民信仰。','中古波斯语属于王朝背景，阿拉米语传统也参与当地宗教和文化生活；不把更早埃兰时代的语言直接回填到 300 年。','舒什塔尔现存水利遗产历经多个时代修建；三世纪萨珊建设是其中一层，并非全部现存设施都在 300 年完成。',['susa','shushtar'],['susa300','shushtar300','sasanian300','aramaic300']),parent:'persia',mapName:'胡齐斯坦'},
  r('britain','罗马不列颠','roman',[-2,53],[[-6,49],[2,56]],'今英格兰、威尔士及北部边防附近；不是整个英国。','罗马帝国西北部，君士坦提乌斯一世于 296 年恢复对不列颠的控制。','南部城市、北部军区与哈德良长城沿线分开观察；不把近代英格兰、苏格兰界线作为罗马国界。','本地不列颠居民与来自帝国其他地方的驻军、家属共同生活。豪斯斯特兹的通格里辅助军是跨地区调兵的具体例子。','拉丁文见于军政铭文；本地凯尔特语言传统继续存在。铭文使用拉丁文不表示全岛都以拉丁语为母语。','296 年恢复控制；约 410 年中央统治退出是后来的转折。',['london','york','housesteads'],['britain300','housesteads300']),
  r('gaul','高卢','roman',[2.2,47],[[-5,42],[8,51.5]],'今法国、比利时及邻近地区。','已回到统一罗马帝国体系；特里尔是西北方向的宫廷驻地。','阿基坦、卢格杜努姆地区、比利时地区与南部纳尔榜地区是阅读入口；改革后的省名、数目不是一张可跨世纪套用的表。','高卢地方社会、罗马化城市居民、土地所有者和驻军并存；300 年还没有覆盖高卢的法兰克王国。','拉丁语用于行政、城市铭文与越来越广泛的社会交流；地方高卢语言的延续不等于另有一个高卢国家。','260—274 年的高卢分立帝国已经结束。',['trier','lyon','massilia'],['gallic300','provinces300','inscriptions300']),
  r('hispania','西班牙诸行省','roman',[-4,39.7],[[-10,35],[4,44]],'今西班牙、葡萄牙所在的伊比利亚半岛。','罗马帝国的西部行省空间；尚无西哥特西班牙王国。','塔拉科在东北海岸，卢西塔尼亚在西部，贝提卡在南部；梅里达与加德斯帮助区分内陆和沿海。','当地伊比利亚、凯尔特等文化背景的居民经历长期罗马化；城市居民与乡村社群并非完全相同。','拉丁语的行政与书写传统突出。今天西班牙语、葡萄牙语的国界不能投射到 300 年。','409 年以后苏维汇、汪达尔、阿兰等进入半岛，是百余年之后的局势。',['tarraco','emerita','gades','new-carthage'],['merida300','tarraco300','provinces300']),
@@ -30,7 +33,7 @@ export const roman300Regions:Region300[]=[
  r('armenia','亚美尼亚王国','neighbor',[43.5,39.3],[[39,37],[47,42]],'亚美尼亚高原，涉及今亚美尼亚及周围地区，范围不同于现代国界。','阿尔沙克王朝在罗马支持下恢复王权，处在罗马与萨珊两强之间；不是普通罗马行省。','高原地形与通向两河流域的道路重要，瓦加尔沙帕特提供城市定位。','亚美尼亚地方社会与伊朗文化传统联系密切；王族来源不能代替整个王国居民构成。','亚美尼亚语口语传统与希腊、阿拉米及伊朗语书写环境交错；亚美尼亚字母是五世纪初的后续发展。','传统叙事将改宗记为 301 年，学界对具体年代有讨论；不能把 300 年全体居民统一标为基督徒。',['vagharshapat','nisibis'],['armenia300','vagharshapat300']),
  r('iberia-caucasus','高加索伊比利亚','neighbor',[44,42],[[41,40.5],[47,43.5]],'今格鲁吉亚东部为主；与西班牙所在的伊比利亚半岛不是同一处。','本地王国位于罗马—伊朗竞争空间，三世纪末和约加强罗马在此的影响。','姆茨赫塔位于库拉河与阿拉格维河汇合处；高加索山口联系南北交通。','高加索本地居民和王国贵族社会；不是迁来的西班牙人。','本地卡特维尔语言背景与跨区域书写传统并存；不能按今日民族统计倒推。','格鲁吉亚王国基督教化通常放在四世纪，300 年不直接标为统一基督教王国。',['mtskheta','vagharshapat'],['mtskheta300','albania300']),
  r('albania-caucasus','高加索阿尔巴尼亚','neighbor',[47.8,41],[[45,38.5],[50,43]],'今阿塞拜疆与邻近高加索东部；不是巴尔干的阿尔巴尼亚。','处于萨珊影响和统治体系内，与罗马影响较强的伊比利亚情况不同。','位于高加索东部、里海西侧；这是大区域定位，不绘制未经核实的王国边界。','高加索东部多种地方社群并存；古代“阿尔巴尼亚”不能作为现代巴尔干民族的同义词。','地方高加索语言与伊朗、阿拉米文化环境交错；现有资料不足以绘制 300 年各语言村落。','四世纪的宗教转变及后来的族群变迁，不直接倒填本时点。',['mtskheta','ctesiphon'],['albania300']),
- r('persia','萨珊帝国','neighbor',[49,33],[[42,27],[55,39]],'两河流域至伊朗高原；本地图只覆盖帝国西部。','萨珊王朝（224—651）统治，300 年在纳尔塞统治末期，是罗马东方的主要对手。','泰西封在底格里斯河畔，伊朗高原在更东侧；帝国并非只在今天伊朗境内。','伊朗高原和两河地方社会、不同宗教社群共同处在王朝统治下；不能把全部居民称为同一血缘“波斯人”。','中古波斯语有王朝与宗教书写地位；阿拉米语各传统在两河继续使用。','298 年前后战败和议后边境有所调整。旧底图的帕提亚轮廓不能当作萨珊的已核实疆界。',['ctesiphon','nisibis'],['sasanian300','narseh300','nisibis300','aramaic300']),
+ r('persia','萨珊帝国','neighbor',[49,33],[[42,27],[55,39]],'两河流域至伊朗高原；本地图只覆盖帝国西部。','萨珊王朝（224—651）统治，300 年在纳尔塞统治末期，是罗马东方的主要对手。','泰西封在底格里斯河畔，伊朗高原在更东侧；帝国并非只在今天伊朗境内。','伊朗高原和两河地方社会、不同宗教社群共同处在王朝统治下；不能把全部居民称为同一血缘“波斯人”。','中古波斯语有王朝与宗教书写地位；阿拉米语各传统在两河继续使用。','298 年前后战败和议后边境有所调整。旧底图的帕提亚轮廓不能当作萨珊的已核实疆界。',['ctesiphon','bishapur','firuzabad','susa','shushtar','nisibis'],['sasanian300','narseh300','nisibis300','aramaic300']),
  r('bosporus','博斯普鲁斯王国','neighbor',[35.7,45.7],[[32,43],[39,47.5]],'黑海北岸克里米亚东部与刻赤海峡两岸。','与罗马保持联系的地方王国；不是君士坦丁堡所在的博斯普鲁斯海峡。','古称辛梅里安博斯普鲁斯，即今刻赤海峡；潘提卡派翁是识别王国核心的节点。','希腊城市传统与萨尔马提亚等周边社群长期交汇；王国不等于单一希腊血缘人口。','希腊语公共文化与周边伊朗语等语言背景并存。','三世纪哥特活动削弱其力量，但不能把 300 年直接画成后来的克里米亚汗国。',['panticapaeum','byzantium'],['bosporus300']),
  r('franks','法兰克诸集团','frontier',[6.2,52],[[3,50],[10,54]],'莱茵河下游及邻近今荷兰、德国西北区域。','帝国边境外及边境互动中的诸集团，300 年没有克洛维式的统一法兰克王国。','看科隆与特里尔所处的罗马一侧，再看河对岸；名称覆盖和政治组织在变化。','多个集团以法兰克名称被记载；入侵、服役、贸易、定居都是不同关系。','属日耳曼语言背景；不等于今天法语，也不能把“法兰克人”直接等同现代法国人。','墨洛温王朝及克洛维统一活动属于五世纪后期。',['cologne','trier'],['franks300','rhine300']),
  r('alamanni','阿勒曼尼诸集团','frontier',[9.2,48.7],[[7,47],[12,50.5]],'莱茵河上游以东、今德国西南一带。','三世纪以来活跃于罗马边境的诸集团；不画成拥有固定现代边界的德国。','与下莱茵的法兰克方向不同；莱茵上游、多瑙河上游和阿尔卑斯北麓相连。','不同地方集团形成联盟、分化并与罗马交战或交涉；并非一个同质人口块。','日耳曼语言背景与罗马边区的拉丁文化存在接触。','五世纪进入阿尔萨斯和赫尔维蒂亚的扩张，不能整片提前画到 300 年。',['mainz','carnuntum'],['alamanni300']),
@@ -40,7 +43,7 @@ export const roman300Regions:Region300[]=[
  r('ireland','爱尔兰铁器时代社会','neighbor',[-8,53.6],[[-11,51],[-5,55.5]],'大不列颠岛以西的爱尔兰岛。','未被纳入罗马行省体系；仍与罗马不列颠和大陆有物品、人员和文化往来。','岛屿与爱尔兰海帮助辨认其与罗马边界的关系；不杜撰一个统治全岛的 300 年帝国。','地方铁器时代社群及其权力中心；发现罗马器物不等于发生罗马占领。','地方凯尔特语言背景；完整的逐地区语言统计不可得。','后来的基督教化和维京城市均不能当作此时已有的政治与城市格局。',['london','housesteads'],['ireland300']),
  r('north','北海与斯堪的纳维亚南部','neighbor',[12,56.5],[[7,53],[20,60]],'今丹麦、瑞典南部及北海东岸一带。','罗马帝国外的地方社会与首领中心；不是维京时代，也没有今日丹麦、瑞典的国界。','海路与河口联通罗马边区。考古学的“罗马铁器时代”描述时代和交流背景，不表示罗马统治。','地方农业社会、精英和远距离交换网络；不同考古遗存不能简单拼成统一民族王国。','早期日耳曼语言背景；不能用后世北欧民族国家名称给每一个地方社群定性。','维京扩张主要是八世纪末以后的故事，不应提前五百年放进 300 年地图。',['cologne','housesteads'],['north300','franks300']),
 ];
-export const region300Groups:Record<Region300Group,string>={roman:'罗马帝国内部',frontier:'边防与帝国外诸集团',neighbor:'邻国与其他地区'};
+export const region300Groups:Record<Region300Group,string>={roman:'罗马帝国内部',frontier:'边防与帝国外诸集团',neighbor:'邻国、内部地域与其他社会'};
 export const region300ById=(id:string)=>roman300Regions.find(r=>r.id===id);
 // Primary geography only. A city's use as a nearby reference in another card does not change its membership.
 export const cityRegions300:Record<string,string>={
@@ -49,5 +52,6 @@ export const cityRegions300:Record<string,string>={
  carnuntum:'pannonia',aquincum:'pannonia',sirmium:'pannonia',salona:'pannonia',serdica:'thrace',byzantium:'thrace',thessaloniki:'greece',athens:'greece',corinth:'greece',
  volubilis:'mauretania',timgad:'africa',carthage:'africa',lepcis:'libya',cyrene:'libya',alexandria:'egypt',syene:'egypt',gortyn:'crete',paphos:'cyprus',
  ephesus:'asia',nicomedia:'asia','caesarea-cappadocia':'pontus',antioch:'levant',palmyra:'levant',jerusalem:'levant',bosra:'arabia',nisibis:'mesopotamia',
- vagharshapat:'armenia',mtskheta:'iberia-caucasus',ctesiphon:'persia',panticapaeum:'bosporus',
+ vagharshapat:'armenia',mtskheta:'iberia-caucasus',ctesiphon:'asoristan',panticapaeum:'bosporus',
+ bishapur:'pars',firuzabad:'pars',susa:'khuzestan',shushtar:'khuzestan',
 };

@@ -1,4 +1,10 @@
 export const roman300Sources={
+ asoristan300:{title:'伊朗百科全书：萨珊时期的阿索里斯坦',url:'https://www.iranicaonline.org/articles/asoristan/'},
+ fars300:{title:'UNESCO：法尔斯地区的萨珊考古景观',url:'https://whc.unesco.org/en/list/1568/'},
+ bishapur300:{title:'伊朗百科全书：比沙普尔古城',url:'https://www.iranicaonline.org/articles/bisapur-town/'},
+ firuzabad300:{title:'伊朗百科全书：菲鲁扎巴德与阿尔达希尔古城',url:'https://www.iranicaonline.org/articles/firuzabad/'},
+ susa300:{title:'伊朗百科全书：萨珊时期的苏萨',url:'https://www.iranicaonline.org/articles/susa-v/'},
+ shushtar300:{title:'UNESCO：舒什塔尔历史水利系统',url:'https://whc.unesco.org/en/list/1315/'},
  diocletianRuler300:{title:'Livius：戴克里先的任职与活动年表',url:'https://www.livius.org/articles/person/diocletian/'},
  maximianRuler300:{title:'Livius：马克西米安的两轮任职',url:'https://www.livius.org/articles/person/maximian/'},
  galeriusRuler300:{title:'Livius：伽列里乌斯的副帝与正帝阶段',url:'https://www.livius.org/articles/person/galerius/'},

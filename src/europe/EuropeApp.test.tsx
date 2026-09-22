@@ -11,6 +11,32 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('navigates from the Sasanian empire through its homeland and city and back',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300&region=persia');render(<EuropeApp/>);
+  expect(screen.getByRole('region',{name:'300 年罗马与萨珊对照'}).textContent).toContain('纳尔塞');
+  fireEvent.click(screen.getByRole('button',{name:/帕尔斯.*展开帝国内部地域/}));
+  expect(location.search).toContain('region=pars');
+  fireEvent.click(screen.getByRole('button',{name:/比沙普尔.*查看核心地点/}));
+  expect(location.search).toContain('place=bishapur');expect(location.search).not.toContain('region=');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：帕尔斯/}));
+  fireEvent.click(screen.getByRole('button',{name:'← 返回萨珊帝国'}));
+  expect(location.search).toContain('region=persia');
+  fireEvent.click(screen.getByRole('button',{name:/罗马对手：伽列里乌斯/}));
+  expect(location.search).toContain('ruler=galerius');expect(location.search).not.toContain('region=');
+  await act(async()=>{});
+ });
+ it('finds Narseh in the Sasanian profile and hides its regional details in other years',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));
+  fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'纳尔塞'}});fireEvent.submit(screen.getByRole('search'));
+  expect(location.search).toContain('region=persia');
+  fireEvent.click(screen.getByRole('button',{name:/返回 300 年地域索引/}));
+  fireEvent.click(screen.getByRole('button',{name:'400 年'}));
+  expect(location.search).not.toContain('region=');
+  expect(screen.queryByRole('region',{name:'300 年罗马与萨珊对照'})).toBeNull();
+  expect(screen.queryByRole('button',{name:'地图标签：帕尔斯（法尔斯）'})).toBeNull();
+  await act(async()=>{});
+ });
  it('opens all four ruler cards from the actual political map labels',async()=>{
   vi.stubGlobal('fetch',vi.fn(async(url)=>response(String(url).includes('world_300')?JSON.parse(raw300):empty)));
   history.replaceState(null,'','/?year=300');render(<EuropeApp/>);

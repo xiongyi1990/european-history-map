@@ -10,6 +10,19 @@ import {roman300Regions,cityRegions300,region300ById} from './roman-300-regions'
 import {roman300ExtraPlaces,roman300ExtraDetails} from './roman-300-cities';
 const snapshot=JSON.parse(raw300) as GeoJSON.FeatureCollection;
 describe('AD 300 real boundary snapshot and reading content',()=>{
+ it('keeps Sasanian constituent regions within their empire and their cities outside Roman rule',()=>{
+  const children=roman300Regions.filter(r=>r.parent==='persia');
+  expect(children.map(r=>r.id).sort()).toEqual(['asoristan','khuzestan','pars']);
+  for(const region of children){
+   expect(region300ById(region.parent!)).toBeDefined();
+   for(const id of region.cities){
+    expect(cityRegions300[id]).toBe(region.id);
+    expect(historicalDetail(id,300)?.polity.text).toContain('萨珊帝国');
+    expect(historicalDetail(id,400)).toBeUndefined();
+   }
+  }
+  expect(cityRegions300.nisibis).toBe('mesopotamia');
+ });
  it('connects each tetrarch to the snapshot, counterpart and dated geography',()=>{
   expect(roman300Rulers.map(r=>r.original).sort()).toEqual([...tetrarchNames].sort());
   for(const r of roman300Rulers){

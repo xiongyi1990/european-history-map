@@ -1,4 +1,5 @@
 import {Ruler300Links} from './Roman300Rulers';
+import {Sasanian300Guide} from './Sasanian300Guide';
 import {Frontier300Links} from './Roman300Frontier';
 import {roman300Regions,region300ById,region300Groups,type Region300Group} from './roman-300-regions';
 import {courseSources} from './course-sources';
@@ -8,14 +9,17 @@ export function Roman300Atlas({selected,onRegion,onPlace,onBack,onFrontier,onRul
  if(r)return <article className="e-detail r300-detail" aria-label="300 年地域详情">
   <button className="e-back" onClick={onBack}>← 返回 300 年地域索引</button>
   <small>公元 300 年 · {region300Groups[r.group]}</small><h2>{r.name}</h2>
+  {r.parent&&<button className="e-back" onClick={()=>onRegion(r.parent!)}>← 返回{region300ById(r.parent)?.name}</button>}
   <div className="h-period"><strong>先在今天的地图上定位</strong><span>{r.modern}</span></div>
   <h3>当时属于谁？</h3><p>{r.polity}</p>
   <Ruler300Links region={r.id} onSelect={onRuler}/>
   <h3>里面有哪些地方？</h3><p>{r.parts}</p>
+  {roman300Regions.some(child=>child.parent===r.id)&&<div className="h-related">{roman300Regions.filter(child=>child.parent===r.id).map(child=><button key={child.id} onClick={()=>onRegion(child.id)}>{child.name}<span>展开帝国内部地域 →</span></button>)}</div>}
   <div className="h-related">{r.cities.map(id=><button key={id} onClick={()=>onPlace(id)}>{historicalDetail(id,300)?.title??id}<span>{r.group==='roman'?'查看地域内或相邻城市':'查看核心地点或邻近罗马参照点'} →</span></button>)}</div>
   <h3>居民与社会</h3><p>{r.people}</p><h3>语言与书写</h3><p>{r.language}</p>
   <Frontier300Links region={r.id} onSelect={onFrontier}/>
   <h3>前后发生了什么？</h3><p>{r.change}</p>
+  {r.id==='persia'&&<Sasanian300Guide onRuler={onRuler} onFrontier={onFrontier}/>}
   <button className="e-primary" onClick={()=>onRegion(r.id)}>在地图上查看这一带 →</button>
   <p className="e-note">地域名与镜头范围用于建立空间关系，不是行省或族群的精确疆界；同一地域可能跨越多个行政区。居民说明是地域背景，不是人口比例。</p>
   <details><summary>核对资料</summary>{r.sources.map(key=><p key={key}><a href={courseSources[key].url} target="_blank" rel="noreferrer">{courseSources[key].title} ↗</a></p>)}</details>
