@@ -3,7 +3,7 @@ import raw300 from '../../public/historical-boundaries/world_300.geojson?raw';
 import {afterEach,describe,it,expect,vi} from 'vitest';
 import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
 import {EuropeApp} from './EuropeApp';
-vi.mock('../greek/GreekMap',()=>({GreekMap:({overlay,onAreaSelect}:{overlay:{areas:GeoJSON.FeatureCollection;labels:{id:string;name:string}[]};onAreaSelect:(id:string)=>void})=><div><div data-testid="drawn-areas">{overlay.areas.features.map(f=>f.properties?.name).join(',')}</div><div data-testid="map-labels">{overlay.labels.map(p=><button key={p.id} aria-label={'地图标签：'+p.name} onClick={()=>onAreaSelect(p.id)}>{p.name}</button>)}</div></div>}));
+vi.mock('../greek/GreekMap',()=>({GreekMap:({overlay,onAreaSelect}:{overlay:{areas:GeoJSON.FeatureCollection;lines?:GeoJSON.FeatureCollection;labels:{id:string;name:string}[]};onAreaSelect:(id:string)=>void})=><div><div data-testid="reading-lines">{overlay.lines?.features.map(f=>f.properties?.atlasId).join(',')}</div><div data-testid="drawn-areas">{overlay.areas.features.map(f=>f.properties?.name).join(',')}</div><div data-testid="map-labels">{overlay.labels.map(p=><button key={p.id} aria-label={'地图标签：'+p.name} onClick={()=>onAreaSelect(p.id)}>{p.name}</button>)}</div></div>}));
 HTMLDialogElement.prototype.showModal=function(){this.open=true};
 HTMLDialogElement.prototype.close=function(){this.open=false};
 const empty={type:'FeatureCollection',features:[]};
@@ -11,6 +11,44 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens border labels, then regions and cities without retaining incompatible selection URLs',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:'地图标签：下莱茵河边防'}));
+  expect(location.search).toContain('frontier=lower-rhine');
+  expect(screen.getByRole('article',{name:'300 年边防详情'}).textContent).toContain('特里尔在更南的摩泽尔河');
+  fireEvent.click(screen.getByRole('button',{name:/高卢.*地域组成与语言/}));
+  expect(location.search).toContain('region=gaul');expect(location.search).not.toContain('frontier=');
+  fireEvent.click(screen.getByRole('button',{name:/下莱茵河边防.*边防走廊/}));
+  fireEvent.click(screen.getByRole('button',{name:/科隆.*查看城市与居民/}));
+  expect(location.search).toContain('place=cologne');expect(location.search).not.toContain('frontier=');expect(location.search).not.toContain('region=');
+  await act(async()=>{});
+ });
+ it('restores frontier links and hides every frontier line on year or modern-mode changes',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300&frontier=eastern-contact');render(<EuropeApp/>);
+  expect(screen.getByRole('article',{name:'300 年边防详情'}).textContent).toContain('不是国界');
+  expect(screen.getByTestId('reading-lines').textContent).toContain('frontier300:hadrian');
+  fireEvent.click(screen.getByRole('button',{name:/现代对照/}));
+  expect(screen.getByTestId('reading-lines').textContent).toBe('');expect(location.search).not.toContain('frontier=');
+  await act(async()=>{});
+ });
+ it('searches the frontier independently and supports its separate layer switch',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));
+  fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'哈德良长城'}});
+  fireEvent.submit(screen.getByRole('search'));
+  expect(location.search).toContain('frontier=hadrian');
+  fireEvent.click(screen.getByRole('button',{name:'图层'}));
+  fireEvent.click(screen.getByRole('checkbox',{name:/300 年边防与东方关系/}));
+  expect(screen.getByTestId('reading-lines').textContent).toBe('');
+  expect(screen.queryByRole('button',{name:'地图标签：哈德良长城'})).toBeNull();
+  fireEvent.click(screen.getByRole('button',{name:'查看整段范围 →'}));
+  expect(screen.getByTestId('reading-lines').textContent).toContain('frontier300:hadrian');
+  fireEvent.click(screen.getByRole('button',{name:/返回 300 年地域索引/}));
+  fireEvent.click(screen.getByRole('button',{name:'400 年'}));
+  expect(screen.getByTestId('reading-lines').textContent).toBe('');expect(location.search).not.toContain('frontier=');
+  await act(async()=>{});
+ });
+
  it('opens a geographic label, a local city, and returns to the same 300 region',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'地图标签：潘诺尼亚与达尔马提亚'}));

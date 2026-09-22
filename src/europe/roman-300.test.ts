@@ -1,3 +1,4 @@
+import {roman300Frontiers,frontier300Lines} from './roman-300-frontiers';
 import {describe,it,expect} from 'vitest';
 import raw300 from '../../public/historical-boundaries/world_300.geojson?raw';
 import {makeAreas,ancientPlaces} from './model';
@@ -8,6 +9,21 @@ import {roman300Regions,cityRegions300,region300ById} from './roman-300-regions'
 import {roman300ExtraPlaces,roman300ExtraDetails} from './roman-300-cities';
 const snapshot=JSON.parse(raw300) as GeoJSON.FeatureCollection;
 describe('AD 300 real boundary snapshot and reading content',()=>{
+ it('keeps frontier reading geometry dated and all cross-links resolvable',()=>{
+  const lines=frontier300Lines(300,false,true);
+  expect(lines.features).toHaveLength(4);
+  for(const f of roman300Frontiers){
+   for(const id of f.cities)expect(historicalDetail(id,300),f.id+': '+id).toBeDefined();
+   for(const id of f.regions)expect(region300ById(id),f.id+': '+id).toBeDefined();
+   for(const source of f.sources)expect(historySources[source],source).toBeDefined();
+   expect(f.path.length).toBeGreaterThan(1);
+   for(const [lon,lat] of f.path){expect(lon).toBeGreaterThan(-25);expect(lon).toBeLessThan(55);expect(lat).toBeGreaterThan(24);expect(lat).toBeLessThan(72)}
+  }
+  expect(frontier300Lines(400,false,true).features).toHaveLength(0);
+  expect(frontier300Lines(300,true,true).features).toHaveLength(0);
+  expect(frontier300Lines(300,false,false).features).toHaveLength(0);
+  expect(lines.features.find(f=>f.properties?.atlasId==='frontier300:eastern-contact')?.properties?.kind).toBe('relation');
+ });
  it('connects every region and new city without leaking geography or affiliations to other years',()=>{
   const ids=new Set(ancientPlaces.map(p=>p.id));
   expect(new Set(roman300Regions.map(r=>r.id)).size).toBe(roman300Regions.length);

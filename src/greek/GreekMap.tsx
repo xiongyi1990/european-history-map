@@ -15,8 +15,8 @@ export interface Camera { center:[number,number]; zoom:number; pitch:number; bea
 export interface MapCommand { ids:string[]; nonce:number; camera?:Camera; coordinates?:Coordinate[] }
 export interface AtlasPlace {id:string; name:string; modern:string; coords:Coordinate; camp?:Camp; color?:string}
 export interface MapAtlas {places:AtlasPlace[]; terrainPrefix:string; surfacePrefix:string; bounds:[number,number,number,number]; maxzoom:number; center:Coordinate; zoom:number; minZoom:number; extent:[Coordinate,Coordinate]; landforms:Landform[]; presets:Landform[]; attribution:string; title:string; pitch?:number; bearing?:number; overviewBounds?:[Coordinate,Coordinate]; detailInSidebar?:boolean; theme?:'light'|'dark'}
-export interface AreaLabel {id:string;name:string;coords:Coordinate;color:string;minZoom?:number;kind?:'region'}
-export interface AtlasOverlay {areas:GeoJSON.FeatureCollection; rivers:GeoJSON.FeatureCollection; labels:AreaLabel[]}
+export interface AreaLabel {id:string;name:string;coords:Coordinate;color:string;minZoom?:number;kind?:'region'|'frontier'}
+export interface AtlasOverlay {areas:GeoJSON.FeatureCollection; rivers:GeoJSON.FeatureCollection; labels:AreaLabel[];lines?:GeoJSON.FeatureCollection}
 interface Props {
   atlas?:MapAtlas;
   threeD:boolean; modern:boolean; layer:Layer; selected?:string; compare:string[]; command:MapCommand;
@@ -60,7 +60,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
           alliances:{type:'geojson',data:connections()},
           comparison:{type:'geojson',data:empty},
           battleRoutes:{type:'geojson',data:empty},
-          atlasAreas:{type:'geojson',data:empty}, atlasRivers:{type:'geojson',data:empty},
+          atlasAreas:{type:'geojson',data:empty}, atlasRivers:{type:'geojson',data:empty},atlasLines:{type:'geojson',data:empty},
         },layers:[
           {id:'sea',type:'background',paint:{'background-color':light?'#79cfdf':'#123f54'}},
           {id:'land',type:'fill',source:'land',paint:{'fill-color':light?'#e4efdf':'#a7ae7c'}},
@@ -70,6 +70,11 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
           {id:'atlas-area-lines',type:'line',source:'atlasAreas',paint:{'line-color':light?'#657579':['get','atlasColor'],'line-width':light?0.9:2,'line-opacity':1,'line-dasharray':[3,2]}},
           {id:'atlas-area-selected',type:'line',source:'atlasAreas',filter:['==',['get','atlasId'],''],paint:{'line-color':light?'#1a73e8':'#fff0b4','line-width':light?2:3}},
           {id:'atlas-rivers',type:'line',source:'atlasRivers',paint:{'line-color':light?'#8bb7c7':'#73c9da','line-width':['interpolate',['linear'],['zoom'],3,0.7,8,2],'line-opacity':0.9}},
+          {id:'atlas-reading-halo',type:'line',source:'atlasLines',paint:{'line-color':'#fff','line-width':6,'line-opacity':0.8}},
+          {id:'atlas-defence-lines',type:'line',source:'atlasLines',filter:['==',['get','kind'],'defence'],paint:{'line-color':['get','color'],'line-width':2.5,'line-dasharray':[4,2]}},
+          {id:'atlas-relation-lines',type:'line',source:'atlasLines',filter:['==',['get','kind'],'relation'],paint:{'line-color':['get','color'],'line-width':2.5,'line-dasharray':[1,3]}},
+          {id:'atlas-reading-selected',type:'line',source:'atlasLines',filter:['==',['get','atlasId'],''],paint:{'line-color':['get','color'],'line-width':4,'line-opacity':0.65,'line-dasharray':[2,2]}},
+          {id:'atlas-reading-hit',type:'line',source:'atlasLines',paint:{'line-color':'#000','line-width':14,'line-opacity':0}},
           {id:'borders',type:'line',source:'borders',layout:{visibility:'none'},paint:{'line-color':'#626f64','line-width':1.8,'line-dasharray':[3,3]}},
           {id:'alliances',type:'line',source:'alliances',layout:{visibility:'none'},paint:{'line-color':['match',['get','camp'],'athens',campColors.athens,campColors.sparta],'line-width':1.4,'line-dasharray':[3,4],'line-opacity':0.65}},
           {id:'comparison',type:'line',source:'comparison',paint:{'line-color':'#2d342f','line-width':2,'line-dasharray':[2,2]}},
@@ -83,7 +88,10 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     m.addControl(new maplibregl.ScaleControl({unit:'metric',maxWidth:110}),'bottom-left');
     m.addControl(new maplibregl.AttributionControl({compact:true,customAttribution:`底图 Natural Earth · ${battle?'战役参考点与路线：编者示意':atlas?.attribution??'地点 Pleiades（CC BY 3.0）'}`}),'bottom-right');
     m.on('load',()=>{if(alive)setLoaded(true)});
-    m.on('click','atlas-areas',e=>{const id=e.features?.[0]?.properties?.atlasId;if(id)handlers.current.onAreaSelect?.(String(id))});
+    m.on('click','atlas-areas',e=>{if(m.queryRenderedFeatures(e.point,{layers:['atlas-reading-hit']}).length)return;const id=e.features?.[0]?.properties?.atlasId;if(id)handlers.current.onAreaSelect?.(String(id))});
+    m.on('click','atlas-reading-hit',e=>{const id=e.features?.[0]?.properties?.atlasId;if(id)handlers.current.onAreaSelect?.(String(id))});
+    m.on('mouseenter','atlas-reading-hit',()=>{m.getCanvas().style.cursor='pointer'});
+    m.on('mouseleave','atlas-reading-hit',()=>{m.getCanvas().style.cursor=''});
     m.on('mouseenter','atlas-areas',()=>{m.getCanvas().style.cursor='pointer'});
     m.on('mouseleave','atlas-areas',()=>{m.getCanvas().style.cursor=''});
     m.on('sourcedata',e=>{if(alive && e.sourceId==='elevation' && e.isSourceLoaded)setTerrainReady(true)});
@@ -99,9 +107,11 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     const m=map.current;if(!m||!loaded)return;
     (m.getSource('atlasAreas') as GeoJSONSource).setData(overlay?.areas??empty);
     (m.getSource('atlasRivers') as GeoJSONSource).setData(overlay?.rivers??empty);
+    (m.getSource('atlasLines') as GeoJSONSource).setData(overlay?.lines??empty);
     m.setFilter('atlas-area-selected',['==',['get','atlasId'],selectedArea??'']);
+    m.setFilter('atlas-reading-selected',['==',['get','atlasId'],selectedArea??'']);
     const nodes=(overlay?.labels??[]).map(p=>{
-      const e=document.createElement('button');e.className='e-area-label'+(p.kind==='region'?' r300-map-label':'');e.textContent=p.name;
+      const e=document.createElement('button');e.className='e-area-label'+(p.kind==='region'?' r300-map-label':p.kind==='frontier'?' r300-frontier-label':'');e.textContent=p.name;
       e.setAttribute('aria-label',`区域：${p.name}`);e.style.setProperty('--area',p.color);
       e.onclick=event=>{event.stopPropagation();handlers.current.onAreaSelect?.(p.id)};
       const marker=new maplibregl.Marker({element:e,opacityWhenCovered:1}).setLngLat(p.coords).addTo(m);
