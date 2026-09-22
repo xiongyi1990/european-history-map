@@ -1,4 +1,8 @@
 export const roman300Sources={
+ diocletianRuler300:{title:'Livius：戴克里先的任职与活动年表',url:'https://www.livius.org/articles/person/diocletian/'},
+ maximianRuler300:{title:'Livius：马克西米安的两轮任职',url:'https://www.livius.org/articles/person/maximian/'},
+ galeriusRuler300:{title:'Livius：伽列里乌斯的副帝与正帝阶段',url:'https://www.livius.org/articles/person/galerius/'},
+ constantiusRuler300:{title:'Livius：君士坦提乌斯一世与不列颠',url:'https://www.livius.org/articles/person/constantius-i-chlorus/'},
  hadrian300:{title:'英国遗产：哈德良长城的建造、前推与延续',url:'https://www.english-heritage.org.uk/visit/places/hadrians-wall/hadrians-wall-history-and-stories/history/'},
  limes300:{title:'德国 Limesstraße：上日耳曼—雷提亚防线的变迁',url:'https://www.limesstrasse.de/deutsche-limes-strasse/ueber-uns/geschichte-des-limes'},
  jovian300:{title:'伊朗百科全书：363 年约维安和约与尼西比斯',url:'https://www.iranicaonline.org/articles/jovian/'},

@@ -11,6 +11,41 @@ function fc(name:string){return {type:'FeatureCollection',features:[{type:'Featu
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens all four ruler cards from the actual political map labels',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async(url)=>response(String(url).includes('world_300')?JSON.parse(raw300):empty)));
+  history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  const rulers=[['西北','君士坦提乌斯一世','constantius'],['西部','马克西米安','maximian'],['巴尔干','伽列里乌斯','galerius'],['东方','戴克里先','diocletian']];
+  for(const [direction,name,id] of rulers){
+   const label=await screen.findByRole('button',{name:'地图标签：罗马帝国 · '+direction+'分掌区'});
+   fireEvent.click(label);
+   expect(screen.getByRole('article',{name:'300 年皇帝与分掌区'}).textContent).toContain(name);
+   expect(location.search).toContain('ruler='+id);
+  }
+  await act(async()=>{});
+ });
+ it('restores a ruler share URL and navigates to its partner, region and frontier',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300&ruler=constantius');render(<EuropeApp/>);
+  expect(screen.getByRole('article',{name:'300 年皇帝与分掌区'}).textContent).toContain('正帝：305—306 年');
+  fireEvent.click(screen.getByRole('button',{name:/同组共治者：马克西米安/}));expect(location.search).toContain('ruler=maximian');
+  fireEvent.click(screen.getByRole('button',{name:/意大利半岛.*组成地域、居民与语言/}));
+  expect(location.search).toContain('region=italy');expect(location.search).not.toContain('ruler=');
+  fireEvent.click(screen.getByRole('button',{name:/西方正帝.*马克西米安/}));
+  fireEvent.click(screen.getByRole('button',{name:/下莱茵河边防.*查看防线与邻国/}));
+  expect(location.search).toContain('frontier=lower-rhine');expect(location.search).not.toContain('ruler=');
+  await act(async()=>{});
+ });
+ it('finds a ruler by name and removes its selection on year changes',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));
+  fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'戴克里先'}});fireEvent.submit(screen.getByRole('search'));
+  expect(location.search).toContain('ruler=diocletian');
+  fireEvent.click(screen.getByRole('button',{name:/尼科米底亚.*重要宫廷驻地/}));
+  expect(location.search).toContain('place=nicomedia');expect(location.search).not.toContain('ruler=');
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));fireEvent.click(screen.getByRole('button',{name:'400 年'}));
+  expect(screen.queryByRole('region',{name:'300 年皇帝入口'})).toBeNull();expect(location.search).not.toContain('ruler=');
+  await act(async()=>{});
+ });
+
  it('opens border labels, then regions and cities without retaining incompatible selection URLs',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'地图标签：下莱茵河边防'}));

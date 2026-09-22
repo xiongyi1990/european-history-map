@@ -1,3 +1,4 @@
+import {roman300Rulers,ruler300ById} from './roman-300-rulers';
 import {roman300Frontiers,frontier300Lines} from './roman-300-frontiers';
 import {describe,it,expect} from 'vitest';
 import raw300 from '../../public/historical-boundaries/world_300.geojson?raw';
@@ -9,6 +10,19 @@ import {roman300Regions,cityRegions300,region300ById} from './roman-300-regions'
 import {roman300ExtraPlaces,roman300ExtraDetails} from './roman-300-cities';
 const snapshot=JSON.parse(raw300) as GeoJSON.FeatureCollection;
 describe('AD 300 real boundary snapshot and reading content',()=>{
+ it('connects each tetrarch to the snapshot, counterpart and dated geography',()=>{
+  expect(roman300Rulers.map(r=>r.original).sort()).toEqual([...tetrarchNames].sort());
+  for(const r of roman300Rulers){
+   expect(ruler300ById(r.partner)?.partner).toBe(r.id);
+   expect(r.cities).toContain(r.seat);
+   for(const id of r.cities)expect(historicalDetail(id,300),r.id+': '+id).toBeDefined();
+   for(const id of r.regions)expect(region300ById(id),id).toBeDefined();
+   for(const id of r.frontiers)expect(roman300Frontiers.some(f=>f.id===id),id).toBe(true);
+   for(const key of r.sources)expect(historySources[key],key).toBeDefined();
+  }
+  expect(ruler300ById('constantius')?.role).toBe('西方副帝');
+  expect(ruler300ById('galerius')?.role).toBe('东方副帝');
+ });
  it('keeps frontier reading geometry dated and all cross-links resolvable',()=>{
   const lines=frontier300Lines(300,false,true);
   expect(lines.features).toHaveLength(4);
