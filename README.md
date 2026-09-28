@@ -6,7 +6,7 @@
 
 An open-source, Chinese-language historical atlas of Europe, built with React, TypeScript and MapLibre GL JS. Contributions to historical research, cartography and accessibility are welcome.
 
-[在线体验](https://european-history-map.tangallen96.chatgpt.site/?year=843) · [参与贡献](CONTRIBUTING.md) · [报告史实或地图问题](https://github.com/xiongyi1990/european-history-map/issues/new/choose) · [建设路线](ROADMAP.md)
+[在线体验](https://european-history-map.tangallen96.chatgpt.site/?year=363) · [参与贡献](CONTRIBUTING.md) · [报告史实或地图问题](https://github.com/xiongyi1990/european-history-map/issues/new/choose) · [建设路线](ROADMAP.md)
 
 ## 可以做什么
 
@@ -22,10 +22,12 @@ An open-source, Chinese-language historical atlas of Europe, built with React, T
 
 ## 最新补充
 
-- 公元 1066、1071、1100 年：诺曼底与英格兰、南意大利与西西里、东罗马与耶路撒冷的空间对照。
-- 新增鲁昂、佩文西、巴特尔战场、巴里、曼齐刻尔、巴勒莫，以及 9 条时点资料。
-- [1066 年诺曼征服路线](https://european-history-map.tangallen96.chatgpt.site/?year=1066&battle=norman-conquest)：三个阶段，明确区分路线示意与精确行军轨迹。
-- 这是地点、导览与路线的补充，没有新增未经核实的逐年疆界。
+- [公元 300—400 年连续阅读](https://european-history-map.tangallen96.chatgpt.site/?year=363)：24 个政治阶段、41 个关键事件，支持逐年切换和前后事件比较。
+- 61 个核心城市在这 101 个年份都有分期资料，涵盖古今地名、政治归属、地域组成、居民与语言背景；35 组地域持续可查，370 年起另有匈人活动方向说明。
+- 新增阿尔勒、尼西亚、阿德里安堡、阿米达、埃德萨、斯特拉斯堡、西斯西亚、奈苏斯和穆尔萨 9 个地图点，给已有巴黎补入四世纪资料。
+- 新增 312、324、357、363 及 376—382 年的 5 组分阶段战役专题。路线表示地点关系与叙事顺序，不是精确行军轨迹。
+- 重点核对 330 年拜占庭城改名、363 年尼西比斯易手、387 年前后亚美尼亚分区及 395 年两部朝廷。延续顾衡课程讲次与 PDF 页码导航。
+- **连续年份资料不等于逐年精确疆界**：中间年份仍采用明确标注年代的参考轮廓，没有对国界做插值。详见 [覆盖范围与待补内容](docs/ad300-400-coverage.md)。
 
 ## 本地运行
 

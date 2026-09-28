@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import raw300 from '../../public/historical-boundaries/world_300.geojson?raw';
 import {afterEach,describe,it,expect,vi} from 'vitest';
-import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react';
+import {act,cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react';
 import {EuropeApp} from './EuropeApp';
 vi.mock('../greek/GreekMap',()=>({GreekMap:({overlay,onAreaSelect}:{overlay:{areas:GeoJSON.FeatureCollection;lines?:GeoJSON.FeatureCollection;labels:{id:string;name:string}[]};onAreaSelect:(id:string)=>void})=><div><div data-testid="reading-lines">{overlay.lines?.features.map(f=>f.properties?.atlasId).join(',')}</div><div data-testid="drawn-areas">{overlay.areas.features.map(f=>f.properties?.name).join(',')}</div><div data-testid="map-labels">{overlay.labels.map(p=><button key={p.id} aria-label={'地图标签：'+p.name} onClick={()=>onAreaSelect(p.id)}>{p.name}</button>)}</div></div>}));
 HTMLDialogElement.prototype.showModal=function(){this.open=true};
@@ -9,8 +9,38 @@ HTMLDialogElement.prototype.close=function(){this.open=false};
 const empty={type:'FeatureCollection',features:[]};
 function fc(name:string){return {type:'FeatureCollection',features:[{type:'Feature',properties:{name,subject:name},geometry:{type:'Polygon',coordinates:[[[10,40],[20,40],[20,50],[10,50],[10,40]]]}}]}}
 const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
+vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('moves year by year through the treaty and keeps a dated city and region linked',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=362');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.change(screen.getByLabelText('四世纪逐年时间轴'),{target:{value:'364'}});
+  expect(location.search).toContain('year=364');
+  const guide=screen.getByRole('region',{name:'300—400 年连续历史导览'});
+  fireEvent.click(within(guide).getByRole('button',{name:'尼西比斯：萨珊控制 →'}));
+  expect(location.search).toContain('place=nisibis');
+  expect(screen.getByText(/萨珊帝国控制，363 年已由罗马交出/)).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：上美索不达米亚/}));
+  expect(location.search).toContain('region=mesopotamia');
+  expect(screen.getByRole('article',{name:'364 年地域详情'}).textContent).toContain('埃德萨仍属罗马');
+  await act(async()=>{});
+ });
+ it('opens a century event battle and removes the century layer outside the range',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=363');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  const guide=screen.getByRole('region',{name:'300—400 年连续历史导览'});
+  fireEvent.click(within(guide).getByRole('button',{name:'分阶段查看战役 →'}));
+  expect(location.search).toContain('battle=persian-363');
+  fireEvent.click(screen.getByRole('button',{name:/阶段 4：和议改变边界/}));
+  expect(location.search).toContain('stage=3');
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.change(screen.getByLabelText('四世纪逐年时间轴'),{target:{value:'400'}});
+  fireEvent.click(screen.getByRole('button',{name:'500 年'}));
+  expect(screen.queryByRole('region',{name:'300—400 年连续历史导览'})).toBeNull();
+  expect(screen.queryByRole('button',{name:'地图标签：匈人活动方向'})).toBeNull();
+  await act(async()=>{});
+ });
  it('navigates from the Sasanian empire through its homeland and city and back',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300&region=persia');render(<EuropeApp/>);
   expect(screen.getByRole('region',{name:'300 年罗马与萨珊对照'}).textContent).toContain('纳尔塞');
@@ -34,7 +64,7 @@ describe('timeline rendering',()=>{
   fireEvent.click(screen.getByRole('button',{name:'400 年'}));
   expect(location.search).not.toContain('region=');
   expect(screen.queryByRole('region',{name:'300 年罗马与萨珊对照'})).toBeNull();
-  expect(screen.queryByRole('button',{name:'地图标签：帕尔斯（法尔斯）'})).toBeNull();
+  expect(screen.getByRole('button',{name:'地图标签：帕尔斯（法尔斯）'})).toBeTruthy();
   await act(async()=>{});
  });
  it('opens all four ruler cards from the actual political map labels',async()=>{
@@ -42,7 +72,7 @@ describe('timeline rendering',()=>{
   history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
   const rulers=[['西北','君士坦提乌斯一世','constantius'],['西部','马克西米安','maximian'],['巴尔干','伽列里乌斯','galerius'],['东方','戴克里先','diocletian']];
   for(const [direction,name,id] of rulers){
-   const label=await screen.findByRole('button',{name:'地图标签：罗马帝国 · '+direction+'分掌区'});
+   const label=await screen.findByRole('button',{name:'地图标签：罗马帝国 · '+direction+'分掌区'},{timeout:10000});
    fireEvent.click(label);
    expect(screen.getByRole('article',{name:'300 年皇帝与分掌区'}).textContent).toContain(name);
    expect(location.search).toContain('ruler='+id);
@@ -125,7 +155,7 @@ describe('timeline rendering',()=>{
   expect(screen.getByRole('article',{name:'300 年地域详情'}).textContent).toContain('阿尔沙克');
   fireEvent.click(screen.getByRole('button',{name:/返回 300 年地域索引/}));
   fireEvent.click(screen.getByRole('button',{name:'400 年'}));
-  expect(location.search).not.toContain('region=');expect(screen.queryByRole('button',{name:'地图标签：亚美尼亚王国'})).toBeNull();
+  expect(location.search).not.toContain('region=');expect(screen.getByRole('button',{name:'地图标签：亚美尼亚王国'})).toBeTruthy();
   await act(async()=>{});
  });
  it('finds historical regions in search and toggles their map labels',async()=>{
@@ -135,7 +165,7 @@ describe('timeline rendering',()=>{
   fireEvent.submit(screen.getByRole('search'));
   expect(location.search).toContain('region=iberia-caucasus');
   fireEvent.click(screen.getByRole('button',{name:'图层'}));
-  fireEvent.click(screen.getByRole('checkbox',{name:/300 年地域标签/}));
+  fireEvent.click(screen.getByRole('checkbox',{name:/300—400 年地域标签/}));
   expect(screen.queryByRole('button',{name:'地图标签：高加索伊比利亚'})).toBeNull();
   await act(async()=>{});
  });

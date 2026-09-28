@@ -1,4 +1,5 @@
 import {roman300ExtraPlaces,roman300ExtraDetails} from './roman-300-cities';
+import {fourthPlaces,completeFourthCentury,enrichFourthCenturySocial} from './fourth-century-cities';
 import {roman300Places,roman300Details} from './roman-300';
 import {medievalPlaces,medievalDetails} from './medieval-details';
 import {lateAntiquePlaces,lateAntiqueDetails} from './late-antiquity';
@@ -16,6 +17,7 @@ const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
 const dms=(d:number,m:number,s:number)=>d+m/60+s/3600;
 const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'历史地点参考'});
 export const coursePlaces:GazetteerPlace[]=[
+ ...fourthPlaces,
  ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,...carolingianPlaces,...millenniumPlaces,...normanPlaces,...roman300Places,...roman300ExtraPlaces,
  site('nicomedia','尼科米底亚','土耳其 · 伊兹米特',['Nicomedia','Nikomedeia','İzmit','Izmit','尼科美底亚'],[29.919887,40.7651905],'nicomedia','马尔马拉海东端的古城，今伊兹米特。不要与爱琴海岸的伊兹密尔混淆。'),
  site('aachen','亚琛','德国 · 亚琛',['Aachen','Aix-la-Chapelle','查理曼','加洛林'],[dms(6,5,2.112),dms(50,46,29.089)],'aachenSite','查理曼的宫廷驻地之一。以大教堂代表点定位，宫殿位置与帝国疆界分别理解。'),
@@ -46,7 +48,7 @@ const cordobaBase={placeId:'cordoba',title:'科尔多瓦',displayName:'Córdoba 
 };
 const avignonBase={placeId:'avignon',title:'阿维尼翁',displayName:'Avignon',kind:'教廷驻地' as const,territory:fact('罗讷河两岸的政治地位要分开。教皇驻在这里、教皇拥有这座城、法国国王的影响力，是三种不同关系。','avignonHistory'),people:fact('教皇宫廷、教士、艺术家与城市居民共同构成这个宗教和行政中心；没有可用于此年居民比例的统计。','avignon'),language:unknownLanguage,nameNote:fact('今名仍为阿维尼翁。用今天的法国位置辅助定位，不把现代法国边界提前用于十四世纪。','avignon'),reading:[{chapter:187,pages:[1600,1601]}] as ReadingReference[],related:['rome','naples'],
 };
-export const courseDetails:HistoricalDetail[]=[
+const originalCourseDetails:HistoricalDetail[]=[
  ...classicalCourseDetails,...medievalDetails,...lateAntiqueDetails,...earlyMedievalDetails,...carolingianDetails,...millenniumDetails,...normanDetails,...roman300Details,...roman300ExtraDetails,
  entry({...byzantineBase,id:'constantinople-330',from:330,to:394,focusYear:330,period:'新罗马：330—394 年',polity:fact('330 年新都落成后的罗马帝国政治中心；此时不能把它自动当作独立东罗马国家的首都。','byzantine')}),
  entry({...byzantineBase,id:'constantinople-east',from:395,to:641,focusYear:395,period:'东部朝廷：395—641 年',polity:fact('罗马帝国东部朝廷的中心。东西部朝廷分掌并不等于划出两个民族国家。','byzantine')}),
@@ -81,3 +83,5 @@ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',disp
  entry({id:'london-civilwar',placeId:'london',title:'伦敦',displayName:'London',from:1642,to:1642,period:'1642 年英格兰内战开端',kind:'历史城市',polity:fact('伦敦是议会一方的重要政治与动员中心。国王与议会交战，不表示在开战时就出现两个正式独立国家。','civilwar'),territory:fact('这里标记政治中心。战线与控制区会随军事行动变化，不能用城内政治倾向填充整个英格兰。'),people:fact('商人、工匠、教士、议员和妇女都参与了战争时期的政治生活；各群体内部也有分歧。','civilPeople'),language:unknownLanguage,nameNote:fact('采用这一时期的伦敦名称。旧罗马地名只作为古今定位线索保留。'),reading:[{chapter:258,pages:[2215,2217]}],related:['prague','wittenberg']}),
 ];
 
+
+export const courseDetails:HistoricalDetail[]=[...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)];

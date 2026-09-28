@@ -1,0 +1,51 @@
+# 公元 300—400 年：连续阅读层
+
+本次把原来主要依赖 300、400 年端点的阅读资料连成一个世纪。选择任一年，先看当时的政治阶段，再进入地域、城市和事件。**这是主要阅读空间的连续覆盖，不是“所有历史细节已完成”的声明。**
+
+## 已覆盖
+
+| 内容 | 范围 |
+| --- | --- |
+| 年份 | 300—400 年，含首尾共 101 个年份 |
+| 政治阶段 | 24 段，连续且不重叠；交接年份说明年内变化 |
+| 关键事件 | 41 个，覆盖皇位更替、内战、对外战争、迁徙与宗教政策 |
+| 核心城市 | 61 处，每年恰有一条适用记录；原有细致条目优先保留，空档按已注明的阶段与地域背景补充 |
+| 地域 | 原有 35 组延续，并按时段更新说明；370 年起增设匈人活动方向，共 36 组 |
+| 战役 | 5 组、16 个叙事阶段，路线与参照点可分享 |
+| 阅读辅助 | 顾衡课程第 98—100、103、112—113 讲的 PDF 页码及地图阅读线索 |
+
+新增地图点为阿尔勒、尼西亚、阿德里安堡、阿米达、埃德萨、斯特拉斯堡、西斯西亚、奈苏斯、穆尔萨；巴黎复用已有点位，补入卢泰西亚时期资料。保持政权 → 地域 → 城市的导航。
+
+## 可以直接检查的变化
+
+- [325 年的尼西亚](https://european-history-map.tangallen96.chatgpt.site/?year=325&place=nicaea)：区分会议地点与尼科米底亚。
+- [330 年的君士坦丁堡](https://european-history-map.tangallen96.chatgpt.site/?year=330&place=byzantium)：329 年仍显示拜占庭城。
+- [360 年的巴黎](https://european-history-map.tangallen96.chatgpt.site/?year=360&place=paris)：尤利安受拥立的地点。
+- [363 年远征与和议](https://european-history-map.tangallen96.chatgpt.site/?year=363&battle=persian-363&stage=3)：尼西比斯居民迁出与埃德萨的联系。
+- [364 年的尼西比斯](https://european-history-map.tangallen96.chatgpt.site/?year=364&place=nisibis)：已转归萨珊；邻近埃德萨仍属罗马。
+- [378 年的巴尔干](https://european-history-map.tangallen96.chatgpt.site/?year=378&region=thrace)：哥特渡河、阿德里安堡战败与后续安置分别解释。
+- [387 年的亚美尼亚](https://european-history-map.tangallen96.chatgpt.site/?year=387&region=armenia)：说明分区及年代争议，不直接当作罗马普通行省。
+- [400 年的米兰](https://european-history-map.tangallen96.chatgpt.site/?year=400&place=milan)：不把 402 年迁拉文纳提前。
+
+## 依据和整理方法
+
+新来源列于 `src/europe/fourth-century-sources.ts`。皇帝阶段依据 [De Imperatoribus Romanis 学术百科](https://roman-emperors.sites.luc.edu/impindex.htm)，萨珊王朝与东方城市依据 [Encyclopaedia Iranica](https://www.iranicaonline.org/articles/sasanian-dynasty/)，战争事件结合 [阿米阿努斯《历史》](https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ammian/31*.html)，宗教政策结合 [福特汉姆史料集](https://sourcebooks.web.fordham.edu/source/codex-theod1.asp)。遗址与古今定位使用 UNESCO、法国文化部及已有城市参考数据。
+
+中文说明独立撰写。古代作者的族群叙述需要结合其立场理解；资料链接不代表其全部判断都被本项目接受。居民、语言、宗教与政权分别记录，不绘制生物“人种”国界，不推算无资料支持的人口比例。
+
+课程讲次和页码已对照用户提供材料的本地目录。公开仓库不附课程 PDF、全文、插图，也不把课程观点直接当作精确疆界的依据。
+
+## 尚未完成的精度
+
+1. **没有新建 101 张独立疆界图。** 中间年份沿用邻近快照并显示原始年份；不插值、不把 400 年的君主或族群名称直接套作 350 年实况。
+2. 地域框和城市点表达空间位置，不是省界、城墙或族群边界。行省、教区和大区的逐次改革尚未穷尽。
+3. 城市空档由阶段和地域背景补充，不代表有逐年地方人口调查。特定易手、改名与居民迁移另外写明；相邻内容相同的记录会合并。
+4. 战役线是方向和先后关系；无法确认的撤退路线、战阵和死亡地点不绘制猜测轨迹。375 年是草原变动的阅读锚点，不是所有群体同日迁徙。
+5. 亚美尼亚分区、早期改宗和部分君主交接年份存在文献差异，标注“约”或年内交接。北方与东欧仍缺大量地方性资料。
+6. 未穷尽所有小型聚落、地方叛乱、教会人物、道路、贸易和税制细节。欢迎通过 GitHub 逐条补充有出处的地点与年代。
+
+## 验证
+
+自动检查覆盖全部 101 个年份的政治阶段与核心城市记录唯一性、城市与地域链接、来源引用、战役坐标、330／363／387 年转折及跨世纪隔离。页面检查覆盖逐年切换、地域—城市返回、分享参数恢复和手机无横向溢出。
+
+测试与构建通过只能证明这些数据约束及功能成立，不代替全部史实的专家审定。

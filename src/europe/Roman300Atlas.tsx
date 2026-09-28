@@ -1,36 +1,39 @@
+import {fourthRegionsAt} from './fourth-century';
 import {Ruler300Links} from './Roman300Rulers';
 import {Sasanian300Guide} from './Sasanian300Guide';
 import {Frontier300Links} from './Roman300Frontier';
-import {roman300Regions,region300ById,region300Groups,type Region300Group} from './roman-300-regions';
+import {region300Groups,type Region300Group} from './roman-300-regions';
 import {courseSources} from './course-sources';
 import {historicalDetail} from './history-details';
-export function Roman300Atlas({selected,onRegion,onPlace,onBack,onFrontier,onRuler}:{selected?:string;onRegion:(id:string)=>void;onPlace:(id:string)=>void;onBack:()=>void;onFrontier:(id:string)=>void;onRuler:(id:string)=>void}){
+export function Roman300Atlas({year=300,selected,onRegion,onPlace,onBack,onFrontier,onRuler}:{year?:number;selected?:string;onRegion:(id:string)=>void;onPlace:(id:string)=>void;onBack:()=>void;onFrontier:(id:string)=>void;onRuler:(id:string)=>void}){
+ const roman300Regions=fourthRegionsAt(year);
+ const region300ById=(id:string)=>roman300Regions.find(r=>r.id===id);
  const r=selected?region300ById(selected):undefined;
- if(r)return <article className="e-detail r300-detail" aria-label="300 年地域详情">
-  <button className="e-back" onClick={onBack}>← 返回 300 年地域索引</button>
-  <small>公元 300 年 · {region300Groups[r.group]}</small><h2>{r.name}</h2>
+ if(r)return <article className="e-detail r300-detail" aria-label={`${year} 年地域详情`}>
+  <button className="e-back" onClick={onBack}>← 返回 {year} 年地域索引</button>
+  <small>公元 {year} 年 · {region300Groups[r.group]}</small><h2>{r.name}</h2>
   {r.parent&&<button className="e-back" onClick={()=>onRegion(r.parent!)}>← 返回{region300ById(r.parent)?.name}</button>}
   <div className="h-period"><strong>先在今天的地图上定位</strong><span>{r.modern}</span></div>
   <h3>当时属于谁？</h3><p>{r.polity}</p>
-  <Ruler300Links region={r.id} onSelect={onRuler}/>
+  {year===300&&<Ruler300Links region={r.id} onSelect={onRuler}/>}
   <h3>里面有哪些地方？</h3><p>{r.parts}</p>
   {roman300Regions.some(child=>child.parent===r.id)&&<div className="h-related">{roman300Regions.filter(child=>child.parent===r.id).map(child=><button key={child.id} onClick={()=>onRegion(child.id)}>{child.name}<span>展开帝国内部地域 →</span></button>)}</div>}
-  <div className="h-related">{r.cities.map(id=><button key={id} onClick={()=>onPlace(id)}>{historicalDetail(id,300)?.title??id}<span>{r.group==='roman'?'查看地域内或相邻城市':'查看核心地点或邻近罗马参照点'} →</span></button>)}</div>
+  <div className="h-related">{r.cities.map(id=><button key={id} onClick={()=>onPlace(id)}>{historicalDetail(id,year)?.title??id}<span>{r.group==='roman'?'查看地域内或相邻城市':'查看核心地点或邻近罗马参照点'} →</span></button>)}</div>
   <h3>居民与社会</h3><p>{r.people}</p><h3>语言与书写</h3><p>{r.language}</p>
-  <Frontier300Links region={r.id} onSelect={onFrontier}/>
+  {year===300&&<Frontier300Links region={r.id} onSelect={onFrontier}/>}
   <h3>前后发生了什么？</h3><p>{r.change}</p>
-  {r.id==='persia'&&<Sasanian300Guide onRuler={onRuler} onFrontier={onFrontier}/>}
+  {year===300&&r.id==='persia'&&<Sasanian300Guide onRuler={onRuler} onFrontier={onFrontier}/>}
   <button className="e-primary" onClick={()=>onRegion(r.id)}>在地图上查看这一带 →</button>
   <p className="e-note">地域名与镜头范围用于建立空间关系，不是行省或族群的精确疆界；同一地域可能跨越多个行政区。居民说明是地域背景，不是人口比例。</p>
   <details><summary>核对资料</summary>{r.sources.map(key=><p key={key}><a href={courseSources[key].url} target="_blank" rel="noreferrer">{courseSources[key].title} ↗</a></p>)}</details>
-  <p className="late-reading">配合顾衡第 98 讲「四帝共治」、第 99 讲「君士坦丁（上）」阅读。PDF 第 792—805 页；地域条目为独立整理。</p>
+  <p className="late-reading">配合顾衡第 98—100、103、112—113 讲阅读；各政治阶段与事件见世纪导览，地域条目为独立整理。</p>
  </article>;
- return <section className="r300-index" aria-label="300 年地域索引">
-  <small>公元 300 年 · 从帝国到地域，再到城市</small><h2>把这一年的地图展开看</h2>
+ return <section className="r300-index" aria-label={`${year} 年地域索引`}>
+  <small>公元 {year} 年 · 从帝国到地域，再到城市</small><h2>把这一年的地图展开看</h2>
   <p>{roman300Regions.length} 组地域与周边社会。点名称，地图会定位到这一带，并打开居民、语言和城市资料。</p>
-  <Ruler300Links onSelect={onRuler}/>
-  <Frontier300Links onSelect={onFrontier}/>
+  {year===300&&<Ruler300Links onSelect={onRuler}/>}
+  {year===300&&<Frontier300Links onSelect={onFrontier}/>}
   {(Object.keys(region300Groups) as Region300Group[]).map(group=><details key={group} open className="r300-group"><summary>{region300Groups[group]} <span>{roman300Regions.filter(r=>r.group===group).length}</span></summary><div className="r300-grid">{roman300Regions.filter(r=>r.group===group).map(r=><button key={r.id} onClick={()=>onRegion(r.id)}>{r.name}<span>定位与详情 →</span></button>)}</div></details>)}
-  <details className="r300-method"><summary>这份 300 年地图怎样读？</summary><p>同色罗马分掌区属于一个帝国；地图上的地域标签帮助识别行省群、地理地区及邻国。地域可以重叠，不等同于改革后的完整行政名录。</p><p>四帝共治第一轮为 293—305 年。300 年还没有君士坦丁堡新都、东西罗马 395 年分掌格局，也没有五世纪的法兰克、汪达尔或西哥特王国。</p><p>戴克里先—君士坦丁时期行政区划持续调整，约 314 年的名录不能逐项当成 300 年的确定边界。萨珊轮廓和部分罗马边境仍待精确重建。</p><a href={courseSources.dioceses300.url} target="_blank" rel="noreferrer">行政区划年代依据 ↗</a></details>
+  {year===300&&<details className="r300-method"><summary>这份 300 年地图怎样读？</summary><p>同色罗马分掌区属于一个帝国；地图上的地域标签帮助识别行省群、地理地区及邻国。地域可以重叠，不等同于改革后的完整行政名录。</p><p>四帝共治第一轮为 293—305 年。300 年还没有君士坦丁堡新都、东西罗马 395 年分掌格局，也没有五世纪的法兰克、汪达尔或西哥特王国。</p><p>戴克里先—君士坦丁时期行政区划持续调整，约 314 年的名录不能逐项当成 300 年的确定边界。萨珊轮廓和部分罗马边境仍待精确重建。</p><a href={courseSources.dioceses300.url} target="_blank" rel="noreferrer">行政区划年代依据 ↗</a></details>}
  </section>;
 }
