@@ -12,6 +12,20 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('reads AD 400 from the court guide through a North African region and city',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=400');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  const guide=screen.getByRole('region',{name:'400 年详细阅读导览'});
+  expect(guide.textContent).toContain('伊嗣俟一世');
+  fireEvent.click(within(guide).getByText('北非属于谁？为什么对意大利重要？'));
+  fireEvent.click(within(guide).getByRole('button',{name:/西侧：的黎波里塔尼亚/}));
+  expect(location.search).toContain('region=tripolitania400');
+  fireEvent.click(screen.getByRole('button',{name:/大莱普提斯.*查看地域内或相邻城市/}));
+  expect(location.search).toContain('place=lepcis');expect(location.search).toContain('year=400');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：的黎波里塔尼亚/}));
+  expect(location.search).toContain('region=tripolitania400');
+  await act(async()=>{});
+ });
  it('moves year by year through the treaty and keeps a dated city and region linked',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=362');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));

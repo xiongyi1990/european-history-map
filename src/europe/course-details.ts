@@ -1,3 +1,4 @@
+import {applyCities400} from './roman-400-cities';
 import {roman300ExtraPlaces,roman300ExtraDetails} from './roman-300-cities';
 import {fourthPlaces,completeFourthCentury,enrichFourthCenturySocial} from './fourth-century-cities';
 import {roman300Places,roman300Details} from './roman-300';
@@ -84,4 +85,4 @@ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',disp
 ];
 
 
-export const courseDetails:HistoricalDetail[]=[...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)];
+export const courseDetails:HistoricalDetail[]=applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]);

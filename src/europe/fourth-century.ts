@@ -1,3 +1,4 @@
+import {enrichRegions400,cityRegions400} from './roman-400';
 import {roman300Regions,cityRegions300,type Region300} from './roman-300-regions';
 import type {ReadingReference,courseSources} from './course-sources';
 import type {Coordinate} from '../greek/battles';
@@ -119,7 +120,9 @@ export function fourthRegionsAt(year:number):Region300[]{
   r.sources=[...new Set(r.sources)];return r;
  });
  if(year>=370)regions.push({id:'huns4',name:'匈人与黑海北方草原',mapName:'匈人活动方向',group:'frontier',coords:[36,48],bounds:[[27,43],[44,51]],modern:'黑海以北、顿河和亚速海相关草原空间；点位只用于方向定位。',polity:'370 年代起，匈人及其联盟成为影响黑海北方和多瑙河局势的重要力量。这里不是阿提拉时代的完整帝国疆界。',parts:'联系阿兰和哥特活动区、黑海北岸与多瑙河下游。没有确定的单一首都或可逐年描画的国界。',people:'变化中的草原联盟包含多种来源的群体；古代作者对外族的描述带有偏见，不能当作现代生物人种分类。',language:'语言证据有限，不能把整个联盟统一指定为一种已确定语言。',change:'370 年代的扩张背景与 376 年哥特渡河相关；阿提拉的统治属于五世纪，不提前放入本图。',cities:['panticapaeum','hadrianople'],sources:['ammianus31']});
- return regions;
+ return year===400?enrichRegions400(regions):regions;
 }
 export const fourthRegionById=(id:string,year:number)=>fourthRegionsAt(year).find(r=>r.id===id);
 export const fourthEventCoordinates:Record<string,Coordinate>={milvian:[12.467,41.936],chrysopolis:[29.015,41.026],adrianople:[26.56,41.68]};
+
+export const cityRegionAt=(id:string,year:number)=>year===400?(cityRegions400[id]??fourthCityRegions[id]):fourthCityRegions[id];

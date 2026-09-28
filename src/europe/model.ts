@@ -1,3 +1,4 @@
+import {roman400Boundaries} from './roman-400-boundaries';
 import {roman300Boundaries,tetrarchNames,type BoundaryContext} from './roman-300-boundaries';
 import chineseNames from './chinese-names.json';
 import {boundarySnapshots} from '../atlas-data/historical-boundaries';
@@ -95,7 +96,7 @@ export function makeAreas(fc:GeoJSON.FeatureCollection,modern=false,snapshotYear
   if(f.geometry.type!=='Polygon'&&f.geometry.type!=='MultiPolygon')return [];
   const location=areaLocation(f.geometry);if(!location)return [];
   const p=f.properties??{}, original=String(modern?p.ADMIN:p.name),subject=String(modern?p.ADMIN:p.subject??p.name);
-  const context=!modern&&snapshotYear===300?roman300Boundaries[original]:undefined;
+  const context=!modern&&snapshotYear===300?roman300Boundaries[original]:!modern&&snapshotYear===400?roman400Boundaries[original]:undefined;
   const id=`${modern?'modern':'history'}:${i}`,kind=modern?'polity':context?.reference?'reference':classify(subject);
   const name=modern?String(p.NAME_ZH||p.NAME||original):context?.name??translate(original),color=kind==='polity'?colorFor(tetrarchNames.includes(subject)?'Roman Empire':subject):'#9ca9a4';
   return [{id,name,original,subject,kind,color,context,...location,feature:{...f,properties:{...p,atlasId:id,atlasColor:color}} as GeoJSON.Feature<AreaGeometry>,source:modern?MODERN_SOURCE:HISTORY_SOURCE}];
