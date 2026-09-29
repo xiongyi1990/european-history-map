@@ -27,7 +27,7 @@ describe('AD 400 detailed reading layer',()=>{
   expect(historicalDetail('ravenna',400)?.polity.text).toContain('尚不是');
   expect(historicalDetail('ravenna',402)?.polity.text).toContain('迁驻拉文纳');
   expect(historicalDetail('toulouse',400)?.polity.text).toContain('仍在罗马');
-  expect(historicalDetail('toulouse',401)).toBeUndefined();
+  expect(historicalDetail('toulouse',401)?.polity.text).toContain('罗马');
   expect(historicalDetail('toulouse',500)?.polity.text).toContain('西哥特');
   expect(historicalDetail('ctesiphon',400)?.polity.text).toContain('伊嗣俟一世');
   expect(historicalDetail('ctesiphon',300)?.polity.text).not.toContain('伊嗣俟一世');

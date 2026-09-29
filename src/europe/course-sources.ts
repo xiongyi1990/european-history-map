@@ -1,3 +1,4 @@
+import {fifthSources} from './fifth-century-sources';
 import {roman400Sources} from './roman-400-sources';
 import {roman300Sources} from './roman-300-sources';
 import {fourthCenturySources} from './fourth-century-sources';
@@ -5,6 +6,7 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ ...fifthSources,
  ...roman400Sources,
  ...fourthCenturySources,
  ...roman300Sources,

@@ -7,7 +7,7 @@ import {courseDocument} from './course-sources';
 describe('course material enriches the shared time atlas',()=>{
  it('separates Ravenna actual control from imperial claims',()=>{
   expect(historicalDetail('ravenna',475)?.polity.text).toContain('西部朝廷');
-  expect(historicalDetail('ravenna',476)?.polity.text).toContain('奥多亚塞');
+  expect(historicalDetail('ravenna',476)?.polity.text).toContain('奥多亚克');
   expect(historicalDetail('ravenna',493)?.polity.text).toContain('东哥特');
   expect(historicalDetail('ravenna',540)?.polity.text).toContain('东罗马控制');
   expect(historicalDetail('ravenna',600)?.polity.text).toContain('总督区');

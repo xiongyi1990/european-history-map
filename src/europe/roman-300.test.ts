@@ -19,7 +19,7 @@ describe('AD 300 real boundary snapshot and reading content',()=>{
     expect(cityRegions300[id]).toBe(region.id);
     expect(historicalDetail(id,300)?.polity.text).toContain('萨珊帝国');
     expect(historicalDetail(id,400)?.polity.text).toContain('萨珊帝国');
-    expect(historicalDetail(id,401)).toBeUndefined();
+    if(id==='ctesiphon')expect(historicalDetail(id,401)?.polity.text).toContain('萨珊');else expect(historicalDetail(id,401)).toBeUndefined();
    }
   }
   expect(cityRegions300.nisibis).toBe('mesopotamia');

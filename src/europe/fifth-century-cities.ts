@@ -1,0 +1,56 @@
+import type {GazetteerPlace} from './model';
+import type {HistoricalDetail,HistoricalFact} from './history-details';
+import {courseSources} from './course-sources';
+import {fifthCityRegions,fifthRegionsAt} from './fifth-century-regions';
+import {fifthEast,fifthWest,fifthEvents,fifthReading,type FifthSource} from './fifth-century';
+const fact=(text:string,...sources:FifthSource[]):HistoricalFact=>({text,sources:[...new Set(sources)]});
+const point=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:FifthSource,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'五世纪城市定位'});
+export const fifthPlaces:GazetteerPlace[]=[
+ point('braga5','布拉卡拉（布拉加）','葡萄牙 · 布拉加',['Bracara Augusta','Braga','苏维汇'],[-8.426,41.55],'braga5','伊比利亚西北部的罗马城市与后来的苏维汇王权中心，不能按现代葡萄牙国界理解。'),
+ point('orleans5','奥尔良','法国 · 奥尔良',['Aurelianis','Orléans','奥尔良围城'],[1.91,47.9],'orleans5','卢瓦尔河畔城市，451 年阿提拉战争的节点；不是卡塔劳努姆会战的精确战场。'),
+ point('soissons5','苏瓦松','法国 · 苏瓦松',['Soissons','Suessiones','西阿格里乌斯'],[3.32,49.38],'gregory5','北高卢城市，486 年克洛维与西阿格里乌斯战争的定位点，非已确定的战阵范围。'),
+ point('chalcedon5','迦克墩','土耳其 · 伊斯坦布尔卡德柯伊',['Chalcedon','Kadıköy','卡尔西顿','迦克墩会议'],[29.026,40.988],'chalcedon5','博斯普鲁斯海峡亚洲岸，与欧洲岸的君士坦丁堡分别定位；451 年会议所在地。'),
+];
+function localPolity(id:string,y:number,fallback:string){
+ if(id==='rome')return fifthWest(y)+(y===410?' 本年阿拉里克军队洗劫罗马；城破不等于西部帝国已经灭亡。':y===455?' 本年汪达尔军队洗劫罗马，但未建立对整个意大利的长期统治。':' 罗马仍有城市、元老院与教会制度；皇帝或国王的主要驻地不在此城。');
+ if(id==='ravenna')return (y<402?'西部宫廷尚未迁入；霍诺留主要驻米兰。':y===402?'本年西部朝廷从米兰迁驻拉文纳。':fifthWest(y))+(y<476?' 拉文纳是西部朝廷的意大利军政节点。':' 拉文纳是意大利王权的军政节点。')+' 宫廷统治和全意大利实控范围分开观察。';
+ if(id==='byzantium')return fifthEast(y)+' 此处是东方宫廷，476 年以后仍有皇帝。';
+ if(id==='nisibis')return '萨珊帝国控制的尼西比斯，363 年交城已经发生；不把对岸埃德萨的罗马归属套到这里。';
+ if(id==='edessa'||id==='amida')return '罗马东方边城。'+(id==='edessa'?'埃德萨与萨珊的尼西比斯分属两国，叙利亚语文化联系仍在。':'阿米达在五世纪仍是罗马边防城市；502 年围城在本段之后。');
+ if(id==='salona')return y<475?'萨洛纳是达尔马提亚沿海的罗马军政节点；不能用多瑙河匈人势力概括整个沿海。':y<=480?'尼波斯退往达尔马提亚后继续主张西部皇位，至 480 年去世。东方的承认与意大利实控分开看。':y<493?'达尔马提亚在尼波斯死后进入与奥多亚克意大利王权相联系的阶段；具体地方控制不能只看皇帝头衔。':'达尔马提亚沿海与狄奥多里克的意大利王权相联系；不是整个多瑙河流域都属于东哥特。';
+ if(id==='soissons5')return y<461?'北高卢的罗马城市背景，不能提前显示克洛维征服。':y<486?'埃吉迪乌斯及其后西阿格里乌斯的北高卢军事势力背景；与南部西哥特王权分开。':y===486?'本年克洛维击败西阿格里乌斯，地方政治归属出现转折。':'处于克洛维扩张后的法兰克权力范围；507 年后的高卢格局尚未形成。';
+ if(id==='braga5')return y<409?'罗马西部的加拉埃西亚城市，位于伊比利亚西北。':y<456?'苏维汇在半岛西北建立王权，布拉加成为重要中心；现代葡萄牙尚不存在。':y===456?'西哥特进攻苏维汇，布拉加受到战事冲击；不能据此宣告苏维汇王国永久灭亡。':'仍从西北苏维汇王权与地方社会的背景理解；西哥特并未在五世纪彻底吞并这个王国。';
+ return '地域背景（不是已逐年核实的城市实控记录）：'+fallback;
+}
+// Fill dated gaps; replace the three court-city summaries only inside 401–500, retaining neighbouring periods.
+export function completeFifthCentury(base:HistoricalDetail[]):HistoricalDetail[]{
+ const cleaned=base.flatMap(d=>{
+  if(!['rome','byzantium','ravenna'].includes(d.placeId)||d.from>500||d.to<401)return [d];
+  const segment=(from:number,to:number)=>({...d,id:d.id+'-retained-'+from+'-'+to,from,to,focusYear:Math.max(from,Math.min(to,d.focusYear??from))});
+  return [...(d.from<401?[segment(d.from,400)]:[]),...(d.to>500?[segment(501,d.to)]:[])];
+ });
+ const out:HistoricalDetail[]=[];
+ const cache=new Map(Array.from({length:100},(_,i)=>[401+i,fifthRegionsAt(401+i)]));
+ for(const [id,region] of Object.entries(fifthCityRegions)){
+  const seed=base.find(d=>d.placeId===id&&d.from<=400&&d.to>=400),place=fifthPlaces.find(p=>p.id===id);
+  if(!seed&&!place)throw new Error('Missing fifth century seed: '+id);
+  let previous:HistoricalDetail|undefined,previousKey='';
+  for(let year=401;year<=500;year++){
+   if(cleaned.some(d=>d.placeId===id&&d.from<=year&&d.to>=year)){previous=undefined;previousKey='';continue}
+   const r=cache.get(year)!.find(r=>r.id===region)!;
+   const events=fifthEvents.filter(e=>e.year===year&&e.places.includes(id));
+   const title=id==='london'&&year>=410?'伦敦旧罗马城址':seed?.title??place!.name;
+   const localSource:Record<string,FifthSource>={braga5:'braga5',orleans5:'orleans5',soissons5:'gregory5',chalcedon5:'chalcedon5'};
+   const sources=[...r.sources,...(localSource[id]?[localSource[id]]:[]),...events.flatMap(e=>[e.source,...e.moreSources??[]])];
+   const d:HistoricalDetail={id:'',placeId:id,title,from:year,to:year,focusYear:year,period:'',kind:'历史城市',displayName:seed?.displayName,
+    polity:fact(localPolity(id,year,r.polity)+(events.length?' 本年关联：'+events.map(e=>e.title+'。'+e.text).join(' '):''),...sources),
+    territory:fact((place?.description??('城市的现代位置见标题下方。所在地域：'+r.modern))+' 本页采用城市代表点，不表示城墙、战场或行政边界。',...r.sources),
+    people:fact('五世纪地域背景：'+r.people,...r.sources),language:fact(r.language,...r.sources),
+    nameNote:fact(place?.description??seed!.nameNote.text,...r.sources),reading:fifthReading.map(v=>({...v,pages:v.pages as [number,number]})),related:r.cities.filter(p=>p!==id).slice(0,4)};
+   const key=JSON.stringify([d.title,d.polity,d.people,d.language]);
+   if(previous&&previousKey===key){previous.to=year;previous.period=`${previous.from}—${year} 年：五世纪分期背景`;continue}
+   d.id=`${id}-fifth-${year}`;d.period=`${year} 年：五世纪分期背景`;out.push(d);previous=d;previousKey=key;
+  }
+ }
+ return [...cleaned,...out];
+}

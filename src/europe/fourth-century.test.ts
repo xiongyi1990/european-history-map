@@ -19,7 +19,7 @@ describe('continuous fourth-century atlas',()=>{
    }
   }
   expect(fourthPhaseAt(299)).toBeUndefined();expect(fourthPhaseAt(401)).toBeUndefined();
-  for(const p of fourthPlaces){expect(ancientPlaces.filter(a=>a.id===p.id)).toHaveLength(1);expect(historicalDetail(p.id,401)).toBeUndefined()}
+  for(const p of fourthPlaces){expect(ancientPlaces.filter(a=>a.id===p.id)).toHaveLength(1);expect(historicalDetail(p.id,501)).toBeUndefined()}
  });
  it('changes names and political control at the actual transitions without inventing a single daily state',()=>{
   expect(historicalDetail('byzantium',329)?.title).toBe('拜占庭城');

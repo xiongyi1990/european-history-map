@@ -12,6 +12,21 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('moves through the fifth century and keeps Dalmatia separate from Italy after 476',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=475');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  fireEvent.change(screen.getByLabelText('五世纪逐年时间轴'),{target:{value:'477'}});
+  const guide=screen.getByRole('region',{name:'400—500 年连续历史导览'});
+  expect(guide.textContent).toContain('尼波斯仍在达尔马提亚');
+  fireEvent.click(within(guide).getByRole('button',{name:/展开意大利地域/}));
+  expect(location.search).toContain('region=italy');
+  expect(screen.getByRole('article',{name:'477 年地域详情'}).textContent).toContain('奥多亚克');
+  fireEvent.click(screen.getByRole('button',{name:/罗马.*查看地域内或相邻城市/}));
+  expect(location.search).toContain('place=rome');expect(location.search).toContain('year=477');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：意大利/}));
+  expect(location.search).toContain('region=italy');
+  await act(async()=>{});
+ });
  it('reads AD 400 from the court guide through a North African region and city',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=400');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
