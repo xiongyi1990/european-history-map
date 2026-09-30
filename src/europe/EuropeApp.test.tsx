@@ -12,6 +12,38 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('restores event moments, hides borrowed polygons and keeps Dalmatia separate',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(fc('Western Roman Empire'))));history.replaceState(null,'','/?year=476&view=control&moment=before');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:'年代'}));
+  const guide=screen.getByRole('region',{name:'关键年份政权对照'});
+  expect(within(guide).getByRole('button',{name:'8—9月更替前'}).getAttribute('aria-pressed')).toBe('true');
+  await waitFor(()=>expect(screen.getByTestId('drawn-areas').textContent).toBe(''));
+  expect(screen.getByLabelText('地图地点归属图例').textContent).toContain('尼波斯');
+  fireEvent.click(within(guide).getByRole('button',{name:'更替后'}));
+  expect(location.search).toContain('moment=after');
+  expect(screen.getByLabelText('地图地点归属图例').textContent).toContain('奥多亚克');
+  fireEvent.click(within(guide).getByRole('button',{name:/拉文纳.*查看城市/}));
+  expect(location.search).toContain('place=ravenna');expect(location.search).toContain('view=control');
+  expect(screen.getByLabelText('所选地点的事件对照').textContent).toContain('奥多亚克');
+  await act(async()=>{});
+ });
+ it('compares the capture and treaty as different events and explicitly returns to reference geometry',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(fc('Eastern Roman Empire'))));history.replaceState(null,'','/?year=439');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:'年代'}));
+  fireEvent.click(within(screen.getByRole('region',{name:'关键年份政权对照'})).getByRole('button',{name:'442 年'}));
+  expect(location.search).toContain('year=442');
+  expect(screen.getByLabelText('地图地点归属图例').textContent).toContain('汪达尔');
+  fireEvent.click(screen.getByRole('button',{name:'查看百年疆界参考'}));
+  expect(location.search).toContain('view=reference');expect(location.search).not.toContain('moment=');
+  await waitFor(()=>expect(screen.getByTestId('drawn-areas').textContent).toContain('Eastern Roman Empire'));
+  expect(screen.getByText(/公元 442 年 · 连续分期资料 \/ 400 年疆界参考/)).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:'查看 442 年地点归属对照 →'}));
+  expect(location.search).toContain('view=control');
+  fireEvent.click(within(screen.getByRole('region',{name:'关键年份政权对照'})).getByRole('button',{name:'493 年'}));
+  fireEvent.click(within(screen.getByRole('region',{name:'关键年份政权对照'})).getByRole('button',{name:'拉文纳交接前'}));
+  expect(screen.getByLabelText('地图地点归属图例').textContent).toContain('逐城控制待核');
+  await act(async()=>{});
+ });
  it('opens the Narbonne subregion in the handover year and restores the earlier North African treaty route',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=462&region=gaul');render(<EuropeApp/>);
   const gaul=await screen.findByRole('article',{name:'462 年地域详情'});

@@ -13,7 +13,7 @@ const modernBorders = mesh(countries,countries.objects.countries as Parameters<t
 const empty: GeoJSON.FeatureCollection = {type:'FeatureCollection',features:[]};
 export interface Camera { center:[number,number]; zoom:number; pitch:number; bearing:number; padding?:{top:number;bottom:number;left:number;right:number} }
 export interface MapCommand { ids:string[]; nonce:number; camera?:Camera; coordinates?:Coordinate[] }
-export interface AtlasPlace {id:string; name:string; modern:string; coords:Coordinate; camp?:Camp; color?:string}
+export interface AtlasPlace {id:string; name:string; modern:string; coords:Coordinate; camp?:Camp; color?:string;control?:{name:string;note:string}}
 export interface MapAtlas {places:AtlasPlace[]; terrainPrefix:string; surfacePrefix:string; bounds:[number,number,number,number]; maxzoom:number; center:Coordinate; zoom:number; minZoom:number; extent:[Coordinate,Coordinate]; landforms:Landform[]; presets:Landform[]; attribution:string; title:string; pitch?:number; bearing?:number; overviewBounds?:[Coordinate,Coordinate]; detailInSidebar?:boolean; theme?:'light'|'dark'}
 export interface AreaLabel {id:string;name:string;coords:Coordinate;color:string;minZoom?:number;kind?:'region'|'frontier'}
 export interface AtlasOverlay {areas:GeoJSON.FeatureCollection; rivers:GeoJSON.FeatureCollection; labels:AreaLabel[];lines?:GeoJSON.FeatureCollection}
@@ -170,6 +170,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
       if(p.color)button.classList.add('has-record-color');
       button.style.setProperty('--pin',p.color??(layer==='alliances'?campColors[p.camp??'context']:'#385b57'));
       button.setAttribute('aria-label',`地图地点：${p.name}`);button.setAttribute('aria-pressed',String(p.id===selected));
+      if(p.control){button.classList.add('has-control-color');button.title=`${p.name} · ${p.control.name}。${p.control.note}`;button.setAttribute('aria-label',`地图地点：${p.name}，${p.control.name}`)}
       const dot=document.createElement('i');dot.className='g-map-dot';
       const label=document.createElement('span');label.textContent=modern?p.modern:p.name;
       button.append(dot,label);button.addEventListener('click',()=>handlers.current.onSelect(p.id));
