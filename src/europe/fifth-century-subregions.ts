@@ -1,3 +1,4 @@
+import {fifthAfrica} from './fifth-century-rulers';
 import type {Region300} from './roman-300-regions';
 
 // Reading areas and camera bounds, never sovereignty polygons. Parent membership is geographical.
@@ -17,6 +18,6 @@ export function fifthSubregionsAt(year:number,parents:Region300[]):Region300[]{
  if(year<=400||year>500)return [];
  return areas.map(a=>{
   const p=parents.find(p=>p.id===a.parent)!;
-  return {...p,...a,mapName:a.name.split('：')[0],polity:a.control(year),cities:Object.keys(fifthLocalCityRegions).filter(id=>fifthLocalCityRegions[id]===a.id),people:p.people,language:p.language};
+  return {...p,...a,mapName:a.name.split('：')[0],polity:a.id==='carthage-region5'?fifthAfrica(year):a.control(year),sources:[...new Set([...p.sources,...a.sources])],cities:Object.keys(fifthLocalCityRegions).filter(id=>fifthLocalCityRegions[id]===a.id),people:p.people,language:p.language};
  });
 }

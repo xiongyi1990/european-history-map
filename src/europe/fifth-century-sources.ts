@@ -1,4 +1,11 @@
 export const fifthSources={
+ avitus5:{title:'罗马皇帝学术百科：阿维图斯（455—456）与西部皇位危机',url:'https://roman-emperors.sites.luc.edu/avitus.htm'},
+ severus5:{title:'罗马皇帝学术百科：利比乌斯·塞维鲁斯及 465—467 年皇位空缺',url:'https://roman-emperors.sites.luc.edu/libius.htm'},
+ anthemius5:{title:'罗马皇帝学术百科：安特米乌斯与 472 年内战',url:'https://roman-emperors.sites.luc.edu/anthemiu.htm'},
+ olybrius5:{title:'罗马皇帝学术百科：奥利布里乌斯与 472 年争位',url:'https://roman-emperors.sites.luc.edu/olybrius.htm'},
+ glycerius5:{title:'罗马皇帝学术百科：格利凯里乌斯与尼波斯交接（473—474）',url:'https://roman-emperors.sites.luc.edu/glyceriu.htm'},
+ vandalKings5:{title:'剑桥研究《晚期古代西方的使节与政治交流》：汪达尔国王年表',url:'https://assets.cambridge.org/97805218/13495/frontmatter/9780521813495_frontmatter.pdf'},
+ vandalSociety5:{title:'普罗柯比《战争史》卷一第八章：北非国王与地方势力（较晚叙事须辨别）',url:'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Procopius/Wars/3C*.html'},
  hydatius5:{title:'希达提乌斯《编年史》：五世纪伊比利亚（拉丁文史料，叙事立场须辨别）',url:'https://thelatinlibrary.com/hydatiuschronicon.html'},
  provence5:{title:'剑桥：南高卢 400—550 年的政治与地方社会',url:'https://www.cambridge.org/core/books/popular-culture-and-the-end-of-antiquity-in-southern-gaul-c-400550/introduction/031A53154BB0756296A1A2D4574EED03'},
  tarraco5:{title:'塔拉戈纳市：约 472 年进入西哥特统治与城市延续',url:'https://tgnblog.tarragona.cat/tarraco-capital-visigoda/7693'},

@@ -7,8 +7,34 @@ import {detailsAt,historicalDetail,historicalDetails,historySources,historyWindo
 import {ancientPlaces,makeAreas} from './model';
 import {dateFifthAreas} from './fifth-century-boundaries';
 import raw500 from '../../public/historical-boundaries/world_500.geojson?raw';
+import {fifthAfrica} from './fifth-century-rulers';
 
 describe('AD 400–500 reading continuity',()=>{
+ it('distinguishes late emperors, contested accession years and vacant western throne',()=>{
+  const cases:[number,string][]=[[455,'佩特罗尼乌斯'],[456,'阿维图斯'],[457,'马约里安'],[461,'塞维鲁斯'],[464,'东方不承认'],[465,'皇位再次空缺'],[466,'皇位空缺'],[467,'安特米乌斯'],[472,'仍在世时被拥立'],[473,'格利凯里乌斯'],[474,'尼波斯']];
+  for(const [year,text] of cases){
+   expect(fifthWest(year)).toContain(text);
+   for(const city of ['rome','ravenna'])expect(historicalDetail(city,year)?.polity.text,`${city}:${year}`).toContain(text);
+   const region=fifthRegionsAt(year).find(r=>r.id==='italy')!;
+   expect(region.polity).toContain(text);
+   expect(historicalDetail('ravenna',year)?.polity.sources).toEqual(expect.arrayContaining(region.sources));
+  }
+  expect(fifthEvents.some(e=>e.year===465)).toBe(true);
+  expect(fifthEvents.find(e=>e.year===472)?.places).toContain('rome');
+ });
+ it('preserves Carthage evidence while adding kings and successor-year handovers',()=>{
+  const cases:[number,string][]=[[476,'盖萨里克'],[477,'胡内里克'],[483,'胡内里克'],[484,'贡塔蒙德'],[495,'贡塔蒙德'],[496,'特拉萨蒙德'],[500,'特拉萨蒙德']];
+  for(const [year,text] of cases){
+   const d=historicalDetail('carthage',year)!;
+   expect(d.polity.text).toContain(text);expect(fifthAfrica(year)).toContain(text);
+   for(const id of ['africa','carthage-region5'])expect(fifthRegionsAt(year).find(r=>r.id===id)?.polity).toContain(text);
+   expect(d.polity.sources).toContain('vandalKings5');
+   expect(d.reading?.length).toBeGreaterThan(0);
+   expect(d.people.text).toBe(historicalDetail('carthage',501)?.people.text);
+  }
+  expect(historicalDetail('carthage',501)?.polity.text).not.toContain('特拉萨蒙德');
+  expect(historicalDetail('carthage',438)?.polity.text).not.toContain('盖萨里克（汪达尔国王');
+ });
  it('keeps local areas geographical and distinguishes asynchronous southern city handovers',()=>{
   for(let year=401;year<=500;year++){
    const regions=readingRegionsAt(year);

@@ -1,9 +1,15 @@
 import type {courseSources} from './course-sources';
+import {lateWestAt} from './fifth-century-rulers';
 export type FifthSource=keyof typeof courseSources;
 export const inFifthCentury=(year:number)=>year>=400&&year<=500;
 export interface FifthEvent {year:number;title:string;text:string;places:string[];regions:string[];source:FifthSource;moreSources?:FifthSource[]}
 const e=(year:number,title:string,text:string,places:string[],regions:string[],source:FifthSource):FifthEvent=>({year,title,text,places,regions,source});
 export const fifthEvents:FifthEvent[]=[
+ e(461,'马约里安失位；塞维鲁斯被拥立','马约里安被推翻并遇害，利比乌斯·塞维鲁斯随后在拉文纳被拥立。东方不承认新皇帝；北高卢的罗马军事势力也没有因此自动服从意大利朝廷。',['ravenna','rome','soissons5'],['italy','gaul'],'severus5'),
+ e(465,'西部皇位空缺开始','利比乌斯·塞维鲁斯去世；465—467 年西部没有在位皇帝，里西默的军事权力与地方行政仍然存在。不是西部所有地域一起成为无主之地。',['ravenna','rome'],['italy'],'severus5'),
+ e(467,'安特米乌斯取得西部皇位','东方利奥一世支持安特米乌斯进入意大利并成为西部皇帝。两部朝廷继续互动；安特米乌斯的皇帝头衔不代表已恢复北非或统一高卢。',['rome','ravenna','byzantium'],['italy','thrace'],'anthemius5'),
+ e(473,'格利凯里乌斯在拉文纳被拥立','贡多巴德支持格利凯里乌斯取得西部皇位，但东方利奥一世没有承认他；次年尼波斯进入意大利，再次改变皇位安排。',['ravenna','salona','byzantium'],['italy','pannonia','thrace'],'glycerius5'),
+ e(477,'迦太基从盖萨里克到胡内里克','盖萨里克去世，胡内里克继承汪达尔王权。北非王廷、奥多亚克的意大利和尼波斯的达尔马提亚皇帝主张仍是不同政治中心。',['carthage','ravenna','salona'],['africa','italy','pannonia'],'vandalKings5'),
  e(411,'伊比利亚诸集团分占地域','希达提乌斯记述苏维汇与汪达尔在加拉埃西亚、阿兰在卢西塔尼亚及迦太基行省、另一支汪达尔在贝提卡活动。这不是罗马正式承认的精确分界图；伊比利亚的迦太基行省也不是北非迦太基。',['braga5','emerita','gades'],['hispania'],'hydatius5'),
  e(416,'哥特军队介入半岛战争','瓦利亚与罗马方面达成安排后，哥特军队在伊比利亚打击阿兰与汪达尔集团；416—418 年的军事行动与之后返回高卢安置分开理解。',['emerita','gades','toulouse'],['hispania','gaul'],'hydatius5'),
  e(458,'马约里安重建南高卢影响','马约里安在南高卢活动，西哥特对阿尔勒的压力受到遏制；这说明图卢兹与阿尔勒此时不能涂成同一个已稳定统一的王国。',['arles','toulouse'],['gaul'],'majorian5'),
@@ -52,11 +58,19 @@ export const fifthEvents:FifthEvent[]=[
  e(498,'卡瓦德复位','卡瓦德一世恢复王位；500 年不能继续显示贾马斯普，也不能把 502 年对罗马战争提前。',['ctesiphon','nisibis'],['persia','mesopotamia'],'kawad5'),
  e(500,'地中海多政权并存','意大利东哥特、高卢西哥特与法兰克、北非汪达尔和东方罗马并存。西哥特的图卢兹中心仍在；507 年的转折尚未发生。',['ravenna','toulouse','tournai','carthage','byzantium'],['italy','gaul','africa','thrace'],'gaul5'),
 ];
+for(const event of fifthEvents){
+ if(event.year===455){event.text+=' 同年依次涉及瓦伦提尼安三世、佩特罗尼乌斯·马克西穆斯与阿维图斯。';event.moreSources=['avitus5','west5'];}
+ if(event.year===456){event.text+=' 意大利同时发生阿维图斯失位；伊比利亚战事与意大利皇位分开看。';event.moreSources=['avitus5'];}
+ if(event.year===472){event.title+='；罗马皇位内战';event.text+=' 罗马城同时经历安特米乌斯与里西默内战及奥利布里乌斯争位，不把这一年简化为一位皇帝统治全年。';event.places.push('rome');event.regions.push('italy');event.moreSources=['anthemius5','olybrius5'];}
+ if(event.year===474)event.moreSources=['glycerius5'];
+ if(event.year===484){event.title+='；迦太基国王交接';event.text+=' 北非胡内里克去世、贡塔蒙德继位；与萨珊战争分别定位。';event.places.push('carthage');event.regions.push('africa');event.moreSources=['vandalKings5'];}
+ if(event.year===496){event.text+=' 北非同年贡塔蒙德去世，特拉萨蒙德继位，汪达尔王权继续存在。';event.places.push('carthage');event.regions.push('africa');}
+}
 fifthEvents.sort((a,b)=>a.year-b.year);
-for(const event of fifthEvents){if(event.year===410)event.moreSources=['britain5'];if(event.year===451)event.moreSources=['chalcedon5','orleans5'];if(event.year===454)event.moreSources=['west5'];if(event.year===496)event.moreSources=['burgundy5','gregory5'];}
+for(const event of fifthEvents){if(event.year===410)event.moreSources=['britain5'];if(event.year===451)event.moreSources=['chalcedon5','orleans5'];if(event.year===454)event.moreSources=['west5'];if(event.year===496)event.moreSources=['burgundy5','gregory5','vandalKings5'];}
 export const fifthPhaseAt=(year:number)=>{if(!inFifthCentury(year))return undefined;const i=fifthEvents.map(e=>e.year<=year).lastIndexOf(true);return {from:fifthEvents[i].year,to:(fifthEvents[i+1]?.year??501)-1,title:fifthEvents[i].title}};
 export function fifthEast(year:number){return year<402?'阿卡狄乌斯在位，君士坦丁堡是东方宫廷。':year<408?'阿卡狄乌斯；狄奥多西二世自 402 年起为共治皇帝。':year===408?'阿卡狄乌斯去世，狄奥多西二世独掌东方。':year<450?'狄奥多西二世在位；君士坦丁堡宫廷与巴尔干、埃及、小亚细亚相联系。':year===450?'狄奥多西二世去世，马尔西安继位。':year<457?'马尔西安在位；东方罗马继续运作。':year===457?'马尔西安去世，利奥一世继位。':year<474?'利奥一世在位；巴尔干军队与北非远征影响朝政。':year===474?'利奥一世、利奥二世、芝诺在本年发生皇位交接与共治。':year===475?'芝诺离开君士坦丁堡，巴西利斯库斯取得皇位。':year===476?'巴西利斯库斯失位，芝诺回到君士坦丁堡。':year<491?'芝诺在位；东方并未随意大利的西部皇位终止而灭亡。':year===491?'芝诺去世，阿纳斯塔修斯一世继位。':'阿纳斯塔修斯一世在位（491—518）；帝国重心仍在君士坦丁堡。'}
-export function fifthWest(year:number){return year<402?'霍诺留在位，西部宫廷主要在米兰。':year<423?'霍诺留在位，宫廷主要在拉文纳；高卢与伊比利亚的实际控制需逐地查看。':year<425?'霍诺留去世后的皇位争夺，约翰内斯掌权；东方支持瓦伦提尼安一系。':year===425?'东方出兵后，瓦伦提尼安三世成为西部皇帝。':year<455?'瓦伦提尼安三世在位；普拉西狄娅、埃提乌斯与地方军队的影响不能等同于皇帝亲自统治每一地域。':year<474?'瓦伦提尼安三世死后，西部皇位频繁更换；马约里安、安特米乌斯等先后在位，里西默等将领影响朝政，意大利以外的控制不断变化。':year===474?'尼波斯进入意大利并取得西部皇位。':year===475?'尼波斯退往达尔马提亚，罗慕路斯在意大利被拥立。':year===476?'奥多亚克废黜罗慕路斯；尼波斯在达尔马提亚继续提出皇帝主张。':year<480?'奥多亚克统治意大利；尼波斯仍在达尔马提亚并被东方承认为西部皇帝。':year<489?'奥多亚克统治意大利；480 年尼波斯去世后的地区格局已不同于罗马西部朝廷时代。':year<493?'狄奥多里克与奥多亚克争夺意大利；拉文纳围城期间，不能把整个半岛视为单一稳定控制区。':'狄奥多里克的东哥特王权控制意大利，罗马行政和城市社会延续。'}
+export function fifthWest(year:number){return year<402?'霍诺留在位，西部宫廷主要在米兰。':year<423?'霍诺留在位，宫廷主要在拉文纳；高卢与伊比利亚的实际控制需逐地查看。':year<425?'霍诺留去世后的皇位争夺，约翰内斯掌权；东方支持瓦伦提尼安一系。':year===425?'东方出兵后，瓦伦提尼安三世成为西部皇帝。':year<455?'瓦伦提尼安三世在位；普拉西狄娅、埃提乌斯与地方军队的影响不能等同于皇帝亲自统治每一地域。':year<=474?lateWestAt(year):year===475?'尼波斯退往达尔马提亚，罗慕路斯在意大利被拥立。':year===476?'奥多亚克废黜罗慕路斯；尼波斯在达尔马提亚继续提出皇帝主张。':year<480?'奥多亚克统治意大利；尼波斯仍在达尔马提亚并被东方承认为西部皇帝。':year<489?'奥多亚克统治意大利；480 年尼波斯去世后的地区格局已不同于罗马西部朝廷时代。':year<493?'狄奥多里克与奥多亚克争夺意大利；拉文纳围城期间，不能把整个半岛视为单一稳定控制区。':'狄奥多里克的东哥特王权控制意大利，罗马行政和城市社会延续。'}
 export function fifthPersia(year:number){return year<420?'伊嗣俟一世（399—约 420）':year<=421?'伊嗣俟一世到巴赫拉姆五世的交接（约 420／421）':year<438?'巴赫拉姆五世（约 420／421—438）':year===438?'巴赫拉姆五世与伊嗣俟二世交接':year<457?'伊嗣俟二世（438—457）':year<=459?'霍尔米兹德三世与卑路斯争位（457—459 前后）':year<484?'卑路斯（约 459—484）':year===484?'卑路斯战死，巴拉什继位':year<488?'巴拉什（484—488）':year===488?'巴拉什到卡瓦德一世的交接':year<496?'卡瓦德一世第一次统治（488—496）':year===496?'卡瓦德一世被废，贾马斯普掌权':year<498?'贾马斯普（496—498）':year===498?'卡瓦德一世复位':'卡瓦德一世第二次统治（498—531）'}
 
 export const fifthReading=[{chapter:125,pages:[1049,1057],note:'教义争论与东方城市'},{chapter:128,pages:[1084,1092],note:'意大利与罗马城的危机'},{chapter:129,pages:[1092,1101],note:'410 年城破与帝国的区别'},{chapter:131,pages:[1108,1115],note:'西部朝廷如何走向终止'},{chapter:132,pages:[1115,1123],note:'拉文纳的不同统治时期'},{chapter:133,pages:[1123,1130],note:'后继王国与地方社会'},{chapter:136,pages:[1144,1151],note:'法兰克人与北高卢'},{chapter:138,pages:[1159,1169],note:'克洛维的扩张与改宗'}];

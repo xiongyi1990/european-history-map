@@ -1,5 +1,6 @@
 import {fifthEvents,fifthPhaseAt,fifthEast,fifthWest,fifthPersia,fifthReading,inFifthCentury} from './fifth-century';
 import {courseSources} from './course-sources';
+import {fifthAfrica,lateWestSources} from './fifth-century-rulers';
 export function FifthCenturyGuide({year,onYear,onPlace,onRegion}:{year:number;onYear:(y:number)=>void;onPlace:(id:string)=>void;onRegion:(id:string)=>void}){
  if(!inFifthCentury(year))return null;
  const phase=fifthPhaseAt(year)!,current=fifthEvents.filter(e=>e.year===year),before=[...fifthEvents].reverse().find(e=>e.year<year),after=fifthEvents.find(e=>e.year>year);
@@ -9,9 +10,10 @@ export function FifthCenturyGuide({year,onYear,onPlace,onRegion}:{year:number;on
   <div className="fourth-step"><button disabled={!before} onClick={()=>before&&onYear(before.year)}>← {before?`${before.year}：${before.title}`:'世纪起点'}</button><button disabled={!after} onClick={()=>after&&onYear(after.year)}>{after?`${after.year}：${after.title}`:'世纪终点'} →</button></div>
   <p className="e-note">按年查看政治背景；同一年内可能先后易主。轮廓仍来自标注年份的参考地图，未重建 101 张逐年国界；地域和城市条目另记当年情况。</p>
   <div className="fourth-realms">
-   <article><h3>{year<476?'罗马西部与地方势力':'意大利与西部后继政权'}</h3><p>{fifthWest(year)}</p><button onClick={()=>onPlace(year<402?'milan':'ravenna')}>查看宫廷城市 →</button><button onClick={()=>onRegion('italy')}>展开意大利地域 →</button></article>
+   <article><h3>{year<476?'罗马西部与地方势力':'意大利与西部后继政权'}</h3><p>{fifthWest(year)}</p><button onClick={()=>onPlace(year<402?'milan':'ravenna')}>查看宫廷城市 →</button><button onClick={()=>onRegion('italy')}>展开意大利地域 →</button>{lateWestSources(year).map(s=><p key={s}><a href={courseSources[s].url} target="_blank" rel="noreferrer">{courseSources[s].title} ↗</a></p>)}</article>
    <article><h3>罗马东方</h3><p>{fifthEast(year)}</p><button onClick={()=>onPlace('byzantium')}>君士坦丁堡 →</button><button onClick={()=>onRegion('thrace')}>巴尔干与海峡 →</button></article>
    <article><h3>萨珊帝国</h3><p>{fifthPersia(year)}。两河与伊朗高原的居民不能按王朝名称归成单一族群。</p><button onClick={()=>onPlace('ctesiphon')}>泰西封与王廷 →</button><button onClick={()=>onRegion('mesopotamia')}>罗马—萨珊边区 →</button></article>
+   <article><h3>北非：迦太基与汪达尔</h3><p>{fifthAfrica(year)}</p><button onClick={()=>onPlace('carthage')}>查看迦太基 →</button><button onClick={()=>onRegion(year===400?'africa':'carthage-region5')}>北非王权中心 →</button><p><a href={courseSources[year>=477?'vandalKings5':'procopius5'].url} target="_blank" rel="noreferrer">{courseSources[year>=477?'vandalKings5':'procopius5'].title} ↗</a></p></article>
   </div>
   <h3>这一年与前后转折</h3>
   {current.length?current.map(e=><article className="fourth-event" key={e.year}><h4>{e.title}</h4><p>{e.text}</p><div className="h-related">{e.places.map(id=><button key={id} onClick={()=>onPlace(id)}>{({milan:'米兰',ravenna:'拉文纳',byzantium:'君士坦丁堡',ctesiphon:'泰西封',rome:'罗马',carthage:'迦太基',hippo:'希波',braga5:'布拉加',orleans5:'奥尔良',soissons5:'苏瓦松',chalcedon5:'迦克墩'} as Record<string,string>)[id]??labels[id]??'查看关联城市'} →</button>)}</div>{[e.source,...e.moreSources??[]].map(s=><p key={s}><a href={courseSources[s].url} target="_blank" rel="noreferrer">{courseSources[s].title} ↗</a></p>)}</article>):<p>本年未单列新事件。最近转折为 {phase.from} 年“{phase.title}”；城市与地域仍可查询，不表示各地没有发生其他变化。</p>}

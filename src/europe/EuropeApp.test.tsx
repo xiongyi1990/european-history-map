@@ -360,6 +360,22 @@ describe('timeline rendering',()=>{
   await waitFor(()=>expect(screen.getByText('这个年份的疆界尚未收录')).toBeTruthy());
   expect(screen.getByTestId('drawn-areas').textContent).toBe('');
  });
+ it('navigates from a vacant western throne to dated Vandal kings without losing the selected year',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=466');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:/历史年代/}));
+  const guide=screen.getByRole('region',{name:'400—500 年连续历史导览'});
+  expect(guide.textContent).toContain('西部皇位空缺（465—467）');
+  expect(within(guide).getByText('北非：迦太基与汪达尔')).toBeTruthy();
+  fireEvent.change(screen.getByLabelText('五世纪逐年时间轴'),{target:{value:'484'}});
+  expect(location.search).toContain('year=484');
+  fireEvent.click(within(guide).getByRole('button',{name:'查看迦太基 →'}));
+  expect(location.search).toContain('place=carthage');
+  expect(screen.getByText(/胡内里克去世，贡塔蒙德继位/)).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：迦太基与阿非利加核心区/}));
+  expect(location.search).toContain('region=carthage-region5');
+  expect(screen.getByRole('article',{name:'484 年地域详情'}).textContent).toContain('贡塔蒙德');
+  await act(async()=>{});
+ });
  it('rejects invalid year zero without silently changing the displayed time',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));render(<EuropeApp/>);
   fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'0'}});fireEvent.click(screen.getByLabelText('前往输入年份'));

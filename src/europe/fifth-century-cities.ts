@@ -1,10 +1,11 @@
 import type {GazetteerPlace} from './model';
-import type {HistoricalDetail,HistoricalFact} from './history-details';
+import type {HistoricalDetail,HistoricalFact,HistorySource} from './history-details';
 import {courseSources} from './course-sources';
 import {fifthCityRegions,fifthRegionsAt} from './fifth-century-regions';
 import {fifthLocalCityRegions} from './fifth-century-subregions';
 import {fifthEast,fifthWest,fifthEvents,fifthReading,type FifthSource} from './fifth-century';
-const fact=(text:string,...sources:FifthSource[]):HistoricalFact=>({text,sources:[...new Set(sources)]});
+import {fifthAfrica} from './fifth-century-rulers';
+const fact=(text:string,...sources:HistorySource[]):HistoricalFact=>({text,sources:[...new Set(sources)]});
 const point=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:FifthSource,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'五世纪城市定位'});
 export const fifthPlaces:GazetteerPlace[]=[
  point('braga5','布拉卡拉（布拉加）','葡萄牙 · 布拉加',['Bracara Augusta','Braga','苏维汇'],[-8.426,41.55],'braga5','伊比利亚西北部的罗马城市与后来的苏维汇王权中心，不能按现代葡萄牙国界理解。'),
@@ -54,5 +55,14 @@ export function completeFifthCentury(base:HistoricalDetail[]):HistoricalDetail[]
    d.id=`${id}-fifth-${year}`;d.period=`${year} 年：五世纪分期背景`;out.push(d);previous=d;previousKey=key;
   }
  }
- return [...cleaned,...out];
+ return [...cleaned,...out].flatMap(d=>{
+  if(d.placeId!=='carthage'||d.from>500||d.to<439)return [d];
+  const cuts=[d.from,...[439,477,478,484,485,496,497,501].filter(y=>y>d.from&&y<=d.to),d.to+1];
+  return cuts.slice(0,-1).map((from,i)=>{
+   const to=cuts[i+1]-1,inside=from>=439&&to<=500;
+   return {...d,id:`${d.id}-vandal-ruler-${from}`,from,to,focusYear:Math.max(from,Math.min(to,d.focusYear??from)),
+    period:inside?`${from}${to===from?'':`—${to}`} 年：迦太基王权分期`:d.period,
+    polity:inside?fact(fifthAfrica(from)+' '+d.polity.text,...d.polity.sources,'vandalKings5','vandalSociety5'):d.polity};
+  });
+ });
 }
