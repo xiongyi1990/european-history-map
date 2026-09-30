@@ -2,10 +2,12 @@ import type {GazetteerPlace} from './model';
 import type {HistoricalDetail,HistoricalFact} from './history-details';
 import {courseSources} from './course-sources';
 import {fourthCityRegions,fourthEvents,fourthPhaseAt,fourthReading,fourthRegionsAt} from './fourth-century';
+import {lateAntiqueCities,lateAntiqueCityFacts} from './late-antique-city-profiles';
 type Source=keyof typeof courseSources;
 const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources:[...new Set(sources)]});
 const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'四世纪城市定位'});
 export const fourthPlaces:GazetteerPlace[]=[
+ ...lateAntiqueCities,
  site('arles','阿雷拉特（阿尔勒）','法国 · 阿尔勒',['Arelate','Arles','阿尔勒会议'],[4.631,43.678],'arles4','罗讷河下游的高卢城市，314 年会议地点；与北非教会的联系不意味着会议在迦太基召开。'),
  site('nicaea','尼西亚','土耳其 · 伊兹尼克',['Nicaea','İznik','尼凯亚','尼西亚会议'],[29.72,40.43],'nicaea4','伊兹尼克湖东岸的比提尼亚城市，325 年会议地点；不是尼科米底亚。'),
  site('hadrianople','阿德里安堡','土耳其 · 埃迪尔内',['Hadrianopolis','Adrianople','Edirne','哈德良堡'],[26.56,41.68],'ammianus31','色雷斯内陆城市，324、378 年均有附近战事；城市点不等于已考定战场位置。'),
@@ -40,7 +42,7 @@ export function completeFourthCentury(base:HistoricalDetail[]):HistoricalDetail[
    if(base.some(d=>d.placeId===id&&d.from<=year&&d.to>=year)){last=undefined;lastKey='';continue}
    const r=regions.get(year)!.find(r=>r.id===fourthCityRegions[id])!;
    const p=fourthPhaseAt(year)!;const seed=originals.get(id),place=newCityById.get(id);
-   const source=newSources[id]??r.sources[0];
+   const source=lateAntiqueCities.find(p=>p.id===id)?.historySource??newSources[id]??r.sources[0];
    let title=seed?.title??place!.name;
    let polity=r.polity;
    let people=r.people;
@@ -62,11 +64,12 @@ export function completeFourthCentury(base:HistoricalDetail[]):HistoricalDetail[
    const politicalSource:Source=r.id==='persia'||r.parent==='persia'?'sasanianDynasty4':p.source;
    const localSource:Source=id==='nisibis'?'nisibis300':id==='amida'?'ammianus19':id==='edessa'?'edessa4':source;
    const socialSources:Source[]=[localSource,...r.sources.slice(0,2)];
+   const localFacts=lateAntiqueCityFacts(id,year,polity);
    const value={placeId:id,title,displayName:place?.aliases[0]??seed?.displayName,kind:'历史城市' as const,
-    polity:fact(polity,politicalSource,localSource),territory:fact(`地域位置：${r.modern} ${r.parts} ${recent.map(e=>`${e.year} 年：${e.title}。${e.effect}`).join(' ')} 点位为古今对照，未重建城墙、行省及族群的精确边界。`,source,...recent.map(e=>e.source)),
-    people:fact(people,...socialSources),language:fact(language,...socialSources),nameNote:fact(nameNote,id==='byzantium'?'byzantine':source),
+    polity:localFacts?.polity??fact(polity,politicalSource,localSource),territory:fact(`地域位置：${r.modern} ${r.parts} ${recent.map(e=>`${e.year} 年：${e.title}。${e.effect}`).join(' ')} 点位为古今对照，未重建城墙、行省及族群的精确边界。`,source,...recent.map(e=>e.source)),
+    people:localFacts?.people??fact(people,...socialSources),language:localFacts?.language??fact(language,...socialSources),nameNote:fact(nameNote,id==='byzantium'?'byzantine':source),
     reading:fourthReading.filter(ref=>year<324?ref.chapter<=100:year<364?ref.chapter===99||ref.chapter===112:ref.chapter===103||ref.chapter===113),
-    related:r.cities.filter(v=>v!==id).slice(0,8),relatedBattles:[...new Set(localEvents.flatMap(e=>e.battle?[e.battle]:[]))]};
+    related:r.cities.filter(v=>v!==id).slice(0,8),relatedBattles:[...new Set([...localFacts?.relatedBattles??[],...localEvents.flatMap(e=>e.battle?[e.battle]:[])])]};
    const signature=JSON.stringify([value,p.title]);
    if(last&&last.to===year-1&&signature===lastKey){last.to=year;last.period=`${last.from}—${year} 年 · ${p.title}`;continue}
    last={...value,id:`${id}-fourth-${year}`,from:year,to:year,focusYear:year,period:`${year} 年 · ${p.title}`};lastKey=signature;result.push(last);

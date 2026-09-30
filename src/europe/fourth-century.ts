@@ -2,6 +2,7 @@ import {enrichRegions400,cityRegions400} from './roman-400';
 import {roman300Regions,cityRegions300,type Region300} from './roman-300-regions';
 import type {ReadingReference,courseSources} from './course-sources';
 import type {Coordinate} from '../greek/battles';
+import {lateAntiqueCityRegions} from './late-antique-city-profiles';
 type Source=keyof typeof courseSources;
 export const inFourthCentury=(year:number)=>year>=300&&year<=400;
 export interface CenturyPhase {from:number;to:number;title:string;west:string;east:string;source:Source}
@@ -88,7 +89,7 @@ export const fourthEvents:CenturyEvent[]=[
  event(390,'塞萨洛尼基事件','巴尔干与米兰教会','镇压事件后，皇帝与米兰主教安布罗斯的关系成为重要议题。','城市社会、军队和教会不能混作一个政治主体。',['thessaloniki','milan'],['greece','italy'],'theodosius4'),
  event(391,'限制传统祭祀的法令','帝国城市与宗教设施','针对祭祀、神庙活动的限制进一步加强。','法令执行及地方反应不同；不能据一纸法令抹去所有旧信仰。',['alexandria','rome'],['egypt','italy'],'religionLaw4'),
  event(392,'欧根尼乌斯受拥立','西部宫廷与军队','瓦伦提尼安二世死亡后，欧根尼乌斯被立为皇帝。','东西部再次面对内战。',['milan'],['italy','gaul'],'theodosius4'),
- event(394,'弗里吉杜斯战役','阿尔卑斯东南通道','狄奥多西击败欧根尼乌斯与阿尔博加斯特一方。','本图以阿奎莱亚和山口方向定位，不伪造有争议的精确战场。',['aquileia','milan'],['alps','italy'],'theodosius4'),
+ event(394,'弗里吉杜斯战役','阿尔卑斯东南通道','狄奥多西击败欧根尼乌斯与阿尔博加斯特一方。','本图以阿奎莱亚和山口方向定位，不伪造有争议的精确战场。',['aquileia','milan','byzantium'],['alps','italy'],'theodosius4','frigidus-394'),
  event(395,'霍诺留与阿卡狄乌斯','米兰与君士坦丁堡','狄奥多西去世，两子分掌；阿拉里克等哥特武装的活动也改变巴尔干局势。','两部朝廷长期延续，西部此时仍拥有意大利、高卢、西班牙、北非和不列颠等地域。',['milan','byzantium','carthage','london'],['italy','thrace','africa','britain'],'theodosius4'),
  event(400,'世纪末的两部朝廷','从北非到黑海','西部朝廷在米兰，东部在君士坦丁堡；多种语言与宗教社群并存。','402 年迁都、406 年莱茵渡河、410 年罗马被劫都在之后。',['milan','byzantium','ctesiphon'],['italy','thrace','persia'],'emperorIndex4'),
 ];
@@ -109,8 +110,8 @@ export function sasanianRulerAt(y:number){
  return '伊嗣俟一世（399—420）';
 }
 const east=new Set(['thrace','greece','egypt','crete','cyprus','asia','pontus','levant','arabia','mesopotamia']);
-export const fourthCityRegions:Record<string,string>={...cityRegions300,arles:'gaul',paris:'gaul',nicaea:'asia',hadrianople:'thrace',amida:'mesopotamia',edessa:'mesopotamia',strasbourg:'gaul',siscia:'pannonia',naissus:'thrace',mursa:'pannonia',ravenna:'italy',toulouse:'gaul',tournai:'gaul',hippo:'africa',clermont5:'gaul'};
-const extraCities:Record<string,string[]>={asia:['nicaea'],thrace:['hadrianople','naissus'],mesopotamia:['amida','edessa'],gaul:['strasbourg','arles','paris','toulouse','tournai','clermont5'],pannonia:['siscia','mursa'],italy:['ravenna'],africa:['hippo']};
+export const fourthCityRegions:Record<string,string>={...cityRegions300,...lateAntiqueCityRegions,arles:'gaul',paris:'gaul',nicaea:'asia',hadrianople:'thrace',amida:'mesopotamia',edessa:'mesopotamia',strasbourg:'gaul',siscia:'pannonia',naissus:'thrace',mursa:'pannonia',ravenna:'italy',toulouse:'gaul',tournai:'gaul',hippo:'africa',clermont5:'gaul'};
+const extraCities:Record<string,string[]>={asia:['nicaea'],thrace:['hadrianople','naissus'],mesopotamia:['amida','edessa'],gaul:['strasbourg','arles','paris','toulouse','tournai','clermont5','metz','narbonne','reims'],pannonia:['siscia','mursa'],italy:['ravenna','verona'],africa:['hippo']};
 export function fourthRegionsAt(year:number):Region300[]{
  if(!inFourthCentury(year))return [];
  if(year===300)return roman300Regions.map(r=>({...r,cities:[...r.cities,...(extraCities[r.id]??[])]}));

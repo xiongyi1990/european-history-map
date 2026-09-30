@@ -5,6 +5,9 @@ export const inFifthCentury=(year:number)=>year>=400&&year<=500;
 export interface FifthEvent {year:number;title:string;text:string;places:string[];regions:string[];source:FifthSource;moreSources?:FifthSource[]}
 const e=(year:number,title:string,text:string,places:string[],regions:string[],source:FifthSource):FifthEvent=>({year,title,text,places,regions,source});
 export const fifthEvents:FifthEvent[]=[
+ e(414,'纳博讷王室婚姻与哥特驻留','阿塔乌尔夫在纳博讷与普拉西狄娅结婚；413—415年军事驻留、418年安置和462年交城是不同节点。婚姻不能直接当作帝国疆界合并。',['narbonne','toulouse','ravenna'],['gaul','italy'],'narbonneChronology'),
+ e(435,'罗马与汪达尔达成阶段性安排','进入北非和希波战争之后形成安置及政治安排；迦太基尚未在439年易手，也不是442年最后认可的同一阶段。具体获许控制范围仍需结合文献分别核定。',['hippo','carthage'],['africa'],'vandalTreaty5'),
+ e(462,'纳博讷交给西哥特王权','阿格里皮努斯为获取西哥特支持，将纳博讷交给狄奥多里克二世。此时阿尔勒、马赛与内陆奥弗涅还没有经历473—476年的相同变化。',['narbonne','toulouse','arles'],['gaul'],'hydatius5'),
  e(428,'东部亚美尼亚王权终结','萨珊结束东部阿尔沙克王权，转以总督体制统辖；西部罗马背景另看，不能把整个高原涂成同一个国家。',['vagharshapat','ctesiphon'],['armenia','persia'],'armenia4'),
  e(445,'阿提拉单独掌握联盟','布莱达死亡后阿提拉单独领导，常系于约445年；联盟成员的语言和身份并不因此统一。',['sirmium'],['huns4','pannonia'],'jordanes5'),
  e(481,'北高卢王位交接','希尔德里克去世、克洛维继位通常系于约481／482年；北高卢与莱茵方向仍有多支地方势力。',['tournai','soissons5'],['franks','gaul'],'gregory5'),
@@ -79,6 +82,11 @@ for(const event of fifthEvents){
 }
 for(const event of fifthEvents){
  const addSources=(...ids:FifthSource[])=>event.moreSources=[...new Set([...event.moreSources??[],...ids])];
+ if(event.year===414)addSources('hydatius5','narbonneLate');
+ if(event.year===462)addSources('narbonneLate','narbonneChronology');
+ if(event.year===451){event.places.push('metz');addSources('metzLate','gregory5');}
+ if(event.year===489){event.places.push('verona');addSources('veronaLate');}
+ if(event.year===496){event.places.push('reims');addSources('clovisBaptismLate','gregory5');}
  if(event.year===464)addSources('hydatius5','hydatiusStudy5');
  if(event.year===466)addSources('westernKings5','jordanes5');
  if(event.year===418){event.text+=' 瓦利亚去世，西哥特狄奥多里克一世继位，安置与国王交接分别记录。';addSources('jordanes5','hydatiusStudy5');}

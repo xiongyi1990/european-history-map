@@ -12,11 +12,26 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens the Narbonne subregion in the handover year and restores the earlier North African treaty route',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=462&region=gaul');render(<EuropeApp/>);
+  const gaul=await screen.findByRole('article',{name:'462 年地域详情'});
+  fireEvent.click(within(gaul).getByRole('button',{name:/纳博讷.*展开内部地域/}));
+  expect(location.search).toContain('region=narbonensis5');
+  const local=screen.getByRole('article',{name:'462 年地域详情'});
+  fireEvent.click(within(local).getByRole('button',{name:/纳尔博.*查看地域内或相邻城市/}));
+  expect(location.search).toContain('place=narbonne');expect(location.search).toContain('year=462');
+  expect(screen.getByText(/本年阿格里皮努斯将纳博讷/)).toBeTruthy();
+  await act(async()=>{});
+  cleanup();history.replaceState(null,'','/?year=429&battle=vandals-429&stage=2');render(<EuropeApp/>);
+  expect(screen.getByRole('article',{name:'战役阶段说明'}).textContent).toContain('435');
+  expect(screen.getByRole('article',{name:'战役阶段说明'}).textContent).toContain('迦太基还未易手');
+  await act(async()=>{});
+ });
  it('moves through the unified centuries overview and reaches newly retained Caucasus regions',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=401');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'年代'}));
   const overview=await screen.findByRole('region',{name:'4—5世纪地图总览'});
-  expect(overview.textContent).toContain('47 组地域');expect(overview.textContent).toContain('70 处');
+  expect(overview.textContent).toContain('48 组地域');expect(overview.textContent).toContain('74 处');
   fireEvent.change(within(overview).getByLabelText('四至五世纪连续时间轴'),{target:{value:'428'}});
   fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:/亚美尼亚与高加索/}));
   expect(location.search).toContain('year=428');expect(location.search).toContain('region=armenia');

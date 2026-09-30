@@ -65,7 +65,7 @@ describe('AD 400–500 reading continuity',()=>{
  it('keeps local areas geographical and distinguishes asynchronous southern city handovers',()=>{
   for(let year=401;year<=500;year++){
    const regions=readingRegionsAt(year);
-   expect(regions).toHaveLength(47);
+   expect(regions).toHaveLength(48);
    for(const r of regions.filter(r=>r.parent)){
     const parent=regions.find(p=>p.id===r.parent)!;
     expect(parent).toBeDefined();

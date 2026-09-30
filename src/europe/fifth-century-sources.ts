@@ -1,4 +1,12 @@
 export const fifthSources={
+ vandalTreaty5:{title:'罗兰·施泰纳赫研究：盖萨里克王权、435年和约及教会社群',url:'https://doi.org/10.1515/9783110643503-010'},
+ metzLate:{title:'梅斯市：河流位置、罗马旧城与451年战争',url:'https://metz.fr/decouvrir-partager/histoire.php'},
+ metzNamesLate:{title:'梅斯市城市研究：Divodurum、Mettis与河流交会',url:'https://metz.fr/fichiers/2017/07/18/20170706_Rapport_de_presentation.pdf'},
+ narbonneLate:{title:'Narbo Via博物馆：纳尔博·马尔提乌斯至462年西哥特统治',url:'https://narbovia.fr/accueil-2-2/les-parcours-permanents/parcours-permanent-du-musee/'},
+ narbonneChronology:{title:'Narbo Via博物馆教育资料：414年婚姻与462年政治变化',url:'https://narbovia.fr/app/uploads/2022/09/NV_DossierPeda_enseignants.pdf'},
+ veronaLate:{title:'UNESCO：维罗纳、阿迪杰河与古代城市遗存',url:'https://whc.unesco.org/en/list/797/'},
+ reimsNamesLate:{title:'兰斯市遗产导览：杜罗科尔托鲁姆与罗马高卢城市',url:'https://visitespatrimoines.reims.fr/visite/1'},
+ clovisBaptismLate:{title:'研究论文：克洛维受洗与罗马文化，含纪年讨论',url:'https://www.persee.fr/doc/bude_0004-5527_1996_num_1_1_4304'},
  noricum5:{title:'欧吉皮乌斯《圣塞维里努斯传》：多瑙河城市与迁居（圣徒传立场须辨别）',url:'https://ccel.org/ccel/pearse/morefathers/files/severinus_02_text.htm'},
  armeniaReligion5:{title:'伊朗百科全书：萨珊时期基督教与亚美尼亚的 451／484 年变化',url:'https://www.iranicaonline.org/articles/christianity-i/'},
  armeniaWar5:{title:'伊朗百科全书：米赫尔—纳尔塞与 451 年亚美尼亚战争',url:'https://www.iranicaonline.org/articles/mehr-narseh/'},

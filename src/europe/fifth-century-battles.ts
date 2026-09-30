@@ -4,6 +4,17 @@ const stage=(title:string,date:string,text:string,stops:[string,Coordinate][],pa
 const rome:Coordinate=[12.49,41.89],ostia:Coordinate=[12.29,41.76],ravenna:Coordinate=[12.2,44.42],byz:Coordinate=[28.98,41.01],sirmium:Coordinate=[19.62,44.97],aquileia:Coordinate=[13.37,45.77],milan:Coordinate=[9.19,45.46],verona:Coordinate=[10.99,45.44],carthage:Coordinate=[10.32,36.85],orleans:Coordinate=[1.91,47.9],metz:Coordinate=[6.18,49.12],troyes:Coordinate=[4.07,48.3],tournai:Coordinate=[3.39,50.61],soissons:Coordinate=[3.32,49.38];
 const caveat='线条只连接史料提及的城市、战区和方向，省略支队、往返及道路；不是逐日行军、精确战场或疆界。城市代表点不能用来推算军队阵形和居民迁徙比例。';
 export const fifthBattles:Battle[]=[
+ {id:'rhine-406',title:'莱茵渡河、高卢危机与伊比利亚分占',period:'约406／407—411 年',question:'莱茵河防线变化怎样连到高卢和伊比利亚？',caveat:caveat+' 渡河年代和具体渡点有讨论；美因茨只作河边参照，不宣称全体集团同日从同一座桥或冰面通过。',stages:[
+  stage('莱茵河两侧与进入高卢','约406年末／407年','汪达尔、苏维汇、阿兰等集团进入高卢；传统纪年为406年末，具体渡点和纪年存在讨论。美因茨与特里尔定位边防和后方，不画一条未经核定的过河轨迹。',[['莱茵河参照：美因茨',[8.27,50]],['高卢后方参照：特里尔',[6.64,49.75]]],[],'honorius400'),
+  stage('高卢同时出现皇位争夺','407—411 年','君士坦丁三世从不列颠进入高卢并驻阿尔勒。皇位争夺与迁居集团是不同政治主体，两条变化交织，不能把所有队伍拼成一次统一行军。',[['不列颠参照：伦敦',[-0.13,51.51]],['阿尔勒',[4.631,43.678]]],[],'honorius400'),
+  stage('越过比利牛斯山与半岛分占','409—411 年','部分集团进入伊比利亚，411年分别取得不同地域；加拉埃西亚、卢西塔尼亚与南部行省不能合成一个共同王国。山地节点只定位通道方向，布拉加、梅里达和加的斯并非一条顺序行军线。',[['比利牛斯山（通道方向）',[0.5,42.7]],['西北：布拉加',[-8.426,41.55]],['西部：梅里达',[-6.345,38.917]],['南部参照：加的斯',[-6.29,36.53]]],[],'hydatius5'),
+ ]},
+ {id:'vandals-429',title:'汪达尔渡海、希波战争与迦太基易手',period:'429—442 年',question:'为什么进入北非和夺取迦太基相差十年？',caveat:caveat+' 海峡点与沿岸连线只标方向；没有确定全体人员出发港、登陆点或逐日迁徙道路。',stages:[
+  stage('从伊比利亚进入北非','429 年','盖萨里克的集团从伊比利亚渡往非洲。海峡两岸只作区域定位；不能因较晚史料的故事就断言一位罗马将领邀请了所有迁居者，或429年已取得迦太基。',[['伊比利亚南端（区域参照）',[-5.7,36.05]],['北非海峡岸（区域参照）',[-5.8,35.8]]],[[-5.7,36.05],[-5.8,35.8]],'africaLate'),
+  stage('希波围城与地方居民','430—431 年','汪达尔方面围攻希波，奥古斯丁于430年去世。围城、攻陷和居民迁移分别理解；希波位于迦太基以西，不能把两城当作同一位置。',[['希波',[7.77,36.9]],['尚属罗马的迦太基',carthage]],[],'africaLate'),
+  stage('435年的阶段性安排','435 年','罗马与汪达尔达成安置及政治安排，迦太基还未易手。具体获许控制的地域不能由此扩展到整个北非，也不是442年和约的同一阶段。',[['希波',[7.77,36.9]],['迦太基',carthage]],[],'vandalTreaty5'),
+  stage('夺取迦太基与442年和约','439—442 年','439年盖萨里克夺取迦太基，港口、农业腹地和财政联系改变；442年和约进一步承认新格局。希波至迦太基的线只比较两城，埃及和昔兰尼加仍在罗马东方体系。',[['希波',[7.77,36.9]],['迦太基',carthage],['东方对照：亚历山大里亚',[29.92,31.2]]],[[7.77,36.9],carthage],'west5'),
+ ]},
  {id:'alaric-410',title:'阿拉里克围逼罗马与410年城破',period:'408—410 年',question:'为什么拉文纳宫廷与罗马城的处境不同？',caveat,stages:[
   stage('围城与海口供应','408—409 年','阿拉里克集团围逼罗马，港口与粮运是压力来源；拉文纳仍是霍诺留宫廷，谈判、围城和军事控制分别看。',[['罗马',rome],['奥斯提亚海口',ostia],['拉文纳宫廷',ravenna]],[ostia,rome],'honorius400'),
   stage('罗马被劫','410 年 8 月','谈判未能稳定局势，阿拉里克军进入罗马并劫掠；这不是西部皇帝在拉文纳同日被废。',[['罗马',rome]],[],'honorius400'),
@@ -35,5 +46,5 @@ export const fifthBattles:Battle[]=[
   stage('战争后的北高卢扩张','486 年','克洛维击败西阿格里乌斯后扩大势力；南方西哥特、东南勃艮第仍存在，507年战争在本专题之外。',[['苏瓦松',soissons],['南方对照：图卢兹',[1.44,43.6]]],[],'gregory5'),
  ]},
 ];
-export const fifthBattleYears:Record<string,number>={'alaric-410':410,'attila-gaul-451':451,'attila-italy-452':452,'vandal-expedition-468':468,'theodoric-489':489,'soissons-486':486};
-export const fifthBattleEvents:Record<number,string>={410:'alaric-410',451:'attila-gaul-451',452:'attila-italy-452',468:'vandal-expedition-468',486:'soissons-486',488:'theodoric-489',489:'theodoric-489',493:'theodoric-489'};
+export const fifthBattleYears:Record<string,number>={'rhine-406':406,'vandals-429':429,'alaric-410':410,'attila-gaul-451':451,'attila-italy-452':452,'vandal-expedition-468':468,'theodoric-489':489,'soissons-486':486};
+export const fifthBattleEvents:Record<number,string>={406:'rhine-406',407:'rhine-406',409:'rhine-406',411:'rhine-406',429:'vandals-429',430:'vandals-429',435:'vandals-429',439:'vandals-429',442:'vandals-429',410:'alaric-410',451:'attila-gaul-451',452:'attila-italy-452',468:'vandal-expedition-468',486:'soissons-486',488:'theodoric-489',489:'theodoric-489',493:'theodoric-489'};

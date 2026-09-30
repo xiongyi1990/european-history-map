@@ -7,6 +7,7 @@ import {fifthEast,fifthWest,fifthEvents,fifthReading,type FifthSource} from './f
 import {fifthAfrica} from './fifth-century-rulers';
 import {fifthVisigoths,fifthSuevi} from './fifth-century-western-kingdoms';
 import {fifthBattleEvents} from './fifth-century-battles';
+import {lateAntiqueCityFacts} from './late-antique-city-profiles';
 const fact=(text:string,...sources:HistorySource[]):HistoricalFact=>({text,sources:[...new Set(sources)]});
 const point=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:FifthSource,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'五世纪城市定位'});
 export const fifthPlaces:GazetteerPlace[]=[
@@ -52,11 +53,12 @@ export function completeFifthCentury(base:HistoricalDetail[]):HistoricalDetail[]
    const title=id==='london'&&year>=410?'伦敦旧罗马城址':seed?.title??place!.name;
    const localSource:Record<string,FifthSource>={clermont5:'clermontNames5',braga5:'braga5',orleans5:'orleans5',soissons5:'gregory5',chalcedon5:'chalcedon5'};
    const sources=[...r.sources,...(localSource[id]?[localSource[id]]:[]),...events.flatMap(e=>[e.source,...e.moreSources??[]])];
+   const localFacts=lateAntiqueCityFacts(id,year,r.polity);
    const d:HistoricalDetail={id:'',placeId:id,title,from:year,to:year,focusYear:year,period:'',kind:'历史城市',displayName:seed?.displayName,
-    polity:fact(localPolity(id,year,r.polity)+(events.length?' 本年关联：'+events.map(e=>e.title+'。'+e.text).join(' '):''),...sources),
-    territory:fact((place?.description??('城市的现代位置见标题下方。所在地域：'+r.modern))+' 本页采用城市代表点，不表示城墙、战场或行政边界。',...r.sources),
-    people:fact('五世纪地域背景：'+r.people,...r.sources),language:fact(r.language,...r.sources),
-    nameNote:fact(place?.description??seed!.nameNote.text,...r.sources),reading:fifthReading.map(v=>({...v,pages:v.pages as [number,number]})),related:id==='clermont5'?['toulouse','arles','lyon']:r.cities.filter(p=>p!==id).slice(0,4),relatedBattles:[...new Set(fifthEvents.filter(e=>e.year<=year&&e.places.includes(id)).flatMap(e=>fifthBattleEvents[e.year]?[fifthBattleEvents[e.year]]:[]))]};
+    polity:localFacts?.polity??fact(localPolity(id,year,r.polity)+(events.length?' 本年关联：'+events.map(e=>e.title+'。'+e.text).join(' '):''),...sources),
+    territory:fact((place?.description??(localFacts?seed!.nameNote.text:'城市的现代位置见标题下方。所在地域：'+r.modern))+' 本页采用城市代表点，不表示城墙、战场或行政边界。',...new Set([...r.sources,...seed?.nameNote.sources??[]])),
+    people:localFacts?.people??fact('五世纪地域背景：'+r.people,...r.sources),language:localFacts?.language??fact(r.language,...r.sources),
+    nameNote:fact(place?.description??seed!.nameNote.text,...new Set([...r.sources,...seed?.nameNote.sources??[]])),reading:fifthReading.map(v=>({...v,pages:v.pages as [number,number]})),related:id==='clermont5'?['toulouse','arles','lyon']:r.cities.filter(p=>p!==id).slice(0,4),relatedBattles:[...new Set([...localFacts?.relatedBattles??[],...fifthEvents.filter(e=>e.year<=year&&e.places.includes(id)).flatMap(e=>fifthBattleEvents[e.year]?[fifthBattleEvents[e.year]]:[])])]};
    const key=JSON.stringify([d.title,d.polity,d.people,d.language]);
    if(previous&&previousKey===key){previous.to=year;previous.period=`${previous.from}—${year} 年：五世纪分期背景`;continue}
    d.id=`${id}-fifth-${year}`;d.period=`${year} 年：五世纪分期背景`;out.push(d);previous=d;previousKey=key;

@@ -4,6 +4,11 @@ const stage=(title:string,date:string,side:string,text:string,stops:[string,Coor
 const trier:Coordinate=[6.64,49.75],turin:Coordinate=[7.68,45.07],verona:Coordinate=[10.99,45.44],rome:Coordinate=[12.467,41.936],adrian:Coordinate=[26.56,41.68],byz:Coordinate=[28.98,41.01],chrys:Coordinate=[29.015,41.026],saverne:Coordinate=[7.36,48.74],strasbourg:Coordinate=[7.75,48.58],antioch:Coordinate=[36.16,36.2],carrhae:Coordinate=[39.03,36.86],circesium:Coordinate=[40.43,35.13],ctesiphon:Coordinate=[44.58,33.09],nisibis:Coordinate=[41.22,37.07],edessa:Coordinate=[38.79,37.16];
 const caveat='线条概括已知地点之间的方向与先后关系，省略中间行军、支队和往返；不是复原的古道、精确战场或当年国界。';
 export const fourthBattles:Battle[]=[
+ {id:'frigidus-394',title:'弗里吉杜斯内战与狄奥多西最后的统一',period:'392—395 年',question:'为什么阿尔卑斯东南的内战会牵动两部宫廷？',caveat:caveat+' 弗里吉杜斯战区以今维帕瓦河谷方向定位，未标定两军阵地；不能把内战简单画成两种宗教或两个人种的国界战争。',stages:[
+  stage('两部宫廷与西部争位','392—394 年','狄奥多西与欧根尼乌斯阵营','瓦伦提尼安二世死后，欧根尼乌斯得到西部军政支持，狄奥多西从东方应对。君士坦丁堡和米兰只是对照政治空间，两点之间没有绘制一条已考定的进军道路。',[['东方宫廷：君士坦丁堡',byz],['西部参照：米兰',[9.19,45.46]]],[],'theodosius4'),
+  stage('阿尔卑斯东南通道决战','394 年 9 月','罗马内战双方','狄奥多西军与欧根尼乌斯、阿尔博加斯特一方在弗里吉杜斯战区交战。今维帕瓦河谷和阿奎莱亚帮助辨认山口与意大利平原的关系，不表示阵地就在代表点。',[['维帕瓦河谷（战区方向）',[13.94,45.87]],['阿奎莱亚', [13.37,45.77]]],[],'theodosius4'),
+  stage('米兰与395年的继承','394年后段—395年初','宫廷和地方社会','取胜后狄奥多西短暂共同掌握两部，随后在米兰去世，阿卡狄乌斯、霍诺留分别继承。统一并没有消除地方社会差异，战胜也不能解释为全体居民即时改变信仰。',[['阿奎莱亚',[13.37,45.77]],['米兰',[9.19,45.46]]],[[13.37,45.77],[9.19,45.46]],'theodosius4'),
+ ]},
  {id:'milvian-312',title:'君士坦丁进军意大利与米尔维安桥',period:'312 年',question:'从高卢进入意大利，为什么最后在罗马城北决战？',caveat,stages:[
   stage('从高卢越过阿尔卑斯方向','312 年 · 进军','君士坦丁军','从高卢基地南下进入意大利，在都灵附近作战。路线只表示越山方向，未确定每一处山口与停驻。',[['特里尔',trier],['都灵',turin]],[trier,[6.5,46.1],turin],'constantine4'),
   stage('意大利北部战事','312 年 · 北部','君士坦丁军','北部的战事包括维罗纳；地方城市、道路和补给支持进一步南进。',[['都灵',turin],['维罗纳',verona]],[turin,[9.19,45.46],verona],'constantine4'),
@@ -31,4 +36,4 @@ export const fourthBattles:Battle[]=[
   stage('安置而非建立独立王国','382 年','狄奥多西与哥特集团','达成安置协议；完整条款及精确安置区不能确定，因此只保留巴尔干的城市参照。',[['阿德里安堡',adrian],['塞萨洛尼基',[22.95,40.63]]],[],'theodosius4'),
  ]},
 ];
-export const fourthBattleYears:Record<string,number>={'milvian-312':312,'licinius-324':324,'strasbourg-357':357,'persian-363':363,'gothic-378':378};
+export const fourthBattleYears:Record<string,number>={'frigidus-394':394,'milvian-312':312,'licinius-324':324,'strasbourg-357':357,'persian-363':363,'gothic-378':378};
