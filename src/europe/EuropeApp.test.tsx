@@ -12,6 +12,31 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('restores a 395 administrative division, follows regions and leaves geometry at another year',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(fc('Western Roman Empire'))));history.replaceState(null,'','/?year=395&view=administration&division=italy');render(<EuropeApp/>);
+  const card=screen.getByRole('region',{name:'395 年行政分区'});
+  expect(within(card).getByRole('heading',{name:'意大利行政大区'})).toBeTruthy();
+  expect(screen.getByTestId('drawn-areas').textContent).toContain('高卢行政大区');
+  expect(screen.getByTestId('drawn-areas').textContent).not.toContain('Western Roman Empire');
+  fireEvent.click(within(card).getByRole('button',{name:/迦太基与阿非利加.*地域、居民与语言/}));
+  expect(location.search).toContain('region=africa');expect(location.search).not.toContain('division=');
+  expect(screen.getByRole('article',{name:'395 年地域详情'})).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:'返回城市归属对照'}));
+  expect(location.search).toContain('view=control');
+  expect(screen.getByTestId('drawn-areas').textContent).toBe('');
+  fireEvent.click(screen.getByRole('button',{name:'年代'}));
+  fireEvent.click(screen.getByRole('button',{name:'打开 395 年行政分区示意 →'}));
+  fireEvent.click(within(screen.getByRole('region',{name:'关键年份政权对照'})).getByRole('button',{name:'476 年'}));
+  expect(location.search).toContain('year=476');expect(location.search).not.toContain('administration');
+  expect(screen.getByTestId('drawn-areas').textContent).toBe('');
+  await act(async()=>{});
+ });
+ it('does not accept an administrative layer dated to 400 or modern geography',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=400&view=administration&division=east');render(<EuropeApp/>);
+  expect(screen.getByTestId('drawn-areas').textContent).toBe('');expect(location.search).not.toContain('administration');
+  expect(location.search).not.toContain('division');await act(async()=>{});
+ });
+
  it('restores event moments, hides borrowed polygons and keeps Dalmatia separate',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(fc('Western Roman Empire'))));history.replaceState(null,'','/?year=476&view=control&moment=before');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'年代'}));

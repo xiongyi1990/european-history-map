@@ -33,6 +33,10 @@
 
 主要提供方包括：EU-DEM / Copernicus（欧盟资助）、USGS（3DEP、GMTED2010、SRTM）、NOAA（ETOPO1）、Kartverket、奥地利开放数据、英国 Environment Agency、ArcticDEM。低倍率图块可能覆盖欧洲之外区域，亦包含其他来源。完整上游署名清单随仓库提供于 [terrain-attribution.md](docs/terrain-attribution.md)。
 
+## 395 年行政示意
+
+`src/europe/administration-395-geometry.json` 是参考 William R. Shepherd《Historical Atlas》（1923 年版，第 42—43 页）行政框架所作的手工概括轮廓。原图为公有领域，见 [图像出版信息与许可](https://commons.wikimedia.org/wiki/File:Roman_empire_395.jpg)。海岸使用本项目的 Natural Earth 陆地几何裁切；原扫描图不随网站分发。编辑轮廓沿用仓库 GPL-3.0-only，精度和复现方法见 [说明](docs/administration-395.md)。
+
 ## 程序依赖与字体
 
 React、MapLibre GL JS、Vite、TypeScript、Lucide 等依赖按各自许可证提供；具体安装版本和声明见 `package-lock.json` 及对应包的 LICENSE。不得删除其要求保留的通知。
