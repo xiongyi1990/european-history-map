@@ -1,4 +1,11 @@
 export const fifthSources={
+ noricum5:{title:'欧吉皮乌斯《圣塞维里努斯传》：多瑙河城市与迁居（圣徒传立场须辨别）',url:'https://ccel.org/ccel/pearse/morefathers/files/severinus_02_text.htm'},
+ armeniaReligion5:{title:'伊朗百科全书：萨珊时期基督教与亚美尼亚的 451／484 年变化',url:'https://www.iranicaonline.org/articles/christianity-i/'},
+ armeniaWar5:{title:'伊朗百科全书：米赫尔—纳尔塞与 451 年亚美尼亚战争',url:'https://www.iranicaonline.org/articles/mehr-narseh/'},
+ georgia5:{title:'伊朗百科全书：格鲁吉亚与伊朗的文学及宗教联系',url:'https://www.iranicaonline.org/articles/georgia-iv-1/'},
+ northEurope5:{title:'大都会博物馆：东欧与斯堪的纳维亚 1—500 年',url:'https://www.metmuseum.org/toah/ht/05/eue.html'},
+ scotland5:{title:'苏格兰国家博物馆：早期中世纪的地方社会',url:'https://www.nms.ac.uk/collections/departments/scottish-history-archaeology/projects/early-medieval-scotland'},
+ ireland5:{title:'爱尔兰国家博物馆：早期中世纪与欧甘文字',url:'https://www.museum.ie/getmedia/52e10d5c-ac70-46f2-bb6b-1dd4c5d28121/Ogham-Code.pdf'},
  westernKings5:{title:'剑桥研究《晚期古代西方的使节与政治交流》：西哥特、苏维汇年表（部分纪年有差异）',url:'https://assets.cambridge.org/97805218/13495/frontmatter/9780521813495_frontmatter.pdf'},
  hydatiusStudy5:{title:'塞格德大学：希达提乌斯《编年史》译注与人物年代',url:'https://acta.bibl.u-szeged.hu/10944/1/doc_068_015-109.pdf'},
  clermont5:{title:'克莱蒙费朗市：奥弗涅围城与 475 年和议',url:'https://clermont-ferrand.fr/sites/default/files/mep_parcours_patrimoinev2_20182019.pdf'},

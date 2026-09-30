@@ -2,7 +2,8 @@ import {fifthEvents,fifthPhaseAt,fifthEast,fifthWest,fifthPersia,fifthReading,in
 import {courseSources} from './course-sources';
 import {fifthAfrica,lateWestSources} from './fifth-century-rulers';
 import {fifthVisigoths,fifthSuevi} from './fifth-century-western-kingdoms';
-export function FifthCenturyGuide({year,onYear,onPlace,onRegion}:{year:number;onYear:(y:number)=>void;onPlace:(id:string)=>void;onRegion:(id:string)=>void}){
+import {fifthBattleEvents,fifthBattles} from './fifth-century-battles';
+export function FifthCenturyGuide({year,onYear,onPlace,onRegion,onBattle}:{year:number;onYear:(y:number)=>void;onPlace:(id:string)=>void;onRegion:(id:string)=>void;onBattle:(id:string)=>void}){
  if(!inFifthCentury(year))return null;
  const phase=fifthPhaseAt(year)!,current=fifthEvents.filter(e=>e.year===year),before=[...fifthEvents].reverse().find(e=>e.year<year),after=fifthEvents.find(e=>e.year>year);
  return <section className="fourth-guide" aria-label="400—500 年连续历史导览">
@@ -21,6 +22,7 @@ export function FifthCenturyGuide({year,onYear,onPlace,onRegion}:{year:number;on
    <article><h3>苏维汇：半岛西北的加拉埃西亚</h3><p>{fifthSuevi(year)}</p><button disabled={year===400} onClick={()=>onPlace('braga5')}>查看布拉加 →</button><button onClick={()=>onRegion(year===400?'hispania':'gallaecia5')}>定位半岛西北 →</button><p><a href={courseSources.westernKings5.url} target="_blank" rel="noreferrer">{courseSources.westernKings5.title} ↗</a></p></article>
   </div></details>
   <h3>这一年与前后转折</h3>
+  {fifthBattleEvents[year]&&<div className="h-related"><button onClick={()=>onBattle(fifthBattleEvents[year])}>分阶段查看五世纪战役 →<span>{fifthBattles.find(b=>b.id===fifthBattleEvents[year])?.period} · 城市与战区方向</span></button></div>}
   {current.length?current.map(e=><article className="fourth-event" key={e.year}><h4>{e.title}</h4><p>{e.text}</p><div className="h-related">{e.places.map(id=><button key={id} onClick={()=>onPlace(id)}>{({milan:'米兰',ravenna:'拉文纳',byzantium:'君士坦丁堡',ctesiphon:'泰西封',rome:'罗马',carthage:'迦太基',hippo:'希波',braga5:'布拉加',orleans5:'奥尔良',soissons5:'苏瓦松',chalcedon5:'迦克墩'} as Record<string,string>)[id]??labels[id]??'查看关联城市'} →</button>)}</div>{[e.source,...e.moreSources??[]].map(s=><p key={s}><a href={courseSources[s].url} target="_blank" rel="noreferrer">{courseSources[s].title} ↗</a></p>)}</article>):<p>本年未单列新事件。最近转折为 {phase.from} 年“{phase.title}”；城市与地域仍可查询，不表示各地没有发生其他变化。</p>}
   <details open><summary>同一年，五个西部地域分别看</summary><div className="h-related">{[['britain','不列颠：罗马统治退出'],['gaul','高卢：多个王权与地方势力'],['hispania','伊比利亚：苏维汇与西哥特'],['africa','北非：从罗马到汪达尔'],['italy','意大利：从皇帝到国王']].map(([id,name])=><button key={id} onClick={()=>onRegion(id)}>{name}<span>位置、城市、居民与语言 →</span></button>)}</div></details>
   <details><summary>展开 {fifthEvents.length} 个关键年份</summary><div className="fourth-event-list">{fifthEvents.map(e=><button key={e.year} onClick={()=>onYear(e.year)} aria-current={year===e.year?'date':undefined}><b>{e.year}</b><span>{e.title}</span></button>)}</div></details>

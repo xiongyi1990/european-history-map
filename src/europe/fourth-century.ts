@@ -10,7 +10,10 @@ const phase=(from:number,to:number,title:string,west:string,east:string,source:S
 export const fourthPhases:CenturyPhase[]=[
  phase(300,304,'第一轮四帝共治','马克西米安与君士坦提乌斯一世分担西部事务。','戴克里先与伽列里乌斯分担东方和巴尔干事务。','tetrarchy300'),
  phase(305,305,'两位正帝退位','马克西米安退位；君士坦提乌斯升为正帝，塞维鲁成为副帝。','戴克里先退位；伽列里乌斯升为正帝，马克西米努斯·戴亚成为副帝。','tetrarchy300'),
- phase(306,311,'共治体系陷入争位','君士坦丁在约克被拥立；马克森提乌斯控制意大利。塞维鲁、马克西米安先后退出争位；北非也曾出现亚历山大的反叛。','伽列里乌斯、马克西米努斯·戴亚及 308 年受立的李锡尼先后并存；311 年伽列里乌斯去世。','tetrarchy300'),
+ phase(306,307,'约克拥立与意大利争位','306年君士坦提乌斯一世去世，君士坦丁受拥立；马克森提乌斯在罗马起兵，马克西米安重新介入，塞维鲁在307年败亡。','伽列里乌斯与马克西米努斯·戴亚继续分掌；李锡尼于308年受立尚未发生。','constantine4'),
+ phase(308,309,'会议仍未结束争位','君士坦丁在高卢、马克森提乌斯在意大利，两者并存；北非也出现亚历山大的争位。','308年卡农图姆会议后李锡尼受立，与伽列里乌斯、马克西米努斯·戴亚并存；不是帝国突然恢复稳定四人名单。','tetrarchy300'),
+ phase(310,310,'马克西米安退出争位','马克西米安在君士坦丁控制区再次争位后死亡；君士坦丁与马克森提乌斯的对立仍在，312年决战没有提前。','伽列里乌斯、李锡尼与马克西米努斯·戴亚的权力关系仍在变化。','constantine4'),
+ phase(311,311,'伽列里乌斯去世','君士坦丁与马克森提乌斯仍在西部各有控制区；全帝国尚未统一。','伽列里乌斯发布宽容敕令后去世，东方的李锡尼、马克西米努斯·戴亚继续竞争。','milan4'),
  phase(312,312,'君士坦丁取得罗马','君士坦丁击败马克森提乌斯，意大利转入其控制。','李锡尼和马克西米努斯·戴亚仍为对手；尚未完成全帝国统一。','constantine4'),
  phase(313,315,'君士坦丁与李锡尼','君士坦丁掌握西部。','李锡尼在 313 年击败马克西米努斯·戴亚，控制东方。','constantine4'),
  phase(316,323,'两位皇帝的内战与停战','316／317 年内战后，君士坦丁取得更多巴尔干地区。','李锡尼保有色雷斯及东方；具体和议年代存在 314 与 316 等讨论，本图采用 316／317 年叙述。','constantine4'),
@@ -38,6 +41,15 @@ export const fourthReading:ReadingReference[]=[{chapter:98,pages:[792,799],note:
 export interface CenturyEvent {year:number;title:string;where:string;what:string;effect:string;places:string[];regions:string[];source:Source;battle?:string}
 const event=(year:number,title:string,where:string,what:string,effect:string,places:string[],regions:string[],source:Source,battle?:string):CenturyEvent=>({year,title,where,what,effect,places,regions,source,battle});
 export const fourthEvents:CenturyEvent[]=[
+ event(310,'马克西米安死亡','高卢与意大利争位','马克西米安再次介入争位后死亡。','不继续把第一轮四帝名单沿用到310年；马克森提乌斯仍控制意大利。',['trier','massilia','rome'],['gaul','italy'],'constantine4'),
+ event(355,'尤利安获任副帝','米兰与高卢军区','尤利安受任副帝，前往恢复高卢军事局势。','副帝任命不等于他此时已是唯一正帝；科隆与莱茵边防仍有危机。',['milan','cologne','trier'],['italy','gaul'],'julian4'),
+ event(356,'科隆恢复罗马控制','莱茵河西岸','尤利安恢复前一年被法兰克人取得的科隆。','城市恢复、357年斯特拉斯堡会战和全日耳曼地区的归属分别看。',['cologne','strasbourg'],['gaul','franks'],'ammianus16'),
+ event(365,'东方争位与地中海地震','君士坦丁堡及地中海东部','普罗科皮乌斯在君士坦丁堡争位；同年地震及海啸影响东地中海。','内战是权力变化，灾害是地方社会遭遇，不能混成一次帝国疆界变化。',['byzantium','alexandria','cyrene','gortyn'],['thrace','egypt','libya','crete'],'ammianus26'),
+ event(366,'普罗科皮乌斯败亡','色雷斯与小亚细亚','瓦伦斯方面结束普罗科皮乌斯的争位。','365—366年东方并非一直只有一位无竞争的统治者。',['byzantium','nicaea'],['thrace','asia'],'ammianus26'),
+ event(368,'不列颠恢复行动','不列颠旧军区与伦敦','老狄奥多西率军处理367年危机后的局势。','恢复行动不等于后来410年统治退出；北部长城及南部城市分开看。',['london','york','housesteads'],['britain','north-britain'],'ammianus27'),
+ event(397,'北非吉尔多反叛','北非沿岸与意大利粮运','吉尔多反叛西部朝廷，北非与意大利的军政和供应联系受冲击。','这是罗马内部权力危机，不是439年汪达尔王国已经建立。',['carthage','ostia','milan'],['africa','italy'],'honorius400'),
+ event(398,'吉尔多反叛被镇压','北非与西部朝廷','西部方面结束吉尔多反叛。','400年北非核心地区仍联系西部，不能把397年的反叛继续当作一个永久独立帝国。',['carthage','milan'],['africa','italy'],'honorius400'),
+ event(399,'萨珊与东方宫廷的变化','泰西封与君士坦丁堡','伊嗣俟一世在萨珊继位；东方罗马宫廷也面临军队和权臣冲突。','两座宫廷在不同国家，不把萨珊王位交接当作罗马皇位更替。',['ctesiphon','byzantium'],['persia','thrace'],'yazdegerd400'),
  event(301,'最高限价敕令','从东方行省理解帝国财政','戴克里先政府试图以最高价格表应对经济与供应问题。','这是帝国治理措施，不能画成新国家或一次人口迁徙。',['nicomedia'],['asia','italy'],'priceEdict4'),
  event(303,'大迫害开始','尼科米底亚与东方诸省','针对基督徒的迫害展开，各地执行强度不同。','教会和信众受影响，不代表所有居民的信仰被统一。',['nicomedia','alexandria','edessa'],['asia','egypt','levant'],'persecution4'),
  event(305,'戴克里先与马克西米安退位','两组皇帝的交接','正帝退位、副帝晋升，新副帝受任。','帝国没有分成四个独立国家；旧四帝姓名不能继续覆盖随后整世纪。',['nicomedia','milan'],['asia','italy'],'tetrarchy300'),
@@ -80,10 +92,25 @@ export const fourthEvents:CenturyEvent[]=[
  event(395,'霍诺留与阿卡狄乌斯','米兰与君士坦丁堡','狄奥多西去世，两子分掌；阿拉里克等哥特武装的活动也改变巴尔干局势。','两部朝廷长期延续，西部此时仍拥有意大利、高卢、西班牙、北非和不列颠等地域。',['milan','byzantium','carthage','london'],['italy','thrace','africa','britain'],'theodosius4'),
  event(400,'世纪末的两部朝廷','从北非到黑海','西部朝廷在米兰，东部在君士坦丁堡；多种语言与宗教社群并存。','402 年迁都、406 年莱茵渡河、410 年罗马被劫都在之后。',['milan','byzantium','ctesiphon'],['italy','thrace','persia'],'emperorIndex4'),
 ];
-export function sasanianRulerAt(y:number){return y<=302?'纳尔塞（293—约 302／303）':y<=308?'霍尔米兹德二世（约 302／303—309）':y<=378?'沙普尔二世（309—379）':y<=382?'阿尔达希尔二世（379—383；379 为交接年）':y<=387?'沙普尔三世（383—388；383 为交接年）':y<=398?'巴赫拉姆四世（388—399；388 为交接年）':'伊嗣俟一世（399—420；399 为交接年）'}
+fourthEvents.sort((a,b)=>a.year-b.year);
+export function sasanianRulerAt(y:number){
+ if(y<302)return '纳尔塞（293—约302／303）';
+ if(y<=303)return '纳尔塞到霍尔米兹德二世的交接（约302／303，纪年有差异）';
+ if(y<309)return '霍尔米兹德二世（约302／303—309）';
+ if(y===309)return '霍尔米兹德二世去世后的王位安排，沙普尔二世即位（309）';
+ if(y<379)return '沙普尔二世（309—379）';
+ if(y===379)return '沙普尔二世去世，阿尔达希尔二世继位（379）';
+ if(y<383)return '阿尔达希尔二世（379—383）';
+ if(y===383)return '阿尔达希尔二世到沙普尔三世的交接（383）';
+ if(y<388)return '沙普尔三世（383—388）';
+ if(y===388)return '沙普尔三世去世，巴赫拉姆四世继位（388）';
+ if(y<399)return '巴赫拉姆四世（388—399）';
+ if(y===399)return '巴赫拉姆四世去世，伊嗣俟一世继位（399）';
+ return '伊嗣俟一世（399—420）';
+}
 const east=new Set(['thrace','greece','egypt','crete','cyprus','asia','pontus','levant','arabia','mesopotamia']);
-export const fourthCityRegions:Record<string,string>={...cityRegions300,arles:'gaul',paris:'gaul',nicaea:'asia',hadrianople:'thrace',amida:'mesopotamia',edessa:'mesopotamia',strasbourg:'gaul',siscia:'pannonia',naissus:'thrace',mursa:'pannonia'};
-const extraCities:Record<string,string[]>={asia:['nicaea'],thrace:['hadrianople','naissus'],mesopotamia:['amida','edessa'],gaul:['strasbourg','arles','paris'],pannonia:['siscia','mursa']};
+export const fourthCityRegions:Record<string,string>={...cityRegions300,arles:'gaul',paris:'gaul',nicaea:'asia',hadrianople:'thrace',amida:'mesopotamia',edessa:'mesopotamia',strasbourg:'gaul',siscia:'pannonia',naissus:'thrace',mursa:'pannonia',ravenna:'italy',toulouse:'gaul',tournai:'gaul',hippo:'africa',clermont5:'gaul'};
+const extraCities:Record<string,string[]>={asia:['nicaea'],thrace:['hadrianople','naissus'],mesopotamia:['amida','edessa'],gaul:['strasbourg','arles','paris','toulouse','tournai','clermont5'],pannonia:['siscia','mursa'],italy:['ravenna'],africa:['hippo']};
 export function fourthRegionsAt(year:number):Region300[]{
  if(!inFourthCentury(year))return [];
  if(year===300)return roman300Regions.map(r=>({...r,cities:[...r.cities,...(extraCities[r.id]??[])]}));
@@ -94,6 +121,7 @@ export function fourthRegionsAt(year:number):Region300[]{
   r.change=events.length?events.slice(-3).map(e=>`${e.year} 年：${e.title}。${e.effect}`).join(' '):'本世纪的详细政治转折见上方阶段说明。没有新增记录的年份沿用该阶段的地域背景，不表示这一带没有发生变化。';
   if(r.group==='roman'||r.id==='mesopotamia')r.polity=`罗马帝国的${r.name}所在空间。${east.has(r.id)?p.east:p.west}`;
   if(r.id==='pannonia'||r.id==='thrace')r.polity=`罗马帝国的巴尔干地区；本条合并多个历史地域，其分掌曾随内战与继承变化，不能统一归给某一位皇帝。${year<317?'本世纪初与伽列里乌斯、李锡尼等的军政活动联系密切。':year<324?'317 年后君士坦丁取得更多巴尔干地区，李锡尼仍保有色雷斯。':year<337?'324 年之后由君士坦丁统一统治。':year<364?'诸子分掌、内战及后来统一统治先后发生；西尔米乌姆和海峡地区并非始终由同一位共治者分掌。':'帝国西部与东方的军事、宫廷联系在此交会；潘诺尼亚方向与色雷斯方向需要分别理解。'}`;
+  if(year===365||year===366){if(r.id==='thrace'||r.id==='asia')r.polity+=' 365—366年普罗科皮乌斯争位，瓦伦斯方面在366年取胜；不是这一年内完全无竞争的朝廷。';}
   if(r.id==='mesopotamia'){
    r.name='上美索不达米亚：罗马与萨珊边区';r.mapName='上美索不达米亚';
    r.polity=year<363?'罗马—萨珊接触地带：尼西比斯仍属罗马；阿米达在 359 年围城中失守。各城在战争中的处境不同。':'363 年和议后尼西比斯归萨珊，埃德萨仍属罗马；这一地理区域横跨两国，不能整体归给其中一方。';

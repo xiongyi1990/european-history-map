@@ -17,9 +17,15 @@ export const fourthPlaces:GazetteerPlace[]=[
  site('mursa','穆尔萨','克罗地亚 · 奥西耶克',['Mursa','Osijek','穆尔萨会战'],[18.7,45.55],'constantius4','德拉瓦河畔的罗马城市，351 年内战会战的附近定位点，不是战场边界。'),
 ];
 // Paris already has a shared medieval gazetteer point; add its ancient profile without a duplicate map point.
-const cityProfiles=[...fourthPlaces,site('paris','卢泰西亚（巴黎）','法国 · 巴黎',['Lutetia','Paris','卢泰西亚'],[2.35,48.86],'paris4','塞纳河畔的高卢城市，360 年尤利安在此被拥立。沿用共享的现代城市代表点，不表示古城墙范围。')];
+const cityProfiles=[...fourthPlaces,site('paris','卢泰西亚（巴黎）','法国 · 巴黎',['Lutetia','Paris','卢泰西亚'],[2.35,48.86],'paris4','塞纳河畔的高卢城市，360 年尤利安在此被拥立。沿用共享的现代城市代表点，不表示古城墙范围。'),
+ site('ravenna','拉文纳','意大利 · 拉文纳',['Ravenna'],[12.2,44.42],'ravenna','亚得里亚海沿岸城市与港口空间；四世纪还不能提前当作402年以后西部宫廷常驻地。'),
+ site('toulouse','托洛萨（图卢兹）','法国 · 图卢兹',['Tolosa','Toulouse'],[1.44,43.6],'arles4','高卢西南的加龙河城市；418年安置与西哥特王权中心属于五世纪，不提前用于四世纪。'),
+ site('tournai','图尔奈','比利时 · 图尔奈',['Tournai','Turnacum'],[3.39,50.61],'tournaiLate','斯海尔德河方向的罗马高卢城市；希尔德里克与克洛维的王权关系属于五世纪后期。'),
+ site('hippo','希波','阿尔及利亚 · 安纳巴',['Hippo Regius','Annaba'],[7.77,36.9],'africaLate','北非沿岸城市，在迦太基以西；430年汪达尔围城尚未发生。'),
+ site('clermont5','阿尔维尔纳（克莱蒙）','法国 · 克莱蒙费朗',['Arverna','Augustonemetum'],[3.085,45.779],'clermontNames5','罗马时期古名奥古斯托内梅图姆，晚期称阿尔维尔纳等；在高卢内陆奥弗涅，475年割让给西哥特在下一世纪。'),
+];
 const newCityById=new Map(cityProfiles.map(p=>[p.id,p]));
-const newSources:Record<string,Source>={arles:'arles4',paris:'paris4',nicaea:'nicaea4',hadrianople:'ammianus31',amida:'amida4',edessa:'edessa4',strasbourg:'ammianus16',siscia:'theodosius4',naissus:'constantine4',mursa:'constantius4'};
+const newSources:Record<string,Source>={arles:'arles4',paris:'paris4',nicaea:'nicaea4',hadrianople:'ammianus31',amida:'amida4',edessa:'edessa4',strasbourg:'ammianus16',siscia:'theodosius4',naissus:'constantine4',mursa:'constantius4',ravenna:'ravenna',toulouse:'arles4',tournai:'tournaiLate',hippo:'africaLate',clermont5:'clermontNames5'};
 // Build dated regional-context records, retaining pre-existing detailed entries where present.
 // Adjacent identical records are merged; no annual precision is inferred from a period summary.
 export function completeFourthCentury(base:HistoricalDetail[]):HistoricalDetail[]{

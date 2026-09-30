@@ -1,16 +1,19 @@
 import {fifthAfrica,lateWestSources} from './fifth-century-rulers';
-import {fourthRegionsAt} from './fourth-century';
+import {fourthRegionsAt,fourthCityRegions} from './fourth-century';
+import {cityRegions400} from './roman-400';
+import {fifthPeriphery} from './fifth-century-periphery';
 import {fifthSubregionsAt} from './fifth-century-subregions';
 import type {Region300} from './roman-300-regions';
 import {fifthEast,fifthWest,fifthPersia,fifthEvents,type FifthSource} from './fifth-century';
 export const fifthCityRegions:Record<string,string>={
+ ...fourthCityRegions,...cityRegions400,
  milan:'italy',rome:'italy',ravenna:'italy',ostia:'italy',aquileia:'italy',
  trier:'gaul',clermont5:'gaul',arles:'gaul',toulouse:'gaul',tournai:'gaul',paris:'gaul',lyon:'gaul',massilia:'gaul',mainz:'gaul',orleans5:'gaul',soissons5:'gaul',
  london:'britain',york:'britain',braga5:'hispania',emerita:'hispania',tarraco:'hispania',gades:'hispania',
  carthage:'africa',hippo:'africa',lepcis:'tripolitania400',cyrene:'cyrenaica400',alexandria:'egypt',
  byzantium:'thrace',hadrianople:'thrace',naissus:'thrace',thessaloniki:'greece',athens:'greece',
  ephesus:'asia',nicaea:'asia',nicomedia:'asia',chalcedon5:'asia',antioch:'levant',jerusalem:'levant',
- edessa:'mesopotamia',amida:'mesopotamia',nisibis:'mesopotamia',ctesiphon:'persia',sirmium:'pannonia',salona:'pannonia',
+ edessa:'mesopotamia',amida:'mesopotamia',nisibis:'mesopotamia',ctesiphon:'asoristan',sirmium:'pannonia',salona:'pannonia',
 };
 const westSocial='罗马时代的地方居民、土地所有者、农民、城市手工业者和教会社群继续生活；新的军事集团、统治家族与迁居者加入其中。政权易手、军事驻扎与全体居民身份变化不是同一件事。';
 const eastSocial='城镇居民、乡村社群、军队和教会存在不同利益与身份；希腊语公共文化、罗马政治认同与地方传统可以并存。战争影响因地而异，不把攻城直接当作全部人口被替换。';
@@ -31,21 +34,25 @@ function control(id:string,y:number):string{
  if(id==='hispania')return y<409?'罗马西部的伊比利亚行省空间。':y<418?'409 年进入的苏维汇、汪达尔、阿兰等集团与罗马地方行政并存；西哥特随后参与罗马的军事行动。':y<429?'西哥特干预、苏维汇西北据点与汪达尔等活动区并存，罗马控制在各地程度不同。':y<456?'汪达尔主力渡海后，苏维汇扩张与罗马、西哥特军事活动交织；半岛不是一个统一王国。':'西哥特势力扩大，苏维汇仍在西北延续。北部与地方社会有不同处境，不能把整个半岛同年涂成完全统一的西哥特国土。';
  if(id==='britain')return y<407?'处于罗马西部体系内，但军队与帝国中心的联系已不稳定。':y<410?'军队拥立君士坦丁三世并渡海进入高卢；岛内权力与防卫安排正在变化。':'约 410 年后，常规罗马帝国统治退出，地方权力与大陆迁居集团形成多样格局；此时尚无统一英格兰王国。';
  if(id==='africa')return fifthAfrica(y);
+ if(id==='islands')return y<439?'西西里、撒丁和科西嘉在罗马西部海上体系中；三岛的军事变化并非同时发生。':'汪达尔的海上活动、岛屿据点及意大利王权相互竞争；西西里与撒丁、科西嘉的归属不能由439年迦太基易手统一推定。本卡尚未逐年核定三岛全部控制线。';
+ if(id==='mauretania')return y<429?'北非西段的罗马沿海、边区与地方首领社会并存；沃鲁比利斯已不按帝国常规驻军城处理。':'汪达尔进入北非后，地方摩尔首领、海岸城市及罗马、汪达尔势力的关系变化；毛里塔尼亚并不全部处在迦太基王廷的相同控制强度下。';
+ if(id==='libya')return '跨越西侧的黎波里塔尼亚与东侧昔兰尼加的地理区域，不能套用现代利比亚的统一国界；下面两个子地域分别说明政治联系。';
  if(id==='tripolitania400')return y<439?'五世纪前期处在罗马西部北非行省空间。':'汪达尔扩张影响的黎波里塔尼亚，罗马控制与地方社会逐渐重组；本图尚未核定沿岸每座城市的具体交接年，不能据 439 年迦太基易手推定这里同日易手。';
  if(id==='mesopotamia')return '尼西比斯自 363 年起属萨珊；埃德萨、阿米达仍在罗马东方边区。421—422 年及 440 年前后的战争没有把这些城市合成同一政权；502 年战争尚未发生。';
- if(id==='persia')return '萨珊帝国：'+fifthPersia(y)+'。王廷与两河、伊朗高原相联系，东境战争不等于罗马已攻占泰西封。';
+ if(['persia','asoristan','pars','khuzestan'].includes(id))return '萨珊帝国：'+fifthPersia(y)+'。'+(id==='persia'?'王廷与两河、伊朗高原相联系，东境战争不等于罗马已攻占泰西封。':'本条是帝国内部地域，不能当作独立王国；王朝更替并不改变其现代定位。');
  if(id==='pannonia')return y<434?'潘诺尼亚的罗马控制逐步衰退，多种军事集团活动；亚得里亚海岸达尔马提亚应另看。':y<454?'多瑙河中游有匈人联盟及其附属、邻近集团；不能把达尔马提亚沿海和每座旧罗马城市都当成统一匈人行政区。':y<475?'匈人联盟瓦解后，哥特、格皮德等集团与罗马势力重组；沿海达尔马提亚有自己的军政中心。':y<=480?'尼波斯在达尔马提亚延续西部皇帝主张；多瑙河内陆另有哥特、格皮德等势力，不能用同一颜色代替这些差异。':'尼波斯死后达尔马提亚与意大利王权相联系；多瑙河内陆的控制另有格皮德等集团，不整体归入同一政权。';
  return '罗马东方的地域空间。'+fifthEast(y)+(id==='thrace'?' 巴尔干遭受匈人及哥特军队冲击，攻击范围不等于首都或全部地区易主。':'');
 }
 export function fifthRegionsAt(year:number):Region300[]{
  if(year<=400||year>500)return [];
- const ids=new Set(Object.values(fifthCityRegions));
- const parents=fourthRegionsAt(400).filter(r=>ids.has(r.id)).map(r=>{
-  const social=societies[r.id==='tripolitania400'?'africa':r.id]??[eastSocial,r.id==='levant'?'希腊语与叙利亚语、阿拉米语等地方传统并存；政治、语言、教义边界并不重合。':'希腊语公共文化、拉丁帝国制度及地方语言传统并存；未收录逐城比例。'];
+ const parents=fourthRegionsAt(400).map(r=>{
+  const specific=fifthPeriphery(r.id,year);
+  const social=specific?[specific.people,specific.language]:societies[r.id==='tripolitania400'||r.id==='mauretania'?'africa':r.id]??[eastSocial,r.id==='levant'?'希腊语与叙利亚语、阿拉米语等地方传统并存；政治、语言、教义边界并不重合。':'希腊语公共文化、拉丁帝国制度及地方语言传统并存；未收录逐城比例。'];
   const sources:FifthSource[]=r.id==='persia'?['sasanianDynasty4','kawad5']:r.id==='britain'?['britain5']:r.id==='hispania'?['hydatius5','tarraco5']:r.id==='gaul'?['gaul5','gregory5']:r.id==='africa'||r.id==='tripolitania400'?['africaLate','procopius5','vandalKings5','vandalSociety5']:r.id==='italy'?['honorius400','endWest5','jordanesEnd5',...lateWestSources(year)]:r.id==='pannonia'?['jordanesEnd5','zeno5']:['theo5','leo5','zeno5'];
   const recent=fifthEvents.filter(e=>e.year<=year&&e.regions.includes(r.id)).slice(-3);
   const name=r.id==='britain'&&year>=410?'不列颠：罗马统治退出之后':r.id==='africa'&&year>=439?'迦太基与汪达尔北非':r.id==='tripolitania400'?'的黎波里塔尼亚':r.name;
-  return {...r,name,mapName:name.split('：')[0],parent:undefined,polity:control(r.id,year),people:social[0],language:social[1],parts:'地理定位：'+r.modern+' 下列城市用于比较地域内部及相邻通道；这是地理分组，不是单一国家的省界。',cities:Object.keys(fifthCityRegions).filter(id=>fifthCityRegions[id]===r.id),sources,change:recent.map(e=>`${e.year} 年：${e.title}。${e.text}`).join(' ')||'本世纪本地域的精细地方年表仍待补充。'};
+  const focus:Partial<Region300>=r.id==='huns4'?(year<434?{name:'匈人诸集团：黑海至多瑙河',mapName:'匈人诸集团'}:year<454?{name:'匈人联盟：多瑙河与草原',mapName:'匈人联盟',coords:[20,47],bounds:[[16,42],[34,51]],modern:'多瑙河中游平原及向黑海延伸的联盟联系；镜头是区域阅读范围，不是已考定的阿提拉王廷或帝国界线。'}:{name:'匈人后继集团与黑海方向',mapName:'匈人后继集团',coords:[30,46],bounds:[[20,42],[40,50]],modern:'联盟瓦解后的多瑙河下游与黑海相关活动空间；不能当作一个延续到500年的统一帝国。'}):r.id==='franks'&&year>=481?{coords:[3.5,50.4],bounds:[[0,47.5],[9,53.5]],modern:'北高卢、斯海尔德河与莱茵下游联系空间；图尔奈、苏瓦松与河边诸集团的处境并不完全相同。'}:{};
+  return {...r,name,mapName:name.split('：')[0],...focus,polity:specific?.polity||control(r.id,year),people:social[0],language:social[1],parts:'地理定位：'+(focus.modern??r.modern)+' 下列城市用于比较地域内部及相邻通道；这是地理分组，不是单一国家的省界。',cities:[...new Set([...r.cities,...Object.keys(fifthCityRegions).filter(id=>fifthCityRegions[id]===r.id)])],sources:[...new Set([...r.sources,...sources,...specific?.sources??[]])],change:[specific?.change,...recent.map(e=>`${e.year} 年：${e.title}。${e.text}`)].filter(Boolean).join(' ')||'本世纪本地域的精细地方年表仍待补充。'};
  });
  return [...parents,...fifthSubregionsAt(year,parents)];
 }

@@ -8,6 +8,7 @@ import {battles} from '../greek/battles';
 import {romanBattles} from '../roman/battles';
 import {normanBattles} from './norman-century';
 import {fourthBattles,fourthBattleYears} from './fourth-century-battles';
+import {fifthBattles,fifthBattleYears} from './fifth-century-battles';
 import type {Coordinate} from '../greek/battles';
 import {bronzePlaces,historicalDetail,historySources} from './history-details';
 import {coursePlaces} from './course-details';
@@ -126,5 +127,5 @@ export function placeContext(id:string,year:number){
 export function placeLabel(place:GazetteerPlace,year:number,modern=false){
  return modern?(place.modern.includes(' · ')?place.modern.split(' · ').pop()!:place.name):placeContext(place.id,year)?.title??place.name;
 }
-export const allBattles=[...battles,...romanBattles,...fourthBattles,...normanBattles];
-export const battleYears:Record<string,number>={...fourthBattleYears,marathon:-490,thermopylae:-480,salamis:-480,sicily:-415,hannibal:-218,'caesar-civil-war':-49,actium:-31,'norman-conquest':1066};
+export const allBattles=[...battles,...romanBattles,...fourthBattles,...fifthBattles,...normanBattles];
+export const battleYears:Record<string,number>={...fourthBattleYears,...fifthBattleYears,marathon:-490,thermopylae:-480,salamis:-480,sicily:-415,hannibal:-218,'caesar-civil-war':-49,actium:-31,'norman-conquest':1066};

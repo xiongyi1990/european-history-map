@@ -5,6 +5,10 @@ export const inFifthCentury=(year:number)=>year>=400&&year<=500;
 export interface FifthEvent {year:number;title:string;text:string;places:string[];regions:string[];source:FifthSource;moreSources?:FifthSource[]}
 const e=(year:number,title:string,text:string,places:string[],regions:string[],source:FifthSource):FifthEvent=>({year,title,text,places,regions,source});
 export const fifthEvents:FifthEvent[]=[
+ e(428,'东部亚美尼亚王权终结','萨珊结束东部阿尔沙克王权，转以总督体制统辖；西部罗马背景另看，不能把整个高原涂成同一个国家。',['vagharshapat','ctesiphon'],['armenia','persia'],'armenia4'),
+ e(445,'阿提拉单独掌握联盟','布莱达死亡后阿提拉单独领导，常系于约445年；联盟成员的语言和身份并不因此统一。',['sirmium'],['huns4','pannonia'],'jordanes5'),
+ e(481,'北高卢王位交接','希尔德里克去世、克洛维继位通常系于约481／482年；北高卢与莱茵方向仍有多支地方势力。',['tournai','soissons5'],['franks','gaul'],'gregory5'),
+ e(489,'狄奥多里克进入意大利作战','经过巴尔干向意大利推进，在东北通道与维罗纳方向同奥多亚克交战；493年拉文纳交接尚未发生。',['sirmium','aquileia','ravenna'],['pannonia','italy'],'jordanesEnd5'),
  e(415,'哥特集团一年内多次交接','阿塔乌尔夫遇害后，西格里克短暂掌权，随后瓦利亚继位；图卢兹的 418 年安置尚未发生，不把军队移动范围视为固定国土。',['toulouse'],['gaul','hispania'],'jordanes5'),
  e(438,'苏维汇从赫尔梅里克到雷基拉','赫尔梅里克患病后将王权交给雷基拉，后者向半岛南部扩张；交出王权与 441 年去世是不同节点。',['braga5','emerita'],['hispania'],'hydatius5'),
  e(448,'雷基拉去世；雷基亚尔继位','雷基拉在梅里达去世，其子雷基亚尔继承苏维汇王权；半岛西北与卢西塔尼亚的联系不应按现代葡萄牙国界截断。',['emerita','braga5'],['hispania'],'hydatius5'),
@@ -89,9 +93,19 @@ for(const event of fifthEvents){
 }
 fifthEvents.sort((a,b)=>a.year-b.year);
 for(const event of fifthEvents){if(event.year===410)event.moreSources=['britain5'];if(event.year===451)event.moreSources=['chalcedon5','orleans5'];if(event.year===454)event.moreSources=['west5'];if(event.year===496)event.moreSources=['burgundy5','gregory5','vandalKings5'];}
+for(const event of fifthEvents){
+ const additions:Record<number,{text:string;places:string[];regions:string[];sources:FifthSource[]}>= {
+  434:{text:' 匈人联盟进入阿提拉与布莱达共同领导阶段，不把约445年的单独统治提前。',places:['sirmium'],regions:['huns4'],sources:['jordanes5']},
+  451:{text:' 亚美尼亚同年发生阿瓦赖尔战争，瓦尔丹方面战败；它与高卢卡塔劳努姆、海峡亚洲岸会议是三个不同地点的事件。',places:['vagharshapat'],regions:['armenia'],sources:['armeniaWar5']},
+  454:{text:' 尼达奥战事通常系于约454／455年，精确战场仍未确定；本图不标一个猜测性的阵地坐标。',places:['sirmium'],regions:['huns4','goths'],sources:['jordanesEnd5']},
+  484:{text:' 萨珊东境受挫之后，亚美尼亚在484年前后达成和解，地方贵族和基督教社群取得新的安排；不等于整个高原脱离萨珊。',places:['vagharshapat'],regions:['armenia'],sources:['armeniaReligion5','armenia4']},
+  488:{text:' 多瑙河畔部分罗马社群向意大利迁居通常系于488年，见《圣塞维里努斯传》的撤离叙述；不把整个阿尔卑斯山区画成无人区。',places:['carnuntum'],regions:['alps'],sources:['noricum5']},
+ };
+ const a=additions[event.year];if(a){event.text+=a.text;event.places=[...new Set([...event.places,...a.places])];event.regions=[...new Set([...event.regions,...a.regions])];event.moreSources=[...new Set([...event.moreSources??[],...a.sources])];}
+}
 export const fifthPhaseAt=(year:number)=>{if(!inFifthCentury(year))return undefined;const i=fifthEvents.map(e=>e.year<=year).lastIndexOf(true);return {from:fifthEvents[i].year,to:(fifthEvents[i+1]?.year??501)-1,title:fifthEvents[i].title}};
 export function fifthEast(year:number){return year<402?'阿卡狄乌斯在位，君士坦丁堡是东方宫廷。':year<408?'阿卡狄乌斯；狄奥多西二世自 402 年起为共治皇帝。':year===408?'阿卡狄乌斯去世，狄奥多西二世独掌东方。':year<450?'狄奥多西二世在位；君士坦丁堡宫廷与巴尔干、埃及、小亚细亚相联系。':year===450?'狄奥多西二世去世，马尔西安继位。':year<457?'马尔西安在位；东方罗马继续运作。':year===457?'马尔西安去世，利奥一世继位。':year<474?'利奥一世在位；巴尔干军队与北非远征影响朝政。':year===474?'利奥一世、利奥二世、芝诺在本年发生皇位交接与共治。':year===475?'芝诺离开君士坦丁堡，巴西利斯库斯取得皇位。':year===476?'巴西利斯库斯失位，芝诺回到君士坦丁堡。':year<491?'芝诺在位；东方并未随意大利的西部皇位终止而灭亡。':year===491?'芝诺去世，阿纳斯塔修斯一世继位。':'阿纳斯塔修斯一世在位（491—518）；帝国重心仍在君士坦丁堡。'}
-export function fifthWest(year:number){return year<402?'霍诺留在位，西部宫廷主要在米兰。':year<423?'霍诺留在位，宫廷主要在拉文纳；高卢与伊比利亚的实际控制需逐地查看。':year<425?'霍诺留去世后的皇位争夺，约翰内斯掌权；东方支持瓦伦提尼安一系。':year===425?'东方出兵后，瓦伦提尼安三世成为西部皇帝。':year<455?'瓦伦提尼安三世在位；普拉西狄娅、埃提乌斯与地方军队的影响不能等同于皇帝亲自统治每一地域。':year<=474?lateWestAt(year):year===475?'尼波斯退往达尔马提亚，罗慕路斯在意大利被拥立。':year===476?'奥多亚克废黜罗慕路斯；尼波斯在达尔马提亚继续提出皇帝主张。':year<480?'奥多亚克统治意大利；尼波斯仍在达尔马提亚并被东方承认为西部皇帝。':year<489?'奥多亚克统治意大利；480 年尼波斯去世后的地区格局已不同于罗马西部朝廷时代。':year<493?'狄奥多里克与奥多亚克争夺意大利；拉文纳围城期间，不能把整个半岛视为单一稳定控制区。':'狄奥多里克的东哥特王权控制意大利，罗马行政和城市社会延续。'}
+export function fifthWest(year:number){return year<402?'霍诺留在位，西部宫廷主要在米兰。':year===421?'霍诺留与君士坦提乌斯三世在本年共治，后者年内去世；不能整年只列一位皇帝。':year<423?'霍诺留在位，宫廷主要在拉文纳；高卢与伊比利亚的实际控制需逐地查看。':year<425?'霍诺留去世后的皇位争夺，约翰内斯掌权；东方支持瓦伦提尼安一系。':year===425?'东方出兵后，瓦伦提尼安三世成为西部皇帝。':year<455?'瓦伦提尼安三世在位；普拉西狄娅、埃提乌斯与地方军队的影响不能等同于皇帝亲自统治每一地域。':year<=474?lateWestAt(year):year===475?'尼波斯退往达尔马提亚，罗慕路斯在意大利被拥立。':year===476?'奥多亚克废黜罗慕路斯；尼波斯在达尔马提亚继续提出皇帝主张。':year<480?'奥多亚克统治意大利；尼波斯仍在达尔马提亚并被东方承认为西部皇帝。':year<489?'奥多亚克统治意大利；480 年尼波斯去世后的地区格局已不同于罗马西部朝廷时代。':year<493?'狄奥多里克与奥多亚克争夺意大利；拉文纳围城期间，不能把整个半岛视为单一稳定控制区。':'狄奥多里克的东哥特王权控制意大利，罗马行政和城市社会延续。'}
 export function fifthPersia(year:number){return year<420?'伊嗣俟一世（399—约 420）':year<=421?'伊嗣俟一世到巴赫拉姆五世的交接（约 420／421）':year<438?'巴赫拉姆五世（约 420／421—438）':year===438?'巴赫拉姆五世与伊嗣俟二世交接':year<457?'伊嗣俟二世（438—457）':year<=459?'霍尔米兹德三世与卑路斯争位（457—459 前后）':year<484?'卑路斯（约 459—484）':year===484?'卑路斯战死，巴拉什继位':year<488?'巴拉什（484—488）':year===488?'巴拉什到卡瓦德一世的交接':year<496?'卡瓦德一世第一次统治（488—496）':year===496?'卡瓦德一世被废，贾马斯普掌权':year<498?'贾马斯普（496—498）':year===498?'卡瓦德一世复位':'卡瓦德一世第二次统治（498—531）'}
 
 export const fifthReading=[{chapter:125,pages:[1049,1057],note:'教义争论与东方城市'},{chapter:128,pages:[1084,1092],note:'意大利与罗马城的危机'},{chapter:129,pages:[1092,1101],note:'410 年城破与帝国的区别'},{chapter:131,pages:[1108,1115],note:'西部朝廷如何走向终止'},{chapter:132,pages:[1115,1123],note:'拉文纳的不同统治时期'},{chapter:133,pages:[1123,1130],note:'后继王国与地方社会'},{chapter:136,pages:[1144,1151],note:'法兰克人与北高卢'},{chapter:138,pages:[1159,1169],note:'克洛维的扩张与改宗'}];

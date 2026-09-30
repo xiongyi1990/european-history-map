@@ -28,7 +28,8 @@ describe('AD 400–500 reading continuity',()=>{
   expect(readingCityRegionAt('clermont5',475)).toBe('auvergne5');
   expect(historicalDetail('clermont5',474)?.polity.text).toContain('抵抗');
   expect(historicalDetail('clermont5',475)?.polity.text).toContain('和议将奥弗涅让给西哥特');
-  expect(historicalDetail('clermont5',400)).toBeUndefined();
+  expect(historicalDetail('clermont5',400)?.polity.text).toContain('罗马帝国西部');
+  expect(historicalDetail('clermont5',400)?.polity.text).not.toContain('让给西哥特');
   for(const city of ['arles','massilia']){
    expect(historicalDetail(city,473)?.polity.text).toContain('随后又被尼波斯短暂收回');
    expect(historicalDetail(city,474)?.polity.text).toContain('短暂恢复');
@@ -64,7 +65,7 @@ describe('AD 400–500 reading continuity',()=>{
  it('keeps local areas geographical and distinguishes asynchronous southern city handovers',()=>{
   for(let year=401;year<=500;year++){
    const regions=readingRegionsAt(year);
-   expect(regions).toHaveLength(24);
+   expect(regions).toHaveLength(47);
    for(const r of regions.filter(r=>r.parent)){
     const parent=regions.find(p=>p.id===r.parent)!;
     expect(parent).toBeDefined();

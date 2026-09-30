@@ -1,4 +1,7 @@
 export const fourthCenturySources={
+ ammianus26:{title:'阿米阿努斯《历史》卷二十六：365—366年普罗科皮乌斯争位',url:'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ammian/26*.html'},
+ ammianus27:{title:'阿米阿努斯《历史》卷二十七：不列颠恢复与东方军政',url:'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ammian/27*.html'},
+ ammianus17:{title:'阿米阿努斯《历史》卷十七：莱茵河边防与尤利安',url:'https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Ammian/17*.html'},
  arles4:{title:'UNESCO：阿尔勒的罗马遗存与晚期古代城市',url:'https://whc.unesco.org/en/list/164/'},
  paris4:{title:'法国文化部：古代巴黎与塞纳河',url:'https://archeologie.culture.gouv.fr/paris/en/town-framed-river'},
  priceEdict4:{title:'福特汉姆史料集：301 年最高限价敕令',url:'https://sourcebooks.web.fordham.edu/ancient/diocletian-control.asp'},

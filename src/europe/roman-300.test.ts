@@ -19,7 +19,8 @@ describe('AD 300 real boundary snapshot and reading content',()=>{
     expect(cityRegions300[id]).toBe(region.id);
     expect(historicalDetail(id,300)?.polity.text).toContain('萨珊帝国');
     expect(historicalDetail(id,400)?.polity.text).toContain('萨珊帝国');
-    if(id==='ctesiphon')expect(historicalDetail(id,401)?.polity.text).toContain('萨珊');else expect(historicalDetail(id,401)).toBeUndefined();
+    expect(historicalDetail(id,401)?.polity.text).toContain('萨珊');
+    expect(historicalDetail(id,401)?.from).toBeGreaterThan(300);
    }
   }
   expect(cityRegions300.nisibis).toBe('mesopotamia');
@@ -67,7 +68,8 @@ describe('AD 300 real boundary snapshot and reading content',()=>{
   expect(historicalDetail('jerusalem',300)?.title).toContain('埃利亚');
   expect(historicalDetail('gortyn',300)?.polity.text).toContain('罗马');
   expect(historicalDetail('gortyn',400)?.polity.text).toContain('罗马');
-  expect(historicalDetail('gortyn',401)).toBeUndefined();
+  expect(historicalDetail('gortyn',401)?.polity.text).toContain('罗马东方');
+  expect(historicalDetail('gortyn',401)?.from).toBeGreaterThan(300);
  });
  it('shows all four Roman divisions by default as one empire and preserves original geometry',()=>{
   const areas=makeAreas(snapshot,false,300);

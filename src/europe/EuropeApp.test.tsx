@@ -12,6 +12,36 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('moves through the unified centuries overview and reaches newly retained Caucasus regions',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=401');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:'年代'}));
+  const overview=await screen.findByRole('region',{name:'4—5世纪地图总览'});
+  expect(overview.textContent).toContain('47 组地域');expect(overview.textContent).toContain('70 处');
+  fireEvent.change(within(overview).getByLabelText('四至五世纪连续时间轴'),{target:{value:'428'}});
+  fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:/亚美尼亚与高加索/}));
+  expect(location.search).toContain('year=428');expect(location.search).toContain('region=armenia');
+  expect(screen.getByRole('article',{name:'428 年地域详情'}).textContent).toContain('总督体制');
+  fireEvent.click(screen.getByRole('button',{name:'年代'}));
+  fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:'四世纪起点 · 301 年'}));
+  expect(location.search).toContain('year=301');expect(location.search).not.toContain('region=');
+  await act(async()=>{});
+ });
+ it('opens the fifth-century war from the annual guide and restores a shared route stage',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=451');render(<EuropeApp/>);
+  fireEvent.click(screen.getByRole('button',{name:'年代'}));
+  const guide=await screen.findByRole('region',{name:'400—500 年连续历史导览'});
+  fireEvent.click(within(guide).getByRole('button',{name:/分阶段查看五世纪战役/}));
+  expect(location.search).toContain('battle=attila-gaul-451');expect(location.search).toContain('year=451');
+  fireEvent.click(screen.getByRole('button',{name:/阶段 3：东高卢会战与撤出/}));
+  expect(location.search).toContain('stage=2');expect(screen.getByRole('article',{name:'战役阶段说明'}).textContent).toContain('精确位置有讨论');
+  await act(async()=>{});
+  cleanup();history.replaceState(null,'','/?year=489&battle=theodoric-489&stage=3');render(<EuropeApp/>);
+  expect(screen.getByRole('article',{name:'战役阶段说明'}).textContent).toContain('493年');
+  expect(location.search).toContain('stage=3');
+  fireEvent.click(screen.getByLabelText('关闭战役路线'));
+  expect(location.search).not.toContain('battle=');expect(location.search).toContain('year=489');
+  await act(async()=>{});
+ });
  it('locates inland Auvergne, its ancient city and the coast separately without losing the year',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=475&region=gaul');render(<EuropeApp/>);
   const gaul=await screen.findByRole('article',{name:'475 年地域详情'});
@@ -221,7 +251,7 @@ describe('timeline rendering',()=>{
   fireEvent.submit(screen.getByRole('search'));
   expect(location.search).toContain('region=iberia-caucasus');
   fireEvent.click(screen.getByRole('button',{name:'图层'}));
-  fireEvent.click(screen.getByRole('checkbox',{name:/300—400 年地域标签/}));
+  fireEvent.click(screen.getByRole('checkbox',{name:/300—500 年地域标签/}));
   expect(screen.queryByRole('button',{name:'地图标签：高加索伊比利亚'})).toBeNull();
   await act(async()=>{});
  });
