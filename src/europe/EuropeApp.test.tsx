@@ -12,6 +12,19 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens a fifth-century subregion, its city and its parent without losing the year',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=476&region=gaul');render(<EuropeApp/>);
+  const region=await screen.findByRole('article',{name:'476 年地域详情'});
+  fireEvent.click(within(region).getByRole('button',{name:/普罗旺斯与罗讷河下游.*展开内部地域/}));
+  expect(location.search).toContain('region=provence5');
+  expect(screen.getByRole('article',{name:'476 年地域详情'}).textContent).toContain('转入西哥特');
+  fireEvent.click(within(screen.getByRole('article',{name:'476 年地域详情'})).getByRole('button',{name:/阿尔勒.*查看地域内或相邻城市/}));
+  expect(location.search).toContain('place=arles');expect(location.search).toContain('year=476');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：普罗旺斯/}));
+  fireEvent.click(screen.getByRole('button',{name:'← 返回高卢'}));
+  expect(location.search).toContain('region=gaul');expect(location.search).toContain('year=476');
+  await act(async()=>{});
+ });
  it('moves through the fifth century and keeps Dalmatia separate from Italy after 476',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=475');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:/历史年代/}));

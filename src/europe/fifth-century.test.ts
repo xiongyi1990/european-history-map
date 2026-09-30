@@ -9,6 +9,26 @@ import {dateFifthAreas} from './fifth-century-boundaries';
 import raw500 from '../../public/historical-boundaries/world_500.geojson?raw';
 
 describe('AD 400–500 reading continuity',()=>{
+ it('keeps local areas geographical and distinguishes asynchronous southern city handovers',()=>{
+  for(let year=401;year<=500;year++){
+   const regions=readingRegionsAt(year);
+   expect(regions).toHaveLength(23);
+   for(const r of regions.filter(r=>r.parent)){
+    const parent=regions.find(p=>p.id===r.parent)!;
+    expect(parent).toBeDefined();
+    for(const id of r.cities){expect(parent.cities).toContain(id);expect(readingCityRegionAt(id,year)).toBe(r.id)}
+    for(const id of r.sources)expect(historySources[id],id).toBeDefined();
+   }
+  }
+  expect(historicalDetail('arles',475)?.polity.text).toContain('罗马控制继续收缩');
+  expect(historicalDetail('arles',476)?.polity.text).toContain('476 年阿尔勒、马赛转入西哥特');
+  expect(historicalDetail('massilia',500)?.polity.text).toContain('此时不归法兰克');
+  expect(historicalDetail('tarraco',471)?.polity.text).toContain('罗马行政传统');
+  expect(historicalDetail('tarraco',472)?.polity.text).toContain('约 472 年');
+  expect(historicalDetail('tarraco',500)?.polity.text).toContain('以图卢兹为中心');
+  expect(readingRegionsAt(400).some(r=>r.id==='provence5')).toBe(false);
+  expect(fifthEvents.map(e=>e.year)).toEqual([...fifthEvents.map(e=>e.year)].sort((a,b)=>a-b));
+ });
  it('covers all added century cities exactly once for each year without claiming coverage beyond 500',()=>{
   for(let year=401;year<=500;year++){
    expect(fifthPhaseAt(year)?.from).toBeLessThanOrEqual(year);
@@ -50,7 +70,7 @@ describe('AD 400–500 reading continuity',()=>{
   }
   expect(readingRegionsAt(400)).toHaveLength(38);
   expect(readingCityRegionAt('lepcis',400)).toBe('tripolitania400');
-  expect(readingCityRegionAt('braga5',450)).toBe('hispania');
+  expect(readingCityRegionAt('braga5',450)).toBe('gallaecia5');
   expect(readingRegionsAt(501)).toEqual([]);
  });
  it('dates borrowed outlines without changing geometry or suggesting the snapshot is actual control',()=>{

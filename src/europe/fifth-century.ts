@@ -4,12 +4,16 @@ export const inFifthCentury=(year:number)=>year>=400&&year<=500;
 export interface FifthEvent {year:number;title:string;text:string;places:string[];regions:string[];source:FifthSource;moreSources?:FifthSource[]}
 const e=(year:number,title:string,text:string,places:string[],regions:string[],source:FifthSource):FifthEvent=>({year,title,text,places,regions,source});
 export const fifthEvents:FifthEvent[]=[
+ e(411,'伊比利亚诸集团分占地域','希达提乌斯记述苏维汇与汪达尔在加拉埃西亚、阿兰在卢西塔尼亚及迦太基行省、另一支汪达尔在贝提卡活动。这不是罗马正式承认的精确分界图；伊比利亚的迦太基行省也不是北非迦太基。',['braga5','emerita','gades'],['hispania'],'hydatius5'),
+ e(416,'哥特军队介入半岛战争','瓦利亚与罗马方面达成安排后，哥特军队在伊比利亚打击阿兰与汪达尔集团；416—418 年的军事行动与之后返回高卢安置分开理解。',['emerita','gades','toulouse'],['hispania','gaul'],'hydatius5'),
+ e(458,'马约里安重建南高卢影响','马约里安在南高卢活动，西哥特对阿尔勒的压力受到遏制；这说明图卢兹与阿尔勒此时不能涂成同一个已稳定统一的王国。',['arles','toulouse'],['gaul'],'majorian5'),
+ e(472,'塔拉科转入西哥特体系','塔拉戈纳市的历史说明把征服系于约 472 年。东北海岸城市加入图卢兹王权，不等于全半岛在这年同时统一，西北苏维汇仍延续。',['tarraco','toulouse','braga5'],['hispania','gaul'],'tarraco5'),
  e(400,'两个罗马朝廷与萨珊邻国','西部宫廷仍在米兰，东方在君士坦丁堡；先从这一年的组成地域看随后各地不同步的变化。',['milan','byzantium','ctesiphon'],['italy','thrace','persia'],'notitia400'),
  e(402,'西部宫廷迁驻拉文纳','阿拉里克战争背景下，霍诺留从米兰迁驻拉文纳。宫廷搬迁不等于罗马城或米兰脱离帝国。',['milan','ravenna'],['italy'],'honorius400'),
  e(406,'莱茵河防线遭突破','汪达尔、苏维汇、阿兰等集团进入高卢。常用纪年为 406 年末，具体渡河年代存在争论；不能据此把整个高卢同日改成一个国家。',['mainz','trier'],['gaul'],'honorius400'),
  e(407,'君士坦丁三世从不列颠到高卢','军队拥立的皇帝渡海进入高卢，阿尔勒成为争夺中心；不列颠与大陆的军政联系进一步改变。',['london','arles'],['britain','gaul'],'honorius400'),
  e(408,'斯提利科遇害；东方皇位交接','西部军事权力重组。东方阿卡狄乌斯去世，狄奥多西二世独掌皇位；两部的变化应分别观察。',['ravenna','byzantium'],['italy','thrace'],'theo5'),
- e(409,'集团进入伊比利亚','苏维汇、汪达尔和阿兰进入半岛，之后逐步形成不同活动区。今天西班牙、葡萄牙的国界不能用来划分这些集团。',['braga5','emerita','tarraco'],['hispania'],'iberia5'),
+ e(409,'集团进入伊比利亚','苏维汇、汪达尔和阿兰进入半岛，之后逐步形成不同活动区。今天西班牙、葡萄牙的国界不能用来划分这些集团。',['braga5','emerita','tarraco'],['hispania'],'hydatius5'),
  e(410,'罗马城被洗劫；不列颠统治退出','阿拉里克攻入罗马，不等于整个西部帝国此时灭亡。不列颠约在这一阶段脱离常规帝国行政；不是岛上罗马文化一夜消失。',['rome','london'],['italy','britain'],'honorius400'),
  e(413,'君士坦丁堡陆墙建设','狄奥多西时代陆墙的重要建设阶段完成。城墙防卫首都，不能代替整个巴尔干地区的防线。',['byzantium'],['thrace'],'theo5'),
  e(418,'西哥特集团在阿基坦安置','罗马与西哥特的安置安排使高卢西南形成新的权力中心；土地、税收与军队关系不能简化为立即出现现代国境。',['toulouse','arles'],['gaul'],'honorius400'),
@@ -48,6 +52,7 @@ export const fifthEvents:FifthEvent[]=[
  e(498,'卡瓦德复位','卡瓦德一世恢复王位；500 年不能继续显示贾马斯普，也不能把 502 年对罗马战争提前。',['ctesiphon','nisibis'],['persia','mesopotamia'],'kawad5'),
  e(500,'地中海多政权并存','意大利东哥特、高卢西哥特与法兰克、北非汪达尔和东方罗马并存。西哥特的图卢兹中心仍在；507 年的转折尚未发生。',['ravenna','toulouse','tournai','carthage','byzantium'],['italy','gaul','africa','thrace'],'gaul5'),
 ];
+fifthEvents.sort((a,b)=>a.year-b.year);
 for(const event of fifthEvents){if(event.year===410)event.moreSources=['britain5'];if(event.year===451)event.moreSources=['chalcedon5','orleans5'];if(event.year===454)event.moreSources=['west5'];if(event.year===496)event.moreSources=['burgundy5','gregory5'];}
 export const fifthPhaseAt=(year:number)=>{if(!inFifthCentury(year))return undefined;const i=fifthEvents.map(e=>e.year<=year).lastIndexOf(true);return {from:fifthEvents[i].year,to:(fifthEvents[i+1]?.year??501)-1,title:fifthEvents[i].title}};
 export function fifthEast(year:number){return year<402?'阿卡狄乌斯在位，君士坦丁堡是东方宫廷。':year<408?'阿卡狄乌斯；狄奥多西二世自 402 年起为共治皇帝。':year===408?'阿卡狄乌斯去世，狄奥多西二世独掌东方。':year<450?'狄奥多西二世在位；君士坦丁堡宫廷与巴尔干、埃及、小亚细亚相联系。':year===450?'狄奥多西二世去世，马尔西安继位。':year<457?'马尔西安在位；东方罗马继续运作。':year===457?'马尔西安去世，利奥一世继位。':year<474?'利奥一世在位；巴尔干军队与北非远征影响朝政。':year===474?'利奥一世、利奥二世、芝诺在本年发生皇位交接与共治。':year===475?'芝诺离开君士坦丁堡，巴西利斯库斯取得皇位。':year===476?'巴西利斯库斯失位，芝诺回到君士坦丁堡。':year<491?'芝诺在位；东方并未随意大利的西部皇位终止而灭亡。':year===491?'芝诺去世，阿纳斯塔修斯一世继位。':'阿纳斯塔修斯一世在位（491—518）；帝国重心仍在君士坦丁堡。'}

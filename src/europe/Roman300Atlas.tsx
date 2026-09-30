@@ -17,7 +17,7 @@ export function Roman300Atlas({year=300,selected,onRegion,onPlace,onBack,onFront
   <h3>当时属于谁？</h3><p>{r.polity}</p>
   {year===300&&<Ruler300Links region={r.id} onSelect={onRuler}/>}
   <h3>里面有哪些地方？</h3><p>{r.parts}</p>
-  {roman300Regions.some(child=>child.parent===r.id)&&<div className="h-related">{roman300Regions.filter(child=>child.parent===r.id).map(child=><button key={child.id} onClick={()=>onRegion(child.id)}>{child.name}<span>展开帝国内部地域 →</span></button>)}</div>}
+  {roman300Regions.some(child=>child.parent===r.id)&&<div className="h-related">{roman300Regions.filter(child=>child.parent===r.id).map(child=><button key={child.id} onClick={()=>onRegion(child.id)}>{child.name}<span>{year>400?'展开内部地域':'展开帝国内部地域'} →</span></button>)}</div>}
   <div className="h-related">{r.cities.map(id=><button key={id} onClick={()=>onPlace(id)}>{historicalDetail(id,year)?.title??id}<span>{r.group==='roman'?'查看地域内或相邻城市':'查看核心地点或邻近罗马参照点'} →</span></button>)}</div>
   <h3>居民与社会</h3><p>{r.people}</p><h3>语言与书写</h3><p>{r.language}</p>
   {year===300&&<Frontier300Links region={r.id} onSelect={onFrontier}/>}

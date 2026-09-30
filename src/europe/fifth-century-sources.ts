@@ -1,4 +1,8 @@
 export const fifthSources={
+ hydatius5:{title:'希达提乌斯《编年史》：五世纪伊比利亚（拉丁文史料，叙事立场须辨别）',url:'https://thelatinlibrary.com/hydatiuschronicon.html'},
+ provence5:{title:'剑桥：南高卢 400—550 年的政治与地方社会',url:'https://www.cambridge.org/core/books/popular-culture-and-the-end-of-antiquity-in-southern-gaul-c-400550/introduction/031A53154BB0756296A1A2D4574EED03'},
+ tarraco5:{title:'塔拉戈纳市：约 472 年进入西哥特统治与城市延续',url:'https://tgnblog.tarragona.cat/tarraco-capital-visigoda/7693'},
+ majorian5:{title:'罗马皇帝学术百科：马约里安的高卢与伊比利亚行动',url:'https://roman-emperors.sites.luc.edu/major.htm'},
  braga5:{title:'UNESCO 申遗材料：布拉加城市沿革',url:'https://whc.unesco.org/document/166333'},
  orleans5:{title:'奥尔良市：古代城市与 451 年事件',url:'https://www.orleans-metropole.fr/fileadmin/orleans/MEDIA/kiosque/ville_art_histoire/vdh_aufildelaville.pdf'},
  chalcedon5:{title:'大都会博物馆：迦克墩会议与东方基督教传统',url:'https://www.metmuseum.org/exhibitions/listings/2012/byzantium-and-islam'},

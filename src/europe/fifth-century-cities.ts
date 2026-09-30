@@ -2,6 +2,7 @@ import type {GazetteerPlace} from './model';
 import type {HistoricalDetail,HistoricalFact} from './history-details';
 import {courseSources} from './course-sources';
 import {fifthCityRegions,fifthRegionsAt} from './fifth-century-regions';
+import {fifthLocalCityRegions} from './fifth-century-subregions';
 import {fifthEast,fifthWest,fifthEvents,fifthReading,type FifthSource} from './fifth-century';
 const fact=(text:string,...sources:FifthSource[]):HistoricalFact=>({text,sources:[...new Set(sources)]});
 const point=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:FifthSource,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'五世纪城市定位'});
@@ -12,6 +13,7 @@ export const fifthPlaces:GazetteerPlace[]=[
  point('chalcedon5','迦克墩','土耳其 · 伊斯坦布尔卡德柯伊',['Chalcedon','Kadıköy','卡尔西顿','迦克墩会议'],[29.026,40.988],'chalcedon5','博斯普鲁斯海峡亚洲岸，与欧洲岸的君士坦丁堡分别定位；451 年会议所在地。'),
 ];
 function localPolity(id:string,y:number,fallback:string){
+ if(['arles','massilia','tarraco'].includes(id))return fallback+' 此处按城市所在地域分期；同年内的战争与交接不代表整片区域同步变化。';
  if(id==='rome')return fifthWest(y)+(y===410?' 本年阿拉里克军队洗劫罗马；城破不等于西部帝国已经灭亡。':y===455?' 本年汪达尔军队洗劫罗马，但未建立对整个意大利的长期统治。':' 罗马仍有城市、元老院与教会制度；皇帝或国王的主要驻地不在此城。');
  if(id==='ravenna')return (y<402?'西部宫廷尚未迁入；霍诺留主要驻米兰。':y===402?'本年西部朝廷从米兰迁驻拉文纳。':fifthWest(y))+(y<476?' 拉文纳是西部朝廷的意大利军政节点。':' 拉文纳是意大利王权的军政节点。')+' 宫廷统治和全意大利实控范围分开观察。';
  if(id==='byzantium')return fifthEast(y)+' 此处是东方宫廷，476 年以后仍有皇帝。';
@@ -22,10 +24,10 @@ function localPolity(id:string,y:number,fallback:string){
  if(id==='braga5')return y<409?'罗马西部的加拉埃西亚城市，位于伊比利亚西北。':y<456?'苏维汇在半岛西北建立王权，布拉加成为重要中心；现代葡萄牙尚不存在。':y===456?'西哥特进攻苏维汇，布拉加受到战事冲击；不能据此宣告苏维汇王国永久灭亡。':'仍从西北苏维汇王权与地方社会的背景理解；西哥特并未在五世纪彻底吞并这个王国。';
  return '地域背景（不是已逐年核实的城市实控记录）：'+fallback;
 }
-// Fill dated gaps; replace the three court-city summaries only inside 401–500, retaining neighbouring periods.
+// Fill dated gaps; refine court cities and southern handovers inside 401–500, retaining neighbouring periods.
 export function completeFifthCentury(base:HistoricalDetail[]):HistoricalDetail[]{
  const cleaned=base.flatMap(d=>{
-  if(!['rome','byzantium','ravenna'].includes(d.placeId)||d.from>500||d.to<401)return [d];
+  if(!['rome','byzantium','ravenna','arles','massilia','tarraco'].includes(d.placeId)||d.from>500||d.to<401)return [d];
   const segment=(from:number,to:number)=>({...d,id:d.id+'-retained-'+from+'-'+to,from,to,focusYear:Math.max(from,Math.min(to,d.focusYear??from))});
   return [...(d.from<401?[segment(d.from,400)]:[]),...(d.to>500?[segment(501,d.to)]:[])];
  });
@@ -37,7 +39,7 @@ export function completeFifthCentury(base:HistoricalDetail[]):HistoricalDetail[]
   let previous:HistoricalDetail|undefined,previousKey='';
   for(let year=401;year<=500;year++){
    if(cleaned.some(d=>d.placeId===id&&d.from<=year&&d.to>=year)){previous=undefined;previousKey='';continue}
-   const r=cache.get(year)!.find(r=>r.id===region)!;
+   const r=cache.get(year)!.find(r=>r.id===(fifthLocalCityRegions[id]??region))!;
    const events=fifthEvents.filter(e=>e.year===year&&e.places.includes(id));
    const title=id==='london'&&year>=410?'伦敦旧罗马城址':seed?.title??place!.name;
    const localSource:Record<string,FifthSource>={braga5:'braga5',orleans5:'orleans5',soissons5:'gregory5',chalcedon5:'chalcedon5'};

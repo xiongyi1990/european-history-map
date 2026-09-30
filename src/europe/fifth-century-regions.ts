@@ -1,4 +1,5 @@
 import {fourthRegionsAt} from './fourth-century';
+import {fifthSubregionsAt} from './fifth-century-subregions';
 import type {Region300} from './roman-300-regions';
 import {fifthEast,fifthWest,fifthPersia,fifthEvents,type FifthSource} from './fifth-century';
 export const fifthCityRegions:Record<string,string>={
@@ -38,11 +39,12 @@ function control(id:string,y:number):string{
 export function fifthRegionsAt(year:number):Region300[]{
  if(year<=400||year>500)return [];
  const ids=new Set(Object.values(fifthCityRegions));
- return fourthRegionsAt(400).filter(r=>ids.has(r.id)).map(r=>{
+ const parents=fourthRegionsAt(400).filter(r=>ids.has(r.id)).map(r=>{
   const social=societies[r.id==='tripolitania400'?'africa':r.id]??[eastSocial,r.id==='levant'?'希腊语与叙利亚语、阿拉米语等地方传统并存；政治、语言、教义边界并不重合。':'希腊语公共文化、拉丁帝国制度及地方语言传统并存；未收录逐城比例。'];
-  const sources:FifthSource[]=r.id==='persia'?['sasanianDynasty4','kawad5']:r.id==='britain'?['britain5']:r.id==='hispania'?['iberia5']:r.id==='gaul'?['gaul5','gregory5']:r.id==='africa'||r.id==='tripolitania400'?['africaLate','procopius5']:r.id==='italy'?['honorius400','endWest5','jordanesEnd5']:r.id==='pannonia'?['jordanesEnd5','zeno5']:['theo5','leo5','zeno5'];
+  const sources:FifthSource[]=r.id==='persia'?['sasanianDynasty4','kawad5']:r.id==='britain'?['britain5']:r.id==='hispania'?['hydatius5','tarraco5']:r.id==='gaul'?['gaul5','gregory5']:r.id==='africa'||r.id==='tripolitania400'?['africaLate','procopius5']:r.id==='italy'?['honorius400','endWest5','jordanesEnd5']:r.id==='pannonia'?['jordanesEnd5','zeno5']:['theo5','leo5','zeno5'];
   const recent=fifthEvents.filter(e=>e.year<=year&&e.regions.includes(r.id)).slice(-3);
   const name=r.id==='britain'&&year>=410?'不列颠：罗马统治退出之后':r.id==='africa'&&year>=439?'迦太基与汪达尔北非':r.id==='tripolitania400'?'的黎波里塔尼亚':r.name;
   return {...r,name,mapName:name.split('：')[0],parent:undefined,polity:control(r.id,year),people:social[0],language:social[1],parts:'地理定位：'+r.modern+' 下列城市用于比较地域内部及相邻通道；这是地理分组，不是单一国家的省界。',cities:Object.keys(fifthCityRegions).filter(id=>fifthCityRegions[id]===r.id),sources,change:recent.map(e=>`${e.year} 年：${e.title}。${e.text}`).join(' ')||'本世纪本地域的精细地方年表仍待补充。'};
  });
+ return [...parents,...fifthSubregionsAt(year,parents)];
 }
