@@ -12,6 +12,20 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('locates inland Auvergne, its ancient city and the coast separately without losing the year',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=475&region=gaul');render(<EuropeApp/>);
+  const gaul=await screen.findByRole('article',{name:'475 年地域详情'});
+  fireEvent.click(within(gaul).getByRole('button',{name:/奥弗涅与克莱蒙.*展开内部地域/}));
+  expect(location.search).toContain('region=auvergne5');
+  expect(screen.getByRole('article',{name:'475 年地域详情'}).textContent).toContain('和议将奥弗涅让给西哥特');
+  fireEvent.click(screen.getByRole('button',{name:/阿尔维尔纳.*查看地域内或相邻城市/}));
+  expect(location.search).toContain('place=clermont5');expect(location.search).toContain('year=475');
+  expect(screen.getAllByText(/罗马时期古名奥古斯托内梅图姆/).length).toBeGreaterThan(0);
+  fireEvent.click(screen.getByRole('button',{name:/^阿雷拉特（阿尔勒）/}));
+  expect(location.search).toContain('place=arles');
+  expect(screen.getByText(/尼波斯在 474—475 年前后短暂恢复/)).toBeTruthy();
+  await act(async()=>{});
+ });
  it('opens a fifth-century subregion, its city and its parent without losing the year',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=476&region=gaul');render(<EuropeApp/>);
   const region=await screen.findByRole('article',{name:'476 年地域详情'});

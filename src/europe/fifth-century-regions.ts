@@ -5,7 +5,7 @@ import type {Region300} from './roman-300-regions';
 import {fifthEast,fifthWest,fifthPersia,fifthEvents,type FifthSource} from './fifth-century';
 export const fifthCityRegions:Record<string,string>={
  milan:'italy',rome:'italy',ravenna:'italy',ostia:'italy',aquileia:'italy',
- trier:'gaul',arles:'gaul',toulouse:'gaul',tournai:'gaul',paris:'gaul',lyon:'gaul',massilia:'gaul',mainz:'gaul',orleans5:'gaul',soissons5:'gaul',
+ trier:'gaul',clermont5:'gaul',arles:'gaul',toulouse:'gaul',tournai:'gaul',paris:'gaul',lyon:'gaul',massilia:'gaul',mainz:'gaul',orleans5:'gaul',soissons5:'gaul',
  london:'britain',york:'britain',braga5:'hispania',emerita:'hispania',tarraco:'hispania',gades:'hispania',
  carthage:'africa',hippo:'africa',lepcis:'tripolitania400',cyrene:'cyrenaica400',alexandria:'egypt',
  byzantium:'thrace',hadrianople:'thrace',naissus:'thrace',thessaloniki:'greece',athens:'greece',

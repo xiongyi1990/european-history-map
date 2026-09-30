@@ -1,4 +1,9 @@
 export const fifthSources={
+ westernKings5:{title:'剑桥研究《晚期古代西方的使节与政治交流》：西哥特、苏维汇年表（部分纪年有差异）',url:'https://assets.cambridge.org/97805218/13495/frontmatter/9780521813495_frontmatter.pdf'},
+ hydatiusStudy5:{title:'塞格德大学：希达提乌斯《编年史》译注与人物年代',url:'https://acta.bibl.u-szeged.hu/10944/1/doc_068_015-109.pdf'},
+ clermont5:{title:'克莱蒙费朗市：奥弗涅围城与 475 年和议',url:'https://clermont-ferrand.fr/sites/default/files/mep_parcours_patrimoinev2_20182019.pdf'},
+ clermontNames5:{title:'克莱蒙费朗市：奥古斯托内梅图姆、阿尔维尔纳与今名沿革',url:'https://clermont-ferrand.fr/docs/delib/CM27092022/CM27092022_042_A1.pdf'},
+ sidonius5:{title:'西多尼乌斯《书信》：奥弗涅地方精英看和议（当事人立场须辨别）',url:'https://www.earlychristianwritings.com/fathers/sidonius_letters_07book7.html'},
  avitus5:{title:'罗马皇帝学术百科：阿维图斯（455—456）与西部皇位危机',url:'https://roman-emperors.sites.luc.edu/avitus.htm'},
  severus5:{title:'罗马皇帝学术百科：利比乌斯·塞维鲁斯及 465—467 年皇位空缺',url:'https://roman-emperors.sites.luc.edu/libius.htm'},
  anthemius5:{title:'罗马皇帝学术百科：安特米乌斯与 472 年内战',url:'https://roman-emperors.sites.luc.edu/anthemiu.htm'},

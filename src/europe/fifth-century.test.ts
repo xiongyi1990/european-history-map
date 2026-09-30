@@ -8,8 +8,34 @@ import {ancientPlaces,makeAreas} from './model';
 import {dateFifthAreas} from './fifth-century-boundaries';
 import raw500 from '../../public/historical-boundaries/world_500.geojson?raw';
 import {fifthAfrica} from './fifth-century-rulers';
+import {fifthVisigoths,fifthSuevi} from './fifth-century-western-kingdoms';
 
 describe('AD 400–500 reading continuity',()=>{
+ it('distinguishes royal succession from changing cities and preserves neighbouring periods',()=>{
+  for(const [year,text] of [[418,'瓦利亚去世'],[451,'托里斯蒙德'],[453,'狄奥多里克二世'],[466,'466／467'],[467,'466／467'],[484,'阿拉里克二世'],[500,'尚未进入后来的托莱多']] as const){
+   expect(fifthVisigoths(year)).toContain(text);
+   expect(historicalDetail('toulouse',year)?.polity.text).toContain(text);
+   expect(fifthRegionsAt(year).find(r=>r.id==='aquitaine5')?.polity).toContain(text);
+  }
+  expect(historicalDetail('toulouse',501)?.polity.text).not.toContain('阿拉里克二世');
+  expect(historicalDetail('toulouse',500)?.people.text).toBe(historicalDetail('toulouse',501)?.people.text);
+  for(const [year,text] of [[438,'雷基拉'],[448,'雷基亚尔'],[456,'被处死'],[460,'分裂'],[464,'464／465'],[465,'464／465'],[469,'雷米斯蒙德'],[500,'资料稀疏']] as const){
+   expect(fifthSuevi(year)).toContain(text);expect(historicalDetail('braga5',year)?.polity.text).toContain(text);
+   expect(fifthRegionsAt(year).find(r=>r.id==='gallaecia5')?.polity).toContain(text);
+  }
+ });
+ it('keeps Auvergne separate from the Provence occupation, recovery and final handover',()=>{
+  expect(readingCityRegionAt('clermont5',475)).toBe('auvergne5');
+  expect(historicalDetail('clermont5',474)?.polity.text).toContain('抵抗');
+  expect(historicalDetail('clermont5',475)?.polity.text).toContain('和议将奥弗涅让给西哥特');
+  expect(historicalDetail('clermont5',400)).toBeUndefined();
+  for(const city of ['arles','massilia']){
+   expect(historicalDetail(city,473)?.polity.text).toContain('随后又被尼波斯短暂收回');
+   expect(historicalDetail(city,474)?.polity.text).toContain('短暂恢复');
+   expect(historicalDetail(city,475)?.polity.text).toContain('罗马控制');
+   expect(historicalDetail(city,476)?.polity.text).toContain('再次转入西哥特');
+  }
+ });
  it('distinguishes late emperors, contested accession years and vacant western throne',()=>{
   const cases:[number,string][]=[[455,'佩特罗尼乌斯'],[456,'阿维图斯'],[457,'马约里安'],[461,'塞维鲁斯'],[464,'东方不承认'],[465,'皇位再次空缺'],[466,'皇位空缺'],[467,'安特米乌斯'],[472,'仍在世时被拥立'],[473,'格利凯里乌斯'],[474,'尼波斯']];
   for(const [year,text] of cases){
@@ -38,7 +64,7 @@ describe('AD 400–500 reading continuity',()=>{
  it('keeps local areas geographical and distinguishes asynchronous southern city handovers',()=>{
   for(let year=401;year<=500;year++){
    const regions=readingRegionsAt(year);
-   expect(regions).toHaveLength(23);
+   expect(regions).toHaveLength(24);
    for(const r of regions.filter(r=>r.parent)){
     const parent=regions.find(p=>p.id===r.parent)!;
     expect(parent).toBeDefined();
@@ -47,7 +73,7 @@ describe('AD 400–500 reading continuity',()=>{
    }
   }
   expect(historicalDetail('arles',475)?.polity.text).toContain('罗马控制继续收缩');
-  expect(historicalDetail('arles',476)?.polity.text).toContain('476 年阿尔勒、马赛转入西哥特');
+  expect(historicalDetail('arles',476)?.polity.text).toContain('阿尔勒、马赛再次转入西哥特');
   expect(historicalDetail('massilia',500)?.polity.text).toContain('此时不归法兰克');
   expect(historicalDetail('tarraco',471)?.polity.text).toContain('罗马行政传统');
   expect(historicalDetail('tarraco',472)?.polity.text).toContain('约 472 年');
@@ -90,6 +116,8 @@ describe('AD 400–500 reading continuity',()=>{
  it('resolves every event and source and keeps the 400 layer intact',()=>{
   expect(new Set(historyWindows.map(e=>e.year)).size).toBe(historyWindows.length);
   for(const e of fifthEvents){
+   expect(new Set(e.places).size,e.title).toBe(e.places.length);
+   expect(new Set(e.regions).size,e.title).toBe(e.regions.length);
    for(const id of [e.source,...e.moreSources??[]])expect(historySources[id],id).toBeDefined();
    for(const id of e.places)expect(historicalDetail(id,e.year),`${e.year}:${id}`).toBeDefined();
    for(const id of e.regions)expect(readingRegionsAt(e.year).some(r=>r.id===id),`${e.year}:${id}`).toBe(true);

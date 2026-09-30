@@ -5,6 +5,13 @@ export const inFifthCentury=(year:number)=>year>=400&&year<=500;
 export interface FifthEvent {year:number;title:string;text:string;places:string[];regions:string[];source:FifthSource;moreSources?:FifthSource[]}
 const e=(year:number,title:string,text:string,places:string[],regions:string[],source:FifthSource):FifthEvent=>({year,title,text,places,regions,source});
 export const fifthEvents:FifthEvent[]=[
+ e(415,'哥特集团一年内多次交接','阿塔乌尔夫遇害后，西格里克短暂掌权，随后瓦利亚继位；图卢兹的 418 年安置尚未发生，不把军队移动范围视为固定国土。',['toulouse'],['gaul','hispania'],'jordanes5'),
+ e(438,'苏维汇从赫尔梅里克到雷基拉','赫尔梅里克患病后将王权交给雷基拉，后者向半岛南部扩张；交出王权与 441 年去世是不同节点。',['braga5','emerita'],['hispania'],'hydatius5'),
+ e(448,'雷基拉去世；雷基亚尔继位','雷基拉在梅里达去世，其子雷基亚尔继承苏维汇王权；半岛西北与卢西塔尼亚的联系不应按现代葡萄牙国界截断。',['emerita','braga5'],['hispania'],'hydatius5'),
+ e(464,'约 464／465 年苏维汇王权重组','雷米斯蒙德重新整合分裂后的苏维汇王权，并与西哥特交涉。研究纪年有差异，本节点用于阅读定位，不宣称存在精确交接日或已统一的半岛国境。',['braga5','toulouse'],['hispania','gaul'],'westernKings5'),
+ e(466,'约 466／467 年欧里克继位','西哥特狄奥多里克二世被推翻，欧里克取得王权；与同年意大利的西部皇位空缺分开看。交接纪年有差异，随后高卢与伊比利亚的扩张也不是所有城市同时易主。',['toulouse','ravenna'],['gaul','hispania','italy'],'hydatiusStudy5'),
+ e(471,'奥弗涅的地方抵抗','471—474 年，克莱蒙在西多尼乌斯等地方人物支持下抵抗欧里克的压力；475 年和议让步是之后的另一个节点。克莱蒙位于高卢内陆，不是地中海岸的马赛。',['clermont5','toulouse'],['gaul'],'clermont5'),
+
  e(461,'马约里安失位；塞维鲁斯被拥立','马约里安被推翻并遇害，利比乌斯·塞维鲁斯随后在拉文纳被拥立。东方不承认新皇帝；北高卢的罗马军事势力也没有因此自动服从意大利朝廷。',['ravenna','rome','soissons5'],['italy','gaul'],'severus5'),
  e(465,'西部皇位空缺开始','利比乌斯·塞维鲁斯去世；465—467 年西部没有在位皇帝，里西默的军事权力与地方行政仍然存在。不是西部所有地域一起成为无主之地。',['ravenna','rome'],['italy'],'severus5'),
  e(467,'安特米乌斯取得西部皇位','东方利奥一世支持安特米乌斯进入意大利并成为西部皇帝。两部朝廷继续互动；安特米乌斯的皇帝头衔不代表已恢复北非或统一高卢。',['rome','ravenna','byzantium'],['italy','thrace'],'anthemius5'),
@@ -65,6 +72,20 @@ for(const event of fifthEvents){
  if(event.year===474)event.moreSources=['glycerius5'];
  if(event.year===484){event.title+='；迦太基国王交接';event.text+=' 北非胡内里克去世、贡塔蒙德继位；与萨珊战争分别定位。';event.places.push('carthage');event.regions.push('africa');event.moreSources=['vandalKings5'];}
  if(event.year===496){event.text+=' 北非同年贡塔蒙德去世，特拉萨蒙德继位，汪达尔王权继续存在。';event.places.push('carthage');event.regions.push('africa');}
+}
+for(const event of fifthEvents){
+ const addSources=(...ids:FifthSource[])=>event.moreSources=[...new Set([...event.moreSources??[],...ids])];
+ if(event.year===464)addSources('hydatius5','hydatiusStudy5');
+ if(event.year===466)addSources('westernKings5','jordanes5');
+ if(event.year===418){event.text+=' 瓦利亚去世，西哥特狄奥多里克一世继位，安置与国王交接分别记录。';addSources('jordanes5','hydatiusStudy5');}
+ if(event.year===451){event.text+=' 西哥特狄奥多里克一世在会战中战死，托里斯蒙德继位。';}
+ if(event.year===453){event.title+='；西哥特王位交接';event.text+=' 高卢托里斯蒙德遇害，西哥特狄奥多里克二世继位；与匈人联盟的变动分开。';event.places.push('toulouse');event.regions.push('gaul');addSources('jordanes5','hydatiusStudy5');}
+ if(event.year===456){event.text+=' 雷基亚尔被捕并处死，苏维汇随后分裂和重组。';addSources('hydatius5');}
+ if(event.year===473){event.title+='；普罗旺斯受哥特进攻';event.text+=' 编年史还记本年阿尔勒、马赛被哥特占领；随后尼波斯曾短暂恢复罗马控制。';event.places.push('arles','massilia');event.regions.push('gaul');}
+ if(event.year===474){event.text+=' 474—475 年前后尼波斯还短暂恢复阿尔勒、马赛的罗马控制；精确交接日未定。';event.places.push('arles','massilia');event.regions.push('gaul');addSources('glycerius5');}
+ if(event.year===475){event.title+='；奥弗涅和议';event.text+=' 尼波斯与欧里克的和议将内陆奥弗涅让给西哥特，克莱蒙由此转入西哥特权力范围。';event.places.push('clermont5');event.regions.push('gaul');addSources('clermont5','sidonius5');}
+ if(event.year===476){event.text+=' 普罗旺斯的阿尔勒、马赛在此前占领与短暂收回后，约在本年再次进入西哥特体系；与 475 年内陆奥弗涅让步不同。';event.places.push('arles','massilia');event.regions.push('gaul');addSources('provence5','glycerius5');}
+ if(event.year===484){event.title+='；西哥特继承';event.text+=' 高卢欧里克去世，阿拉里克二世继承西哥特王权，图卢兹中心继续存在。';event.places.push('toulouse');event.regions.push('gaul');addSources('westernKings5','jordanes5');}
 }
 fifthEvents.sort((a,b)=>a.year-b.year);
 for(const event of fifthEvents){if(event.year===410)event.moreSources=['britain5'];if(event.year===451)event.moreSources=['chalcedon5','orleans5'];if(event.year===454)event.moreSources=['west5'];if(event.year===496)event.moreSources=['burgundy5','gregory5','vandalKings5'];}
