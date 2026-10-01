@@ -65,7 +65,7 @@ describe('AD 400–500 reading continuity',()=>{
  it('keeps local areas geographical and distinguishes asynchronous southern city handovers',()=>{
   for(let year=401;year<=500;year++){
    const regions=readingRegionsAt(year);
-   expect(regions).toHaveLength(48);
+   expect(regions).toHaveLength(50);
    for(const r of regions.filter(r=>r.parent)){
     const parent=regions.find(p=>p.id===r.parent)!;
     expect(parent).toBeDefined();
@@ -123,7 +123,7 @@ describe('AD 400–500 reading continuity',()=>{
    for(const id of e.places)expect(historicalDetail(id,e.year),`${e.year}:${id}`).toBeDefined();
    for(const id of e.regions)expect(readingRegionsAt(e.year).some(r=>r.id===id),`${e.year}:${id}`).toBe(true);
   }
-  expect(readingRegionsAt(400)).toHaveLength(38);
+  expect(readingRegionsAt(400)).toHaveLength(40);
   expect(readingCityRegionAt('lepcis',400)).toBe('tripolitania400');
   expect(readingCityRegionAt('braga5',450)).toBe('gallaecia5');
   expect(readingRegionsAt(501)).toEqual([]);

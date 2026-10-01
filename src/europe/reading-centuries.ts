@@ -1,7 +1,8 @@
 import {fourthRegionsAt,cityRegionAt} from './fourth-century';
 import {fifthRegionsAt,fifthCityRegions} from './fifth-century-regions';
 import {fifthLocalCityRegions} from './fifth-century-subregions';
+import {egyptReadingRegions} from './egypt-reading-regions';
 export const inReadingCenturies=(y:number)=>y>=300&&y<=500;
-export const readingRegionsAt=(y:number)=>y<=400?fourthRegionsAt(y):fifthRegionsAt(y);
+export const readingRegionsAt=(y:number)=>egyptReadingRegions(y<=400?fourthRegionsAt(y):fifthRegionsAt(y),y);
 export const readingRegionById=(id:string,y:number)=>readingRegionsAt(y).find(r=>r.id===id);
-export const readingCityRegionAt=(id:string,y:number)=>y<=400?cityRegionAt(id,y):fifthLocalCityRegions[id]??fifthCityRegions[id];
+export const readingCityRegionAt=(id:string,y:number)=>inReadingCenturies(y)&&id==='syene'?'egypt-upper':inReadingCenturies(y)&&id==='alexandria'?'egypt-delta':y<=400?cityRegionAt(id,y):fifthLocalCityRegions[id]??fifthCityRegions[id];

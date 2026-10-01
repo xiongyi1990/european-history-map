@@ -9,6 +9,8 @@ from pathlib import Path
 from shapely.geometry import Polygon, MultiPolygon, shape, mapping
 from shapely.ops import unary_union
 
+# Southern Nile extension: Kockelmann (2012), Philae, UEE, pp.1,6–7.
+# Corridor width is editorial, not a surveyed desert frontier.
 ROOT = Path(__file__).resolve().parents[1]
 # Shared internal edges are defined once to avoid overlaps between envelopes.
 gaul_italy = [[7.5,43.7],[7.0,44.4],[6.7,45.2],[7.1,46.0],[8.3,46.5],[8.6,47.6]]
@@ -29,7 +31,7 @@ envelopes = {
   [*italy_illyricum,[22.5,44.7],[23,43.8],*list(reversed(illyricum_east[:-1])),*aegean[1:],[22.5,34.6],[19,36],[19.4,41.8]],
  ],
  'east': [
-  [*illyricum_east,[25,43.7],[27,44.1],[28.2,45.2],[29.7,45.3],[30,42.2],[34,42.4],[39,41.4],[41.5,41.7],[41.5,39.5],[39.0,38.5],[39.8,37.7],[39.0,36.8],[37.5,36.0],[37.5,33.2],[36.2,31.3],[35.7,29],[35,28.6],[34.7,27.7],[33.8,28.1],[32,27],[32.0,25.8],[30.6,25.8],[28.5,28.6],[25,30],[23,30],[21,29.4],[19.7,29.7],[19.7,31.5],[19,33.5],[28,34.5],*list(reversed(aegean))],
+  [*illyricum_east,[25,43.7],[27,44.1],[28.2,45.2],[29.7,45.3],[30,42.2],[34,42.4],[39,41.4],[41.5,41.7],[41.5,39.5],[39.0,38.5],[39.8,37.7],[39.0,36.8],[37.5,36.0],[37.5,33.2],[36.2,31.3],[35.7,29],[35,28.6],[34.7,27.7],[33.8,28.1],[32,27],[33.05,26.3],[33.25,25.2],[33.15,24.0],[32.65,23.95],[32.5,24.7],[32.15,25.5],[31.2,26.1],[30.6,25.8],[28.5,28.6],[25,30],[23,30],[21,29.4],[19.7,29.7],[19.7,31.5],[19,33.5],[28,34.5],*list(reversed(aegean))],
  ],
 }
 land_data = json.loads((ROOT/'public/europe-reference/ne_50m_admin_0_countries.geojson').read_text(encoding='utf-8'))
@@ -44,7 +46,7 @@ for key, rings in envelopes.items():
     g = MultiPolygon([p for p in pieces if p.geom_type == 'Polygon' and p.area > .002])
     assert g.is_valid and not g.is_empty, key
     geometries.append(g)
-    features.append({'type':'Feature','properties':{'id':key,'year':395,'precision':'schematic','source':'Shepherd 1923 pp.42–43','southernExtent':'Egypt south of 25.8N omitted'},'geometry':mapping(g)})
+    features.append({'type':'Feature','properties':{'id':key,'year':395,'precision':'schematic','source':'Shepherd 1923 pp.42–43'+('; Kockelmann 2012 Philae for southern Nile extension' if key=='east' else ''),'southernExtent':'Schematic Nile corridor to Syene/Philae; desert limits unresolved' if key=='east' else 'Not applicable'},'geometry':mapping(g)})
 for i,a in enumerate(geometries):
     for b in geometries[i+1:]:
         assert a.intersection(b).area < .002, 'Unexpected interior overlap'

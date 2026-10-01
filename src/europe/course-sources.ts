@@ -7,6 +7,7 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ philaeLate:{title:'UCLA 埃及学百科：菲莱、晚期边防与宗教社群（Kockelmann，2012）',url:'https://escholarship.org/uc/item/1456t8bn'},
  ...controlSources,
  ...fifthSources,
  ...roman400Sources,

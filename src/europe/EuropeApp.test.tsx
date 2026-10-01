@@ -12,6 +12,20 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('navigates from the Egyptian parent into the upper valley and back from Syene',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&region=egypt');render(<EuropeApp/>);
+  const parent=screen.getByRole('article',{name:'395 年地域详情'});
+  fireEvent.click(within(parent).getByRole('button',{name:/上埃及.*展开帝国内部地域/}));
+  expect(location.search).toContain('region=egypt-upper');
+  const upper=screen.getByRole('article',{name:'395 年地域详情'});
+  expect(upper.textContent).toContain('394 年');expect(upper.textContent).not.toContain('451／452');
+  fireEvent.click(within(upper).getByRole('button',{name:/叙恩.*查看地域内或相邻城市/}));
+  expect(location.search).toContain('place=syene');
+  fireEvent.click(screen.getByRole('button',{name:/上埃及.*南部河谷.*阿斯旺边区/}));
+  expect(location.search).toContain('region=egypt-upper');
+  await act(async()=>{});
+ });
+
  it('restores a 395 administrative division, follows regions and leaves geometry at another year',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(fc('Western Roman Empire'))));history.replaceState(null,'','/?year=395&view=administration&division=italy');render(<EuropeApp/>);
   const card=screen.getByRole('region',{name:'395 年行政分区'});
@@ -88,7 +102,7 @@ describe('timeline rendering',()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=401');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'年代'}));
   const overview=await screen.findByRole('region',{name:'4—5世纪地图总览'});
-  expect(overview.textContent).toContain('48 组地域');expect(overview.textContent).toContain('74 处');
+  expect(overview.textContent).toContain('50 组地域');expect(overview.textContent).toContain('74 处');
   fireEvent.change(within(overview).getByLabelText('四至五世纪连续时间轴'),{target:{value:'428'}});
   fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:/亚美尼亚与高加索/}));
   expect(location.search).toContain('year=428');expect(location.search).toContain('region=armenia');

@@ -18,9 +18,9 @@ describe('395 administrative geography',()=>{
  it('keeps principal cities on the intended side, excluding Persia, Ireland and open sea',()=>{
   const areas=administration395Areas(395).features;
   // The 1:50m coast cannot resolve the Golden Horn: use a point inland of Constantinople.
-  for(const [id,coords] of [['gaul',[2.35,48.85]],['gaul',[-.12,51.5]],['italy',[12.5,41.9]],['italy',[10.32,36.85]],['illyricum',[23.73,37.98]],['illyricum',[23.32,42.7]],['east',[28.95,41.02]],['east',[31.24,30.04]]] as [string,number[]][]){
+  for(const [id,coords] of [['gaul',[2.35,48.85]],['gaul',[-.12,51.5]],['italy',[12.5,41.9]],['italy',[10.32,36.85]],['illyricum',[23.73,37.98]],['illyricum',[23.32,42.7]],['east',[28.95,41.02]],['east',[31.24,30.04]],['east',[32.65,25.69]],['east',[32.9,24.09]]] as [string,number[]][]){
    expect(areas.filter(f=>contains(f,coords)).map(f=>f.properties?.id),id).toEqual([id]);
   }
-  for(const p of [[41.22,37.07],[44.58,33.09],[-5.93,54.6],[-6.26,53.35],[15,35],[10,40]])expect(areas.some(f=>contains(f,p)),String(p)).toBe(false);
+  for(const p of [[32.9,22],[35,24],[41.22,37.07],[44.58,33.09],[-5.93,54.6],[-6.26,53.35],[15,35],[10,40]])expect(areas.some(f=>contains(f,p)),String(p)).toBe(false);
  });
 });

@@ -1,7 +1,7 @@
 import geometry from './administration-395-geometry.json';
 import type {Coordinate} from '../greek/battles';
 export const administration395Source='https://commons.wikimedia.org/wiki/File:Roman_empire_395.jpg';
-export const administration395Limit='据 Shepherd 1923 年图集重绘的约 395 年行政大区示意。线条为概略走向，海岸采用现代陆地；不代表逐省精确疆界或居民分布。埃及仅画至北纬 25.8°，南部未绘，截断线不是国界。';
+export const administration395Limit='据 Shepherd 1923 年图集重绘的约 395 年行政大区示意。线条为概略走向，海岸采用现代陆地；不代表逐省精确疆界或居民分布。南部尼罗河谷补至阿斯旺—菲莱附近，河谷宽度和沙漠边缘仍为示意。';
 export interface Administration395 {
  id:string;name:string;side:'west'|'east';color:string;coords:Coordinate;bounds:[Coordinate,Coordinate];
  geography:string;parts:string;note:string;regions:[string,string][];cities:[string,string][];
@@ -22,11 +22,11 @@ export const administrations395:Administration395[]=[
   parts:'原图列出马其顿、达契亚两个分区。这里的达契亚在多瑙河南岸，不能画成今天罗马尼亚或已经放弃的河北旧行省。',
   note:'395 年后东西朝廷对伊利里库姆的权利存在争执；此色块表达图集的行政分组，不表示阿拉里克活动期间每一座城市都一直受同一军队控制。',
   regions:[['greece','马其顿与阿该亚'],['crete','克里特'],['thrace','多瑙河南岸地域对照']],cities:[['thessaloniki','塞萨洛尼基'],['athens','雅典'],['serdica','塞尔迪卡'],['gortyn','戈尔廷']]},
- {id:'east',name:'东方行政大区',side:'east',color:'#bd7086',coords:[32.3,38.5],bounds:[[19,25.8],[42,46]],
+ {id:'east',name:'东方行政大区',side:'east',color:'#bd7086',coords:[32.3,38.5],bounds:[[19,23.7],[42,46]],
   geography:'包含色雷斯、小亚细亚、东地中海沿岸，以及埃及和昔兰尼加。大区跨越今天欧洲、亚洲、非洲三洲。',
   parts:'原图列出色雷斯、亚细亚、本都、东方和埃及五个分区。“东方分区”只是“东方行政大区”内部的一部分；君士坦丁堡有特殊的首都行政地位。',
-  note:'尼西比斯已于 363 年转属萨珊，不能因位于上两河地区就涂回罗马。南埃及在本次图层的绘制范围之外，埃及条目仍可查询。',
-  regions:[['thrace','色雷斯'],['asia','亚细亚'],['pontus','本都与卡帕多基亚'],['levant','叙利亚与巴勒斯坦'],['arabia','阿拉伯行省'],['mesopotamia','两河边防'],['egypt','埃及'],['libya','昔兰尼加：与西部对照'],['cyprus','塞浦路斯']],cities:[['byzantium','君士坦丁堡'],['antioch','安条克'],['alexandria','亚历山大里亚'],['edessa','埃德萨']]},
+  note:'尼西比斯已于 363 年转属萨珊，不能因位于上两河地区就涂回罗马。沿尼罗河向南可定位到阿斯旺—菲莱边区；不要沿用现代埃及与苏丹的国界。',
+  regions:[['thrace','色雷斯'],['asia','亚细亚'],['pontus','本都与卡帕多基亚'],['levant','叙利亚与巴勒斯坦'],['arabia','阿拉伯行省'],['mesopotamia','两河边防'],['egypt','埃及总览'],['egypt-delta','下埃及：北部三角洲'],['egypt-upper','上埃及：南部河谷'],['libya','昔兰尼加：与西部对照'],['cyprus','塞浦路斯']],cities:[['byzantium','君士坦丁堡'],['antioch','安条克'],['alexandria','亚历山大里亚'],['edessa','埃德萨'],['syene','叙恩（阿斯旺）']]},
 ];
 export const administration395ById=(id:string)=>administrations395.find(a=>a.id===id);
 export function administration395Areas(year:number):GeoJSON.FeatureCollection {
