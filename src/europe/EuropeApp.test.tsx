@@ -12,6 +12,21 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens sourced administrative groups, locates a city and returns to its dated region',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&division=east');render(<EuropeApp/>);
+  const guide=screen.getByRole('region',{name:'管区与行省导览'});
+  expect(guide.textContent).toContain('并非 395 年同一天的完整名册');
+  const egypt=within(guide).getByLabelText('埃及管区与昔兰尼加');
+  fireEvent.click(within(egypt).getByText('埃及管区与昔兰尼加'));expect(egypt.hasAttribute('open')).toBe(true);
+  expect(within(egypt).getByText('底比斯')).toBeTruthy();
+  fireEvent.click(within(egypt).getByRole('button',{name:/叙恩.*以这座城市定位/}));
+  expect(location.search).toContain('year=395');expect(location.search).toContain('place=syene');
+  fireEvent.click(screen.getByRole('button',{name:/上埃及.*南部河谷.*阿斯旺边区/}));
+  expect(location.search).toContain('region=egypt-upper');
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'476'}});fireEvent.click(screen.getByLabelText('前往输入年份'));
+  expect(screen.queryByRole('region',{name:'管区与行省导览'})).toBeNull();
+  await act(async()=>{});
+ });
  it('navigates from the Egyptian parent into the upper valley and back from Syene',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&region=egypt');render(<EuropeApp/>);
   const parent=screen.getByRole('article',{name:'395 年地域详情'});

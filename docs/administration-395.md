@@ -32,3 +32,14 @@
 依据 Holger Kockelmann, “Philae”, UCLA Encyclopedia of Egyptology (2012), 正文第 1、6—8 页（https://escholarship.org/uc/item/1456t8bn），补充罗马晚期第一瀑布边区的定位。新轮廓只把河谷示意延伸到阿斯旺附近；不沿现代埃及—苏丹国界，也不将菲莱与南方社群的宗教往来画成领土扩张。
 
 300—500 年增加下埃及、上埃及两个阅读地域，沿用各年份埃及父地域的政治背景。上下游定位框不是管区或行省多边形。亚历山大里亚、叙恩的城市返回链接分别进入北部沿海和南部河谷。394 年铭文及 451／452 年通行协议说明按所选年份出现，避免把后来事件写成已经发生。
+
+## 管区与行省目录
+
+四大区详情现在包含 13 组可展开的行政阅读卡，每组提供现代位置、行省举例、地域居民/语言入口、城市定位及原始名册链接。13 是产品阅读卡的数量，**不是断言 395 年恰有 13 个管区**：南北高卢合并一张卡，意大利北部与罗马周边也合并定位。举例不是完整省表。
+
+- 名称核对：《官职志》拉丁文东方 II、III，西方 II、III，分别见 https://www.intratext.com/IXT/LAT0212/_P18.HTM 、 https://www.intratext.com/IXT/LAT0212/_P19.HTM 、 https://www.intratext.com/IXT/LAT0212/_P2.HTM 、 https://www.intratext.com/IXT/LAT0212/_P3.HTM 。中文名称和现代位置说明由项目编辑整理，未复制现代译本全文或插图。
+- 时序核对：Fordham 原始文献导读 https://sourcebooks.web.fordham.edu/source/notitiadignitatum.asp 与 Ingo G. Maier 的研究附录 *Illyricum in the Compilation 'notitia dignitatum'*（2021 修订），https://www.notitiadignitatum.org/C09-illy.pdf ，特别是正文第 10—12 页讨论的名单年代差异。
+- 《官职志》是多次修订、保存不同记录层的材料，不能把名册的所有官职、行省同时写成 395 年事实。目录首页和卡片标明这一点，尤其是巴尔干分组、高卢“七省”标题、特殊总督与首都行政体系。
+- 目录随 395 年行政阅读层显示；不添加管区或行省多边形，不修改疆界，也不自动延用到其他年份。链接到现有地域时保留当前年份；有些阅读地域跨行政单位，详情明确其定位用途。
+
+新增验证覆盖全部引用、日期隔离，以及管区目录 → 城市 → 所属阅读地域的操作；手机检查折叠目录、长中文省名与滚动。
