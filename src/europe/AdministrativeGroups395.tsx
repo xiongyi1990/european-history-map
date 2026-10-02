@@ -1,3 +1,4 @@
+import {AdministrativeSociety395} from './AdministrativeSociety395';
 import {administrativeGroupsAt,notitiaDateNote} from './administrative-groups-395';
 
 export function AdministrativeGroups395({division,selected,onLocate,onRegion,onPlace}:{division:string;selected?:string;onLocate:(id:string|undefined)=>void;onRegion:(id:string)=>void;onPlace:(id:string)=>void}){
@@ -14,8 +15,7 @@ export function AdministrativeGroups395({division,selected,onLocate,onRegion,onP
     <p className="e-note">地图标签与缩放范围按下方参考城市安排，用于辨认相对位置；不表示管区中心、首府或完整疆域。</p>
     <h4>行省举例（《官职志》所见）</h4><ul>{g.provinces.map(p=><li key={p}>{p}</li>)}</ul>
     <p>{g.note}</p>
-    <h4>查看地域、居民与语言</h4>
-    <div className="h-related">{g.regions.map(([id,name])=><button key={id} onClick={()=>onRegion(id)}>{name}<span>展开这片地域 →</span></button>)}</div>
+    <AdministrativeSociety395 group={g} onRegion={onRegion}/>
     <h4>用城市在地图上定位</h4>
     <div className="h-site-links">{g.cities.map(([id,name])=><button key={id} onClick={()=>onPlace(id)}>{name}<span>以这座城市定位 →</span></button>)}</div>
     <a href={g.source} target="_blank" rel="noreferrer">核对《官职志》相关名册 ↗</a>

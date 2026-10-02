@@ -48,3 +48,17 @@
 .admin395-groups details{border:1px solid #dce5dd;background:#fff;border-radius:8px;overflow:hidden;margin:10px 0}.admin395-groups summary{cursor:pointer;padding:12px;color:#294539}.admin395-groups summary strong{font-size:13px}.admin395-groups summary span{display:block;color:#65736c;font-size:12px;line-height:1.7;margin-top:5px}.admin395-groups summary:focus-visible{outline:2px solid #1967d2;outline-offset:-3px}.admin395-group-body{padding:0 12px 14px;overflow-wrap:anywhere}.admin395-group-body h4{font-size:12px;color:#5d6d62;margin:18px 0 8px}.admin395-group-body ul{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;padding-left:18px;margin:8px 0;line-height:1.8}.admin395-group-body li{min-width:0}.admin395-group-body a{font-size:12px}.admin395-group-body .h-related,.admin395-group-body .h-site-links{margin:8px 0}
 @media(max-width:480px){.admin395-group-body ul{grid-template-columns:1fr}}
 .maps-ui .r300-map-label[aria-pressed=true]{color:#1967d2;background:#fff;outline:2px solid #1967d2;outline-offset:2px;border-radius:4px}
+
+/* Dated regional evidence within the administrative directory. */
+.admin395-society .admin395-society-card{margin:10px 0;border:1px solid #dce5e8;border-radius:12px;overflow:hidden;background:#fff}
+.admin395-society-card>summary{padding:12px;cursor:pointer;background:#f3f7fa}
+.admin395-society-card>summary span{display:block;font-size:12px;color:#627582;margin-top:4px}
+.admin395-society-body{padding:0 12px 12px}
+.admin395-society-body dl{display:block;margin:12px 0}
+.admin395-society-body dt{font-weight:600;color:#314754;margin-top:12px}
+.admin395-society-body dd{margin:5px 0 14px;line-height:1.75;overflow-wrap:anywhere}
+.admin395-society-body .e-back{text-align:left;white-space:normal;line-height:1.6}
+.admin395-society .admin395-society-sources{border:0;border-top:1px solid #e7edef;border-radius:0;margin:12px 0 0;padding-top:10px}
+.admin395-society-sources>summary{font-size:13px;padding:0;cursor:pointer}
+.admin395-society-sources a{overflow-wrap:anywhere;font-size:13px}
+.admin395-society-sources ul{grid-template-columns:1fr}
