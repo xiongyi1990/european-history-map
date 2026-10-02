@@ -113,6 +113,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     const nodes=(overlay?.labels??[]).map(p=>{
       const e=document.createElement('button');e.className='e-area-label'+(p.kind==='region'?' r300-map-label':p.kind==='frontier'?' r300-frontier-label':'');e.textContent=p.name;
       e.setAttribute('aria-label',`区域：${p.name}`);e.style.setProperty('--area',p.color);
+      e.setAttribute('aria-pressed',String(p.id===selectedArea));
       e.onclick=event=>{event.stopPropagation();handlers.current.onAreaSelect?.(p.id)};
       const marker=new maplibregl.Marker({element:e,opacityWhenCovered:1}).setLngLat(p.coords).addTo(m);
       return {p,e,marker};

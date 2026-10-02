@@ -31,6 +31,7 @@ An open-source, Chinese-language historical atlas of Europe, built with React, T
 - [公元 400—500 年连续阅读](https://european-history-map.tangallen96.chatgpt.site/?year=476)：65 个关键年份、五世纪逐年滑块与前后事件跳转。分别观察罗马西部、东方、萨珊及迦太基的王廷。
 - [埃及南部河谷与阿斯旺](https://european-history-map.tangallen96.chatgpt.site/?year=395&view=administration&region=egypt-upper)：395 年行政示意已补南部河谷；300—500 年均可展开上下埃及，进入城市、居民与语言资料。
 - [395 年帝国行政组成](https://european-history-map.tangallen96.chatgpt.site/?year=395&view=administration&division=east)：四大区下可展开 13 组管区与行省阅读卡，核对中文名称、现代位置和原始名册，再进入城市或居民/语言资料。13 是阅读卡数量，不是对当年管区总数的断言；[来源与日期说明](docs/administration-395.md)。
+- [本都管区定位](https://european-history-map.tangallen96.chatgpt.site/?year=395&view=administration&group=pontic-provinces)：支持分组地图标签、目录定位与分享恢复。300—500 年可搜索“贝提卡”等行省名，结果明确跳转至约 395 年的所属分组；镜头按参考城市安排。
 - 401—500 年每年均可读取 74 个核心城市、50 组地域背景。10 组子地域帮助展开高卢、伊比利亚和北非；阿尔勒、马赛、塔拉科分别记录城市交接，支持大地域—子地域—城市往返。布拉加、奥尔良、苏瓦松、迦克墩与阿尔维尔纳（今克莱蒙费朗）提供补充定位。
 - 西哥特与苏维汇王权分别查询；新增内陆奥弗涅，记录 475 年和议，并区分阿尔勒、马赛的 473 年占领、474—475 年短暂恢复及 476 年前后再次易手。交接纪年有分歧或王位年表稀疏时直接标明。
 - 455—474 年按年区分各任西部皇帝、465—467 年皇位空缺和 472 年争位；迦太基拆出盖萨里克、胡内里克、贡塔蒙德与特拉萨蒙德的交接，同时保留居民、语言和课程资料。

@@ -12,6 +12,45 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('preserves the current year for an existing place result shared by the new directory',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
+  fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'本都'}});
+  fireEvent.submit(screen.getByRole('search'));
+  expect(location.search).toContain('year=300');expect(location.search).toContain('place=caesarea-cappadocia');expect(location.search).not.toContain('group=');
+  await act(async()=>{});
+ });
+ it('searches a provincial name with an explicit source year and opens its group and city',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=476');render(<EuropeApp/>);
+  fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));
+  fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'贝提卡'}});
+  expect(screen.getByText('约 395 年 · 行省与行政分组')).toBeTruthy();
+  fireEvent.submit(screen.getByRole('search'));
+  expect(location.search).toContain('year=395');expect(location.search).toContain('group=spains');
+  expect(location.search).toContain('division=gaul');
+  const group=screen.getByRole('region',{name:'管区与行省导览'});
+  const spain=within(group).getByLabelText('西班牙管区');expect(spain.hasAttribute('open')).toBe(true);
+  expect(screen.getByTestId('map-labels').textContent).toContain('西班牙管区 · 定位');
+  fireEvent.click(within(spain).getByRole('button',{name:/塔拉科.*以这座城市定位/}));
+  expect(location.search).toContain('place=tarraco');expect(location.search).not.toContain('group=');
+  await act(async()=>{});
+ });
+ it('restores a group link, navigates by its map label and clears it with date changes',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&group=pontic-provinces');render(<EuropeApp/>);
+  expect(location.search).toContain('division=east');
+  expect(screen.getByRole('heading',{name:'本都管区'})).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:'地图标签：亚细亚管区 · 定位'}));
+  expect(location.search).toContain('group=asian-provinces');
+  fireEvent.click(screen.getByRole('button',{name:'← 返回本大区全部分组'}));expect(location.search).not.toContain('group=');
+  fireEvent.click(screen.getByRole('button',{name:'地图标签：本都管区 · 定位'}));
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'400'}});fireEvent.click(screen.getByLabelText('前往输入年份'));
+  expect(location.search).not.toContain('group=');expect(screen.getByTestId('map-labels').textContent).not.toContain('本都管区 · 定位');
+  await act(async()=>{});
+ });
+ it('drops a group that conflicts with the requested parent division',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&division=gaul&group=pontic-provinces');render(<EuropeApp/>);
+  expect(location.search).not.toContain('group=');expect(screen.getByRole('heading',{name:'高卢行政大区'})).toBeTruthy();
+  await act(async()=>{});
+ });
  it('opens sourced administrative groups, locates a city and returns to its dated region',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&division=east');render(<EuropeApp/>);
   const guide=screen.getByRole('region',{name:'管区与行省导览'});
