@@ -54,7 +54,7 @@ describe('fourth and fifth century coverage as one atlas',()=>{
   const inherited=readingRegionsAt(400).map(r=>r.id);
   for(let y=401;y<=500;y++){
    const regions=readingRegionsAt(y);
-   expect(regions).toHaveLength(51);
+   expect(regions).toHaveLength(54);
    expect(new Set(regions.map(r=>r.id)).size).toBe(regions.length);
    for(const id of inherited)expect(regions.some(r=>r.id===id),`${y}:${id}`).toBe(true);
    const details=detailsAt(y);

@@ -7,6 +7,12 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ tingisAtlas:{title:'Johan Åhlfeldt / DARE：廷吉斯／丹吉尔（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/21774.html'},
+ cherchellAtlas:{title:'Johan Åhlfeldt / DARE：约尔—凯撒利亚／舍尔沙勒（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/21630'},
+ sitifisAtlas:{title:'Johan Åhlfeldt / DARE：锡提菲斯／塞提夫（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/22117.html'},
+ mauretaniaSpains:{title:'《官职志》西方 III：西班牙组的廷吉塔纳',url:'https://www.intratext.com/IXT/LAT0212/_P3.HTM'},
+ cherchellLandscape:{title:'Leveau（1987）：凯撒利亚周围的农业与水利地理',url:'https://www.persee.fr/doc/mom_0766-0510_1987_sem_14_1_2081'},
+ sitifisHeritage:{title:'塞提夫省官方遗产目录：城市遗址与公共生活',url:'https://www.wilayasetif.dz/sites-historiques-et-archeologiques/4/'},
  cirtaAtlas:{title:'Johan Åhlfeldt / DARE：基尔塔／康斯坦提纳坐标（CC BY-SA 3.0；约 2 千米精度）',url:'https://imperium.ahlfeldt.se/places/21642.html'},
  cirtaHistory:{title:'《普林斯顿古典遗址百科》：基尔塔的行政、改名与教会历史',url:'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0006%3Aentry%3Dcirta'},
  cuiculSite:{title:'UNESCO：奎库尔／杰米拉山地城市与早期基督教遗存',url:'https://whc.unesco.org/en/list/191/'},

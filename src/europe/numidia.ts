@@ -23,7 +23,7 @@ export const numidiaDetails:HistoricalDetail[]=numidiaPlaces.flatMap(p=>periods.
  people:fact(p.id==='cirta'?'基尔塔兼有地方行政与基督教社群的历史；古代市政组织和宗教身份不能换算成单一族群。三、四世纪已有的教会活动不代表所有居民信仰一致。':'住宅、市场、公共建筑与早期基督教建筑，呈现山地城市的日常生活和宗教活动。不同年代的遗存不能视为此年全部同时使用，也不能据遗址规模推算族群比例。',p.id==='cirta'?'cirtaHistory':'cuiculSite'),
  language:fact('北非地域背景：拉丁语公共书写与教会传统、地方语言并存。城市改用拉丁名称不等于居民换了母语；本条没有可量化的逐年语言或人口比例。','inscriptions300','augustineLanguage400'),
  nameNote:fact(p.id==='cirta'?'古名基尔塔（Cirta），君士坦丁时代修复后改称康斯坦提纳（Constantina），对应今阿尔及利亚君士坦丁。它不是博斯普鲁斯海峡的君士坦丁堡；本条不为改名指定未经核定的单一年份。':'古名奎库尔（Cuicul），今称杰米拉（Djémila），在阿尔及利亚；突尼斯的杰姆（El Jem）对应提斯德鲁斯，两者不可混淆。',p.id==='cirta'?'cirtaHistory':'cuiculSite'),
- related:p.id==='cirta'?['hippo','cuicul','timgad','carthage']:['cirta','timgad','hippo','thysdrus'],relatedBattles:from>=429?['vandals-429']:[],
+ related:p.id==='cirta'?['hippo','cuicul','timgad','carthage','sitifis','caesarea-mauretania']:['cirta','timgad','hippo','thysdrus','sitifis'],relatedBattles:from>=429?['vandals-429']:[],
 })));
 
 // Keep the published numidia5 id so older shared links continue to resolve.
