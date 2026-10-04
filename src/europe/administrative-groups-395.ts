@@ -29,7 +29,7 @@ export const administrativeReadingGroups:AdministrativeReadingGroup[]=[
  {id:'african-provinces',division:'italy',name:'阿非利加管区与迦太基周边',modern:'今阿尔及利亚、突尼斯和利比亚西部的部分北非沿岸。',
   provinces:['拜扎凯纳','努米底亚','毛里塔尼亚·锡提芬西斯','毛里塔尼亚·凯撒里恩西斯','的黎波里塔纳'],
   note:'迦太基所在的阿非利加总督省具有特殊总督体系，不能仅凭管区名单的省数处理其全部关系。海峡南岸的廷吉塔纳列在西班牙组，昔兰尼加则随埃及组阅读。',
-  regions:[['africa','迦太基与阿非利加'],['byzacena','拜扎凯纳：苏塞与杰姆'],['mauretania','毛里塔尼亚地域对照'],['libya','的黎波里与昔兰尼加对照']],cities:[['carthage','迦太基'],['hadrumetum','哈德鲁梅图姆（苏塞）'],['thysdrus','提斯德鲁斯（杰姆）'],['lepcis','大莱普提斯']],source:latin('_P2')},
+  regions:[['africa','迦太基与阿非利加'],['byzacena','拜扎凯纳：苏塞与杰姆'],['numidia5','努米底亚：希波与内陆城市'],['mauretania','毛里塔尼亚地域对照'],['libya','的黎波里与昔兰尼加对照']],cities:[['carthage','迦太基'],['hadrumetum','哈德鲁梅图姆（苏塞）'],['thysdrus','提斯德鲁斯（杰姆）'],['hippo','希波（安纳巴）'],['cirta','基尔塔（君士坦丁）'],['cuicul','奎库尔（杰米拉）'],['timgad','提姆加德'],['lepcis','大莱普提斯']],source:latin('_P2')},
  {id:'macedonian-provinces',division:'illyricum',name:'马其顿管区',modern:'巴尔干南部、希腊大陆与克里特方向。',
   provinces:['阿该亚','马其顿','色萨利','旧伊庇鲁斯','新伊庇鲁斯','克里特'],
   note:'马其顿管区比同名行省更大，也不等同今天北马其顿国家。《官职志》还记有部分“萨卢塔里斯马其顿”；巴尔干名单需结合其分期阅读。',

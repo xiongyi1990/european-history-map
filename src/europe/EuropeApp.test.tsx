@@ -12,6 +12,21 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens Numidia from the 395 directory and returns from an inland city without changing year',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&group=african-provinces');render(<EuropeApp/>);
+  const society=screen.getByRole('region',{name:'395 年地域居民与语言'});
+  fireEvent.click(within(society).getByRole('button',{name:'展开努米底亚：希波与内陆城市的政治背景与城市 →',hidden:true}));
+  expect(location.search).toContain('region=numidia5');
+  const region=screen.getByRole('article',{name:'395 年地域详情'});
+  fireEvent.click(within(region).getByRole('button',{name:/基尔塔/}));
+  expect(location.search).toContain('place=cirta');expect(location.search).toContain('year=395');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：努米底亚/}));
+  expect(location.search).toContain('region=numidia5');
+  expect(screen.getByTestId('map-pins').textContent).toContain('cirta:定位');
+  expect(screen.getByTestId('map-pins').textContent).toContain('cuicul:定位');
+  await act(async()=>{});
+ });
+
  it('opens Byzacena from the 395 directory, visits its city and restores the region at 442',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&group=african-provinces');render(<EuropeApp/>);
   const society=screen.getByRole('region',{name:'395 年地域居民与语言'});
@@ -175,7 +190,7 @@ describe('timeline rendering',()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=401');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'年代'}));
   const overview=await screen.findByRole('region',{name:'4—5世纪地图总览'});
-  expect(overview.textContent).toContain('51 组地域');expect(overview.textContent).toContain('76 处');
+  expect(overview.textContent).toContain('51 组地域');expect(overview.textContent).toContain('78 处');
   fireEvent.change(within(overview).getByLabelText('四至五世纪连续时间轴'),{target:{value:'428'}});
   fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:/亚美尼亚与高加索/}));
   expect(location.search).toContain('year=428');expect(location.search).toContain('region=armenia');

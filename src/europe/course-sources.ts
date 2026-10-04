@@ -7,6 +7,9 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ cirtaAtlas:{title:'Johan Åhlfeldt / DARE：基尔塔／康斯坦提纳坐标（CC BY-SA 3.0；约 2 千米精度）',url:'https://imperium.ahlfeldt.se/places/21642.html'},
+ cirtaHistory:{title:'《普林斯顿古典遗址百科》：基尔塔的行政、改名与教会历史',url:'https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.04.0006%3Aentry%3Dcirta'},
+ cuiculSite:{title:'UNESCO：奎库尔／杰米拉山地城市与早期基督教遗存',url:'https://whc.unesco.org/en/list/191/'},
  hadrumetumPlace:{title:'Pleiades：哈德鲁梅图姆古今名称与代表点（CC BY 3.0）',url:'https://pleiades.stoa.org/places/324716'},
  hadrumetumStudy:{title:'Ghaddhab（2016）：晚期哈德鲁梅图姆、拜扎凯纳省会与港口变化',url:'https://revue-etudes-anciennes.fr/ridha-ghaddhab-y-avait-il-un-port-a-hadrumetum-dans-lantiquite-tardive/'},
  thysdrusSite:{title:'UNESCO：提斯德鲁斯／杰姆圆形竞技场及遗址坐标',url:'https://whc.unesco.org/en/list/38/'},

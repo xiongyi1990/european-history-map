@@ -123,7 +123,7 @@ describe('AD 400–500 reading continuity',()=>{
    for(const id of e.places)expect(historicalDetail(id,e.year),`${e.year}:${id}`).toBeDefined();
    for(const id of e.regions)expect(readingRegionsAt(e.year).some(r=>r.id===id),`${e.year}:${id}`).toBe(true);
   }
-  expect(readingRegionsAt(400)).toHaveLength(41);
+  expect(readingRegionsAt(400)).toHaveLength(42);
   expect(readingCityRegionAt('lepcis',400)).toBe('tripolitania400');
   expect(readingCityRegionAt('braga5',450)).toBe('gallaecia5');
   expect(readingRegionsAt(501)).toEqual([]);
