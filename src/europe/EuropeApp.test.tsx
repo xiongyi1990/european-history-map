@@ -3,7 +3,7 @@ import raw300 from '../../public/historical-boundaries/world_300.geojson?raw';
 import {afterEach,describe,it,expect,vi} from 'vitest';
 import {act,cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react';
 import {EuropeApp} from './EuropeApp';
-vi.mock('../greek/GreekMap',()=>({GreekMap:({overlay,onAreaSelect}:{overlay:{areas:GeoJSON.FeatureCollection;lines?:GeoJSON.FeatureCollection;labels:{id:string;name:string}[]};onAreaSelect:(id:string)=>void})=><div><div data-testid="reading-lines">{overlay.lines?.features.map(f=>f.properties?.atlasId).join(',')}</div><div data-testid="drawn-areas">{overlay.areas.features.map(f=>f.properties?.name).join(',')}</div><div data-testid="map-labels">{overlay.labels.map(p=><button key={p.id} aria-label={'地图标签：'+p.name} onClick={()=>onAreaSelect(p.id)}>{p.name}</button>)}</div></div>}));
+vi.mock('../greek/GreekMap',()=>({GreekMap:({atlas,overlay,onAreaSelect}:{atlas:{places:{id:string;control?:{name:string}}[]};overlay:{areas:GeoJSON.FeatureCollection;lines?:GeoJSON.FeatureCollection;labels:{id:string;name:string}[]};onAreaSelect:(id:string)=>void})=><div><div data-testid="map-pins">{atlas.places.map(p=>p.id+':'+(p.control?.name??'定位')).join(',')}</div><div data-testid="reading-lines">{overlay.lines?.features.map(f=>f.properties?.atlasId).join(',')}</div><div data-testid="drawn-areas">{overlay.areas.features.map(f=>f.properties?.name).join(',')}</div><div data-testid="map-labels">{overlay.labels.map(p=><button key={p.id} aria-label={'地图标签：'+p.name} onClick={()=>onAreaSelect(p.id)}>{p.name}</button>)}</div></div>}));
 HTMLDialogElement.prototype.showModal=function(){this.open=true};
 HTMLDialogElement.prototype.close=function(){this.open=false};
 const empty={type:'FeatureCollection',features:[]};
@@ -12,6 +12,25 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens Byzacena from the 395 directory, visits its city and restores the region at 442',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&group=african-provinces');render(<EuropeApp/>);
+  const society=screen.getByRole('region',{name:'395 年地域居民与语言'});
+  fireEvent.click(within(society).getByRole('button',{name:'展开拜扎凯纳：苏塞与杰姆的政治背景与城市 →',hidden:true}));
+  expect(location.search).toContain('region=byzacena');expect(location.search).toContain('year=395');
+  const cityButton=within(screen.getByRole('article',{name:'395 年地域详情'})).getByRole('button',{name:/哈德鲁梅图姆/});
+  fireEvent.click(cityButton);expect(location.search).toContain('place=hadrumetum');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：拜扎凯纳/}));
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'442'}});fireEvent.click(screen.getByLabelText('前往输入年份'));
+  expect(location.search).toContain('year=442');
+  fireEvent.click(screen.getByRole('button',{name:/拜扎凯纳：苏塞与突尼斯中部.*定位与详情/}));
+  expect(screen.getByRole('article',{name:'442 年地域详情'}).textContent).toContain('442 年和约承认');
+  expect(screen.getByTestId('map-pins').textContent).toContain('hadrumetum:定位');
+  expect(screen.getByTestId('map-pins').textContent).toContain('thysdrus:定位');
+  expect(screen.getByTestId('map-labels').textContent).toContain('拜扎凯纳');
+  expect(screen.getByTestId('drawn-areas').textContent).toBe('');
+  await act(async()=>{});
+ });
+
  it('preserves the current year for an existing place result shared by the new directory',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=300');render(<EuropeApp/>);
   fireEvent.focus(screen.getByLabelText('搜索地点、政权或战役'));fireEvent.change(screen.getByLabelText('搜索地点、政权或战役'),{target:{value:'本都'}});
@@ -156,7 +175,7 @@ describe('timeline rendering',()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=401');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'年代'}));
   const overview=await screen.findByRole('region',{name:'4—5世纪地图总览'});
-  expect(overview.textContent).toContain('50 组地域');expect(overview.textContent).toContain('74 处');
+  expect(overview.textContent).toContain('51 组地域');expect(overview.textContent).toContain('76 处');
   fireEvent.change(within(overview).getByLabelText('四至五世纪连续时间轴'),{target:{value:'428'}});
   fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:/亚美尼亚与高加索/}));
   expect(location.search).toContain('year=428');expect(location.search).toContain('region=armenia');

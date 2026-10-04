@@ -7,6 +7,11 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ hadrumetumPlace:{title:'Pleiades：哈德鲁梅图姆古今名称与代表点（CC BY 3.0）',url:'https://pleiades.stoa.org/places/324716'},
+ hadrumetumStudy:{title:'Ghaddhab（2016）：晚期哈德鲁梅图姆、拜扎凯纳省会与港口变化',url:'https://revue-etudes-anciennes.fr/ridha-ghaddhab-y-avait-il-un-port-a-hadrumetum-dans-lantiquite-tardive/'},
+ thysdrusSite:{title:'UNESCO：提斯德鲁斯／杰姆圆形竞技场及遗址坐标',url:'https://whc.unesco.org/en/list/38/'},
+ byzacenaList:{title:'《官职志》西方 II：阿非利加名单中的 Byzacium',url:'https://www.intratext.com/IXT/LAT0212/_P2.HTM'},
+ byzacenaTreaty:{title:'牛津古典辞典：汪达尔征服与 442 年承认',url:'https://academic.oup.com/edited-volume/61673/chapter-abstract/548204073'},
  philaeLate:{title:'UCLA 埃及学百科：菲莱、晚期边防与宗教社群（Kockelmann，2012）',url:'https://escholarship.org/uc/item/1456t8bn'},
  ...controlSources,
  ...fifthSources,
