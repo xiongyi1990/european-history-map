@@ -12,6 +12,18 @@ const response=(data:unknown)=>({ok:true,json:async()=>data}) as Response;
 vi.setConfig({testTimeout:15000});
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 describe('timeline rendering',()=>{
+ it('opens the eastern Libyan coast from Egypt in 395 and keeps its harbour and region linked',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&group=egyptian-provinces');render(<EuropeApp/>);
+  const society=screen.getByRole('region',{name:'395 年地域居民与语言'});
+  fireEvent.click(within(society).getByRole('button',{name:'展开昔兰尼加：高地与海港的政治背景与城市 →',hidden:true}));
+  expect(location.search).toContain('region=cyrenaica400');
+  fireEvent.click(within(screen.getByRole('article',{name:'395 年地域详情'})).getByRole('button',{name:/阿波罗尼亚/}));
+  expect(location.search).toContain('place=apollonia-cyrenaica');expect(location.search).toContain('year=395');
+  fireEvent.click(screen.getByRole('button',{name:/查看所在地域：昔兰尼加/}));
+  expect(screen.getByTestId('map-pins').textContent).toContain('apollonia-cyrenaica:定位');
+  await act(async()=>{});
+ });
+
  it('opens the African side of the Spanish directory and preserves the year through both city contexts',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=395&view=administration&group=spains');render(<EuropeApp/>);
   const society=screen.getByRole('region',{name:'395 年地域居民与语言'});
@@ -205,7 +217,7 @@ describe('timeline rendering',()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=401');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'年代'}));
   const overview=await screen.findByRole('region',{name:'4—5世纪地图总览'});
-  expect(overview.textContent).toContain('54 组地域');expect(overview.textContent).toContain('81 处');
+  expect(overview.textContent).toContain('54 组地域');expect(overview.textContent).toContain('83 处');
   fireEvent.change(within(overview).getByLabelText('四至五世纪连续时间轴'),{target:{value:'428'}});
   fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:/亚美尼亚与高加索/}));
   expect(location.search).toContain('year=428');expect(location.search).toContain('region=armenia');

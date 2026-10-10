@@ -1,3 +1,4 @@
+import {libyanCoastPlaces,libyanCoastDetails} from './libyan-coasts';
 import {mauretaniaPlaces,mauretaniaDetails} from './mauretania';
 import {numidiaPlaces,numidiaDetails} from './numidia';
 import {byzacenaPlaces,byzacenaDetails} from './byzacena';
@@ -22,7 +23,7 @@ const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
 const dms=(d:number,m:number,s:number)=>d+m/60+s/3600;
 const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'历史地点参考'});
 export const coursePlaces:GazetteerPlace[]=[
- ...mauretaniaPlaces,...numidiaPlaces,...byzacenaPlaces,...fourthPlaces,...fifthPlaces,
+ ...libyanCoastPlaces,...mauretaniaPlaces,...numidiaPlaces,...byzacenaPlaces,...fourthPlaces,...fifthPlaces,
  ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,...carolingianPlaces,...millenniumPlaces,...normanPlaces,...roman300Places,...roman300ExtraPlaces,
  site('nicomedia','尼科米底亚','土耳其 · 伊兹米特',['Nicomedia','Nikomedeia','İzmit','Izmit','尼科美底亚'],[29.919887,40.7651905],'nicomedia','马尔马拉海东端的古城，今伊兹米特。不要与爱琴海岸的伊兹密尔混淆。'),
  site('aachen','亚琛','德国 · 亚琛',['Aachen','Aix-la-Chapelle','查理曼','加洛林'],[dms(6,5,2.112),dms(50,46,29.089)],'aachenSite','查理曼的宫廷驻地之一。以大教堂代表点定位，宫殿位置与帝国疆界分别理解。'),
@@ -89,4 +90,4 @@ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',disp
 ];
 
 
-export const courseDetails:HistoricalDetail[]=[...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))];
+export const courseDetails:HistoricalDetail[]=[...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))];

@@ -1,3 +1,4 @@
+import {addLibyanCoasts,libyanCoastCityRegions} from './libyan-coasts';
 import {addMauretania,mauretaniaCityRegions} from './mauretania';
 import {addNumidia} from './numidia';
 import {addByzacena} from './byzacena';
@@ -6,10 +7,11 @@ import {fifthRegionsAt,fifthCityRegions} from './fifth-century-regions';
 import {fifthLocalCityRegions} from './fifth-century-subregions';
 import {egyptReadingRegions} from './egypt-reading-regions';
 export const inReadingCenturies=(y:number)=>y>=300&&y<=500;
-export const readingRegionsAt=(y:number)=>addMauretania(addNumidia(addByzacena(egyptReadingRegions(y<=400?fourthRegionsAt(y):fifthRegionsAt(y),y),y),y),y);
+export const readingRegionsAt=(y:number)=>addLibyanCoasts(addMauretania(addNumidia(addByzacena(egyptReadingRegions(y<=400?fourthRegionsAt(y):fifthRegionsAt(y),y),y),y),y),y);
 export const readingRegionById=(id:string,y:number)=>readingRegionsAt(y).find(r=>r.id===id);
 export function readingCityRegionAt(id:string,y:number){
  if(inReadingCenturies(y)){
+  if(libyanCoastCityRegions[id])return libyanCoastCityRegions[id];
   if(mauretaniaCityRegions[id])return mauretaniaCityRegions[id];
   if(['hippo','cirta','cuicul','timgad'].includes(id))return 'numidia5';
   if(['hadrumetum','thysdrus'].includes(id))return 'byzacena';

@@ -7,6 +7,10 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ sabrathaSite:{title:'UNESCO：萨布拉塔遗址、城市历史与代表坐标',url:'https://whc.unesco.org/en/list/184/'},
+ apolloniaAtlas:{title:'Johan Åhlfeldt / DARE：阿波罗尼亚／苏萨坐标（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/21854'},
+ apolloniaHarbour:{title:'Attic Inscriptions Online：阿波罗尼亚与昔兰尼港口关系（IEleus 495 注释）',url:'https://www.atticinscriptions.com/inscription/OliverMarcusAurelius/8'},
+ libyaEasternList:{title:'《官职志》东方 II：埃及组的上、下利比亚',url:'https://www.intratext.com/IXT/LAT0212/_P18.HTM'},
  tingisAtlas:{title:'Johan Åhlfeldt / DARE：廷吉斯／丹吉尔（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/21774.html'},
  cherchellAtlas:{title:'Johan Åhlfeldt / DARE：约尔—凯撒利亚／舍尔沙勒（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/21630'},
  sitifisAtlas:{title:'Johan Åhlfeldt / DARE：锡提菲斯／塞提夫（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/22117.html'},
