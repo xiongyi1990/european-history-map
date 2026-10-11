@@ -553,8 +553,11 @@ describe('timeline rendering',()=>{
   fireEvent.click(screen.getByRole('button',{name:/1204 年.*首都陷落/}));
   expect(screen.getByRole('heading',{name:'首都失陷与多个继承政权'})).toBeTruthy();
   fireEvent.click(screen.getByRole('button',{name:/1261 年.*复都/}));
+  expect(screen.getByTestId('drawn-areas').textContent).toBe('');
+  fireEvent.click(screen.getByRole('button',{name:/叠加 \d+ 年疆界参考/}));
   await waitFor(()=>expect(screen.getByTestId('drawn-areas').textContent).toBe('Byzantine Empire'));
   fireEvent.click(screen.getByRole('button',{name:/1453 年.*君士坦丁堡陷落/}));
+  fireEvent.click(screen.getByRole('button',{name:/叠加 \d+ 年疆界参考/}));
   await waitFor(()=>expect(screen.getByTestId('drawn-areas').textContent).toBe(''));
   fireEvent.click(screen.getByRole('button',{name:/埃及与尼罗河谷.*今天埃及/}));
   expect(screen.getByRole('region',{name:'历史地区说明'}).textContent).toContain('七世纪阿拉伯征服后脱离东罗马');

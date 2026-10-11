@@ -1,3 +1,4 @@
+import {turningPointAt} from './historical-chronology';
 import {describe,it,expect} from 'vitest';
 import {courseDetails,coursePlaces} from './course-details';
 import {historicalDetail,historicalDetails,detailHistory,historyWindows} from './history-details';
@@ -44,7 +45,7 @@ describe('course material enriches the shared time atlas',()=>{
    for(const r of d.reading??[]){expect(r.chapter).toBeGreaterThan(0);expect(r.chapter).toBeLessThanOrEqual(courseDocument.chapters);expect(r.pages[0]).toBeLessThanOrEqual(r.pages[1]);expect(r.pages[1]).toBeLessThanOrEqual(courseDocument.pages);}
    if(d.focusYear!==undefined){expect(d.focusYear).toBeGreaterThanOrEqual(d.from);expect(d.focusYear).toBeLessThanOrEqual(d.to);}
   }
-  for(const w of historyWindows)expect(historicalDetails.some(d=>d.from<=w.year&&d.to>=w.year)).toBe(true);
+  for(const w of historyWindows){const event=turningPointAt(w.year);expect(historicalDetails.some(d=>d.from<=w.year&&d.to>=w.year)||!!event?.sources.length).toBe(true);if(event)expect(event.places.length).toBeGreaterThan(0);}
   expect(detailHistory('byzantium').some(d=>d.from===300&&d.title==='拜占庭城')).toBe(true);
   expect(new Set(courseDetails.map(d=>d.id)).size).toBe(courseDetails.length);
   for(const p of coursePlaces)expect(historicalDetails.some(d=>d.placeId===p.id)).toBe(true);

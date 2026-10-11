@@ -10,7 +10,7 @@ describe('sixth and seventh century reading coverage',()=>{
   expect(historicalDetail('toledo',700)?.polity.text).toContain('西哥特');
   expect(historicalDetail('toledo',711)).toBeUndefined();
   expect(historicalDetail('pavia',700)?.polity.text).toContain('伦巴第');
-  expect(historicalDetail('pavia',774)).toBeUndefined();
+  expect(historicalDetail('pavia',774)?.polity.text).toContain('法兰克');
   expect(historicalDetail('kairouan',600)).toBeUndefined();
   expect(historicalDetail('kairouan',700)?.polity.text).toContain('670 年');
  });

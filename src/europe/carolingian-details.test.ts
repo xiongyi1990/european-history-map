@@ -14,7 +14,7 @@ describe('Carolingian and contemporary reading checkpoints',()=>{
   expect(historicalDetail('samarra',843)?.kind).toBe('帝国都城');
   expect(historicalDetail('samarra',892)).toBeUndefined();
   expect(historicalDetail('baghdad',892)?.kind).toBe('帝国都城');
-  expect(historicalDetail('baghdad',901)).toBeUndefined();
+  expect(historicalDetail('baghdad',901)?.polity.text).toContain('阿拔斯');
  });
  it('distinguishes the partitions and ends records at their evidence limits',()=>{
   expect(historicalDetail('aachen',843)?.polity.text).toContain('中部王国');

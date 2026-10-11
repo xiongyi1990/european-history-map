@@ -62,3 +62,23 @@
 .admin395-society-sources>summary{font-size:13px;padding:0;cursor:pointer}
 .admin395-society-sources a{overflow-wrap:anywhere;font-size:13px}
 .admin395-society-sources ul{grid-template-columns:1fr}
+
+/* Dated event navigation: compact enough for the existing map sidebar. */
+.history-chronology{padding:22px 24px;border-bottom:1px solid #e8ecef}
+.chronology-heading{display:flex;flex-wrap:wrap;gap:5px 12px;justify-content:space-between;color:#315d7b;font-weight:600}
+.chronology-heading small{font-size:11px;color:#6a7884;font-weight:400}
+.chronology-period{display:grid;gap:7px;font-size:12px;color:#64727b;margin:18px 0 12px}
+.chronology-period select{width:100%;min-height:38px;border:1px solid #d9e0e5;border-radius:8px;background:#fff;padding:7px;color:#324554;font:inherit;font-size:13px}
+.chronology-years{display:flex;flex-wrap:wrap;gap:7px}
+.chronology-years button{border:1px solid #dce5ed;border-radius:16px;background:#fff;padding:7px 12px;color:#315e80;font-size:13px;cursor:pointer}
+.chronology-years button[aria-current]{background:#e8f0ff;border-color:#6287dd;color:#2457c9;font-weight:600}
+.chronology-neighbours{display:flex;gap:10px;margin:16px 0}
+.chronology-neighbours button{flex:1;background:#f5f7fa;border:0;border-radius:8px;min-height:45px;color:#315e80;cursor:pointer}
+.chronology-neighbours button span{display:block;font-size:10px;color:#6d7a85;margin-top:3px}
+.chronology-neighbours button:disabled{opacity:.4;cursor:default}
+.history-chronology article>small{font-size:11px;color:#6d7a85}
+.history-chronology h2{font-size:21px;line-height:1.5;margin:9px 0 18px;font-weight:500;color:#243342}
+.history-chronology dl{margin:0 0 18px}.history-chronology dt{font-size:12px;color:#49718c;font-weight:600;margin:16px 0 6px}.history-chronology dd{margin:0;font-size:13px;line-height:1.9;color:#4d5963}
+.chronology-sources{font-size:12px;margin:16px 0;color:#526978}.chronology-sources summary{cursor:pointer}.chronology-sources a{display:block;line-height:1.7;margin-top:10px;overflow-wrap:anywhere}
+.chronology-boundary{margin-top:18px;padding:12px 14px;border-radius:9px;background:#f4f7fb;color:#536373;font-size:12px;line-height:1.8}.chronology-boundary strong{font-size:12px;font-weight:500;color:#435971}.chronology-boundary p{margin:6px 0}.chronology-boundary .e-check{font-size:12px;align-items:flex-start}
+@media(max-width:700px){.history-chronology{padding:18px 20px}.history-chronology h2{font-size:20px}}
