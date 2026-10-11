@@ -3,7 +3,8 @@ import {describe,it,expect,vi,afterEach} from 'vitest';
 import {act,cleanup,fireEvent,render,screen,within} from '@testing-library/react';
 import {historicalTurningPoints,chronologyPeriods,turningPointAt} from './historical-chronology';
 import {historicalDetail,historicalDetails,historyWindows,historySources} from './history-details';
-import {ancientPlaces} from './model';
+import {ancientPlaces,placeLabel} from './model';
+import {modernHistoryPlaces} from './modern-history-cities';
 import {EuropeApp} from './EuropeApp';
 vi.mock('../greek/GreekMap',()=>({GreekMap:({atlas,overlay}:{atlas:{places:{id:string}[]};overlay:{areas:{features:unknown[]}}})=><div><span data-testid="event-map-pins">{atlas.places.map(p=>p.id).join(',')}</span><span data-testid="event-map-areas">{overlay.areas.features.length}</span></div>}));
 HTMLDialogElement.prototype.showModal=function(){this.open=true};
@@ -62,6 +63,9 @@ describe('post-600 dated chronology',()=>{
 });
 
 describe('modern political transitions and exact navigation',()=>{
+ it('uses city names rather than region names in modern comparison',()=>{
+  for(const p of modernHistoryPlaces)expect(placeLabel(p,1993,true)).toBe(p.name);
+ });
  it('separates Italian unification, annexation and capital relocation',()=>{
   expect(historicalDetail('turin',1861)?.polity.text).toContain('最初首都');
   expect(historicalDetail('rome',1861)?.polity.text).toContain('尚未并入');

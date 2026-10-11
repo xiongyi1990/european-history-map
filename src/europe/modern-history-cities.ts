@@ -3,7 +3,7 @@ import type {HistoricalDetail,HistoricalFact} from './history-details';
 import type {courseSources} from './course-sources';
 type Source=keyof typeof courseSources;
 const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
-const city=(id:string,name:string,modern:string,aliases:string[],coords:[number,number]):GazetteerPlace=>({id,name,modern,aliases,coords,source:'https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places-2/',kind:'近现代历史城市参考',description:'采用 Natural Earth v5.1.1 城市代表点；现今国家仅用于找位置，不代表历史归属或城界。'});
+const city=(id:string,name:string,modern:string,aliases:string[],coords:[number,number]):GazetteerPlace=>({id,name,modern:modern.split(' · ')[0]+' · '+name,aliases,coords,source:'https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-populated-places-2/',kind:'近现代历史城市参考',description:'采用 Natural Earth v5.1.1 城市代表点；现今国家仅用于找位置，不代表历史归属或城界。'});
 // Strasbourg reuses the existing late-Roman gazetteer point.
 export const modernHistoryPlaces=[
  city('edinburgh','爱丁堡','英国 · 苏格兰',['Edinburgh'],[-3.219091,55.948328]),
