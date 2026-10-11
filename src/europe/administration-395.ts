@@ -26,7 +26,7 @@ export const administrations395:Administration395[]=[
   geography:'包含色雷斯、小亚细亚、东地中海沿岸，以及埃及和昔兰尼加。大区跨越今天欧洲、亚洲、非洲三洲。',
   parts:'原图列出色雷斯、亚细亚、本都、东方和埃及五个分区。“东方分区”只是“东方行政大区”内部的一部分；君士坦丁堡有特殊的首都行政地位。',
   note:'尼西比斯已于 363 年转属萨珊，不能因位于上两河地区就涂回罗马。沿尼罗河向南可定位到阿斯旺—菲莱边区；不要沿用现代埃及与苏丹的国界。',
-  regions:[['thrace','色雷斯'],['asia','亚细亚'],['pontus','本都与卡帕多基亚'],['levant','叙利亚与巴勒斯坦'],['arabia','阿拉伯行省'],['mesopotamia','两河边防'],['egypt','埃及总览'],['egypt-delta','下埃及：北部三角洲'],['egypt-upper','上埃及：南部河谷'],['cyrenaica400','昔兰尼加：东方与埃及联系'],['marmarica','马尔马里卡与下利比亚沿海'],['cyprus','塞浦路斯']],cities:[['byzantium','君士坦丁堡'],['antioch','安条克'],['alexandria','亚历山大里亚'],['edessa','埃德萨'],['syene','叙恩（阿斯旺）']]},
+  regions:[['thrace','色雷斯'],['asia','亚细亚'],['pontus','本都与卡帕多基亚'],['levant','叙利亚与巴勒斯坦'],['arabia','阿拉伯行省'],['mesopotamia','两河边防'],['egypt','埃及总览'],['egypt-delta','下埃及：北部三角洲'],['egypt-middle','中埃及：河谷城市'],['egypt-upper','上埃及：南部河谷'],['cyrenaica400','昔兰尼加：东方与埃及联系'],['marmarica','马尔马里卡与下利比亚沿海'],['cyprus','塞浦路斯']],cities:[['byzantium','君士坦丁堡'],['antioch','安条克'],['alexandria','亚历山大里亚'],['edessa','埃德萨'],['syene','叙恩（阿斯旺）']]},
 ];
 export const administration395ById=(id:string)=>administrations395.find(a=>a.id===id);
 export function administration395Areas(year:number):GeoJSON.FeatureCollection {

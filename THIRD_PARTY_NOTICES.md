@@ -46,3 +46,9 @@ Blender 脚本可能引用操作系统字体；仓库不分发这些商业字体
 ## 课程与书籍
 
 《顾衡讲透欧洲史》《企鹅欧洲史》及其他参考资料的名称、章节、页码只用于定位阅读线索。项目不附带课程 PDF、原文全文、课程配图或扫描书籍，也不代表这些作者或出版方背书。贡献者应自行撰写说明，保留事实来源，遵守所引材料的授权范围。
+
+## 新增埃及城市代表点
+
+- 佩卢西乌姆：采用 [Getty Thesaurus of Geographic Names，TGN 7539229](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7539229) 的代表坐标，保留原记录链接，并增加中文名与独立阅读说明。Contains information from the J. Paul Getty Trust, Getty Research Institute, Getty Thesaurus of Geographic Names, which is made available under the ODC Attribution License。许可为 [ODC-By 1.0](https://opendatacommons.org/licenses/by/1-0/)，见 [Getty 授名要求](https://www.getty.edu/research-conservation/tools-databases/vocabularies/data-services/)。
+- 俄克喜林库斯：采用 [Johan Åhlfeldt / Digital Atlas of the Roman Empire（DARE），地点 22142](https://imperium.ahlfeldt.se/places/22142) 的代表坐标，CC BY-SA 3.0，原资料精度约 2 千米。增加中文名与独立阅读说明；该点保留原数据授权，不改授权为项目 GPL。
+- 位置：`src/europe/egypt-cities.ts`。代表点不是城市轮廓或省界。文书说明为独立摘要，不分发纸草影像、原文抄录或牛津展览页面。

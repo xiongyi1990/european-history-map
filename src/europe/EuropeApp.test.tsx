@@ -229,7 +229,7 @@ describe('timeline rendering',()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=401');render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'年代'}));
   const overview=await screen.findByRole('region',{name:'4—5世纪地图总览'});
-  expect(overview.textContent).toContain('55 组地域');expect(overview.textContent).toContain('85 处');
+  expect(overview.textContent).toContain('56 组地域');expect(overview.textContent).toContain('87 处');
   fireEvent.change(within(overview).getByLabelText('四至五世纪连续时间轴'),{target:{value:'428'}});
   fireEvent.click(within(screen.getByRole('region',{name:'4—5世纪地图总览'})).getByRole('button',{name:/亚美尼亚与高加索/}));
   expect(location.search).toContain('year=428');expect(location.search).toContain('region=armenia');

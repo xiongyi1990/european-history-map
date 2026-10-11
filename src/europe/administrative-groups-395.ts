@@ -57,6 +57,6 @@ export const administrativeReadingGroups:AdministrativeReadingGroup[]=[
  {id:'egyptian-provinces',division:'east',name:'埃及管区与昔兰尼加',modern:'尼罗河三角洲、河谷，以及今利比亚东部地中海沿岸。',
   provinces:['埃及','阿卡迪亚','底比斯','上利比亚','下利比亚'],
   note:'这是东方大区内的一组行政地域；上、下利比亚是晚期省名，不等同现代利比亚全境。“上埃及／下埃及”的河流地理导览也不等于逐个行省划分。',
-  regions:[['egypt','埃及总览'],['egypt-delta','下埃及三角洲'],['egypt-upper','上埃及河谷'],['cyrenaica400','昔兰尼加：高地与海港'],['marmarica','马尔马里卡：通往埃及的沿海']],cities:[['alexandria','亚历山大里亚'],['syene','叙恩（阿斯旺）'],['cyrene','昔兰尼'],['apollonia-cyrenaica','阿波罗尼亚（苏萨）'],['ptolemais-libya','托勒密城'],['paraetonium','帕莱托尼翁（马特鲁港）']],source:latin('_P18')},
+  regions:[['egypt','埃及总览'],['egypt-delta','下埃及三角洲'],['egypt-middle','中埃及：河谷城市'],['egypt-upper','上埃及河谷'],['cyrenaica400','昔兰尼加：高地与海港'],['marmarica','马尔马里卡：通往埃及的沿海']],cities:[['alexandria','亚历山大里亚'],['pelusium','佩卢西乌姆（法拉马）'],['oxyrhynchus','俄克喜林库斯（巴赫纳萨）'],['syene','叙恩（阿斯旺）'],['cyrene','昔兰尼'],['apollonia-cyrenaica','阿波罗尼亚（苏萨）'],['ptolemais-libya','托勒密城'],['paraetonium','帕莱托尼翁（马特鲁港）']],source:latin('_P18')},
 ];
 export const administrativeGroupsAt=(division:string,year:number)=>year===395?administrativeReadingGroups.filter(g=>g.division===division):[];

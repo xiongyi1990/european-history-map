@@ -1,3 +1,4 @@
+import {egyptCityRegions} from './egypt-cities';
 import {addEasternLibya,easternLibyaCityRegions} from './eastern-libya';
 import {addLibyanCoasts,libyanCoastCityRegions} from './libyan-coasts';
 import {addMauretania,mauretaniaCityRegions} from './mauretania';
@@ -12,6 +13,7 @@ export const readingRegionsAt=(y:number)=>addEasternLibya(addLibyanCoasts(addMau
 export const readingRegionById=(id:string,y:number)=>readingRegionsAt(y).find(r=>r.id===id);
 export function readingCityRegionAt(id:string,y:number){
  if(inReadingCenturies(y)){
+  if(egyptCityRegions[id])return egyptCityRegions[id];
   if(easternLibyaCityRegions[id])return easternLibyaCityRegions[id];
   if(libyanCoastCityRegions[id])return libyanCoastCityRegions[id];
   if(mauretaniaCityRegions[id])return mauretaniaCityRegions[id];

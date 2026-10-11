@@ -5,7 +5,7 @@ describe('Egyptian reading regions',()=>{
  it('inherits contemporary political context throughout 300–500 and does not leak later events',()=>{
   for(let y=300;y<=500;y++){
    const parent=readingRegionById('egypt',y)!;
-   for(const id of ['egypt-delta','egypt-upper']){
+   for(const id of ['egypt-delta','egypt-middle','egypt-upper']){
     const r=readingRegionById(id,y)!;expect(r.parent).toBe('egypt');expect(r.polity).toBe(parent.polity);
     for(const s of r.sources)expect(courseSources[s]?.url).toMatch(/^https:/);
    }

@@ -7,6 +7,11 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ pelusiumGetty:{title:'Getty TGN：佩卢西乌姆／Tell el-Farama 代表坐标（ODC-By 1.0）',url:'https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7539229'},
+ pelusiumExcavation:{title:'Grzymski（1997）：佩卢西乌姆发掘、河口与通往巴勒斯坦的入口',url:'https://archive.archaeology.org/online/features/pelusium/'},
+ oxyrhynchusAtlas:{title:'Johan Åhlfeldt / DARE：俄克喜林库斯／El Bahnasa（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/22142'},
+ oxyrhynchusIntro:{title:'牛津纸草项目：俄克喜林库斯、优素福水道与城市文书',url:'https://oxyrhynchus.web.ox.ac.uk/introduction'},
+ egyptPapyri:{title:'牛津纸草展：315—316 年维修、342 年税务信及四世纪佩卢西乌姆庭审',url:'https://oxyrhynchus.web.ox.ac.uk/millennium-documents'},
  ptolemaisSite:{title:'利比亚提交的 UNESCO 预备名单：托勒密城遗址与代表坐标',url:'https://whc.unesco.org/en/tentativelists/6487'},
  ptolemaisEdict:{title:'Caputo 与 Goodchild（1955）：托勒密城、行省中心与四世纪铭文',url:'https://doi.org/10.2307/298750'},
  synesius67:{title:'叙涅修斯第 67 封信（411 年）：五城地区与亚历山大里亚教会联系',url:'https://www.livius.org/sources/content/synesius/synesius-letter-067/'},
