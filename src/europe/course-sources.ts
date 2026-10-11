@@ -7,6 +7,12 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ ptolemaisSite:{title:'利比亚提交的 UNESCO 预备名单：托勒密城遗址与代表坐标',url:'https://whc.unesco.org/en/tentativelists/6487'},
+ ptolemaisEdict:{title:'Caputo 与 Goodchild（1955）：托勒密城、行省中心与四世纪铭文',url:'https://doi.org/10.2307/298750'},
+ synesius67:{title:'叙涅修斯第 67 封信（411 年）：五城地区与亚历山大里亚教会联系',url:'https://www.livius.org/sources/content/synesius/synesius-letter-067/'},
+ paraetoniumAtlas:{title:'Johan Åhlfeldt / DARE：帕莱托尼翁／马特鲁港（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/21711.html'},
+ paraetoniumStudy:{title:'Ray 与 Nikolaus（2022）：马特鲁港的古代港湾、农业腹地与沿海联系',url:'https://doi.org/10.1007/s11457-022-09337-0'},
+ marmaricaStudy:{title:'Joyce Reynolds：马尔马里卡与下利比亚（Oxford Classical Dictionary）',url:'https://doi.org/10.1093/acrefore/9780199381135.013.3974'},
  sabrathaSite:{title:'UNESCO：萨布拉塔遗址、城市历史与代表坐标',url:'https://whc.unesco.org/en/list/184/'},
  apolloniaAtlas:{title:'Johan Åhlfeldt / DARE：阿波罗尼亚／苏萨坐标（CC BY-SA 3.0）',url:'https://imperium.ahlfeldt.se/places/21854'},
  apolloniaHarbour:{title:'Attic Inscriptions Online：阿波罗尼亚与昔兰尼港口关系（IEleus 495 注释）',url:'https://www.atticinscriptions.com/inscription/OliverMarcusAurelius/8'},
