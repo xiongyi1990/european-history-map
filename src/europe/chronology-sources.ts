@@ -1,4 +1,6 @@
+import {modernHistorySources} from './modern-history-sources';
 export const chronologySources={
+ ...modernHistorySources,
  timelineCharlemagneDeath:{title:'莱茵地区历史门户：814 年查理曼在亚琛去世',url:'https://www.rheinische-geschichte.lvr.de/chronicle/814'},
  timelinePrague1618:{title:'德国历史研究所：1618 年布拉格掷窗的原始叙述',url:'https://germanhistorydocs.org/en/from-the-reformations-to-the-thirty-years-war-1500-1648/ghdi:document-4394'},
  timelineHeraclius:{title:'大都会博物馆：希拉克略与七世纪战争',url:'https://www.metmuseum.org/exhibitions/listings/2012/byzantium-and-islam/blog/characters/posts/heraclius'},

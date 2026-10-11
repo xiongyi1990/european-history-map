@@ -60,3 +60,38 @@ describe('post-600 dated chronology',()=>{
   fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'774'}});expect(screen.getByTestId('event-map-areas').textContent).toBe('0');await act(async()=>{});
  });
 });
+
+describe('modern political transitions and exact navigation',()=>{
+ it('separates Italian unification, annexation and capital relocation',()=>{
+  expect(historicalDetail('turin',1861)?.polity.text).toContain('最初首都');
+  expect(historicalDetail('rome',1861)?.polity.text).toContain('尚未并入');
+  expect(historicalDetail('rome',1870)?.polity.text).toContain('并入');
+  expect(historicalDetail('rome',1871)?.polity.text).toContain('政府迁入');
+  expect(historicalDetail('rome',1862)).toBeUndefined();
+ });
+ it('distinguishes occupying forces, siege and statehood',()=>{
+  expect(historicalDetail('vienna',1867)?.polity.text).toContain('匈牙利另有');
+  expect(historicalDetail('berlin',1867)?.polity.text).toContain('帝国尚未成立');
+  expect(historicalDetail('rome',1943)?.polity.text).toContain('德军占领');
+  expect(historicalDetail('rome',1944)?.polity.text).toContain('盟军进入');
+  expect(historicalDetail('moscow',1941)?.polity.text).toContain('未被德军占领');
+  expect(historicalDetail('petersburg',1941)?.title).toBe('列宁格勒');
+  expect(historicalDetail('warsaw',1940)?.people.text).toContain('强迫');
+ });
+ it('does not backdate German unity, EU establishment or euro cash',()=>{
+  expect(turningPointAt(1989)?.after).toContain('尚未');
+  expect(turningPointAt(1990)?.after).toContain('10 月 3 日');
+  expect(turningPointAt(1992)?.after).toContain('1993');
+  expect(turningPointAt(1993)?.after).toContain('正式成立');
+  expect(turningPointAt(1999)?.after).toContain('2002');
+  expect(turningPointAt(1917)?.spatial).toContain('还不能称作');
+ });
+ it('crosses 1648 and keeps a custom late date free of inherited events',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>({type:'FeatureCollection',features:[]})})));history.replaceState(null,'','/?year=1648');render(<EuropeApp/>);fireEvent.click(screen.getByRole('button',{name:/^年代$/}));
+  fireEvent.click(screen.getByRole('button',{name:/1660 →/}));expect(location.search).toContain('year=1660');expect(screen.getByRole('article',{name:'1660 年关键变化'})).toBeTruthy();
+  fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'1992'}});expect(screen.getByTestId('event-map-pins').textContent).toContain('brussels');expect(screen.getByRole('article',{name:'1992 年关键变化'})).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:/1993 →/}));expect(location.search).toContain('year=1993');
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1994'}});fireEvent.click(screen.getByLabelText('前往输入年份'));
+  expect((screen.getByLabelText('选择资料年代') as HTMLSelectElement).value).toBe('1994');expect(screen.queryByRole('article',{name:'1993 年关键变化'})).toBeNull();expect(screen.getByRole('region',{name:'600 年后的关键年份'})).toBeTruthy();await act(async()=>{});
+ });
+});

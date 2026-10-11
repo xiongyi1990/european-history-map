@@ -3,13 +3,13 @@ import {courseSources} from './course-sources';
 import {chronologyPeriods,historicalTurningPoints,turningPointAt} from './historical-chronology';
 export function HistoricalChronology({year,boundaryYear,onYear,onPlace,onLocate,borrowed,onBorrowed}:{year:number;boundaryYear?:number;onYear:(year:number)=>void;onPlace:(id:string)=>void;onLocate:(ids:string[])=>void;borrowed:boolean;onBorrowed:(value:boolean)=>void}){
  const [picked,setPicked]=useState<string>();
- if(year<600||year>1648)return null;
+ if(year<600||year>2000)return null;
  const period=chronologyPeriods.find(p=>p.id===picked)??chronologyPeriods.find(p=>year>=p.from&&year<=p.to)!;
  const goToYear=(value:number)=>{setPicked(undefined);onYear(value);};
  const entries=historicalTurningPoints.filter(e=>e.year>=period.from&&e.year<=period.to);
  const current=turningPointAt(year),previous=historicalTurningPoints.filter(e=>e.year<year).slice(-1)[0],next=historicalTurningPoints.find(e=>e.year>year);
  return <section className="history-chronology" aria-label="600 年后的关键年份">
-  <div className="chronology-heading"><span>按变化读地图</span><small>{historicalTurningPoints.length} 个关键节点 · 600—1648</small></div>
+  <div className="chronology-heading"><span>按变化读地图</span><small>{historicalTurningPoints.length} 个关键节点 · 600—2000</small></div>
   <label className="chronology-period">选择历史阶段<select aria-label="选择历史阶段" value={period.id} onChange={e=>setPicked(e.target.value)}>{chronologyPeriods.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label>
   <div className="chronology-years" aria-label="关键年份">{entries.map(e=><button key={e.year} aria-label={`${e.year} 年：${e.title}`} aria-current={year===e.year?'date':undefined} title={e.title} onClick={()=>goToYear(e.year)}>{e.year}</button>)}</div>
   <nav className="chronology-neighbours" aria-label="前后关键节点"><button disabled={!previous} onClick={()=>previous&&goToYear(previous.year)}>← {previous?.year??'起点'}<span>上一关键年</span></button><button disabled={!next} onClick={()=>next&&goToYear(next.year)}>{next?.year??'后续待补'} →<span>下一关键年</span></button></nav>
