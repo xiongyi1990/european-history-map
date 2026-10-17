@@ -1,3 +1,4 @@
+import {early500TurningPoints} from './early-500-chronology';
 import {millenniumExpansionTurningPoints} from './millennium-expansion-chronology';
 import {earlyMedievalTurningPoints} from './early-medieval-chronology';
 import {modernTurningPoints} from './modern-chronology';
@@ -67,7 +68,7 @@ export const historicalTurningPoints:HistoricalTurningPoint[]=[
  event(1618,'布拉格掷窗与三十年战争开端','波希米亚属于哈布斯堡王权的政治体系，宗教与等级权利冲突加剧。','布拉格掷窗事件引发反叛，随后发展为涉及多个欧洲政权的战争。','波希米亚在欧洲中部；不能把 1618 年的反叛起点画成战争三十年的固定阵营疆界。','宗派、诸侯利益与王朝政治交织，不能用单一族群解释所有参战方。',[['prague','布拉格 · 战争起点背景']],'timelinePrague1618'),
  event(1642,'英格兰内战开始','英格兰王权与议会之间的矛盾持续升级。','国王与议会之间爆发内战；议会一方的控制与英格兰王国的名义边界须分开。','不列颠内部的政治和宗教关系不能简单化为一个统一国家的颜色。',mixed,[['london','伦敦 · 议会与城市背景']],'civilwar'),
  event(1648,'威斯特伐利亚和约','三十年战争已经牵涉帝国诸邦、法国、瑞典等多方。','明斯特与奥斯纳布吕克的和约处理帝国宪制、宗教及领土问题；不能概括为现代国界在这一天全部定型。','谈判地点在今天德国西北部；下列城市用于比较参战政治背景，不是签约地点标记。','和约处理宗教权利与政治关系，并不建立单一民族人口区。',[['prague','布拉格 · 波希米亚背景'],['paris','巴黎 · 法国背景']],'timelineWestphalia'),
- ...modernTurningPoints,...earlyMedievalTurningPoints,...millenniumExpansionTurningPoints,
+ ...early500TurningPoints,...modernTurningPoints,...earlyMedievalTurningPoints,...millenniumExpansionTurningPoints,
 ].sort((a,b)=>a.year-b.year);
 export function turningPointAt(year:number){return historicalTurningPoints.find(e=>e.year===year);}
-export const chronologyPeriods=[{id:'early',name:'600—799 · 东方征服与西方王国',from:600,to:799},{id:'carolingian',name:'800—999 · 加洛林分裂与新王权',from:800,to:999},{id:'high',name:'1000—1299 · 王国、帝国与十字军',from:1000,to:1299},{id:'late',name:'1300—1648 · 中世纪晚期与近代转折',from:1300,to:1648},{id:'dynastic',name:'1649—1788 · 王朝政治与议会',from:1649,to:1788},{id:'national',name:'1789—1913 · 革命与民族国家',from:1789,to:1913},{id:'wars',name:'1914—1945 · 世界大战与政体重组',from:1914,to:1945},{id:'postwar',name:'1946—2000 · 冷战与欧洲合作',from:1946,to:2000}];
+export const chronologyPeriods=[{id:'recovery',name:'500—599 · 西部诸王国与东罗马西征',from:500,to:599},{id:'early',name:'600—799 · 东方征服与西方王国',from:600,to:799},{id:'carolingian',name:'800—999 · 加洛林分裂与新王权',from:800,to:999},{id:'high',name:'1000—1299 · 王国、帝国与十字军',from:1000,to:1299},{id:'late',name:'1300—1648 · 中世纪晚期与近代转折',from:1300,to:1648},{id:'dynastic',name:'1649—1788 · 王朝政治与议会',from:1649,to:1788},{id:'national',name:'1789—1913 · 革命与民族国家',from:1789,to:1913},{id:'wars',name:'1914—1945 · 世界大战与政体重组',from:1914,to:1945},{id:'postwar',name:'1946—2000 · 冷战与欧洲合作',from:1946,to:2000}];

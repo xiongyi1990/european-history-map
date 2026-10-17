@@ -1,0 +1,18 @@
+export const early500Sources={
+ earlyItaly:{title:'大都会博物馆：意大利半岛 500—1000 年',url:'https://www.metmuseum.org/toah/ht/06/eust.html'},
+ earlyIberia:{title:'大都会博物馆：伊比利亚 500—1000 年',url:'https://www.metmuseum.org/toah/ht/06/eusi.html'},
+ earlyIslands:{title:'大都会博物馆：不列颠与爱尔兰 500—1000 年',url:'https://www.metmuseum.org/toah/ht/06/euwb.html'},
+ earlyNorth:{title:'大都会博物馆：东欧与斯堪的纳维亚 500—1000 年',url:'https://www.metmuseum.org/toah/ht/06/eue.html'},
+ earlyCentral:{title:'大都会博物馆：中欧 500—1000 年',url:'https://www.metmuseum.org/toah/ht/06/euwc.html'},
+ earlyCaucasus:{title:'大都会博物馆：安纳托利亚与高加索 500—1000 年',url:'https://www.metmuseum.org/toah/ht/06/waa.html'},
+ earlyFrankishRhine:{title:'莱茵地区历史门户：500—785 年法兰克王权、分国与宫相',url:'https://www.rheinische-geschichte.lvr.de/Epochen-und-Themen/Epochen/500-bis-785---die-rheinlande-im-fruehmittelalter-/DE-2086/lido/57ab21f57328c2.42556102'},
+ earlyIranTimeline:{title:'伊朗百科全书：萨珊与早期哈里发纪年',url:'https://www.iranicaonline.org/articles/chronology-of-iranian-history-part-1/'},
+ earlyIranRelations:{title:'伊朗百科全书：东罗马—伊朗关系与 532、562 年和约',url:'https://www.iranicaonline.org/articles/byzantine-iranian-relations/'},
+ earlyJustinian:{title:'伊朗百科全书：查士丁尼一世、西征与东方战争',url:'https://www.iranicaonline.org/articles/justinian-i-flavius-petrus-sabbatius-justinianus/'},
+ earlyPlague:{title:'福特汉姆大学史料集：普罗柯比记述 542 年瘟疫',url:'https://sourcebooks.web.fordham.edu/source/542procopius-plague.asp'},
+ earlyWhitby:{title:'英国遗产保护机构：597 年传教与 664 年惠特比会议',url:'https://www.english-heritage.org.uk/visit/places/whitby-abbey/history-and-stories/easter-and-the-synod-of-whitby/'},
+ earlySuevic:{title:'剑桥大学出版社：西北苏维汇王国、585 年征服与礼仪传统',url:'https://assets.cambridge.org/97811089/94019/excerpt/9781108994019_excerpt.pdf'},
+ earlyAvars:{title:'奥地利科学院：阿瓦尔、568 年前后转折与帝国关系',url:'https://epub.oeaw.ac.at/0xc1aa5572%200x0039070f.pdf'},
+ earlyConquests:{title:'剑桥大学出版社：七至九世纪伊斯兰扩张参考图',url:'https://assets.cambridge.org/97813165/19769/frontmatter/9781316519769_frontmatter.pdf'},
+ earlyAntioch:{title:'伊朗百科全书：安条克，540 年攻掠与 610／611、637／638 年交接',url:'https://www.iranicaonline.org/articles/antioch-1-northern-syria/'},
+} as const;

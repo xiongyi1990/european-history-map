@@ -59,7 +59,7 @@ describe('post-600 dated chronology',()=>{
   const fc={type:'FeatureCollection',features:[{type:'Feature',properties:{name:'Umayyad Caliphate',subject:'Umayyad Caliphate'},geometry:{type:'Polygon',coordinates:[[[10,40],[20,40],[20,50],[10,40]]]}}]};
   vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>fc})));history.replaceState(null,'','/?year=711');render(<EuropeApp/>);fireEvent.click(screen.getByRole('button',{name:/^年代$/}));
   await act(async()=>{});expect(screen.getByTestId('event-map-areas').textContent).toBe('0');
-  const chronology=screen.getByRole('region',{name:'600 年后的关键年份'});fireEvent.click(within(chronology).getByRole('checkbox',{name:/叠加 700 年/}));expect(screen.getByTestId('event-map-areas').textContent).toBe('1');
+  const chronology=screen.getByRole('region',{name:'500 年后的关键年份'});fireEvent.click(within(chronology).getByRole('checkbox',{name:/叠加 700 年/}));expect(screen.getByTestId('event-map-areas').textContent).toBe('1');
   fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'774'}});expect(screen.getByTestId('event-map-areas').textContent).toBe('0');await act(async()=>{});
  });
 });
@@ -98,6 +98,6 @@ describe('modern political transitions and exact navigation',()=>{
   fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'1992'}});expect(screen.getByTestId('event-map-pins').textContent).toContain('brussels');expect(screen.getByRole('article',{name:'1992 年关键变化'})).toBeTruthy();
   fireEvent.click(screen.getByRole('button',{name:/1993 →/}));expect(location.search).toContain('year=1993');
   fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1994'}});fireEvent.click(screen.getByLabelText('前往输入年份'));
-  expect((screen.getByLabelText('选择资料年代') as HTMLSelectElement).value).toBe('1994');expect(screen.queryByRole('article',{name:'1993 年关键变化'})).toBeNull();expect(screen.getByRole('region',{name:'600 年后的关键年份'})).toBeTruthy();await act(async()=>{});
+  expect((screen.getByLabelText('选择资料年代') as HTMLSelectElement).value).toBe('1994');expect(screen.queryByRole('article',{name:'1993 年关键变化'})).toBeNull();expect(screen.getByRole('region',{name:'500 年后的关键年份'})).toBeTruthy();await act(async()=>{});
  });
 });

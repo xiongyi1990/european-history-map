@@ -21,7 +21,7 @@ describe('fourth and fifth century coverage as one atlas',()=>{
      for(const source of f.sources)expect(historySources[source],`${y}:${place.id}:${source}`).toBeDefined();
     }
    }
-   expect(historicalDetail(place.id,299)).toBeUndefined();expect(historicalDetail(place.id,501)).toBeUndefined();
+   expect(historicalDetail(place.id,299)).toBeUndefined();const later=historicalDetail(place.id,501);if(later)expect(later.id).toMatch(/^early500-/);
   }
   expect(historicalDetail('narbonne',412)?.polity.text).toContain('约412／413年');
   expect(historicalDetail('narbonne',414)?.polity.text).toContain('三个不同节点');
