@@ -1,6 +1,6 @@
 import type {courseSources} from './course-sources';
 export const early500PolityTimes:{name:string;time:string;note:string;regions:string[];source:keyof typeof courseSources}[]=[
- {name:'东罗马帝国',time:'通常从 330／395 年叙述至 1453 年；本期 500—700 年持续存在',note:'本期未因查士丁尼去世或失去南部行省而亡国；1204 年后的流亡与恢复是后续分段。',regions:['italy','africa','balkans','anatolia','levant','egypt','mesopotamia','caucasus'],source:'byzantine'},
+ {name:'东罗马帝国',time:'通常从 330／395 年叙述至 1453 年；本期 500—800 年持续存在',note:'本期未因查士丁尼去世或失去南部行省而亡国；1204 年后的流亡与恢复是后续分段。',regions:['italy','africa','balkans','anatolia','levant','egypt','mesopotamia','caucasus'],source:'byzantine'},
  {name:'东哥特的意大利王国',time:'493 年建立意大利王权；552 年主力失败，清剿延续到其后',note:'540 年丢失拉文纳不等于所有东哥特抵抗已结束，也不表示战场每年不变。',regions:['italy'],source:'earlyItaly'},
  {name:'汪达尔北非王权',time:'439 年取得迦太基；533 年失城；534 年王权终结',note:'用三个节点区分城市交接与王国战争收尾；此前已有北非扩张，439 年不是族群首次出现。',regions:['africa'],source:'africaVandal'},
  {name:'西哥特王权',time:'418 年高卢立足；507 年失去高卢核心；711 年征服与瓦解开始',note:'王都和重心转移不是国家每次重新成立，各地抵抗和交接也不是同日结束。',regions:['gaul','iberia'],source:'toulouseLate'},
@@ -13,4 +13,12 @@ export const early500PolityTimes:{name:string;time:string;note:string;regions:st
  {name:'东方倭马亚王朝',time:'661—750 年；以大马士革为中心',note:'700 年尚未开始 711 年伊比利亚征服，后来的科尔多瓦分支另有时间线。',regions:['levant','egypt','mesopotamia','africa','caucasus'],source:'timelineUmayyad'},
  {name:'第一保加利亚国家',time:'常用线索：681—1018 年',note:'王权形成、迁都与居民改宗是不同节点，681 年不能提前套用 864 年的基督教化。',regions:['balkans'],source:'earlyBalkans'},
  {name:'阿瓦尔多瑙河政权',time:'567／568 年前后形成；延续至九世纪初',note:'626 年围君士坦丁堡失败没有导致政权同年消失；不能直接把所有臣属看作同一祖源。',regions:['central','balkans'],source:'earlyAvars'},
+ {name:'加洛林法兰克王权',time:'751 年取代墨洛温；800 年获得西方帝号；843 年后分国',note:'王朝、帝号与分国是不同层次，萨克森战争至 804 年，不能把 800 年当作所有边疆征服终点。',regions:['gaul','central','italy'],source:'carolingian'},
+ {name:'教皇世俗领地',time:'754 年合作、756 年丕平赠地是形成阶段的重要节点',note:'赠地文书主张与各地实际控制分开，不把后世教皇国疆界直接倒填到 756 年。',regions:['italy','gaul'],source:'earlyPepinDonation'},
+ {name:'阿拔斯哈里发',time:'750—1258 年常用巴格达王朝纪年；762 年建巴格达',note:'远方独立或自治政权的实际控制不能由哈里发称号推导。',regions:['levant','egypt','mesopotamia','africa','caucasus'],source:'abbasid'},
+ {name:'科尔多瓦倭马亚分支',time:'756—929 年埃米尔国；929—1031 年哈里发国',note:'独立于东方阿拔斯，不能把 756 年称作已建立科尔多瓦哈里发国。',regions:['iberia'],source:'umayyad'},
+ {name:'伊德里斯王朝',time:'马格里布西部常用 788—990 年纪年',note:'瓦卢比利斯有关早期中心，地方权力范围变化；不是统治整个北非的现代摩洛哥国家。',regions:['africa'],source:'africaVandal'},
+ {name:'阿格拉布王朝',time:'800—909 年伊弗里基亚王朝纪年',note:'世袭地方统治与承认阿拔斯权威并存，827 年西西里远征不提前到 800 年。',regions:['africa','italy'],source:'africaVandal'},
+ {name:'麦西亚的奥法王权',time:'757—796 年为奥法个人统治期',note:'不是麦西亚王国完整存续时间，更不是统一英国的建国纪年。',regions:['britain'],source:'earlyOffa'},
+ {name:'可萨政治共同体',time:'七世纪中叶以后形成，八世纪持续；本卡不指定无争议的统一灭国日',note:'737 年远征后仍延续，精英接受犹太教的时间有争议；不据 740 年推定全体居民改宗。',regions:['east','caucasus'],source:'earlyKhazars'},
 ];

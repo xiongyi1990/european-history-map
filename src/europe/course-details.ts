@@ -1,3 +1,4 @@
+import {completeEarly700} from './early-700-cities';
 import {completeEarly500} from './early-500-cities';
 import {completeMillenniumExpansion,millenniumExpansionPlaces} from './millennium-expansion-cities';
 import {completeMedievalExpansion,medievalExpansionPlaces} from './medieval-expansion-cities';
@@ -98,4 +99,4 @@ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',disp
 ];
 
 
-export const courseDetails:HistoricalDetail[]=completeEarly500(completeMillenniumExpansion(completeMedievalExpansion(completeMedievalPhases([...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))]))));
+export const courseDetails:HistoricalDetail[]=completeEarly700(completeEarly500(completeMillenniumExpansion(completeMedievalExpansion(completeMedievalPhases([...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))])))));

@@ -1,3 +1,4 @@
+import {early700RegionPhases,early700Social} from './early-700-regions';
 import type {AreaLabel} from '../greek/GreekMap';
 import type {courseSources} from './course-sources';
 type Source=keyof typeof courseSources;
@@ -5,7 +6,7 @@ type Point=[number,number];
 export interface EarlyPhase {from:number;to:number;name:string;mapName:string;control:string;parts:string;change:string;sources:Source[]}
 export interface EarlyRegion {id:string;name:string;where:string;coords:Point;bounds:[Point,Point];places:[string,string][];people:string;language:string;sources:Source[];phases:EarlyPhase[]}
 const phase=(from:number,to:number,name:string,mapName:string,control:string,parts:string,change:string,...sources:Source[]):EarlyPhase=>({from,to,name,mapName,control,parts,change,sources});
-export const early500Regions:EarlyRegion[]=[
+const baseEarly500Regions:EarlyRegion[]=[
  {id:'gaul',name:'高卢与法兰克诸王国',where:'今天法国、比利时和莱茵河邻接地区；高卢是历史地域，不等于法国国界。',coords:[2.5,47.5],bounds:[[-5,42],[9,52]],places:[['paris','巴黎'],['tournai','图尔奈'],['toulouse','图卢兹'],['lyon','里昂'],['trier','特里尔']],
  people:'法兰克军事与王室集团和罗马—高卢地方社会相互结合；主教、地主、农民与商人不是同一种人口分类。',language:'拉丁文的教会和书写传统延续；不同日常口语不能按王国界线整齐分开。',sources:['earlyFrankishRhine','toulouseLate'],phases:[
  phase(500,506,'克洛维扩张，南部仍有其他王国','法兰克／西哥特／勃艮第','法兰克王权在北部；图卢兹西哥特王国与里昂一带勃艮第王国仍分别存在。','北部高卢与莱茵方向、阿基坦、罗讷河地域分别看。','507 年法兰克击败西哥特，南部格局将改变。','earlyFrankishRhine','toulouseLate'),
@@ -119,8 +120,9 @@ export const early500Regions:EarlyRegion[]=[
  phase(650,700,'阿拉伯进入与帝国边防重组','高加索地方势力／阿拉伯进入','按约七世纪中叶阶段阅读，阿拉伯军进入部分地域，东罗马与地方权力仍在不同地区延续。','黑海侧、亚美尼亚与东格鲁吉亚分开；参照城市按钮不冒充本区王都。','没有核对的地方小政权边界保留为空，不画成统一高加索国家。','earlyCaucasus'),
  ]},
 ];
-export function inEarly500(year:number){return year>=500&&year<=700;}
-export function earlyRegionsAt(year:number){return inEarly500(year)?early500Regions.map(r=>({...r,phase:r.phases.find(p=>year>=p.from&&year<=p.to)!})):[];}
+export const early500Regions:EarlyRegion[]=baseEarly500Regions.map(r=>({...r,phases:[...r.phases,...early700RegionPhases[r.id]]}));
+export function inEarly500(year:number){return year>=500&&year<=800;}
+export function earlyRegionsAt(year:number){return inEarly500(year)?early500Regions.map(r=>({...r,...(year>=701&&(r.id!=='iberia'||year>=711)?early700Social[r.id]:{}),places:[...r.places,...(r.id==='mesopotamia'&&year>=762?[['baghdad','巴格达 · 阿拔斯新都'] as [string,string]]:[])],phase:r.phases.find(p=>year>=p.from&&year<=p.to)!})):[];}
 export function earlyRegionAt(id:string,year:number){return earlyRegionsAt(year).find(r=>r.id===id);}
 export function early500PlaceIds(year:number){return [...new Set(earlyRegionsAt(year).flatMap(r=>r.places.filter(([,label])=>!label.includes('参照')).map(([id])=>id)))].filter(id=>id!=='pliska'||year>=681).filter(id=>id!=='kairouan'||year>=670);}
 export function early500Labels(year:number):AreaLabel[]{return earlyRegionsAt(year).map(r=>({id:'early500:'+r.id,name:r.phase.mapName+' · '+r.name,coords:r.coords,color:'#4b6379',minZoom:2.6,kind:'region'}));}

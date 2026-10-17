@@ -12,14 +12,14 @@ HTMLDialogElement.prototype.showModal=function(){this.open=true};
 HTMLDialogElement.prototype.close=function(){this.open=false};
 afterEach(()=>{cleanup();vi.unstubAllGlobals();history.replaceState(null,'','/')});
 vi.setConfig({testTimeout:15000});
-describe('AD 500–700 continuous regional reading',()=>{
+describe('AD 500–800 continuous regional reading',()=>{
  it('covers every year exactly once in each region and keeps evidence and anchors valid',()=>{
   const ids=new Set(ancientPlaces.map(p=>p.id));
-  for(let y=500;y<=700;y++){
+  for(let y=500;y<=800;y++){
    expect(earlyRegionsAt(y)).toHaveLength(14);
    for(const r of early500Regions)expect(r.phases.filter(p=>y>=p.from&&y<=p.to),r.id+':'+y).toHaveLength(1);
   }
-  expect(earlyRegionsAt(499)).toEqual([]);expect(earlyRegionsAt(701)).toEqual([]);
+  expect(earlyRegionsAt(499)).toEqual([]);expect(earlyRegionsAt(801)).toEqual([]);
   for(const r of early500Regions){
    expect(r.bounds[0][0]).toBeLessThan(r.bounds[1][0]);
    for(const [id] of r.places)expect(ids.has(id),r.id+':'+id).toBe(true);
@@ -41,6 +41,70 @@ describe('AD 500–700 continuous regional reading',()=>{
   expect(earlyRegionAt('gaul',700)?.phase.control).toContain('墨洛温');
   expect(turningPointAt(602)?.after).toContain('603');
   expect(turningPointAt(577)).toBeUndefined();
+ });
+ it('distinguishes eighth century political transitions and new capitals',()=>{
+  expect(earlyRegionAt('iberia',710)?.people).not.toContain('征服军');
+  expect(earlyRegionAt('iberia',711)?.people).toContain('征服军');
+  expect(earlyRegionAt('gaul',750)?.phase.control).toContain('墨洛温');
+  expect(earlyRegionAt('gaul',751)?.phase.control).toContain('丕平');
+  expect(earlyRegionAt('italy',750)?.phase.control).toContain('拉文纳');
+  expect(earlyRegionAt('italy',751)?.phase.control).toContain('转入伦巴第');
+  expect(earlyRegionAt('italy',774)?.phase.control).toContain('兼伦巴第王号');
+  expect(earlyRegionAt('iberia',755)?.phase.control).toContain('竞争');
+  expect(earlyRegionAt('iberia',756)?.phase.control).toContain('政治上独立');
+  expect(earlyRegionAt('mesopotamia',761)?.phase.control).toContain('尚不能');
+  expect(earlyRegionAt('mesopotamia',762)?.phase.control).toContain('巴格达');
+  expect(early500PlaceIds(761)).not.toContain('baghdad');
+  expect(early500PlaceIds(762)).toContain('baghdad');
+  expect(earlyRegionAt('africa',800)?.phase.control).toContain('阿格拉布');
+  expect(earlyRegionAt('north',793)?.phase.control).toContain('不能当作');
+  expect(earlyRegionAt('east',740)?.phase.control).toContain('有争议');
+  expect(earlyRegionAt('central',800)?.phase.control).toContain('九世纪初');
+  expect(historicalDetail('narbonne',758)?.polity.text).toContain('穆斯林');
+  expect(historicalDetail('narbonne',759)?.polity.text).toContain('丕平');
+  expect(historicalDetail('ravenna',755)?.polity.text).toContain('伦巴第');
+  expect(historicalDetail('ravenna',756)?.polity.text).toContain('赠地');
+  expect(historicalDetail('regensburg',787)?.polity.text).toContain('塔西洛');
+  expect(historicalDetail('regensburg',788)?.polity.text).toContain('被废');
+  for(const y of [714,717,718,730,737,740,741,754,757,759,772,778,785,788,791,793,796])expect(turningPointAt(y),String(y)).toBeDefined();
+ });
+ it('validates the added city evidence, anchors and nonoverlapping ranges',()=>{
+  const extra=courseDetails.filter(d=>d.id.startsWith('early700-'));
+  const ids=new Set(ancientPlaces.map(p=>p.id));
+  expect(extra.length).toBeGreaterThan(20);
+  for(const d of extra){
+   expect(ids.has(d.placeId)).toBe(true);
+   expect(d.from).toBeGreaterThanOrEqual(701);expect(d.to).toBeLessThanOrEqual(800);
+   expect(d.polity.sources.length).toBeGreaterThan(0);
+   for(const key of [...d.polity.sources,...d.people.sources,...d.language.sources])expect(historySources[key]?.url,key).toMatch(/^https:/);
+   for(let y=d.from;y<=d.to;y++)expect(historicalDetails.filter(other=>other.placeId===d.placeId&&other.from<=y&&other.to>=y),d.id+':'+y).toHaveLength(1);
+  }
+  console.info(JSON.stringify({newCityRecords700800:extra.length,events700800:historicalTurningPoints.filter(e=>e.year>=700&&e.year<=800).length}));
+ });
+ it('keeps a shared region selected across 700 and 701 and returns from an eighth century city',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>({type:'FeatureCollection',features:[]})})));
+  history.replaceState(null,'','/?year=700&earlyRegion=italy');render(<EuropeApp/>);
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'701'}});
+  fireEvent.click(screen.getByLabelText('前往输入年份'));
+  expect(location.search).toContain('year=701');expect(location.search).toContain('earlyRegion=italy');
+  const guide=screen.getByRole('region',{name:'500—800 年连续地域导览'});
+  fireEvent.click(within(guide).getByRole('button',{name:/774—800/}));
+  expect(location.search).toContain('year=774');
+  fireEvent.click(guide.querySelector('.h-site-links button')!);
+  expect(location.search).toContain('place=ravenna');
+  fireEvent.click(screen.getByRole('button',{name:'← 返回公元 774 年的地域与政权'}));
+  expect(location.search).toContain('earlyRegion=italy');expect(location.search).not.toContain('place=');
+  await act(async()=>{});
+ });
+ it('returns from Baghdad to the dated Mesopotamian guide after the city is added in 762',async()=>{
+  vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>({type:'FeatureCollection',features:[]})})));
+  history.replaceState(null,'','/?year=762&earlyRegion=mesopotamia');render(<EuropeApp/>);
+  const guide=screen.getByRole('region',{name:'500—800 年连续地域导览'});
+  fireEvent.click(within(guide).getByRole('button',{name:/巴格达 · 阿拔斯新都/}));
+  expect(location.search).toContain('place=baghdad');
+  fireEvent.click(screen.getByRole('button',{name:'← 返回公元 762 年的地域与政权'}));
+  expect(location.search).toContain('earlyRegion=mesopotamia');expect(location.search).not.toContain('place=');
+  await act(async()=>{});
  });
  it('fills city gaps while preserving existing dated evidence and avoiding overlaps',()=>{
   expect(historicalDetail('carthage',533)?.id).toBe('carthage-533');
@@ -65,7 +129,7 @@ describe('AD 500–700 continuous regional reading',()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>({type:'FeatureCollection',features:[]})})));
   history.replaceState(null,'','/?year=533&earlyRegion=africa');
   render(<EuropeApp/>);
-  const guide=screen.getByRole('region',{name:'500—700 年连续地域导览'});
+  const guide=screen.getByRole('region',{name:'500—800 年连续地域导览'});
   expect(within(guide).getByRole('heading',{name:'北非：伊弗里基亚与马格里布'})).toBeTruthy();
   fireEvent.click(within(guide).getByRole('button',{name:/534—646/}));
   expect(location.search).toContain('year=534');expect(location.search).toContain('earlyRegion=africa');
@@ -73,7 +137,7 @@ describe('AD 500–700 continuous regional reading',()=>{
   expect(location.search).toContain('place=carthage');expect(location.search).toContain('year=534');
   fireEvent.click(screen.getByRole('button',{name:'← 返回公元 534 年的地域与政权'}));
   expect(location.search).not.toContain('place=');
-  expect(screen.getByRole('region',{name:'500—700 年连续地域导览'})).toBeTruthy();
+  expect(screen.getByRole('region',{name:'500—800 年连续地域导览'})).toBeTruthy();
   await act(async()=>{});
  });
  it('opens a region from its map label at an ordinary year without borrowing nearby borders',async()=>{
@@ -82,13 +146,13 @@ describe('AD 500–700 continuous regional reading',()=>{
   render(<EuropeApp/>);
   fireEvent.click(screen.getByRole('button',{name:'伦巴第／东罗马 · 意大利与西西里'}));
   expect(location.search).toContain('year=577');expect(location.search).toContain('earlyRegion=italy');
-  const guide=screen.getByRole('region',{name:'500—700 年连续地域导览'});
+  const guide=screen.getByRole('region',{name:'500—800 年连续地域导览'});
   expect(within(guide).getByRole('heading',{name:'帕维亚王权与东罗马飞地'})).toBeTruthy();
   expect(screen.getByTestId('early-area-count').textContent).toBe('0');
-  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'701'}});
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'801'}});
   fireEvent.click(screen.getByLabelText('前往输入年份'));
   expect(location.search).not.toContain('earlyRegion');
-  expect(screen.queryByRole('region',{name:'500—700 年连续地域导览'})).toBeNull();
+  expect(screen.queryByRole('region',{name:'500—800 年连续地域导览'})).toBeNull();
   await act(async()=>{});
  });
 });

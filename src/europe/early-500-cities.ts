@@ -1,9 +1,9 @@
 import type {HistoricalDetail,HistoricalFact} from './history-details';
 import type {courseSources} from './course-sources';
-import {early500Regions} from './early-500-regions';
+import {earlyRegionAt} from './early-500-regions';
 type Source=keyof typeof courseSources;
-const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
-interface CityRange {id:string;name:string;from:number;to:number;region:string;polity:string;source:Source}
+const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources:[...new Set(sources)]});
+export interface CityRange {id:string;name:string;from:number;to:number;region:string;polity:string;source:Source}
 const ranges:CityRange[]=[
  {id:'toulouse',name:'图卢兹',from:507,to:700,region:'gaul',polity:'507 年战后进入法兰克政治空间；不再延用西哥特王都身份。墨洛温诸王分掌与地方权力变化不表示本城二百年制度不变。',source:'toulouseLate'},
  {id:'lyon',name:'里昂',from:534,to:700,region:'gaul',polity:'534 年法兰克诸王征服勃艮第后，进入法兰克王权体系。不能将 500 年的独立勃艮第王国身份沿用到这里。',source:'lyonLate'},
@@ -54,21 +54,23 @@ const ranges:CityRange[]=[
  {id:'ctesiphon',name:'泰西封',from:637,to:660,region:'mesopotamia',polity:'637 年阿拉伯取得之后的萨珊旧宫廷城市位置。王朝向东退却与651 年终结不是同一事件，新的军政中心也不等于旧城仍作唯一首都。',source:'earlyIranTimeline'},
  {id:'ctesiphon',name:'泰西封',from:661,to:700,region:'mesopotamia',polity:'倭马亚两河地域中的萨珊旧城市中心；王朝朝廷在大马士革，巴格达尚未建城。',source:'earlyIranTimeline'},
 ];
-function detail(c:CityRange):HistoricalDetail{
- const r=early500Regions.find(r=>r.id===c.region)!;
- return {id:`early500-${c.id}-${c.from}`,placeId:c.id,from:c.from,to:c.to,focusYear:c.from,title:c.name,kind:'历史城市',period:c.from===c.to?`公元 ${c.from} 年的城市变化`:`${c.from}—${c.to} 年的主要政治背景`,
+function detail(c:CityRange,prefix:string):HistoricalDetail{
+ const r=earlyRegionAt(c.region,c.from)!;
+ return {id:`${prefix}-${c.id}-${c.from}`,placeId:c.id,from:c.from,to:c.to,focusYear:c.from,title:c.name,kind:'历史城市',period:c.from===c.to?`公元 ${c.from} 年的城市变化`:`${c.from}—${c.to} 年的主要政治背景`,
  polity:fact(c.polity,c.source),territory:fact(r.where+' 城市点帮助定位；具体行省、城墙和逐年军事控制边界不由本点推导。',c.source),
- people:fact('地域背景，非本城普查：'+r.people,...r.sources),language:fact('地域层面的书写与语言背景：'+r.language,...r.sources),
+ people:fact('地域背景，非本城普查：'+r.people,...r.sources,...r.phase.sources),language:fact('地域层面的书写与语言背景：'+r.language,...r.sources,...r.phase.sources),
  nameNote:fact(c.id==='toulouse'?'图卢兹是原西哥特重要中心，失去王都角色后仍保留在地图中。':c.id==='ctesiphon'?'泰西封与后来巴格达不是同一座城市；地图不将旧宫廷自动挪到新都。':'采用当时城市的通行中文名称；现代国家仅用于定位。'),
  related:r.places.filter(([id])=>id!==c.id&&(id!=='pliska'||c.from>=681)&&(id!=='kairouan'||c.from>=670)).map(([id])=>id)};
 }
-export function completeEarly500(existing:HistoricalDetail[]):HistoricalDetail[]{
+export function fillEarlyCityRanges(existing:HistoricalDetail[],ranges:CityRange[],prefix:string):HistoricalDetail[]{
  const extra:HistoricalDetail[]=[];
  for(const c of ranges){
-  const candidate=detail(c);
+  const candidate=detail(c,prefix);
   let gaps:[number,number][]=[[c.from,c.to]];
   for(const d of [...existing,...extra].filter(d=>d.placeId===c.id))gaps=gaps.flatMap(([a,b])=>d.to<a||d.from>b?[[a,b] as [number,number]]:[...(a<d.from?[[a,d.from-1] as [number,number]]:[]),...(d.to<b?[[d.to+1,b] as [number,number]]:[])]);
   for(const [from,to] of gaps)extra.push({...candidate,id:`${candidate.id}-${from}-${to}`,from,to,focusYear:from});
  }
  return [...existing,...extra];
 }
+
+export function completeEarly500(existing:HistoricalDetail[]){return fillEarlyCityRanges(existing,ranges,"early500");}

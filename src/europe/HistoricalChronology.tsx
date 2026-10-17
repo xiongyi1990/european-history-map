@@ -23,7 +23,7 @@ export function HistoricalChronology({year,boundaryYear,onYear,onPlace,onLocate,
    <button className="e-primary" onClick={()=>onLocate(current.places.map(([id])=>id))}>定位相关地区与城市 →</button>
    <div className="h-related">{current.places.map(([id,label])=><button key={id} onClick={()=>onPlace(id)}>{label}<span>查看城市资料 →</span></button>)}</div>
    <details className="chronology-sources"><summary>本节点的史料依据</summary>{current.sources.map(key=><a key={key} href={courseSources[key].url} target="_blank" rel="noreferrer">{courseSources[key].title} ↗</a>)}</details>
-  </article>:<p className="e-note">当前为公元 {year} 年。500—700 年可在地域导览中查看所处政治阶段；上方可进入已核对的关键节点，相邻事件不会自动套入本年。</p>}
+  </article>:<p className="e-note">当前为公元 {year} 年。500—800 年可在地域导览中查看所处政治阶段；上方可进入已核对的关键节点，相邻事件不会自动套入本年。</p>}
   <aside className="chronology-boundary"><strong>事件年份与疆界年份</strong><p>{boundaryYear===year?`当前疆界参考也是 ${year} 年，仍属于待逐项核对的概略资料。`:boundaryYear?`当前选中 ${year} 年，邻近疆界资料为 ${boundaryYear} 年。默认只显示地形与地点，避免把邻近年份当作当年版图。`:'该年尚无可用的疆界参考。'}</p>{boundaryYear!==undefined&&boundaryYear!==year&&<label className="e-check"><input type="checkbox" checked={borrowed} onChange={e=>onBorrowed(e.target.checked)}/>叠加 {boundaryYear} 年疆界参考</label>}</aside>
  </section>;
 }

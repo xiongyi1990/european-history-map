@@ -25,7 +25,7 @@ describe('post-600 dated chronology',()=>{
   expect(turningPointAt(775)).toBeUndefined();
  });
  it('separates conquest, independent emirate and caliphal titles',()=>{
-  expect(historicalDetail('cordoba',755)).toBeUndefined();
+  expect(historicalDetail('cordoba',755)?.polity.text).toContain('省级');
   expect(historicalDetail('cordoba',756)?.polity.text).toContain('埃米尔');
   expect(historicalDetail('cordoba',928)?.polity.text).toContain('埃米尔');
   expect(historicalDetail('cordoba',929)?.polity.text).toContain('哈里发');
@@ -46,9 +46,10 @@ describe('post-600 dated chronology',()=>{
  it('navigates exact event years without silently selecting a nearby snapshot',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>({type:'FeatureCollection',features:[]})})));history.replaceState(null,'','/?year=711');render(<EuropeApp/>);fireEvent.click(screen.getByRole('button',{name:/^年代$/}));
   expect((screen.getByLabelText('选择资料年代') as HTMLSelectElement).value).toBe('711');expect(screen.getByRole('article',{name:'711 年关键变化'})).toBeTruthy();
-  fireEvent.click(screen.getByRole('button',{name:/726 →/}));expect(location.search).toContain('year=726');
-  fireEvent.click(screen.getByRole('button',{name:/732 →/}));expect(location.search).toContain('year=732');expect(screen.getByRole('article',{name:'732 年关键变化'})).toBeTruthy();
-  fireEvent.click(screen.getByRole('button',{name:/750 →/}));
+  fireEvent.click(screen.getByRole('button',{name:/714 →/}));expect(location.search).toContain('year=714');
+  fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'726'}});expect(location.search).toContain('year=726');
+  fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'732'}});expect(location.search).toContain('year=732');expect(screen.getByRole('article',{name:'732 年关键变化'})).toBeTruthy();
+  fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'750'}});
   expect(location.search).toContain('year=750');expect(screen.getByRole('article',{name:'750 年关键变化'})).toBeTruthy();expect(screen.queryByRole('article',{name:'711 年关键变化'})).toBeNull();
   fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'774'}});expect(location.search).toContain('year=774');expect(screen.getByTestId('event-map-pins').textContent).toContain('pavia');
   fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'775'}});fireEvent.click(screen.getByLabelText('前往输入年份'));

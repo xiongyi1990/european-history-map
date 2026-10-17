@@ -14,7 +14,7 @@ describe('course material enriches the shared time atlas',()=>{
   expect(historicalDetail('ravenna',600)?.polity.text).toContain('总督区');
   expect(historicalDetail('ravenna',750)?.polity.text).toMatch(/东罗马|拜占庭/);
   expect(historicalDetail('ravenna',751)?.polity.text).toContain('伦巴第');
-  expect(historicalDetail('ravenna',752)).toBeUndefined();
+  expect(historicalDetail('ravenna',752)?.polity.text).toContain('伦巴第');
  });
  it('keeps Roman continuity but changes control at the Latin conquest and restoration',()=>{
   expect(historicalDetail('byzantium',642)?.readingNote).toContain('叙事口径');
