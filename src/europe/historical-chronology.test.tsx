@@ -46,6 +46,8 @@ describe('post-600 dated chronology',()=>{
  it('navigates exact event years without silently selecting a nearby snapshot',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>({type:'FeatureCollection',features:[]})})));history.replaceState(null,'','/?year=711');render(<EuropeApp/>);fireEvent.click(screen.getByRole('button',{name:/^年代$/}));
   expect((screen.getByLabelText('选择资料年代') as HTMLSelectElement).value).toBe('711');expect(screen.getByRole('article',{name:'711 年关键变化'})).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:/726 →/}));expect(location.search).toContain('year=726');
+  fireEvent.click(screen.getByRole('button',{name:/732 →/}));expect(location.search).toContain('year=732');expect(screen.getByRole('article',{name:'732 年关键变化'})).toBeTruthy();
   fireEvent.click(screen.getByRole('button',{name:/750 →/}));
   expect(location.search).toContain('year=750');expect(screen.getByRole('article',{name:'750 年关键变化'})).toBeTruthy();expect(screen.queryByRole('article',{name:'711 年关键变化'})).toBeNull();
   fireEvent.change(screen.getByLabelText('选择资料年代'),{target:{value:'774'}});expect(location.search).toContain('year=774');expect(screen.getByTestId('event-map-pins').textContent).toContain('pavia');

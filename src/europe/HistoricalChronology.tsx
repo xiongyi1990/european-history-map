@@ -1,3 +1,4 @@
+import {MedievalRealms} from './MedievalRealms';
 import {useState} from 'react';
 import {courseSources} from './course-sources';
 import {chronologyPeriods,historicalTurningPoints,turningPointAt} from './historical-chronology';
@@ -13,6 +14,7 @@ export function HistoricalChronology({year,boundaryYear,onYear,onPlace,onLocate,
   <label className="chronology-period">选择历史阶段<select aria-label="选择历史阶段" value={period.id} onChange={e=>setPicked(e.target.value)}>{chronologyPeriods.map(p=><option key={p.id} value={p.id}>{p.name}</option>)}</select></label>
   <div className="chronology-years" aria-label="关键年份">{entries.map(e=><button key={e.year} aria-label={`${e.year} 年：${e.title}`} aria-current={year===e.year?'date':undefined} title={e.title} onClick={()=>goToYear(e.year)}>{e.year}</button>)}</div>
   <nav className="chronology-neighbours" aria-label="前后关键节点"><button disabled={!previous} onClick={()=>previous&&goToYear(previous.year)}>← {previous?.year??'起点'}<span>上一关键年</span></button><button disabled={!next} onClick={()=>next&&goToYear(next.year)}>{next?.year??'后续待补'} →<span>下一关键年</span></button></nav>
+  <MedievalRealms year={year} onYear={goToYear} onPlace={onPlace} onLocate={onLocate}/>
   {current?<article aria-label={`${year} 年关键变化`}>
    <small>公元 {year} 年 · 以下按事件发生之后说明</small><h2>{current.title}</h2>
    <dl><dt>此前</dt><dd>{current.before}</dd><dt>此后</dt><dd>{current.after}</dd><dt>在地图上怎么看</dt><dd>{current.spatial}</dd><dt>居民与身份</dt><dd>{current.people}</dd></dl>

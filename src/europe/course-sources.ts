@@ -1,3 +1,4 @@
+import {earlyMedievalSources} from './early-medieval-sources';
 import {chronologySources} from './chronology-sources';
 import {fifthSources} from './fifth-century-sources';
 import {controlSources} from './late-antique-control-sources';
@@ -8,6 +9,7 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ ...earlyMedievalSources,
  ...chronologySources,
  pelusiumGetty:{title:'Getty TGN：佩卢西乌姆／Tell el-Farama 代表坐标（ODC-By 1.0）',url:'https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7539229'},
  pelusiumExcavation:{title:'Grzymski（1997）：佩卢西乌姆发掘、河口与通往巴勒斯坦的入口',url:'https://archive.archaeology.org/online/features/pelusium/'},
