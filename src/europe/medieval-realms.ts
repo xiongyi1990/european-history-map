@@ -1,3 +1,4 @@
+import {millenniumRealmFrames} from './millennium-realms';
 import type {courseSources} from './course-sources';
 type Source=keyof typeof courseSources;
 export interface RealmRegion {name:string;location:string;status:string;places:[string,string][]}
@@ -7,6 +8,7 @@ const region=(name:string,location:string,status:string,...places:[string,string
 const realm=(id:string,name:string,dates:string,status:string,regions:RealmRegion[],sources:Source[],people='统治者、驻军、教会与本地社会不是同一类身份；本卡没有全境人口比例。',language='没有可核对的全境语言分界；行政书写、宗教语言与日常口语分别理解。'):MedievalRealm=>({id,name,dates,status,regions,sources,people,language});
 const noBorders='地域名称用于理解构成，城市仅作定位；不是完整属地清单、行政省界或新绘制的疆界。';
 export const medievalRealmFrames:MedievalRealmFrame[]=[
+ ...millenniumRealmFrames,
  {year:600,title:'600 年：东罗马、西哥特与伦巴第',note:noBorders,realms:[
  realm('eastern-rome','东罗马帝国','承接罗马帝国传统；本卡为 600 年状态','南部行省尚在；不能提前套用七世纪征服后的格局。',[
  region('海峡都城与安纳托利亚','博斯普鲁斯两岸与小亚细亚','帝国政治中心与东方腹地',['byzantium','君士坦丁堡'],['nicaea','尼西亚']),
@@ -54,6 +56,6 @@ export const medievalRealmFrames:MedievalRealmFrame[]=[
  realm('abbasid','阿拔斯哈里发国','750—1258 年的巴格达王朝线索','哈里发权威与地方实际控制逐渐分离。',[region('伊拉克都城','底格里斯河流域','巴格达宫廷中心，不自动代表整个伊斯兰世界实控',['baghdad','巴格达'])],['abbasid']),
  realm('fatimid','法蒂玛哈里发国','909 年兴起；969 年才取得埃及','本年主要在北非，不能提前以开罗为首都。',[region('伊弗里基亚','今天突尼斯及邻接地区','凯鲁万用于地域定位，不冒充王朝宫城或唯一驻地',['kairouan','凯鲁万'])],['africaVandal'],'法蒂玛王朝的什叶派立场不能推定全境居民都属于同一宗派。'),
  ]},
-];
+].sort((a,b)=>a.year-b.year);
 export function medievalRealmFrameAt(year:number){return medievalRealmFrames.find(frame=>frame.year===year);}
 export function medievalRealmPlaceIds(year:number){return [...new Set(medievalRealmFrameAt(year)?.realms.flatMap(r=>r.regions.flatMap(g=>g.places.map(([id])=>id)))??[])];}

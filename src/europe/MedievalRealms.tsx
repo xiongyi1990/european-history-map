@@ -1,7 +1,7 @@
 import {courseSources} from './course-sources';
 import {medievalRealmFrames,medievalRealmFrameAt} from './medieval-realms';
 export function MedievalRealms({year,onYear,onPlace,onLocate}:{year:number;onYear:(year:number)=>void;onPlace:(id:string)=>void;onLocate:(ids:string[])=>void}){
- if(year<600||year>1000)return null;
+ if(year<600||year>1100)return null;
  const frame=medievalRealmFrameAt(year);
  return <section className="medieval-realms" aria-label="政权与地域导览">
   <h3>政权由哪些地域组成？</h3>

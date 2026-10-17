@@ -1,3 +1,4 @@
+import {completeMillenniumExpansion,millenniumExpansionPlaces} from './millennium-expansion-cities';
 import {completeMedievalExpansion,medievalExpansionPlaces} from './medieval-expansion-cities';
 import {modernHistoryPlaces,modernHistoryDetails} from './modern-history-cities';
 import {completeMedievalPhases,medievalPhasePlaces} from './medieval-phases';
@@ -28,7 +29,7 @@ const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
 const dms=(d:number,m:number,s:number)=>d+m/60+s/3600;
 const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'历史地点参考'});
 export const coursePlaces:GazetteerPlace[]=[
- ...medievalExpansionPlaces,...modernHistoryPlaces,...medievalPhasePlaces,
+ ...millenniumExpansionPlaces,...medievalExpansionPlaces,...modernHistoryPlaces,...medievalPhasePlaces,
  ...egyptCityPlaces,...easternLibyaPlaces,...libyanCoastPlaces,...mauretaniaPlaces,...numidiaPlaces,...byzacenaPlaces,...fourthPlaces,...fifthPlaces,
  ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,...carolingianPlaces,...millenniumPlaces,...normanPlaces,...roman300Places,...roman300ExtraPlaces,
  site('nicomedia','尼科米底亚','土耳其 · 伊兹米特',['Nicomedia','Nikomedeia','İzmit','Izmit','尼科美底亚'],[29.919887,40.7651905],'nicomedia','马尔马拉海东端的古城，今伊兹米特。不要与爱琴海岸的伊兹密尔混淆。'),
@@ -96,4 +97,4 @@ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',disp
 ];
 
 
-export const courseDetails:HistoricalDetail[]=completeMedievalExpansion(completeMedievalPhases([...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))]));
+export const courseDetails:HistoricalDetail[]=completeMillenniumExpansion(completeMedievalExpansion(completeMedievalPhases([...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))])));
