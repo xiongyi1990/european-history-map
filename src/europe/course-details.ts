@@ -1,3 +1,4 @@
+import {early700LocalPlaces,early700LocalDetails} from './early-700-localities';
 import {completeEarly700} from './early-700-cities';
 import {completeEarly500} from './early-500-cities';
 import {completeMillenniumExpansion,millenniumExpansionPlaces} from './millennium-expansion-cities';
@@ -31,9 +32,9 @@ const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
 const dms=(d:number,m:number,s:number)=>d+m/60+s/3600;
 const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'历史地点参考'});
 export const coursePlaces:GazetteerPlace[]=[
- ...millenniumExpansionPlaces,...medievalExpansionPlaces,...modernHistoryPlaces,...medievalPhasePlaces,
+ ...early700LocalPlaces.filter(p=>!roman300ExtraPlaces.some(existing=>existing.id===p.id)),...millenniumExpansionPlaces,...medievalExpansionPlaces,...modernHistoryPlaces,...medievalPhasePlaces,
  ...egyptCityPlaces,...easternLibyaPlaces,...libyanCoastPlaces,...mauretaniaPlaces,...numidiaPlaces,...byzacenaPlaces,...fourthPlaces,...fifthPlaces,
- ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,...carolingianPlaces,...millenniumPlaces,...normanPlaces,...roman300Places,...roman300ExtraPlaces,
+ ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,...carolingianPlaces,...millenniumPlaces,...normanPlaces,...roman300Places,...roman300ExtraPlaces.map(p=>p.id==='volubilis'?{...p,aliases:[...p.aliases,'瓦卢比利斯','瓦利利']}:p),
  site('nicomedia','尼科米底亚','土耳其 · 伊兹米特',['Nicomedia','Nikomedeia','İzmit','Izmit','尼科美底亚'],[29.919887,40.7651905],'nicomedia','马尔马拉海东端的古城，今伊兹米特。不要与爱琴海岸的伊兹密尔混淆。'),
  site('aachen','亚琛','德国 · 亚琛',['Aachen','Aix-la-Chapelle','查理曼','加洛林'],[dms(6,5,2.112),dms(50,46,29.089)],'aachenSite','查理曼的宫廷驻地之一。以大教堂代表点定位，宫殿位置与帝国疆界分别理解。'),
  site('cordoba','科尔多瓦','西班牙 · 科尔多瓦',['Córdoba','Cordoba','Qurtuba','库尔图巴','后倭马亚','安达卢斯'],[-4.770004,37.879999],'cityCoordinates','瓜达尔基维尔河畔的城市。埃米尔国、哈里发国和城市本身是不同对象。坐标采用现代城市代表点。'),
@@ -99,4 +100,4 @@ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',disp
 ];
 
 
-export const courseDetails:HistoricalDetail[]=completeEarly700(completeEarly500(completeMillenniumExpansion(completeMedievalExpansion(completeMedievalPhases([...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))])))));
+export const courseDetails:HistoricalDetail[]=completeEarly700(completeEarly500(completeMillenniumExpansion(completeMedievalExpansion(completeMedievalPhases([...early700LocalDetails,...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))])))));

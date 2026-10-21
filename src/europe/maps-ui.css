@@ -90,3 +90,5 @@
 .early500-polity-times{margin-top:16px;border-top:1px solid #dce6ed;padding-top:14px}.early500-polity-times>summary{cursor:pointer;color:#315e80;font-weight:500}.early500-polity-times article{padding-bottom:12px;border-bottom:1px solid #e1e8ed}.early500-polity-times article>strong{font-size:12px;font-weight:500;color:#506c80}.early500-polity-times article p{font-size:12px;color:#788993}.early500-polity-times a{font-size:12px}
 
 @media(max-width:760px){.maps-ui.panel-open .e-coverage.early-region-active{left:12px;right:12px;max-width:none;padding:6px 10px}.maps-ui.panel-open .e-coverage.early-region-active small{display:none}}
+
+.early700-local-polities>article{margin:12px 0;padding:14px;border:1px solid #dce6ed;border-radius:10px;background:#fff}.early700-local-polities>article>small{color:#647c8e}.early700-local-polities>article>p{font-size:12px}.early700-local-polities .e-primary{margin:10px 0}

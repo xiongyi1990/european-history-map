@@ -21,4 +21,6 @@ export const early500PolityTimes:{name:string;time:string;note:string;regions:st
  {name:'阿格拉布王朝',time:'800—909 年伊弗里基亚王朝纪年',note:'世袭地方统治与承认阿拔斯权威并存，827 年西西里远征不提前到 800 年。',regions:['africa','italy'],source:'africaVandal'},
  {name:'麦西亚的奥法王权',time:'757—796 年为奥法个人统治期',note:'不是麦西亚王国完整存续时间，更不是统一英国的建国纪年。',regions:['britain'],source:'earlyOffa'},
  {name:'可萨政治共同体',time:'七世纪中叶以后形成，八世纪持续；本卡不指定无争议的统一灭国日',note:'737 年远征后仍延续，精英接受犹太教的时间有争议；不据 740 年推定全体居民改宗。',regions:['east','caucasus'],source:'earlyKhazars'},
+ {name:'鲁斯塔姆伊玛目政权',time:'常用 777—909 年；伊玛目推选也记 776／777 年',note:'塔赫尔特城市形成、伊玛目推选和政权最大范围不能压成一个日期；本轮详细资料覆盖到 800 年。',regions:['africa'],source:'earlyRustamidResearch'},
+ {name:'西吉尔马萨地方统治',time:'城市形成传统约 757／758 年；地方家族与后续王朝另需分段',note:'不把文献建城年当作无人区起点，也不把米德拉尔家族的统治强行从城市形成日开始计算。',regions:['africa'],source:'earlySijilmasaHistory'},
 ];

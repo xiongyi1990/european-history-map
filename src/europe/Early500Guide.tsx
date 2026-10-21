@@ -1,3 +1,4 @@
+import {africanPolitiesAt,early700LocalPlaces} from './early-700-localities';
 import {early500PolityTimes} from './early-500-polities';
 import {early500Regions,earlyRegionsAt,inEarly500} from './early-500-regions';
 import {courseSources} from './course-sources';
@@ -14,6 +15,7 @@ export function Early500Guide({year,selected,onRegion,onYear,onPlace,onLocate}:{
    <small className="e-note">镜头范围仅帮助找位置，不是国家、行省或族群边界。</small>
    <div className="h-site-links">{current.places.filter(([id])=>id!=='pliska'||year>=681).filter(([id])=>id!=='kairouan'||year>=670).map(([id,name])=><button key={id} onClick={()=>onPlace(id)}>{name}<span>定位并阅读 →</span></button>)}</div>
    {!current.places.length&&<p className="e-note">本区先以地理位置和聚落背景理解；尚未补齐可信的六至八世纪城市点与小政权疆界。</p>}
+   {current.id==='africa'&&africanPolitiesAt(year).length>0&&<section className="early700-local-polities" aria-label="北非地方政权详解"><h4>这一年，北非内部还有哪些政权？</h4><p className="e-note">下面列的是本期已核对的地方权力，并非全北非的完整国家名单。</p>{africanPolitiesAt(year).map(p=><article key={p.id}><h4>{p.name}</h4><small>{p.dates}</small><p>{p.where}</p><dl><dt>权力与地域</dt><dd>{p.control}</dd><dt>居民与身份</dt><dd>{p.people}</dd><dt>语言与书写</dt><dd>{p.language}</dd></dl><button className="e-primary" onClick={()=>onPlace(p.site)}>定位{early700LocalPlaces.find(s=>s.id===p.site)!.name}并查看资料 →</button><details className="chronology-sources"><summary>本政权的依据</summary>{p.sources.map(key=><a key={key} href={courseSources[key].url} target="_blank" rel="noreferrer">{courseSources[key].title} ↗</a>)}</details></article>)}</section>}
    <h4>沿这个地域读下去</h4><nav className="early500-phases" aria-label={current.name+'的政治分期'}>{current.phases.map(p=><button key={p.from} aria-current={year>=p.from&&year<=p.to?'date':undefined} onClick={()=>onYear(p.from)}><b>{p.from===p.to?p.from:p.from+'—'+p.to}</b>{p.name}</button>)}</nav>
    <details className="chronology-sources"><summary>本地域的参考资料</summary>{[...new Set([...current.sources,...current.phase.sources])].map(key=><a key={key} href={courseSources[key].url} target="_blank" rel="noreferrer">{courseSources[key].title} ↗</a>)}</details>
   </article>:<><p className="early500-year">当前：公元 {year} 年 · 点击地域或地图上的地域名称</p><div className="early500-index">{regions.map(r=>{const p=r.phase;return <button key={r.id} onClick={()=>onRegion(r.id)}><strong>{r.name}</strong><span>{p.mapName}</span><small>{p.from}—{p.to} 年 · 展开地域与居民 →</small></button>})}</div></>}
