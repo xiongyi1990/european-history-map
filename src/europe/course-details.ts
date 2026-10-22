@@ -1,3 +1,4 @@
+import {islandPlaces,islandDetails} from './early-700-islands';
 import {iberianPlaces,iberianDetails} from './early-700-iberia';
 import {frankishPlaces,frankishDetails} from './early-700-frankish';
 import {italyBalkanPlaces,italyBalkanDetails} from './early-700-italy-balkans';
@@ -35,7 +36,7 @@ const fact=(text:string,...sources:Source[]):HistoricalFact=>({text,sources});
 const dms=(d:number,m:number,s:number)=>d+m/60+s/3600;
 const site=(id:string,name:string,modern:string,aliases:string[],coords:[number,number],source:Source,description:string):GazetteerPlace=>({id,name,modern,aliases,coords,source:courseSources[source].url,description,kind:'历史地点参考'});
 export const coursePlaces:GazetteerPlace[]=[
- ...iberianPlaces,...frankishPlaces,...italyBalkanPlaces,...early700LocalPlaces.filter(p=>!roman300ExtraPlaces.some(existing=>existing.id===p.id)),...millenniumExpansionPlaces,...medievalExpansionPlaces,...modernHistoryPlaces,...medievalPhasePlaces,
+ ...islandPlaces,...iberianPlaces,...frankishPlaces,...italyBalkanPlaces,...early700LocalPlaces.filter(p=>!roman300ExtraPlaces.some(existing=>existing.id===p.id)),...millenniumExpansionPlaces,...medievalExpansionPlaces,...modernHistoryPlaces,...medievalPhasePlaces,
  ...egyptCityPlaces,...easternLibyaPlaces,...libyanCoastPlaces,...mauretaniaPlaces,...numidiaPlaces,...byzacenaPlaces,...fourthPlaces,...fifthPlaces,
  ...classicalCoursePlaces,...medievalPlaces,...lateAntiquePlaces,...earlyMedievalPlaces,...carolingianPlaces,...millenniumPlaces,...normanPlaces,...roman300Places,...roman300ExtraPlaces.map(p=>p.id==='volubilis'?{...p,aliases:[...p.aliases,'瓦卢比利斯','瓦利利']}:p),
  site('nicomedia','尼科米底亚','土耳其 · 伊兹米特',['Nicomedia','Nikomedeia','İzmit','Izmit','尼科美底亚'],[29.919887,40.7651905],'nicomedia','马尔马拉海东端的古城，今伊兹米特。不要与爱琴海岸的伊兹密尔混淆。'),
@@ -103,4 +104,4 @@ entry({id:'nicomedia-tetrarchy',placeId:'nicomedia',title:'尼科米底亚',disp
 ];
 
 
-export const courseDetails:HistoricalDetail[]=completeEarly700(completeEarly500(completeMillenniumExpansion(completeMedievalExpansion(completeMedievalPhases([...iberianDetails,...frankishDetails,...italyBalkanDetails,...early700LocalDetails,...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))])))));
+export const courseDetails:HistoricalDetail[]=completeEarly700(completeEarly500(completeMillenniumExpansion(completeMedievalExpansion(completeMedievalPhases([...islandDetails,...iberianDetails,...frankishDetails,...italyBalkanDetails,...early700LocalDetails,...modernHistoryDetails,...egyptCityDetails,...easternLibyaDetails,...libyanCoastDetails,...mauretaniaDetails,...numidiaDetails,...byzacenaDetails,...completeFifthCentury(applyCities400([...enrichFourthCenturySocial(originalCourseDetails),...completeFourthCentury(originalCourseDetails)]))])))));
