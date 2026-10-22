@@ -2,6 +2,10 @@ import type {HistoricalTurningPoint} from './historical-chronology';
 import type {courseSources} from './course-sources';
 const e=(year:number,title:string,before:string,after:string,spatial:string,places:[string,string][],...sources:(keyof typeof courseSources)[]):HistoricalTurningPoint=>({year,title,before,after,spatial,places,sources,people:'王权、驻军、宗教和居民语言分别理解；这里没有可据以绘制祖源比例或人口边界的普查。'});
 export const early700TurningPoints:HistoricalTurningPoint[]=[
+ e(728,'苏特里赠地：教皇领地逐步形成','罗马教皇处在东罗马意大利体系与伦巴第压力之间。','柳特普兰德将苏特里及邻近土地给予格列高利二世，是教皇世俗领地形成的一步；不是 756 年丕平赠地或全意大利转归教皇。','苏特里在罗马以北；古城代表点不表示赠地全部边界。',[['sutri','苏特里 · 赠地城市'],['rome','罗马 · 教皇中心']],'earlySutriHistory','earlySutriLocation'),
+ e(729,'斯波莱托与北方伦巴第王权','中部公国有较强的地方自主性。','地方遗产资料以 729 年为臣属于柳特普兰德王权的节点；公国并未因此消失。','斯波莱托在罗马东北的亚平宁中部，帕维亚在北部波河平原；贝内文托是另一处南部公国。',[['spoleto','斯波莱托 · 中部公国'],['pavia','帕维亚 · 北方王权'],['benevento','贝内文托 · 南部对照']],'earlySpoletoPolitics'),
+ e(763,'安基阿洛斯会战：东罗马取胜','东罗马与保加利亚在边境长期竞争。','6 月 30 日君士坦丁五世一方击败特莱茨及其盟军；保加利亚国家仍延续，战果不是全部居民或疆域同日更换。','战事在黑海西岸安基阿洛斯附近；现代波莫里地区参照点不冒充精确会战中心。',[['anchialos','安基阿洛斯 · 战役地区'],['pliska','普利斯卡 · 保加利亚中心'],['byzantium','君士坦丁堡 · 东罗马朝廷']],'earlyAnchialosBattle','earlyAnchialosLocation'),
+ e(792,'马尔凯莱会战：保加利亚取胜','卡尔达姆的保加利亚与君士坦丁六世的东罗马分别存在。','7 月 20 日卡尔达姆取得胜利，东罗马军队遭受重大损失；不等于东罗马帝国灭亡。','马尔凯莱在今天卡尔诺巴特以西约 7.5 公里，和 763 年的黑海沿岸战事分开；点位是遗址项目参照，不是阵位或路线。',[['markellai','马尔凯莱 · 战役地区'],['pliska','普利斯卡 · 保加利亚中心'],['byzantium','君士坦丁堡 · 东罗马朝廷']],'earlyMarkellaiBattle','earlyMarkellaiSite','earlyMarkellaiLocation'),
  e(714,'丕平去世与宫相继承危机','丕平掌握法兰克重要实权，墨洛温王号仍在。','家族继承和分区宫廷争夺展开，查理·马特逐步崛起。','莱茵—默兹与高卢西方的权力网络，不是法德两国战争。',[['trier','特里尔 · 莱茵地域参照'],['paris','巴黎 · 高卢背景']],'earlyFrankishRhine'),
  e(717,'倭马亚围攻君士坦丁堡','东罗马守有海峡都城与安纳托利亚核心。','717—718 年大规模陆海围城展开；围攻不等于已经取得都城。','都城、马尔马拉海与色雷斯是不同战场，本节点不虚构行军路线。',[['byzantium','君士坦丁堡 · 围城目标'],['damascus','大马士革 · 倭马亚朝廷背景']],'earlySiege718'),
  e(718,'君士坦丁堡撤围与东罗马延续','围城军曾试图切断陆海供应，保加利亚介入抗击。','围城失败，东罗马与保加利亚继续各自存在；边境战争没有全部终结。','把北方普利斯卡与海峡都城并看，军事合作不表示国界合并。',[['byzantium','君士坦丁堡 · 守城'],['pliska','普利斯卡 · 保加利亚背景']],'earlySiege718'),

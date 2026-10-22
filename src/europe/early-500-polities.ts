@@ -23,4 +23,6 @@ export const early500PolityTimes:{name:string;time:string;note:string;regions:st
  {name:'可萨政治共同体',time:'七世纪中叶以后形成，八世纪持续；本卡不指定无争议的统一灭国日',note:'737 年远征后仍延续，精英接受犹太教的时间有争议；不据 740 年推定全体居民改宗。',regions:['east','caucasus'],source:'earlyKhazars'},
  {name:'鲁斯塔姆伊玛目政权',time:'常用 777—909 年；伊玛目推选也记 776／777 年',note:'塔赫尔特城市形成、伊玛目推选和政权最大范围不能压成一个日期；本轮详细资料覆盖到 800 年。',regions:['africa'],source:'earlyRustamidResearch'},
  {name:'西吉尔马萨地方统治',time:'城市形成传统约 757／758 年；地方家族与后续王朝另需分段',note:'不把文献建城年当作无人区起点，也不把米德拉尔家族的统治强行从城市形成日开始计算。',regions:['africa'],source:'earlySijilmasaHistory'},
+ {name:'斯波莱托公国',time:'568 年后不久形成；729 年臣属于北方国王；774 年后继续存在',note:'本轮详述 701—800 年；法兰克控制与后来 1198 年归入教皇国分开，不提前套用后者。',regions:['italy'],source:'earlySpoletoPolitics'},
+ {name:'贝内文托的伦巴第地方政权',time:'地方资料常记 571 年公国起点；774 年后仍延续',note:'本轮详述至 800 年；787 年承诺归服、交出质子与逐地驻军不同，不将北部王国的终年套给本地。',regions:['italy'],source:'earlyBeneventoPolitics'},
 ];
