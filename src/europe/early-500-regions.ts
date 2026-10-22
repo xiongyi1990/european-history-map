@@ -1,3 +1,4 @@
+import {frankishAnchors} from './early-700-frankish';
 import {italyBalkanAnchors} from './early-700-italy-balkans';
 import {early700LocalAnchors} from './early-700-localities';
 import {early700RegionPhases,early700Social} from './early-700-regions';
@@ -94,7 +95,7 @@ const baseEarly500Regions:EarlyRegion[]=[
  phase(651,660,'萨珊王朝终结，早期哈里发内战','早期哈里发两河','萨珊王朝结束，哈里发内部的继承和战争继续；不能将 651 年视为全部居民改宗日。','两河军政中心与叙利亚权力集团存在竞争。','661 年倭马亚王朝建立，哈里发朝廷重心在大马士革。','earlyIranTimeline'),
  phase(661,700,'倭马亚治下的两河地域','倭马亚两河','两河纳入倭马亚政治体系，地方政治与宗教冲突仍在；巴格达要到 762 年才建立。','泰西封旧中心、两河军镇与伊朗高原不是单一族群空间。','不要在 700 年把这里提前写成阿拔斯巴格达帝国。','earlyIranTimeline','timelineUmayyad'),
  ]},
- {id:'central',name:'莱茵以东与中多瑙河',where:'今天德国南部、奥地利、捷克、匈牙利方向；不是现代德国与匈牙利国界。',coords:[16,48.5],bounds:[[8,44],[23,53]],places:[['regensburg','雷根斯堡'],['sirmium','西尔米乌姆'],['aquincum','阿昆库姆']],
+ {id:'central',name:'莱茵以东与中多瑙河',where:'今德国西北萨克森、莱茵方向、南部巴伐利亚至奥地利、捷克、匈牙利方向；不是一个现代国家，也不是统一政权。',coords:[16,48.5],bounds:[[6.5,44],[23,54.5]],places:[['regensburg','雷根斯堡'],['sirmium','西尔米乌姆'],['aquincum','阿昆库姆']],
  people:'法兰克、阿勒曼尼、巴伐利亚、伦巴第、格皮德、阿瓦尔和斯拉夫等历史名称涉及不同政治、军事与社会尺度。',language:'日耳曼、斯拉夫等口语与拉丁文宗教书写不能按今天国家划分；此处没有统一的语言人口地图。',sources:['earlyCentral','earlyAvars','earlyBalkans','earlyItaly'],phases:[
  phase(500,567,'帝国边疆以外的多种王权与社群','中欧诸王权与社群','莱茵以东法兰克扩张、山地和多瑙河各势力并存；不能提前设定一个统一德意志或匈牙利王国。','莱茵方向、巴伐利亚、潘诺尼亚和萨瓦河地域分开。','568 年伦巴第离开多瑙河方向进入意大利，阿瓦尔影响扩大。','earlyCentral','earlyAvars','earlyItaly'),
  phase(568,625,'阿瓦尔多瑙河核心与邻接社群','阿瓦尔／法兰克边缘／斯拉夫社群','阿瓦尔军事势力与地方社群交错，西侧法兰克和巴伐利亚政治空间不同。','喀尔巴阡盆地与西方莱茵—多瑙河上游不是同一国家。','626 年围君士坦丁堡失败并不等于阿瓦尔政权当年消失。','earlyBalkans','earlyAvars','earlyCentral'),
@@ -124,7 +125,7 @@ const baseEarly500Regions:EarlyRegion[]=[
 ];
 export const early500Regions:EarlyRegion[]=baseEarly500Regions.map(r=>({...r,phases:[...r.phases,...early700RegionPhases[r.id]]}));
 export function inEarly500(year:number){return year>=500&&year<=800;}
-export function earlyRegionsAt(year:number){return inEarly500(year)?early500Regions.map(r=>({...r,...(year>=701&&(r.id!=='iberia'||year>=711)?early700Social[r.id]:{}),places:[...r.places,...early700LocalAnchors(r.id,year),...italyBalkanAnchors(r.id,year),...(r.id==='mesopotamia'&&year>=762?[['baghdad','巴格达 · 阿拔斯新都'] as [string,string]]:[])],phase:r.phases.find(p=>year>=p.from&&year<=p.to)!})):[];}
+export function earlyRegionsAt(year:number){return inEarly500(year)?early500Regions.map(r=>({...r,...(year>=701&&(r.id!=='iberia'||year>=711)?early700Social[r.id]:{}),places:[...r.places,...early700LocalAnchors(r.id,year),...italyBalkanAnchors(r.id,year),...frankishAnchors(r.id,year),...(r.id==='mesopotamia'&&year>=762?[['baghdad','巴格达 · 阿拔斯新都'] as [string,string]]:[])],phase:r.phases.find(p=>year>=p.from&&year<=p.to)!})):[];}
 export function earlyRegionAt(id:string,year:number){return earlyRegionsAt(year).find(r=>r.id===id);}
 export function early500PlaceIds(year:number){return [...new Set(earlyRegionsAt(year).flatMap(r=>r.places.filter(([,label])=>!label.includes('参照')).map(([id])=>id)))].filter(id=>id!=='pliska'||year>=681).filter(id=>id!=='kairouan'||year>=670);}
 export function early500Labels(year:number):AreaLabel[]{return earlyRegionsAt(year).map(r=>({id:'early500:'+r.id,name:r.phase.mapName+' · '+r.name,coords:r.coords,color:'#4b6379',minZoom:2.6,kind:'region'}));}

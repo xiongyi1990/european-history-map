@@ -1,3 +1,4 @@
+import {frankishPolitiesAt} from './early-700-frankish';
 import type {GazetteerPlace} from './model';
 import type {HistoricalDetail,HistoricalFact} from './history-details';
 import {courseSources,type ReadingReference} from './course-sources';
@@ -12,7 +13,7 @@ export const italyBalkanPlaces:GazetteerPlace[]=[
  point('anchialos','安基阿洛斯地区','保加利亚 · 黑海西岸、今波莫里',['Anchialos','Anchialus','Pomorie','安基阿卢斯','安基阿罗斯','安恰卢斯','波莫里'],[27.64638,42.55452],'earlyAnchialosLocation','用现代波莫里历史博物馆位置作古城地区参照（OpenStreetMap 贡献者，经 Mapcarta）；不是 763 年会战中心、军队驻地或精确战场。'),
  point('markellai','马尔凯莱地区','保加利亚 · 卡尔诺巴特以西、希萨尔山一带',['Markellai','Marcellae','Markeli','马尔凯利','马克莱','马尔凯莱'],[26.8946412,42.6375275],'earlyMarkellaiLocation','采用官方欧盟基金项目册的遗址旅游项目 GPS 参考点，帮助寻找卡尔诺巴特以西约 7.5 公里的遗址；不是 756／792 年战场中心或当时全部城墙。'),
 ];
-export interface RegionalPolityCard extends AfricanLocalPolity {siteName:string}
+export interface RegionalPolityCard extends AfricanLocalPolity {siteName:string;bounds?:[number,number][];locationLabel?:string}
 const card=(id:string,name:string,from:number,to:number,dates:string,site:string,siteName:string,where:string,control:string,people:string,language:string,...sources:Source[]):RegionalPolityCard=>({id,name,from,to,dates,site,siteName,where,control,people,language,sources});
 const italianPeople='伦巴第统治精英、旧地方居民、教士与其他社会群体分开理解；政权名称与遗产建筑都不能给出全体居民的祖源比例。';
 const italianLanguage='拉丁文教会与知识文化传统仍重要；没有本地家庭口语和各语言比例的可靠清单，不画统一语言疆界。';
@@ -35,6 +36,7 @@ const bulgarianLanguage='统治集团、地方口语与帝国外交书写不是�
 export function regionalPolitiesAt(region:string,year:number):RegionalPolityCard[]{
  if(region==='africa')return africanPolitiesAt(year).map(p=>({...p,siteName:early700LocalPlaces.find(s=>s.id===p.site)!.name}));
  if(year<701||year>800)return [];
+ if(region==='gaul'||region==='central')return frankishPolitiesAt(region,year);
  if(region==='italy')return italianStages.filter(p=>p.from<=year&&year<=p.to);
  if(region!=='balkans')return [];
  const change=year<763?'东罗马与保加利亚独立并存，717—718 年的合作不等于两国合并。':year<777?'763 年安基阿洛斯战败后保加利亚国家仍延续，王权继承与对外战争不能概括为国家已经灭亡。':year<792?'卡尔达姆时期保加利亚仍与东罗马分别存在；其统治起点常记 777／778 年，本图不强行认定同一个无争议即位日。':'792 年卡尔达姆在马尔凯莱击败君士坦丁六世；胜利不意味着君士坦丁堡或整个巴尔干同时被吞并。';
