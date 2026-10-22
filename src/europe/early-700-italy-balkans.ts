@@ -1,3 +1,4 @@
+import {iberianPolitiesAt} from './early-700-iberia';
 import {frankishPolitiesAt} from './early-700-frankish';
 import type {GazetteerPlace} from './model';
 import type {HistoricalDetail,HistoricalFact} from './history-details';
@@ -36,6 +37,7 @@ const bulgarianLanguage='统治集团、地方口语与帝国外交书写不是�
 export function regionalPolitiesAt(region:string,year:number):RegionalPolityCard[]{
  if(region==='africa')return africanPolitiesAt(year).map(p=>({...p,siteName:early700LocalPlaces.find(s=>s.id===p.site)!.name}));
  if(year<701||year>800)return [];
+ if(region==='iberia')return iberianPolitiesAt(year);
  if(region==='gaul'||region==='central')return frankishPolitiesAt(region,year);
  if(region==='italy')return italianStages.filter(p=>p.from<=year&&year<=p.to);
  if(region!=='balkans')return [];

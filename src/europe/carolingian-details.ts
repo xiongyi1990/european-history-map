@@ -12,7 +12,7 @@ const point=(id:string,name:string,modern:string,aliases:string[],coords:[number
 export const carolingianPlaces:GazetteerPlace[]=[
  point('verdun','凡尔登','法国 · 凡尔登',['Verdun','凡尔登条约','843','帝国三分'],[5.38,49.16],'verdun','默兹河畔的城市，843 年帝国分割的条约以此命名；不是新建的王国首都。'),
  point('regensburg','雷根斯堡','德国 · 雷根斯堡',['Regensburg','Ratisbon','Ratisbonne','雷根斯布尔格','东法兰克','巴伐利亚'],[12.10,49.02],'regensburg','多瑙河上游、巴伐利亚的宫廷与交通中心，位于亚琛东南方向。'),
- point('oviedo','奥维耶多','西班牙 · 奥维耶多',['Oviedo','Ovetum','阿斯图里亚斯','阿斯图里亚'],[-5.84,43.36],'oviedo','伊比利亚北部、坎塔布连山地北侧的阿斯图里亚斯王都。'),
+ point('oviedo','奥维耶多','西班牙 · 奥维耶多',['Oviedo','Ovetum','阿斯图里亚斯','阿斯图里亚'],[-5.84,43.36],'oviedo','伊比利亚北部偏西、坎塔布连山地北侧的城市；早期修院起源与 791 年后的王都阶段分别查看。'),
  point('baghdad','巴格达','伊拉克 · 巴格达',['Baghdad','Madinat al-Salam','和平城','阿拔斯','智慧宫'],[44.37,33.34],'abbasid','底格里斯河畔的阿拔斯政治与文化中心，762 年建立新都。它不是叙利亚的大马士革。'),
  point('samarra','萨迈拉','伊拉克 · 萨迈拉',['Samarra','萨马拉','萨迈拉古城','阿拔斯宫廷'],[43.88,34.20],'samarra','巴格达以北、底格里斯河畔，836—892 年的阿拔斯宫廷驻地。'),
  point('paris','巴黎','法国 · 巴黎',['Paris','Lutetia','卢泰西亚','西法兰克','塞纳河'],[2.35,48.86],'parisMedieval','塞纳河畔的城市，用于定位西法兰克的北部地区；中世纪王权与地方权力需要分别理解。'),
