@@ -56,7 +56,8 @@ describe('Byzantine court, Black Sea cities and Caucasian gateways',()=>{
    for(let y=d.from;y<=d.to;y++)expect(historicalDetails.filter(a=>a.placeId===d.placeId&&a.from<=y&&y<=a.to)).toHaveLength(1);
   }
   for(let y=701;y<=800;y++)for(const [region,count] of [['anatolia',3],['caucasus',4],['east',2]] as const){
-   const cards=regionalPolitiesAt(region,y);expect(cards).toHaveLength(count);
+   const cards=blackSeaPolitiesAt(region,y);expect(cards).toHaveLength(count);
+   for(const c of cards)expect(regionalPolitiesAt(region,y).some(p=>p.id===c.id)).toBe(true);
    for(const c of cards){if(!c.bounds)expect(historicalDetail(c.site,y),c.site+y).toBeDefined();for(const key of c.sources)expect(historySources[key]?.url,key).toMatch(/^https:/);}
   }
   expect(blackSeaPolitiesAt('anatolia',700)).toEqual([]);expect(blackSeaPolitiesAt('east',801)).toEqual([]);

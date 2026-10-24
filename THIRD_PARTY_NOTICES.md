@@ -59,3 +59,8 @@ Blender 脚本可能引用操作系统字体；仓库不分发这些商业字体
 - `public/europe-reference/ne_10m_malaren.geojson` 选取 Natural Earth v5.1.1 仓库 `ne_10m_lakes.geojson` 中 Q184492 梅拉伦湖要素。数据属公共领域，来源与原文件、派生文件 SHA-256 见同目录 `manifest.json`。
 - `public/europe-reference/osm_malaren_islands.geojson` 来自 OpenStreetMap 贡献者，包含 [比约克岛 way/34546894](https://www.openstreetmap.org/way/34546894) 与 [阿德尔瑟岛 relation/9279949](https://www.openstreetmap.org/relation/9279949) 的现代轮廓，获取于 2026-10-25。© OpenStreetMap contributors，按 [Open Data Commons Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/) 提供；该数据文件保留 ODbL，不改授权为程序代码的 GPL。阿德尔瑟岛外环由原 relation 的 outer 成员拼合，未手绘放大以迁就据点。
 - 网站地图保留可点击的 OpenStreetMap 署名。这些湖面和岛屿用于帮助理解比尔卡、霍夫戈登的方位，属于现代概化参照，不是八世纪水岸、考古遗址保护区、国界或族群疆界。
+
+## 八世纪波罗的海东岸与旧拉多加代表点
+
+- 旧拉多加现代代表坐标取自 [Getty TGN 6005614](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=6005614)，沿用 Getty 词表的 [ODC Attribution 1.0](https://opendatacommons.org/licenses/by/1-0/)；Getty Research Institute 提供。本项目转换经纬度排列，另撰中文历史说明，未导入其完整数据库。
+- 格罗比尼亚使用拉脱维亚提交的 UNESCO 预备名单代表坐标；萨尔梅使用 Mapeirons／萨雷马地方旅游资料的展示区代表坐标。来源保留在每个地点；不将遗产或展示点视为古代疆界。相关网页、评估和论文仍由原作者持有版权，本项目只独立概述并链接，未复制课程或论文全文。

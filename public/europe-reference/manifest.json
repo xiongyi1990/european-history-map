@@ -39,6 +39,15 @@
       "attribution": "© OpenStreetMap contributors",
       "accessed": "2026-10-25",
       "note": "Two modern island outlines, not historical shores or archaeological-site boundaries."
+    },
+    "ne_10m_ladoga": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_10m_lakes.geojson",
+      "source_sha256": "2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9",
+      "sha256": "d3c12c7430b67eafa7da83a7d297b0077801f10fc491afe6a7dc5440762291b1",
+      "features": 1,
+      "filter": "wikidataid = Q15288",
+      "accessed": "2026-10-25",
+      "note": "Selected modern natural lake; not a reconstruction of eighth-century shores. Old Ladoga city point remains outside the lake."
     }
   }
 }

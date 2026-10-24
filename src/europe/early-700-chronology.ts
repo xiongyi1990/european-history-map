@@ -2,6 +2,7 @@ import type {HistoricalTurningPoint} from './historical-chronology';
 import type {courseSources} from './course-sources';
 const e=(year:number,title:string,before:string,after:string,spatial:string,places:[string,string][],...sources:(keyof typeof courseSources)[]):HistoricalTurningPoint=>({year,title,before,after,spatial,places,sources,people:'王权、驻军、宗教和居民语言分别理解；这里没有可据以绘制祖源比例或人口边界的普查。'});
 export const early700TurningPoints:HistoricalTurningPoint[]=[
+ e(753,'旧拉多加：不晚于此时的木建筑','八世纪波罗的海东西岸已有跨海聚落和人员联系；这不是罗斯国家年表。','旧拉多加木结构的年轮测年表明，居住建筑不晚于 753 年已存在。图中以此开启地点阅读，不断言精确建城日；九世纪留里克叙事不提前。','从波罗的海经芬兰湾、涅瓦河进入拉多加湖，再找南侧沃尔霍夫河的旧拉多加；本条只说明地理联系，未绘已核实的单次航线。',[['staraya-ladoga','旧拉多加 · 河流贸易聚落'],['grobina','格罗比尼亚 · 东岸聚落'],['birka','比尔卡 · 西侧湖区贸易']],'earlyLadogaResearch','earlyGrobina','earlyBirka'),
  e(710,'约 710 年里伯市场与城镇起源','北海岸边已有地方聚落与交换网络；城市形成并非突然从无人区开始。','采用国家博物馆的约 710 年节点，里伯河北岸出现组织化市场、工艺和商贸；另有约 705 年纪年，早期是否全年居住仍有讨论。','里伯在日德兰西南的北海方向，现代城市代表点不是古代摊位、码头或王宫的精确位置。',[['ribe','里伯 · 早期市场与聚落']],'earlyRibe','earlyRibeMarket','earlyRibeDates'),
 
  e(702,'约 702／703 年瓦西特开建','哈贾吉治理伊拉克，库法与巴士拉等军营城市各有地方政治。','采用常见约 702／703 年开建、705 年完成的记法，新军政基地用于安置叙利亚军队；另有更早纪年，建设不是一天完成。','瓦西特在底格里斯河旧河道，库法在更西的幼发拉底河流域；现代瓦西特省不是古城疆界。',[['wasit','瓦西特 · 建设中的军政中心'],['kufa','库法 · 地方城市对照']],'earlyWasit','earlyWasitSite'),

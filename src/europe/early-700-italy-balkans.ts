@@ -1,3 +1,4 @@
+import {balticPolitiesAt} from './early-700-baltic';
 import {northernPolitiesAt} from './early-700-north';
 import {easternPolitiesAt} from './early-700-east';
 import {blackSeaPolitiesAt} from './early-700-black-sea';
@@ -43,7 +44,8 @@ export function regionalPolitiesAt(region:string,year:number):RegionalPolityCard
  if(year<701||year>800)return [];
  if(region==='north')return northernPolitiesAt(year);
  if(['levant','egypt','mesopotamia'].includes(region))return easternPolitiesAt(region,year);
- if(['anatolia','caucasus','east'].includes(region))return blackSeaPolitiesAt(region,year);
+ if(region==='east')return [...balticPolitiesAt(year),...blackSeaPolitiesAt(region,year)];
+ if(['anatolia','caucasus'].includes(region))return blackSeaPolitiesAt(region,year);
  if(region==='britain')return islandPolitiesAt(year);
  if(region==='iberia')return iberianPolitiesAt(year);
  if(region==='gaul'||region==='central')return frankishPolitiesAt(region,year);

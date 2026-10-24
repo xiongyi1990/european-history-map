@@ -1,6 +1,6 @@
 import type {Coordinate} from './battles';
 export interface Landform {
-  id:string; name:string; latin:string; kind:'mountain'|'plain'|'sea'; coords:Coordinate;
+  id:string; name:string; latin:string; kind:'mountain'|'plain'|'sea'|'lake'; coords:Coordinate;
   zoom:number; minZoom:number; maxZoom?:number; bearing:number; text:string; source:string;
 }
 const terrain='https://registry.opendata.aws/terrain-tiles/';

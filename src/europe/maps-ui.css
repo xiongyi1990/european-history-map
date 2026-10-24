@@ -92,3 +92,5 @@
 @media(max-width:760px){.maps-ui.panel-open .e-coverage.early-region-active{left:12px;right:12px;max-width:none;padding:6px 10px}.maps-ui.panel-open .e-coverage.early-region-active small{display:none}}
 
 .early700-local-polities>article{margin:12px 0;padding:14px;border:1px solid #dce6ed;border-radius:10px;background:#fff}.early700-local-polities>article>small{color:#647c8e}.early700-local-polities>article>p{font-size:12px}.early700-local-polities .e-primary{margin:10px 0}
+
+.maps-ui .g-landform-label.is-lake strong{font-size:12px;letter-spacing:1px;color:#418996;text-shadow:none}

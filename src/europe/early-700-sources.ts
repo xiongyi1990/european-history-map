@@ -124,4 +124,12 @@ export const early700Sources={
  earlyDerbentHistory:{title:'伊朗百科全书：德尔本特／达尔班德的山海关口与历史城防',url:'https://www.iranicaonline.org/articles/darband-i-ancient-city/'},
  earlyDerbentLocation:{title:'UNESCO：德尔本特古城与城堡遗产点坐标',url:'https://whc.unesco.org/en/list/1070/maps/'},
  earlyArdabilLocation:{title:'OpenStreetMap 贡献者经 Mapcarta：阿尔达比勒现代城市代表点',url:'https://mapcarta.com/Ardabil'},
+ earlyGrobina:{title:'UNESCO 预备名单／拉脱维亚申报资料：格罗比尼亚七至九世纪聚落与坐标',url:'https://whc.unesco.org/en/tentativelists/6258/'},
+ earlyGrobinaEvaluation:{title:'ICOMOS 2021 评估：格罗比尼亚的移民、农耕聚落与跨文化交流',url:'https://whc.unesco.org/archive/2021/whc21-44com-inf8B1.Add-en.pdf'},
+ earlySalmeStudy:{title:'Price、Peets 等 2020：萨尔梅船葬个体来源的同位素研究',url:'https://osiliana.eu/wp-content/uploads/2021/07/Salmeiso_2020.pdf'},
+ earlySalmeLandscape:{title:'Rosentau 等／塔林大学出版社：萨尔梅古地貌与约 750—775 年船葬纪年',url:'https://www.tlu.ee/pood/index.php?controller=attachment&id_attachment=239'},
+ earlySalmeMuseum:{title:'瑞典 Vrak 海事博物馆：萨尔梅船葬、个体差异与未知对手',url:'https://www.vrak.se/om-vrak/aktuellt/nyheter-2025/batgravarna-i-salme'},
+ earlySalmeLocation:{title:'Mapeirons／萨雷马地方旅游资料：萨尔梅船葬展示区代表坐标',url:'https://mapeirons.eu/en/object/site-of-the-ancient-salme-ship/'},
+ earlyLadogaResearch:{title:'Grigorjeva／The Global North：旧拉多加贸易聚落与不晚于 753 年的木建筑',url:'https://doi.org/10.1017/9781641894906.003'},
+ earlyLadogaLocation:{title:'Getty TGN 6005614：旧拉多加现代城市约略代表点（ODC-By 1.0）',url:'https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=6005614'},
 } as const;

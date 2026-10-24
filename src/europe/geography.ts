@@ -3,6 +3,7 @@ import {landforms as greekLandforms} from '../greek/landforms';
 import {romanLandforms} from '../roman/data';
 const source='https://registry.opendata.aws/terrain-tiles/';
 export const europeLandforms:Landform[]=[...romanLandforms,...greekLandforms,
+ {id:'ladoga-lake',name:'拉多加湖',latin:'LAKE LADOGA',kind:'lake',coords:[31.5,60.8],zoom:6.4,minZoom:4,maxZoom:10,bearing:0,text:'从波罗的海经芬兰湾、涅瓦河可进入拉多加湖；旧拉多加在湖南侧的沃尔霍夫河下游。湖泊与聚落分开看，现代湖岸只作地理参照，不能当作八世纪精确岸线或已核实的单次航路。',source:'https://www.naturalearthdata.com/about/terms-of-use/'},
  {id:'scandinavia',name:'斯堪的纳维亚山脉',latin:'SCANDINAVIAN MOUNTAINS',kind:'mountain',coords:[12,64],zoom:5.9,minZoom:3.5,bearing:15,text:'将视线从挪威海岸移向半岛内陆，比较山地与东侧较低的地势。先辨认地形，再阅读两侧地区的联系。',source},
  {id:'carpathians',name:'喀尔巴阡山脉',latin:'CARPATHIANS',kind:'mountain',coords:[24.5,47],zoom:6.7,minZoom:4.8,bearing:15,text:'观察弧形山系与内侧低地的位置。山脉、盆地和周围通道，是在地图上辨认中东欧的一组线索。',source},
  {id:'caucasus',name:'高加索山脉',latin:'CAUCASUS',kind:'mountain',coords:[44.5,42.6],zoom:7,minZoom:4.2,bearing:15,text:'先找到黑海和里海，再观察两海之间的高山带。这里用地形帮助定位，不规定唯一的欧亚洲界。',source},
