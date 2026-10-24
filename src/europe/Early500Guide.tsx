@@ -4,7 +4,7 @@ import {early500Regions,earlyRegionsAt,inEarly500} from './early-500-regions';
 import {courseSources} from './course-sources';
 export function Early500Guide({year,selected,onRegion,onYear,onPlace,onLocate}:{year:number;selected?:string;onRegion:(id:string|undefined)=>void;onYear:(year:number)=>void;onPlace:(id:string)=>void;onLocate:(coordinates:[number,number][])=>void}){
  if(!inEarly500(year))return null;
- const regions=earlyRegionsAt(year),current=regions.find(r=>r.id===selected),localPolities=regionalPolitiesAt(selected??'',year),localName=current?.id==='africa'?'北非':current?.id==='italy'?'意大利':current?.id==='gaul'?'高卢':current?.id==='central'?'莱茵以东与中多瑙河':current?.id==='iberia'?'伊比利亚与纳博讷':current?.id==='britain'?'不列颠与爱尔兰':'巴尔干';
+ const regions=earlyRegionsAt(year),current=regions.find(r=>r.id===selected),localPolities=regionalPolitiesAt(selected??'',year),localName=current?.id==='africa'?'北非':current?.id==='italy'?'意大利':current?.id==='gaul'?'高卢':current?.id==='central'?'莱茵以东与中多瑙河':current?.id==='iberia'?'伊比利亚与纳博讷':current?.id==='britain'?'不列颠与爱尔兰':current?.id==='anatolia'?'安纳托利亚':current?.id==='caucasus'?'高加索与亚美尼亚':current?.id==='east'?'黑海北岸与东欧':'巴尔干';
  return <section className="early500-guide" aria-label="500—800 年连续地域导览">
   <header><span>公元 500—800 年</span><h2>这一年，欧洲各地由谁统治？</h2><p>按地域查看主要政治阶段。分期连续覆盖这些年份，城池易手和边界仍有地方差异；本层不绘制未经核对的逐年国界。</p></header>
   {current?<article aria-label={current.name+'的当年状态'}>

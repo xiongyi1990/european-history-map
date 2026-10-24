@@ -1,3 +1,4 @@
+import {blackSeaAnchors} from './early-700-black-sea';
 import {islandAnchors} from './early-700-islands';
 import {iberianAnchors} from './early-700-iberia';
 import {frankishAnchors} from './early-700-frankish';
@@ -127,7 +128,7 @@ const baseEarly500Regions:EarlyRegion[]=[
 ];
 export const early500Regions:EarlyRegion[]=baseEarly500Regions.map(r=>({...r,phases:[...r.phases,...early700RegionPhases[r.id]]}));
 export function inEarly500(year:number){return year>=500&&year<=800;}
-export function earlyRegionsAt(year:number){return inEarly500(year)?early500Regions.map(r=>({...r,...(year>=701&&(r.id!=='iberia'||year>=711)?early700Social[r.id]:{}),places:[...r.places,...islandAnchors(r.id,year),...iberianAnchors(r.id,year),...early700LocalAnchors(r.id,year),...italyBalkanAnchors(r.id,year),...frankishAnchors(r.id,year),...(r.id==='mesopotamia'&&year>=762?[['baghdad','巴格达 · 阿拔斯新都'] as [string,string]]:[])],phase:r.phases.find(p=>year>=p.from&&year<=p.to)!})):[];}
+export function earlyRegionsAt(year:number){return inEarly500(year)?early500Regions.map(r=>({...r,...(year>=701&&(r.id!=='iberia'||year>=711)?early700Social[r.id]:{}),places:[...r.places,...blackSeaAnchors(r.id,year),...islandAnchors(r.id,year),...iberianAnchors(r.id,year),...early700LocalAnchors(r.id,year),...italyBalkanAnchors(r.id,year),...frankishAnchors(r.id,year),...(r.id==='mesopotamia'&&year>=762?[['baghdad','巴格达 · 阿拔斯新都'] as [string,string]]:[])],phase:r.phases.find(p=>year>=p.from&&year<=p.to)!})):[];}
 export function earlyRegionAt(id:string,year:number){return earlyRegionsAt(year).find(r=>r.id===id);}
 export function early500PlaceIds(year:number){return [...new Set(earlyRegionsAt(year).flatMap(r=>r.places.filter(([,label])=>!label.includes('参照')).map(([id])=>id)))].filter(id=>id!=='pliska'||year>=681).filter(id=>id!=='kairouan'||year>=670);}
 export function early500Labels(year:number):AreaLabel[]{return earlyRegionsAt(year).map(r=>({id:'early500:'+r.id,name:r.phase.mapName+' · '+r.name,coords:r.coords,color:'#4b6379',minZoom:2.6,kind:'region'}));}
