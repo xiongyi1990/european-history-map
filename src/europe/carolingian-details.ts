@@ -43,7 +43,9 @@ export const carolingianDetails:HistoricalDetail[]=[
   territory:fact('先找伊比利亚北部的坎塔布连山地，再向南对照科尔多瓦。北部王国的存在说明穆斯林统治没有覆盖整个半岛；其范围也不等于今天阿斯图里亚斯自治区。','oviedo','umayyad'),
   people:fact('王室与教会使用基督教和罗马传统表达自身地位；这种政治文化认同不能用来断言每个居民都是西哥特人的后代。','oviedo'),language:unknownLanguage,
   nameNote:fact('奥维耶多是一座城市，阿斯图里亚斯是王国与历史地域名称，两者尺度不同。'),reading:reading(148,[1245,1246]),readingNote:'课程第 1245 页写征服发生于 717 年；地图沿用另据博物馆资料核对的 711 年起点。王都年代另据西班牙文化部。',readingNoteSource:'umayyad',related:['cordoba','toledo','aachen']},
- {...baghdadBase,id:'baghdad-first-capital',from:762,to:835,focusYear:800,period:'762—835 年：阿拔斯新都',polity:fact('762 年建立的阿拔斯都城。800 年应到伊拉克的巴格达寻找哈里发宫廷，不能继续放在倭马亚时期的大马士革。','abbasid')},
+ {...baghdadBase,id:'baghdad-first-capital',from:762,to:795,focusYear:762,period:'762—795 年：阿拔斯新都',polity:fact('762 年曼苏尔建立巴格达新都；城址、宫廷与行政功能共同发展。796 年哈伦的主要宫廷迁到拉卡，应另按年份查看。','abbasid','earlyHarun')},
+ {...baghdadBase,id:'baghdad-raqqa-court',from:796,to:808,focusYear:800,period:'796—808 年：主要宫廷驻拉卡的阶段',polity:fact('巴格达仍是阿拔斯重要的都城城市、行政和文化中心，但哈伦的主要宫廷已迁到幼发拉底河上的拉卡—拉菲卡。800 年请同时比较两城；迁驻也不表示巴格达城市消失。','earlyHarun','abbasid'),related:['raqqa','kufa','wasit','samarra','damascus']},
+ {...baghdadBase,id:'baghdad-after-harun',from:809,to:835,focusYear:809,period:'809—835 年：哈伦去世后的阿拔斯城市',polity:fact('809 年哈伦去世后发生继承与内战，巴格达仍是重要政治城市；不能把整个阶段简化为同一位哈里发始终常驻。836 年宫廷移到萨迈拉另列。','earlyHarun','abbasid')} ,
  {...baghdadBase,id:'baghdad-samarra-period',from:836,to:891,focusYear:843,period:'836—891 年：宫廷迁往萨迈拉期间',kind:'历史城市',polity:fact('巴格达仍是阿拔斯的重要城市，但哈里发主要宫廷已迁到北面的萨迈拉。843 年请将城市的文化地位与宫廷驻地分开。','abbasid')},
  {...baghdadBase,id:'baghdad-return',from:892,to:900,focusYear:900,period:'本条覆盖 892—900 年：宫廷返回巴格达后',polity:fact('892 年宫廷离开萨迈拉、回到巴格达；900 年再次在此定位阿拔斯中央宫廷。此时各地政治控制程度仍不能仅凭哈里发称号判断。','abbasid'),readingNote:'900 年是本卡资料覆盖上限，不是巴格达作为都城的结束年份。'},
  {id:'samarra-capital',placeId:'samarra',title:'萨迈拉',from:836,to:891,focusYear:843,period:'本条覆盖 836—891 年：迁回巴格达之前',kind:'帝国都城',
@@ -66,7 +68,7 @@ export const carolingianDetails:HistoricalDetail[]=[
 ];
 
 export const carolingianGuides:Record<number,ReadingGuide>={
- 800:{title:'800 年：亚琛的宫廷、罗马的加冕与同时代诸国',orientation:'先用亚琛—帕维亚—罗马辨认查理曼与意大利的关系；向东找到继续存在的君士坦丁堡。伊比利亚北部是奥维耶多，南部是科尔多瓦。阿拔斯的中心则在更东面的巴格达。',people:'法兰克王朝、意大利地方居民与罗马教会不是一个人口类别。伊比利亚的基督教王国与穆斯林政权也不能直接变成人种分界。',reading:'第 141 讲「查理曼大帝」、第 148 讲「西班牙」、第 153 讲「智慧宫」· PDF 1184—1191、1238—1246、1282—1289 页',source:'carolingian',places:[['aachen','主要宫廷 → 亚琛'],['rome','皇帝加冕 → 罗马'],['pavia','意大利王权 → 帕维亚'],['oviedo','阿斯图里亚斯 → 奥维耶多'],['cordoba','后倭马亚 → 科尔多瓦'],['byzantium','东罗马 → 君士坦丁堡'],['baghdad','阿拔斯都城 → 巴格达']]},
+ 800:{title:'800 年：亚琛的宫廷、罗马的加冕与同时代诸国',orientation:'先用亚琛—帕维亚—罗马辨认查理曼与意大利的关系；向东找到继续存在的君士坦丁堡。伊比利亚北部是奥维耶多，南部是科尔多瓦。阿拔斯的巴格达仍是重要都城城市，但本年哈伦主要宫廷在幼发拉底河上的拉卡。',people:'法兰克王朝、意大利地方居民与罗马教会不是一个人口类别。伊比利亚的基督教王国与穆斯林政权也不能直接变成人种分界。',reading:'第 141 讲「查理曼大帝」、第 148 讲「西班牙」、第 153 讲「智慧宫」· PDF 1184—1191、1238—1246、1282—1289 页',source:'carolingian',places:[['aachen','主要宫廷 → 亚琛'],['rome','皇帝加冕 → 罗马'],['pavia','意大利王权 → 帕维亚'],['oviedo','阿斯图里亚斯 → 奥维耶多'],['cordoba','后倭马亚 → 科尔多瓦'],['byzantium','东罗马 → 君士坦丁堡'],['baghdad','阿拔斯都城城市 → 巴格达'],['raqqa','哈伦主要宫廷 → 拉卡']]},
  843:{title:'843 年：凡尔登三分，先找西、中、东',orientation:'由凡尔登条约地点出发：向西看巴黎，向东北看亚琛，再跨阿尔卑斯山看帕维亚，向东看雷根斯堡。亚琛与帕维亚都属于中部政治空间，今天的国界会让这一点很容易被误读。',people:'这是王朝继承后的权力分配，不能直接画成法国人、德国人和意大利人的三块人口地图。各地居民、教会和贵族关系延续并变化。',reading:'第 143 讲「虔诚者路易」、第 144 讲「维京南下」· PDF 1199—1207、1208—1215 页；阿拔斯宫廷参第 153 讲',source:'verdun',places:[['verdun','条约地点 → 凡尔登'],['paris','西部参照 → 巴黎'],['aachen','中部北段 → 亚琛'],['pavia','中部意大利 → 帕维亚'],['regensburg','东部巴伐利亚 → 雷根斯堡'],['samarra','同时代阿拔斯宫廷 → 萨迈拉']],realms:[
   {name:'西法兰克 · 秃头查理',time:'843 年分割后的西部份额',regions:'西部高卢，包括塞纳河流域与阿基坦方向；王国权利与地方实际控制仍有差异。',source:'verdun',places:[['paris','在巴黎定位西部']]},
   {name:'中部王国 · 洛泰尔一世',time:'843—855 年；855 年再次分割',regions:'从北海方向，经亚琛、莱茵与罗讷之间的地带，跨阿尔卑斯山进入意大利；既不是单独的洛林，也不是现代意大利。',source:'prum',places:[['aachen','北段：亚琛'],['pavia','南段：帕维亚']]},
