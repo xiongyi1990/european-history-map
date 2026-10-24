@@ -18,6 +18,27 @@
       "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_50m_populated_places.geojson",
       "sha256": "da4662b7bbfeb897d02f228c5839131dce27acff5717630f91ccff4f67828ee7",
       "features": 1251
+    },
+    "ne_10m_malaren": {
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.1/geojson/ne_10m_lakes.geojson",
+      "source_sha256": "2d036f53dedec578001c5c30c2959ee7d4eebc1306900fa4367c49929ec8f2d9",
+      "sha256": "1babe9ff9b06843f2ab5d2a3996e7fdcb812128f8d3e71b6d2eff0ce3695990e",
+      "features": 1,
+      "filter": "wikidataid = Q184492",
+      "accessed": "2026-10-25",
+      "note": "Selected modern natural lake, not reconstructed historical shores. Island geometry checked separately."
+    },
+    "osm_malaren_islands": {
+      "urls": [
+        "https://www.openstreetmap.org/way/34546894",
+        "https://www.openstreetmap.org/relation/9279949"
+      ],
+      "sha256": "f25c3cc7b4c47ea6d89f86dc61f854d5a02baf231c6c4e1703d26d15e3a53713",
+      "features": 2,
+      "license": "ODbL 1.0",
+      "attribution": "© OpenStreetMap contributors",
+      "accessed": "2026-10-25",
+      "note": "Two modern island outlines, not historical shores or archaeological-site boundaries."
     }
   }
 }

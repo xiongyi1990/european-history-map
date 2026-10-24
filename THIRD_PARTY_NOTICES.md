@@ -52,3 +52,10 @@ Blender 脚本可能引用操作系统字体；仓库不分发这些商业字体
 - 佩卢西乌姆：采用 [Getty Thesaurus of Geographic Names，TGN 7539229](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=7539229) 的代表坐标，保留原记录链接，并增加中文名与独立阅读说明。Contains information from the J. Paul Getty Trust, Getty Research Institute, Getty Thesaurus of Geographic Names, which is made available under the ODC Attribution License。许可为 [ODC-By 1.0](https://opendatacommons.org/licenses/by/1-0/)，见 [Getty 授名要求](https://www.getty.edu/research-conservation/tools-databases/vocabularies/data-services/)。
 - 俄克喜林库斯：采用 [Johan Åhlfeldt / Digital Atlas of the Roman Empire（DARE），地点 22142](https://imperium.ahlfeldt.se/places/22142) 的代表坐标，CC BY-SA 3.0，原资料精度约 2 千米。增加中文名与独立阅读说明；该点保留原数据授权，不改授权为项目 GPL。
 - 位置：`src/europe/egypt-cities.ts`。代表点不是城市轮廓或省界。文书说明为独立摘要，不分发纸草影像、原文抄录或牛津展览页面。
+
+
+## 梅拉伦湖与两座岛屿的现代水陆参照
+
+- `public/europe-reference/ne_10m_malaren.geojson` 选取 Natural Earth v5.1.1 仓库 `ne_10m_lakes.geojson` 中 Q184492 梅拉伦湖要素。数据属公共领域，来源与原文件、派生文件 SHA-256 见同目录 `manifest.json`。
+- `public/europe-reference/osm_malaren_islands.geojson` 来自 OpenStreetMap 贡献者，包含 [比约克岛 way/34546894](https://www.openstreetmap.org/way/34546894) 与 [阿德尔瑟岛 relation/9279949](https://www.openstreetmap.org/relation/9279949) 的现代轮廓，获取于 2026-10-25。© OpenStreetMap contributors，按 [Open Data Commons Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/) 提供；该数据文件保留 ODbL，不改授权为程序代码的 GPL。阿德尔瑟岛外环由原 relation 的 outer 成员拼合，未手绘放大以迁就据点。
+- 网站地图保留可点击的 OpenStreetMap 署名。这些湖面和岛屿用于帮助理解比尔卡、霍夫戈登的方位，属于现代概化参照，不是八世纪水岸、考古遗址保护区、国界或族群疆界。

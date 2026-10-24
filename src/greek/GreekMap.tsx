@@ -53,6 +53,8 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
         maxBounds:atlas?.extent??[[5,28],[38,47]],attributionControl:false,canvasContextAttributes:{preserveDrawingBuffer:true},
         style:{version:8,sky:{'sky-color':'#9ebfc1','horizon-color':'#dae0c9','fog-color':'#c8d3bc','fog-ground-blend':0.85,'horizon-fog-blend':0.25},sources:{
           land:{type:'geojson',data:light?`${location.origin}/europe-reference/ne_50m_admin_0_countries.geojson`:landData},
+          lakeIslands:{type:'geojson',data:light?`${location.origin}/europe-reference/osm_malaren_islands.geojson`:empty},
+          lakes:{type:'geojson',data:light?`${location.origin}/europe-reference/ne_10m_malaren.geojson`:empty},
           elevation:{type:'raster-dem',tiles:[`${location.origin}/${atlas?.terrainPrefix??'greek-terrain'}/{z}/{x}/{y}.png`],tileSize:256,encoding:'terrarium',maxzoom:atlas?.maxzoom??9,bounds:atlas?.bounds??[13,33,31,43],attribution:'地形 © Mapzen / AWS Open Data'},
           relief:{type:'raster-dem',tiles:[`${location.origin}/${atlas?.terrainPrefix??'greek-terrain'}/{z}/{x}/{y}.png`],tileSize:256,encoding:'terrarium',maxzoom:atlas?.maxzoom??9,bounds:atlas?.bounds??[13,33,31,43]},
           surface:{type:'raster-dem',tiles:[`${location.origin}/${atlas?.surfacePrefix??'greek-surface'}/{z}/{x}/{y}.png`],tileSize:256,encoding:'terrarium',maxzoom:atlas?.maxzoom??9,bounds:atlas?.bounds??[13,33,31,43]},
@@ -66,6 +68,8 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
           {id:'land',type:'fill',source:'land',paint:{'fill-color':light?'#e4efdf':'#a7ae7c'}},
           {id:'surface',type:'color-relief',source:'surface',paint:{'color-relief-opacity':light?['interpolate',['linear'],['zoom'],3.7,0,4.5,1]:1,'color-relief-color':light?['interpolate',['linear'],['elevation'],-8000,'#79cfdf',-1,'#79cfdf',0,'#e4efdf',250,'#d6ebdb',600,'#c0e3d1',1000,'#b5dcc7',1800,'#dce9d9',2500,'#f0f1e9',3200,'#fafaf6']:['interpolate',['linear'],['elevation'],-8000,'#082e43',-3000,'#0b4059',-1000,'#145b70',-250,'#247a88',-50,'#469d9e',-1,'#96c6b5',0,'#b3be8a',80,'#a1b17d',250,'#92a06d',600,'#8c9468',1000,'#a49b79',1600,'#c6b598',2300,'#e5dcc8',3200,'#f5f0e3']}},
           {id:'relief',type:'hillshade',source:'relief',paint:{'hillshade-exaggeration':light?0.18:0.75,'hillshade-shadow-color':'#243c2e','hillshade-highlight-color':'#fff2c9','hillshade-accent-color':'#636942','hillshade-illumination-direction':315,'hillshade-illumination-anchor':'map'}},
+          {id:'lakes',type:'fill',source:'lakes',paint:{'fill-color':light?'#79cfdf':'#123f54'}},
+          {id:'lake-islands',type:'fill',source:'lakeIslands',paint:{'fill-color':light?'#e4efdf':'#a7ae7c'}},
           {id:'atlas-areas',type:'fill',source:'atlasAreas',paint:{'fill-color':['get','atlasColor'],'fill-opacity':light?['case',['boolean',['get','schematic'],false],0.30,0.10]:0.4}},
           {id:'atlas-area-lines',type:'line',source:'atlasAreas',paint:{'line-color':light?'#657579':['get','atlasColor'],'line-width':light?0.9:2,'line-opacity':1,'line-dasharray':[3,2]}},
           {id:'atlas-area-selected',type:'line',source:'atlasAreas',filter:['==',['get','atlasId'],''],paint:{'line-color':light?'#1a73e8':'#fff0b4','line-width':light?2:3}},
@@ -86,7 +90,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     map.current=m;
     m.addControl(new maplibregl.NavigationControl({visualizePitch:true}),'bottom-right');
     m.addControl(new maplibregl.ScaleControl({unit:'metric',maxWidth:110}),'bottom-left');
-    m.addControl(new maplibregl.AttributionControl({compact:true,customAttribution:`底图 Natural Earth · ${battle?'战役参考点与路线：编者示意':atlas?.attribution??'地点 Pleiades（CC BY 3.0）'}`}),'bottom-right');
+    m.addControl(new maplibregl.AttributionControl({compact:true,customAttribution:`底图 Natural Earth${light?' · 岛屿 © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap contributors</a>':''} · ${battle?'战役参考点与路线：编者示意':atlas?.attribution??'地点 Pleiades（CC BY 3.0）'}`}),'bottom-right');
     m.on('load',()=>{if(alive)setLoaded(true)});
     m.on('click','atlas-areas',e=>{if(m.queryRenderedFeatures(e.point,{layers:['atlas-reading-hit']}).length)return;const id=e.features?.[0]?.properties?.atlasId;if(id)handlers.current.onAreaSelect?.(String(id))});
     m.on('click','atlas-reading-hit',e=>{const id=e.features?.[0]?.properties?.atlasId;if(id)handlers.current.onAreaSelect?.(String(id))});
@@ -262,6 +266,6 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     <div className="g-relief-dock"><span>读懂地形</span>{(atlas?.presets??landformPresets(battle?.id)).map(p=><button key={p.id} aria-label={`观察${p.kind==='mountain'?'山脉':p.kind==='plain'?'平原':'海洋'}`} onClick={()=>explore(p)}>{p.kind==='mountain'?<Mountain size={16}/>:p.kind==='plain'?<Sprout size={16}/>:<Waves size={16}/>} {p.kind==='mountain'?'山脉':p.kind==='plain'?'平原':'海洋'}</button>)}</div>
     {landform&&<aside className="g-landform-card"><button aria-label="关闭地貌说明" onClick={()=>setLandform(undefined)}><X size={15}/></button><small>地貌观察 / 近似地理参考点</small><h3>{landform.name}</h3><p>{landform.text}</p><a href={landform.source} target="_blank" rel="noreferrer">地理资料<ExternalLink size={11}/></a></aside>}
     <div className="g-elevation-key"><span>深海</span><i/><span>低地</span><i/><span>高山</span></div>
-    <span className="g-terrain-status">{threeD?(terrainReady?'立体地形 · 高度 ×4':'立体地形加载中'):'俯视地图'} · 海拔 / 水深设色 · 现代海岸</span>
+    <span className="g-terrain-status">{threeD?(terrainReady?'立体地形 · 高度 ×4':'立体地形加载中'):'俯视地图'} · 海拔 / 水深设色 · {light?'现代海岸与湖面参照':'现代海岸'}</span>
   </div>;
 }
