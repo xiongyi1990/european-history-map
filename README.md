@@ -8,6 +8,7 @@ An open-source, Chinese-language historical atlas of Europe, built with React, T
 
 [在线体验](https://european-history-map.tangallen96.chatgpt.site/?year=363) · [参与贡献](CONTRIBUTING.md) · [报告史实或地图问题](https://github.com/xiongyi1990/european-history-map/issues/new/choose) · [建设路线](ROADMAP.md)
 
+- [700—800 年政权内部地域对照](https://european-history-map.tangallen96.chatgpt.site/?year=774)：展开法兰克、东罗马与哈里发体系，分清核心、地方权力、战争地区、宗主关系及邻国。[覆盖与依据](docs/early-realm-composition.md)。
 - [新手先看：760 年全局](https://european-history-map.tangallen96.chatgpt.site/?year=760)：500—800 年逐年总览、三步地理定位、编号政权入口与清楚的疆界资料日期。[使用与覆盖说明](docs/year-reading-guide.md)。
 - [760 年南北波罗的海沿岸](https://european-history-map.tangallen96.chatgpt.site/?year=760&earlyRegion=north)：新增大施特勒姆肯多夫、罗斯托克—迪尔科夫、门茨林，区分早期聚落、贸易发展和港区建设；保留北岸王权、贸易与工程据点。
 - [753 年波罗的海东岸与东欧河网](https://european-history-map.tangallen96.chatgpt.site/?year=753&earlyRegion=east)：新增格罗比尼亚、萨尔梅船葬和旧拉多加，区分聚落、船葬纪年与可萨草原权力，连通原有比尔卡及黑海城市。详情见 [700—800 年覆盖说明](docs/ad700-800-coverage.md)。

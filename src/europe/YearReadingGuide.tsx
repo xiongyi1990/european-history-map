@@ -1,3 +1,4 @@
+import {RealmComposition} from './RealmComposition';
 import {useState,type ReactNode} from 'react';
 import {yearReadingAt} from './year-reading';
 import {earlyRegionAt} from './early-500-regions';
@@ -13,7 +14,7 @@ export function YearReadingGuide({year,onRegion,onYear,onLocate,boundary}:{bound
   {boundary}
   <details className="year-reader-rule"><summary>编号怎样读？为什么不是九个国家？</summary><p>数字和地图名称一一对应。下面按阅读方向分组：一个帝国可以跨多个地域，一组也可能有多个政权。点击名称，再看地域、城市与居民。</p></details>
   <div className="year-power-list">{reader.powers.map(p=>{const r=earlyRegionAt(p.regions[0],year)!;return <article key={p.id} className="year-power">
-   <div className="year-power-title"><b>{p.number}</b><div><small>{p.direction}</small><h3>{p.title}</h3></div></div><p>{p.where}</p><p className="year-power-remember">{p.remember}</p>
+   <div className="year-power-title"><b>{p.number}</b><div><small>{p.direction}</small><h3>{p.title}</h3></div></div><p>{p.where}</p><p className="year-power-remember">{p.remember}</p><p className="year-power-stage"><b>这一年的地域状态</b>{r.phase.name}<small>地域说明分段：{r.phase.from}—{r.phase.to} 年</small></p><RealmComposition id={p.id} year={year} onRegion={onRegion} onYear={onYear} onLocate={onLocate}/>
    <button className="year-power-open" onClick={()=>onRegion(p.regions[0])}>读懂{p.mapName}的位置与居民 →</button>
    <details><summary>相关地域与依据</summary><div className="year-power-regions">{p.regions.map(id=>{const region=earlyRegionAt(id,year)!;return <button key={id} onClick={()=>onRegion(id)}>{region.name} →</button>})}</div>{[...new Set([...r.sources,...r.phase.sources])].map(key=><a key={key} href={courseSources[key].url} target="_blank" rel="noreferrer">{courseSources[key].title} ↗</a>)}</details>
   </article>})}</div>
