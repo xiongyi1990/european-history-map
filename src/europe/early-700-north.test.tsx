@@ -51,7 +51,8 @@ describe('Northern political places and archaeological time limits',()=>{
    const cards=regionalPolitiesAt('north',y);expect(cards.length).toBeGreaterThanOrEqual(2);
    for(const c of cards){if(!c.bounds)expect(historicalDetail(c.site,y),c.site+y).toBeDefined();for(const key of c.sources)expect(historySources[key]?.url,key).toMatch(/^https:/);}
   }
-  expect(regionalPolitiesAt('north',750)).toHaveLength(6);expect(regionalPolitiesAt('north',800)).toHaveLength(7);
+  expect(northernPolitiesAt(750)).toHaveLength(6);expect(northernPolitiesAt(800)).toHaveLength(7);
+  for(const p of northernPolitiesAt(800))expect(regionalPolitiesAt('north',800).some(c=>c.id===p.id)).toBe(true);
   expect(earlyRegionAt('north',800)?.phase.from).toBe(800);
   for(const d of northernDetails)for(let y=d.from;y<=d.to;y++)expect(historicalDetails.filter(x=>x.placeId===d.placeId&&x.from<=y&&y<=x.to),d.id+y).toHaveLength(1);
   console.info(JSON.stringify({regions:early500Regions.length,phases:early500Regions.reduce((n,r)=>n+r.phases.length,0),events:historicalTurningPoints.length,eighthCentury:historicalTurningPoints.filter(e=>e.year>=700&&e.year<=800).length,newPlaces:northernPlaces.length,newLocalDetails:northernDetails.length}));
@@ -67,7 +68,7 @@ describe('Northern political places and archaeological time limits',()=>{
  });
  it('locates a coastal political space without treating it as a known kingdom polygon',()=>{
   const onPlace=vi.fn(),onLocate=vi.fn();render(<Early500Guide year={750} selected="north" onRegion={vi.fn()} onYear={vi.fn()} onPlace={onPlace} onLocate={onLocate}/>);
-  const local=screen.getByRole('region',{name:'北欧地方政权详解'});expect(within(local).getAllByRole('article')).toHaveLength(6);
+  const local=screen.getByRole('region',{name:'北欧地方政权详解'});expect(within(local).getAllByRole('article')).toHaveLength(7);
   expect(within(local).getByText('这一年，北欧的王权、聚落与交通据点在哪里？')).toBeTruthy();
   fireEvent.click(within(local).getByRole('button',{name:'在地图上查看挪威海岸与峡湾方向 →'}));expect(onLocate).toHaveBeenCalledWith([[4,57],[13,66]]);expect(onPlace).not.toHaveBeenCalled();
  });

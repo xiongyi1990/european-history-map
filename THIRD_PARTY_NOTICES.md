@@ -64,3 +64,8 @@ Blender 脚本可能引用操作系统字体；仓库不分发这些商业字体
 
 - 旧拉多加现代代表坐标取自 [Getty TGN 6005614](https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=6005614)，沿用 Getty 词表的 [ODC Attribution 1.0](https://opendatacommons.org/licenses/by/1-0/)；Getty Research Institute 提供。本项目转换经纬度排列，另撰中文历史说明，未导入其完整数据库。
 - 格罗比尼亚使用拉脱维亚提交的 UNESCO 预备名单代表坐标；萨尔梅使用 Mapeirons／萨雷马地方旅游资料的展示区代表坐标。来源保留在每个地点；不将遗产或展示点视为古代疆界。相关网页、评估和论文仍由原作者持有版权，本项目只独立概述并链接，未复制课程或论文全文。
+
+## 南波罗的海沿岸地点代表点
+
+- 大施特勒姆肯多夫现代村庄（OpenStreetMap node 95920506）、普里梅尔贝格考古区（node 5014250185）、门茨林旧营地考古遗址（node 1380922159）的代表坐标来自 OpenStreetMap contributors，前两处经公开 Overpass 接口核对，后一处经 Mapcarta 与 OSM 记录核对。数据保留 [ODbL 1.0](https://www.openstreetmap.org/copyright)，不由本项目代码许可代替；未复制卫星图或 Mapcarta 文章正文。
+- 中文说明为独立编写的历史阅读资料，链接至 NIhK、德国考古研究院、州考古机构与罗斯托克市政府的研究。引用论文、报告和课程全文均不随项目再授权。现代村庄、遗址代表点和历史港区界线分别理解。

@@ -1,3 +1,4 @@
+import {southernBalticPolitiesAt} from './early-700-south-baltic';
 import {balticPolitiesAt} from './early-700-baltic';
 import {northernPolitiesAt} from './early-700-north';
 import {easternPolitiesAt} from './early-700-east';
@@ -42,7 +43,7 @@ const bulgarianLanguage='统治集团、地方口语与帝国外交书写不是�
 export function regionalPolitiesAt(region:string,year:number):RegionalPolityCard[]{
  if(region==='africa')return africanPolitiesAt(year).map(p=>({...p,siteName:early700LocalPlaces.find(s=>s.id===p.site)!.name}));
  if(year<701||year>800)return [];
- if(region==='north')return northernPolitiesAt(year);
+ if(region==='north')return [...northernPolitiesAt(year),...southernBalticPolitiesAt(year)];
  if(['levant','egypt','mesopotamia'].includes(region))return easternPolitiesAt(region,year);
  if(region==='east')return [...balticPolitiesAt(year),...blackSeaPolitiesAt(region,year)];
  if(['anatolia','caucasus'].includes(region))return blackSeaPolitiesAt(region,year);

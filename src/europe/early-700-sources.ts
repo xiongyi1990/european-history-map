@@ -132,4 +132,13 @@ export const early700Sources={
  earlySalmeLocation:{title:'Mapeirons／萨雷马地方旅游资料：萨尔梅船葬展示区代表坐标',url:'https://mapeirons.eu/en/object/site-of-the-ancient-salme-ship/'},
  earlyLadogaResearch:{title:'Grigorjeva／The Global North：旧拉多加贸易聚落与不晚于 753 年的木建筑',url:'https://doi.org/10.1017/9781641894906.003'},
  earlyLadogaLocation:{title:'Getty TGN 6005614：旧拉多加现代城市约略代表点（ODC-By 1.0）',url:'https://www.getty.edu/vow/TGNFullDisplay?english=Y&find=&nation=&place=&subjectid=6005614'},
+ earlySouthBalticPorts:{title:'NIhK／德国考古研究院：南波罗的海港口与斯拉夫地方社会研究项目',url:'https://nihk.de/forschung/abgeschlossene-projekte/fruehmittelalterliche-haefen-ostseekueste'},
+ earlyDierkowReport:{title:'Messal 2019／NIhK：迪尔科夫与南岸聚落测年、港区演变（印刷第 45 页）',url:'https://nihk.de/fileadmin/Dateien/images/Publikationen/Rostock-Dierkow_AufderSuche_2019_Downloadversion.pdf'},
+ earlyDierkowCity:{title:'罗斯托克市政府：普里梅尔贝格发掘与约 750 年概述',url:'https://rathaus.rostock.de/de/forschungsergebnisse_zu_den_ausgrabungen_am_primelberg_in_dierkow_jetzt_als_broschuere/287415'},
+ earlySouthBalticMuseum:{title:'梅克伦堡—前波美拉尼亚州虚拟博物馆：海岸与佩内河的贸易及手工业',url:'https://www.landesmuseum-mv.de/en/topic-in-timespan/trade-and-industry-until-1200/'},
+ earlyStromkendorfHistory:{title:'州考古机构：大施特勒姆肯多夫与雷里克的关联及出土文化背景',url:'https://www.kulturwerte-mv.de/Landesarchaeologie/Fund-des-Monats/Bisherige-Beitr%C3%A4ge/2016-04-Fragment-einer-Hand-mit-Trinkhorn-aus-Gro%C3%9F-Str%C3%B6mkendorf/'},
+ earlyMenzlinPin:{title:'Helmbrecht／州考古机构：门茨林鸟纹针与尚未确定的神祇解释',url:'https://www.kulturwerte-mv.de/Landesarchaeologie/Fund-des-Monats/Bisherige-Beitr%C3%A4ge/2023-11-kleiner-odin-menzlin/'},
+ earlyStromkendorfLocation:{title:'OpenStreetMap 贡献者：大施特勒姆肯多夫现代村庄代表点',url:'https://www.openstreetmap.org/node/95920506'},
+ earlyDierkowLocation:{title:'OpenStreetMap 贡献者：普里梅尔贝格考古发掘区代表点',url:'https://www.openstreetmap.org/node/5014250185'},
+ earlyMenzlinLocation:{title:'OpenStreetMap 贡献者经 Mapcarta：门茨林旧营地考古遗址代表点',url:'https://mapcarta.com/N1380922159'},
 } as const;
