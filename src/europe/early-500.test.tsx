@@ -144,7 +144,7 @@ describe('AD 500–800 continuous regional reading',()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>({ok:true,json:async()=>({type:'FeatureCollection',features:[]})})));
   history.replaceState(null,'','/?year=577');
   render(<EuropeApp/>);
-  fireEvent.click(screen.getByRole('button',{name:'伦巴第／东罗马 · 意大利与西西里'}));
+  fireEvent.click(screen.getByRole('button',{name:'4 · 意大利：伦巴第等'}));
   expect(location.search).toContain('year=577');expect(location.search).toContain('earlyRegion=italy');
   const guide=screen.getByRole('region',{name:'500—800 年连续地域导览'});
   expect(within(guide).getByRole('heading',{name:'帕维亚王权与东罗马飞地'})).toBeTruthy();
