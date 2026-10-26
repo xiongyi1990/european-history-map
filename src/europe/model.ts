@@ -1,3 +1,4 @@
+import {boundary1914Correction} from './boundary-1914-context';
 import {roman400Boundaries} from './roman-400-boundaries';
 import {roman300Boundaries,tetrarchNames,type BoundaryContext} from './roman-300-boundaries';
 import chineseNames from './chinese-names.json';
@@ -79,7 +80,7 @@ export const translate=(name:string)=>names[name.trim()]??(chineseNames as Recor
 const palette=['#e9ba78','#8fc6bb','#c6adc9','#92b2d3','#d9a193','#bfc38c','#dcb47b','#a1c8ce'];
 export function colorFor(name:string){return palette[[...name].reduce((v,c)=>(v*31+c.charCodeAt(0))>>>0,0)%palette.length]}
 type AreaGeometry=GeoJSON.Polygon|GeoJSON.MultiPolygon;
-export interface Area {id:string;name:string;original:string;subject:string;kind:'polity'|'reference';color:string;coords:Coordinate;bounds:[Coordinate,Coordinate];feature:GeoJSON.Feature<AreaGeometry>;source:string;context?:BoundaryContext}
+export interface Area {id:string;name:string;original:string;subject:string;kind:'polity'|'reference';color:string;coords:Coordinate;bounds:[Coordinate,Coordinate];feature:GeoJSON.Feature<AreaGeometry>;source:string;context?:BoundaryContext;categoryLabel?:string;contextYear?:number}
 function rings(g:AreaGeometry){return g.type==='Polygon'?[g.coordinates[0]]:g.coordinates.map(p=>p[0])}
 export function areaLocation(g:AreaGeometry):{coords:Coordinate;bounds:[Coordinate,Coordinate]}|undefined {
  // Prefer a substantial polygon intersecting the atlas; overseas pieces do not move France away from Europe.
@@ -96,11 +97,11 @@ export function makeAreas(fc:GeoJSON.FeatureCollection,modern=false,snapshotYear
  return fc.features.flatMap((f,i)=>{
   if(f.geometry.type!=='Polygon'&&f.geometry.type!=='MultiPolygon')return [];
   const location=areaLocation(f.geometry);if(!location)return [];
-  const p=f.properties??{}, original=String(modern?p.ADMIN:p.name),subject=String(modern?p.ADMIN:p.subject??p.name);
-  const context=!modern&&snapshotYear===300?roman300Boundaries[original]:!modern&&snapshotYear===400?roman400Boundaries[original]:undefined;
-  const id=`${modern?'modern':'history'}:${i}`,kind=modern?'polity':context?.reference?'reference':classify(subject);
-  const name=modern?String(p.NAME_ZH||p.NAME||original):context?.name??translate(original),color=kind==='polity'?colorFor(tetrarchNames.includes(subject)?'Roman Empire':subject):'#9ca9a4';
-  return [{id,name,original,subject,kind,color,context,...location,feature:{...f,properties:{...p,atlasId:id,atlasColor:color}} as GeoJSON.Feature<AreaGeometry>,source:modern?MODERN_SOURCE:HISTORY_SOURCE}];
+  const p=f.properties??{}, original=String(modern?p.ADMIN:p.name),correction=modern?undefined:boundary1914Correction(original,snapshotYear),subject=correction?.subject??String(modern?p.ADMIN:p.subject??p.name);
+  const context=correction?.context??(!modern&&snapshotYear===300?roman300Boundaries[original]:!modern&&snapshotYear===400?roman400Boundaries[original]:undefined);
+  const id=`${modern?'modern':'history'}:${i}`,kind=modern?'polity':correction?.kind??(context?.reference?'reference':classify(subject));
+  const name=modern?String(p.NAME_ZH||p.NAME||original):context?.name??translate(original),color=kind==='polity'?colorFor(correction?.colorSubject??(tetrarchNames.includes(subject)?'Roman Empire':subject)):'#9ca9a4';
+  return [{id,name,original,subject,kind,color,context,categoryLabel:correction?.categoryLabel??(!modern&&snapshotYear===1914?'原始区域参考 · 归属待逐项核对':undefined),contextYear:correction?1914:undefined,...location,feature:{...f,properties:{...p,atlasId:id,atlasColor:color,atlasSubject:subject}} as GeoJSON.Feature<AreaGeometry>,source:modern?MODERN_SOURCE:HISTORY_SOURCE}];
  });
 }
 export interface GazetteerPlace {id:string;name:string;modern:string;aliases:string[];coords:Coordinate;description:string;source:string;kind:string;viewBounds?:[Coordinate,Coordinate]}

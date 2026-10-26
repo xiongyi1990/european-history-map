@@ -1,3 +1,4 @@
+import {boundaryYearLabel,boundaryYearDistance} from './boundary-reference';
 import {RealmComposition} from './RealmComposition';
 import {useState,type ReactNode} from 'react';
 import {yearReadingAt} from './year-reading';
@@ -23,6 +24,6 @@ export function YearReadingGuide({year,onRegion,onYear,onLocate,boundary}:{bound
  </section>;
 }
 export function YearBoundaryKey({year,boundaryYear,borrowed,onBorrowed}:{year:number;boundaryYear?:number;borrowed:boolean;onBorrowed:(value:boolean)=>void}){
- const same=boundaryYear===year;
- return <aside className={'year-boundary-key'+(borrowed&&!same?' is-borrowed':'')} aria-label="年份与疆界说明"><strong>先核对年份，再看颜色</strong><p>{same?`你选择公元 ${year} 年，疆界参考资料也标为 ${year} 年；仍是概略参考，不是精确国界测绘。`:boundaryYear===undefined?`你选择公元 ${year} 年；目前没有可用的疆界参考。已有地点和文字资料仍可阅读。`:borrowed?`你正在读 ${year} 年，叠加的是 ${boundaryYear} 年参考疆界，相差 ${Math.abs(boundaryYear-year)} 年。这些色块不是 ${year} 年的版图。`:`你正在读 ${year} 年；目前未叠加 ${boundaryYear} 年的邻近疆界。地点和文字按各自适用时段显示。`}</p><details className="year-boundary-legend"><summary>地图符号与资料范围</summary><ul><li>圆点：城市或遗址</li><li>名称：政权或地域入口</li><li>色块：标注年份的疆界参考</li></ul><small>地形、海岸与湖面是现代地理参照；没有色块不等于无人居住。</small></details>{boundaryYear!==undefined&&!same&&<label className="e-check"><input type="checkbox" checked={borrowed} onChange={e=>onBorrowed(e.target.checked)}/>叠加 {boundaryYear} 年疆界参考</label>}</aside>;
+ const same=boundaryYear===year,selected=boundaryYearLabel(year),reference=boundaryYear===undefined?undefined:boundaryYearLabel(boundaryYear),fullSelected=year<0?selected:`公元 ${selected}`;
+ return <aside className={'year-boundary-key'+(borrowed&&!same?' is-borrowed':'')} aria-label="年份与疆界说明"><strong>先核对年份，再看颜色</strong><p>{same?`你选择${fullSelected}，疆界参考资料也标为 ${selected}；仍是概略参考，不是精确国界测绘。`:boundaryYear===undefined?`你选择${fullSelected}；目前没有可用的疆界参考。已有地点和文字资料仍可阅读。`:borrowed?`你正在读 ${selected}，叠加的是 ${reference}参考疆界，相差 ${boundaryYearDistance(boundaryYear,year)} 年。这些色块不是 ${selected}的版图。`:`你正在读 ${selected}；目前未叠加 ${reference}的邻近疆界。地点和文字按各自适用时段显示。`}</p><details className="year-boundary-legend"><summary>地图符号与资料范围</summary><ul><li>圆点：城市或遗址</li><li>名称：政权或地域入口</li><li>色块：标注年份的疆界参考</li></ul><small>地形、海岸与湖面是现代地理参照；没有色块不等于无人居住。</small></details>{boundaryYear!==undefined&&!same&&<label className="e-check"><input type="checkbox" checked={borrowed} onChange={e=>onBorrowed(e.target.checked)}/>叠加 {reference}疆界参考</label>}</aside>;
 }

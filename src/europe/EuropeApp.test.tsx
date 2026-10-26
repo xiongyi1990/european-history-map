@@ -199,10 +199,10 @@ describe('timeline rendering',()=>{
   fireEvent.click(within(screen.getByRole('region',{name:'关键年份政权对照'})).getByRole('button',{name:'442 年'}));
   expect(location.search).toContain('year=442');
   expect(screen.getByLabelText('地图地点归属图例').textContent).toContain('汪达尔');
-  fireEvent.click(screen.getByRole('button',{name:'查看百年疆界参考'}));
+  fireEvent.click(screen.getByRole('button',{name:/查看\d+ 年疆界参考/}));
   expect(location.search).toContain('view=reference');expect(location.search).not.toContain('moment=');
   await waitFor(()=>expect(screen.getByTestId('drawn-areas').textContent).toContain('Eastern Roman Empire'));
-  expect(screen.getByText(/公元 442 年 · 连续分期资料 \/ 400 年疆界参考/)).toBeTruthy();
+  expect(screen.getByText(/公元 442 年 · 400 年疆界参考/)).toBeTruthy();
   fireEvent.click(screen.getByRole('button',{name:'查看 442 年地点归属对照 →'}));
   expect(location.search).toContain('view=control');
   fireEvent.click(within(screen.getByRole('region',{name:'关键年份政权对照'})).getByRole('button',{name:'493 年'}));
@@ -615,7 +615,7 @@ describe('timeline rendering',()=>{
  it('keeps the requested year separate from the available evidence year',async()=>{
   vi.stubGlobal('fetch',vi.fn(async()=>response(empty)));history.replaceState(null,'','/?year=117');render(<EuropeApp/>);
   await waitFor(()=>expect(screen.getByText(/你选择了公元 117 年/)).toBeTruthy());
-  await waitFor(()=>expect(screen.getByText(/公元 100 年资料/)).toBeTruthy());
+  await waitFor(()=>expect(screen.getByText(/公元 117 年 · 邻近疆界未叠加/)).toBeTruthy());
   fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'2026'}});fireEvent.click(screen.getByLabelText('前往输入年份'));
   await waitFor(()=>expect(screen.getByText('这个年份的疆界尚未收录')).toBeTruthy());
   expect(screen.getByTestId('drawn-areas').textContent).toBe('');
