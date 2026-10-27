@@ -174,3 +174,7 @@ npm run preview
 ### 500—700 年连续地域阅读
 
 在“年代”中可按 14 个地域查询 500—700 年的连续政治分期；点击地图地域名称，查看政权、部分地域构成、居民、语言及前后变化，并从城市详情返回原地域。示例：[533 年北非](https://european-history-map.tangallen96.chatgpt.site/?year=533&earlyRegion=africa)、[577 年意大利](https://european-history-map.tangallen96.chatgpt.site/?year=577&earlyRegion=italy)。本层含 70 个地域分期、35 个新增事件节点、47 条新增城市时段及 13 组政权起止线索；不将地域镜头框当作精确疆界。详见 [覆盖说明](docs/ad500-700-coverage.md)。
+
+### 法兰克分裂：四个可比较的事件年
+
+843、855、870、880年已有独立的分国示意图层，可点击色块查看统治者、组成地域、居民语言线索和城市，并对照顾衡课程第143—144讲。它们是有来源的概略阅读范围，不是精确疆界，也不外推中间年份。实现、史料及未覆盖范围见 [法兰克分裂说明](docs/frankish-partitions.md)。

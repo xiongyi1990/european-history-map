@@ -12,7 +12,7 @@ const landData = feature(land,land.objects.land) as GeoJSON.FeatureCollection;
 const modernBorders = mesh(countries,countries.objects.countries as Parameters<typeof mesh>[1],(a,b) => a !== b);
 const empty: GeoJSON.FeatureCollection = {type:'FeatureCollection',features:[]};
 export interface Camera { center:[number,number]; zoom:number; pitch:number; bearing:number; padding?:{top:number;bottom:number;left:number;right:number} }
-export interface MapCommand { ids:string[]; nonce:number; camera?:Camera; coordinates?:Coordinate[] }
+export interface MapCommand { ids:string[]; nonce:number; camera?:Camera; coordinates?:Coordinate[]; padding?:Camera['padding'] }
 export interface AtlasPlace {id:string; name:string; modern:string; coords:Coordinate; camp?:Camp; color?:string;control?:{name:string;note:string}}
 export interface MapAtlas {places:AtlasPlace[]; terrainPrefix:string; surfacePrefix:string; bounds:[number,number,number,number]; maxzoom:number; center:Coordinate; zoom:number; minZoom:number; extent:[Coordinate,Coordinate]; landforms:Landform[]; presets:Landform[]; attribution:string; title:string; pitch?:number; bearing?:number; overviewBounds?:[Coordinate,Coordinate]; detailInSidebar?:boolean; theme?:'light'|'dark'}
 export interface AreaLabel {id:string;name:string;coords:Coordinate;color:string;minZoom?:number;kind?:'region'|'frontier'}
@@ -251,7 +251,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
     if(command.coordinates?.length){
       const bounds=new maplibregl.LngLatBounds();command.coordinates.forEach(p=>bounds.extend(p));
       const mobile=window.innerWidth<=760;
-      m.fitBounds(bounds,{pitch:threeD?(mobile?35:50):0,bearing:threeD?(battle?.id==='thermopylae'?155:-20):0,padding:{top:mobile?125:110,bottom:light?(mobile?Math.min(m.getContainer().clientHeight-220,m.getContainer().clientHeight*(battle ? 0.4 : 0.46)+155):145):mobile&&battle?Math.min(300,m.getContainer().clientHeight*.48):85,left:light&&!mobile?488:mobile?35:55,right:battle&&!mobile&&!light?350:atlas?.detailInSidebar?35:window.innerWidth>1100?365:55},maxZoom:mobile?8.8:10,duration:850});return;
+      m.fitBounds(bounds,{pitch:threeD?(mobile?35:50):0,bearing:threeD?(battle?.id==='thermopylae'?155:-20):0,padding:command.padding??{top:mobile?125:110,bottom:light?(mobile?Math.min(m.getContainer().clientHeight-220,m.getContainer().clientHeight*(battle ? 0.4 : 0.46)+155):145):mobile&&battle?Math.min(300,m.getContainer().clientHeight*.48):85,left:light&&!mobile?488:mobile?35:55,right:battle&&!mobile&&!light?350:atlas?.detailInSidebar?35:window.innerWidth>1100?365:55},maxZoom:mobile?8.8:10,duration:850});return;
     }
     const ps=command.ids.map(id=>mapPlaces.find(p=>p.id===id)).filter(p=>!!p);
     if(!ps.length){
