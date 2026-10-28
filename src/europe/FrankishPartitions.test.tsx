@@ -18,7 +18,7 @@ describe('Frankish partition reading controls',()=>{
  it('keeps the four historical stages explicit and changes year only on request',()=>{
   const events=callbacks();render(<FrankishPartitions year={843} active {...events}/>);
   const nav=screen.getByRole('navigation',{name:'法兰克分裂关键年份'});
-  for(const y of partitionYears){const b=within(nav).getByRole('button',{name:String(y)});expect(b.getAttribute('aria-current')).toBe(y===843?'date':null);fireEvent.click(b);expect(events.onYear).toHaveBeenLastCalledWith(y);}
+  for(const y of partitionYears.filter(y=>y<900)){const b=within(nav).getByRole('button',{name:String(y)});expect(b.getAttribute('aria-current')).toBe(y===843?'date':null);fireEvent.click(b);expect(events.onYear).toHaveBeenLastCalledWith(y);}
   expect(events.onSelect).not.toHaveBeenCalled();
  });
  it('connects a selected colored realm to its composition, people, cities and back actions',()=>{
@@ -46,6 +46,6 @@ describe('Frankish partition reading controls',()=>{
  it('does not reuse a neighboring-stage map or stale realm on another year',()=>{
   const events=callbacks();const {rerender,container}=render(<FrankishPartitions year={843} active selected="middle-francia" {...events}/>);
   rerender(<FrankishPartitions year={855} active selected="middle-francia" {...events}/>);expect(screen.queryByRole('article',{name:'分国地域详情'})).toBeNull();
-  for(const y of [842,844,854,856,869,871,879,881,900]){rerender(<FrankishPartitions year={y} active {...events}/>);expect(container.textContent).toBe('');}
+  for(const y of [842,844,854,856,869,871,879,881,901,912,926,963,988,1001]){rerender(<FrankishPartitions year={y} active {...events}/>);expect(container.textContent).toBe('');}
  });
 });

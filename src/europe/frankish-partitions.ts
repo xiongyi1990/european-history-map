@@ -1,5 +1,6 @@
-/** Four event-year reading frames. Never interpolate these political relationships. */
-export type PartitionYear=843|855|870|880;
+/** Exact-year reading frames. Never interpolate these political relationships. */
+import {successorFrames} from './frankish-successors';
+export type PartitionYear=843|855|870|880|900|911|925|962|987|1000;
 export interface PartitionSource {title:string;url:string}
 export interface PartitionRealm {
  id:string;name:string;ruler:string;dates:string;color:string;coords:[number,number];bounds:[[number,number],[number,number]];
@@ -8,8 +9,11 @@ export interface PartitionRealm {
 export interface PartitionFrame {
  year:PartitionYear;title:string;treaty:string;eventDate:string;summary:string;change:string;note:string;
  reading:{chapter:number;pages:[number,number];note?:string}[];realms:PartitionRealm[];
+ sources?:PartitionSource[];relationships?:{title:string;text:string;realmIds:string[]}[];
 }
-export const partitionYears:PartitionYear[]=[843,855,870,880];
+export const partitionYears:PartitionYear[]=[843,855,870,880,900,911,925,962,987,1000];
+export function partitionStageYears(year:number){return partitionYears.filter(y=>(y>=900)===(year>=900));}
+export function partitionTopic(year:number){return year>=900?'法兰克继承诸国':'法兰克分国';}
 export const partitionSources:PartitionSource[]=[
  {title:'INSEI：843年凡尔登三分及代表城市',url:'https://www.insei.fr/ressources/le-partage-de-verdun-en-843'},
  {title:'莱茵地区历史门户：洛泰尔二世与855年继承分割',url:'https://www.rheinische-geschichte.lvr.de/Persoenlichkeiten/lothar-ii./DE-2086/lido/57c943a7f37ea7.34457744'},
@@ -93,6 +97,7 @@ export const partitionFrames:PartitionFrame[]=[
    {...east('小路易、胖子查理等加洛林王权分治','洛塔林吉亚归东部的小路易；此人与西部同名路易三世分别理解。胖子查理此时掌握阿勒曼尼亚等地域，882年才统一东部王权。'),bounds:[[3.2,46],[16.8,54.4]],parts:['东部原有萨克森、法兰克及巴伐利亚等地域','小路易取得的洛塔林吉亚北部地域','胖子查理的阿勒曼尼亚等地域；与其意大利王权相连但层次不同']},
    italy('胖子查理','879年取得意大利王权；880年受膏，881年才加冕为帝','同一君主可兼有不同王国权力，因此这块颜色用于辨认意大利地域，不表示它与东部王权完全无关。'),
    provence('博索','879—887年王权线索；本图为880年','879年称王的罗讷河/普罗旺斯政治中心；受到加洛林诸王反对，称号、主张与稳定实际控制不完全相同。不是重新恢复855年查理原封不动的全部领地。')]},
+ ...successorFrames,
 ];
 export function partitionAt(year:number):PartitionFrame|undefined{return partitionFrames.find(frame=>frame.year===year);}
 export function partitionRealmAt(year:number,id:string):PartitionRealm|undefined{return partitionAt(year)?.realms.find(realm=>realm.id===id);}
