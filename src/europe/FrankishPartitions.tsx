@@ -1,14 +1,16 @@
+import {Contemporary1000} from './Contemporary1000';
 import {partitionAt,partitionSources,partitionStageYears} from './frankish-partitions';
 
 interface FrankishPartitionsProps {
- year:number;active:boolean;selected?:string;
+ year:number;active:boolean;selected?:string;context?:string;onContext?:(id:string|undefined)=>void;
  onOpen:()=>void;onClose:()=>void;onYear:(year:number)=>void;
  onSelect:(id:string|undefined)=>void;onPlace:(id:string)=>void;
 }
 
-export function FrankishPartitions({year,active,selected,onOpen,onClose,onYear,onSelect,onPlace}:FrankishPartitionsProps){
+export function FrankishPartitions({year,active,selected,context,onContext,onOpen,onClose,onYear,onSelect,onPlace}:FrankishPartitionsProps){
  const frame=partitionAt(year);
  if(!frame)return null;
+ if(active&&year===1000&&context&&onContext)return <Contemporary1000 selected={context} onSelect={onContext} onPlace={onPlace}/>;
  const successors=year>=900;
  const topic=successors?'法兰克继承诸国':'法兰克分裂';
  const realm=active?frame.realms.find(r=>r.id===selected):undefined;
@@ -17,6 +19,7 @@ export function FrankishPartitions({year,active,selected,onOpen,onClose,onYear,o
   {!active?<><p>{successors?'接着880年的分国往下看：洛塔林吉亚转向何处？奥托为什么既是国王又是皇帝？':'从凡尔登三分，到中部王国继续分割。在同一张地图比较王国范围、组成地域和统治者。'}</p><button className="e-primary" onClick={onOpen}>查看{topic}示意 →</button></>:<>
    <div className="frankish-stages" role="group" aria-label="选择历史阶段"><button aria-pressed={!successors} onClick={()=>onYear(843)}>843—880 分国</button><button aria-pressed={successors} onClick={()=>onYear(900)}>900—1000 继承诸国</button></div>
    <nav className={`frankish-years${successors?' successor-years':''}`} aria-label={`${topic}关键年份`}>{partitionStageYears(year).map(y=><button key={y} aria-current={year===y?'date':undefined} onClick={()=>onYear(y)}>{y}</button>)}</nav>
+   {year===1000&&onContext&&<button className="e-primary millennium-context-entry" onClick={()=>onContext('all')}>同时代欧洲：看英格兰、伊比利亚与东方 →</button>}
    <p className="frankish-event-date">{frame.eventDate}</p>
    <p>{frame.summary}</p>
    {successors&&<p className="frankish-scope"><strong>这张图怎么读</strong>色块定位中西欧的历史地域，颜色与资料说明所选年份的王权关系。它不是每年的实控疆界；未着色地区仍有居民和政权。</p>}
