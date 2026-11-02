@@ -1,0 +1,6 @@
+import type {GazetteerPlace} from './model';
+import type {HistoricalDetail} from './history-details';
+import {courseSources} from './course-sources';
+export const canossaPlaces:GazetteerPlace[]=[{id:'canossa',name:'卡诺莎',modern:'意大利 · 艾米利亚-罗马涅 · 卡诺莎城堡',aliases:['Canossa','Canossa Castle','卡诺萨','卡诺莎之辱'],coords:[10.46,44.58],source:courseSources.canossaSite.url,kind:'历史城堡参考',description:'在意大利北部、亚平宁山北麓的城堡遗址；1077年亨利四世与格列高利七世会面于此。坐标为城堡区域的近似定位，不是国界或行军路线。'}];
+const fact=(text:string)=>({text,sources:['canossaSite' as const,'salianHenryIV' as const]});
+export const canossaDetails:HistoricalDetail[]=[{id:'canossa-1077',placeId:'canossa',title:'卡诺莎',displayName:'卡诺莎城堡',from:1077,to:1077,focusYear:1077,period:'1077年1月解除绝罚的会面',kind:'事件地点',polity:fact('玛蒂尔达的城堡是亨利四世与格列高利七世会面的场所，不是德意志王权的固定首都，也不据此判断玛蒂尔达已经完全服从亨利。'),territory:fact('位于阿尔卑斯以南、亚平宁山北麓。教皇会面、罗马加冕与北侧王位活动是不同地点，地图仅定位城堡，不虚构确切旅行路线。'),people:{text:'国王、教皇、女伯爵、随行人员与地方居民分属不同身份；本条没有居民祖源或人口比例资料。',sources:[]},language:{text:'本条未提供城堡和周边全体居民的母语分布；宗教文书不等于日常口语。',sources:[]},nameNote:fact('Canossa常译卡诺莎或卡诺萨。参观介绍常以后来的皇帝身份称亨利四世；本图按NDB年表区分1077年国王与1084年皇帝。'),reading:[{chapter:160,pages:[1362,1363]}],readingNote:'课程的卡诺莎叙述作为背景；宗教处分、王号、帝号及后续反叛分别核对。',related:['rome','pavia','aachen']}];

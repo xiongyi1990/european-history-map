@@ -1,4 +1,4 @@
-"""Reproducible regional reading envelopes for 900–1000; NOT annual borders.
+"""Reproducible regional reading envelopes for 900–1100; NOT annual borders.
 Original editorial coordinates with public-domain Natural Earth modern land clipping.
 See docs/frankish-successors.md. No historical map pixels or traced vectors used.
 """
@@ -35,7 +35,7 @@ def clipped(g):
     return result
 base={k:clipped(v) for k,v in {'west-francia':west,'east-francia':east,'lotharingia':loth,'upper-burgundy':upper,'provence':prov,'italy':italy}.items()}
 features=[]
-for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000]:
+for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100]:
     realms=base.copy()
     if year>=951:realms['burgundy']=unary_union([realms.pop('upper-burgundy'),realms.pop('provence')])
     for i,(id,g) in enumerate(realms.items()):

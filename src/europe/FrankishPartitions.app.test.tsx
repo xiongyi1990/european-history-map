@@ -96,4 +96,22 @@ describe('Frankish atlas integration',()=>{
   await act(async()=>{});
  });
 
+ it('connects the eleventh-century stage, city return, timeline and clean stage exit',async()=>{
+  const fetcher=setup('/?year=1000&view=partitions&kingdom=italy');
+  fireEvent.click(screen.getByRole('button',{name:'1002—1100 帝国与教皇'}));expect(location.search).toContain('year=1002');expect(location.search).not.toContain('kingdom=');
+  expect(screen.getByRole('navigation',{name:'帝国与教皇关键年份'})).toBeTruthy();
+  const nav=screen.getByRole('combobox',{name:'跳转帝国与教皇年份'});expect(nav.querySelectorAll('option')).toHaveLength(10);
+  for(const year of [1014,1024,1027,1032,1034,1056,1077,1084,1100]){fireEvent.change(nav,{target:{value:String(year)}});expect(location.search).toContain('year='+year);expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(5);}
+  fireEvent.change(nav,{target:{value:'1077'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:/地图：意大利王国/}));
+  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/卡诺莎/}));expect(location.search).toContain('place=canossa');expect(location.search).toContain('kingdom=italy');
+  fireEvent.click(screen.getByRole('button',{name:'← 返回 1077 年帝国与教皇'}));expect(location.search).not.toContain('place=');expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('玛蒂尔达支持教皇');
+  fireEvent.click(screen.getByRole('button',{name:'900—1000 继承诸国'}));expect(location.search).toContain('year=900');expect(screen.queryByRole('combobox',{name:'跳转帝国与教皇年份'})).toBeNull();
+  await act(async()=>{});expect(fetcher.mock.calls.flat().some(u=>String(u).includes('historical-boundaries'))).toBe(false);
+ });
+ it('keeps 1000-only comparisons out of a shared eleventh-century URL and exits unreviewed years',async()=>{
+  setup('/?year=1032&view=partitions&context=poland&kingdom=burgundy');expect(location.search).not.toContain('context=');expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('继承争夺');
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1033'}});fireEvent.click(screen.getByLabelText('前往输入年份'));
+  expect(location.search).not.toContain('view=partitions');expect(screen.getByTestId('partition-map').textContent).toBe('');await act(async()=>{});
+ });
+
 });
