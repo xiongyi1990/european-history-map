@@ -12,6 +12,7 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
+ ottonianLechfeld:{title:'奥格斯堡地区官方旅游局：955年战役与位置不确定性',url:'https://www.augsburger-land.de/augsburger-land/kultur-tradition/sagen-geschichten/lechfeldschlacht-955'},
  ...early500Sources,...early700Sources,
  ...millenniumExpansionSources,
  ...earlyMedievalSources,

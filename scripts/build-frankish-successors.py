@@ -35,13 +35,13 @@ def clipped(g):
     return result
 base={k:clipped(v) for k,v in {'west-francia':west,'east-francia':east,'lotharingia':loth,'upper-burgundy':upper,'provence':prov,'italy':italy}.items()}
 features=[]
-for year in [900,911,925,962,987,1000]:
+for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000]:
     realms=base.copy()
-    if year>=962:realms['burgundy']=unary_union([realms.pop('upper-burgundy'),realms.pop('provence')])
+    if year>=951:realms['burgundy']=unary_union([realms.pop('upper-burgundy'),realms.pop('provence')])
     for i,(id,g) in enumerate(realms.items()):
         for other,h in list(realms.items())[i+1:]:assert g.intersection(h).area<1e-7,(year,id,other)
         features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md','note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
-    checks=[('west-francia',(2.35,48.86)),('west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=962 else 'provence',(4.84,45.76)),('burgundy' if year>=962 else 'provence',(4.63,43.68)),('burgundy' if year>=962 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=962 else 'upper-burgundy',(7.59,47.56))]
+    checks=[('west-francia',(2.35,48.86)),('west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
     for id,xy in checks:assert realms[id].covers(Point(xy)),(year,id,xy)
     for name,xy in [('Rome',(12.4964,41.9028)),('Prague',(14.42,50.08)),('Gniezno',(17.60,52.54)),('Esztergom',(18.74,47.79)),('Venice',(12.33,45.44)),('Ravenna',(12.20,44.42))]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,'not direct regional inclusion',name)
 output=ROOT/'src/europe/frankish-successor-geometry.json'

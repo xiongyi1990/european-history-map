@@ -29,7 +29,7 @@ export function partitionPlaceIds(year:number):string[]{return partitionAt(year)
 // Some linked cities are comparisons, not members. Never infer political color from a link.
 export function partitionCityRealmAt(year:number,id:string){
  if(!partitionAt(year))return undefined;
- if(year>=900){const member=id==='paris'?'west-francia':['regensburg','magdeburg'].includes(id)?'east-francia':id==='aachen'?'lotharingia':id==='pavia'?'italy':['lyon','arles'].includes(id)?(year>=962?'burgundy':'provence'):undefined;return member?partitionRealmAt(year,member):undefined;}
+ if(year>=900){const member=id==='paris'?'west-francia':['regensburg','magdeburg','augsburg'].includes(id)?'east-francia':id==='aachen'?'lotharingia':id==='pavia'?'italy':['lyon','arles'].includes(id)?(year>=951?'burgundy':'provence'):undefined;return member?partitionRealmAt(year,member):undefined;}
  const member=id==='paris'?'west-francia':id==='regensburg'?'east-francia':id==='aachen'?(year===843?'middle-francia':year===855?'lotharingia':'east-francia'):id==='pavia'?(year===843?'middle-francia':'italy'):id==='lyon'?(year===843?'middle-francia':year===870?'west-francia':'provence'):id==='arles'?(year===843?'middle-francia':year===870?'italy':'provence'):undefined;
  return member?partitionRealmAt(year,member):undefined;
 }

@@ -1,6 +1,6 @@
 /** Exact-year reading frames. Never interpolate these political relationships. */
 import {successorFrames} from './frankish-successors';
-export type PartitionYear=843|855|870|880|900|911|925|962|987|1000;
+export type PartitionYear=843|855|870|880|900|911|919|925|936|951|955|962|965|973|983|987|996|1000;
 export interface PartitionSource {title:string;url:string}
 export interface PartitionRealm {
  id:string;name:string;ruler:string;dates:string;color:string;coords:[number,number];bounds:[[number,number],[number,number]];
@@ -11,7 +11,7 @@ export interface PartitionFrame {
  reading:{chapter:number;pages:[number,number];note?:string}[];realms:PartitionRealm[];
  sources?:PartitionSource[];relationships?:{title:string;text:string;realmIds:string[]}[];
 }
-export const partitionYears:PartitionYear[]=[843,855,870,880,900,911,925,962,987,1000];
+export const partitionYears:PartitionYear[]=[843,855,870,880,900,911,919,925,936,951,955,962,965,973,983,987,996,1000];
 export function partitionStageYears(year:number){return partitionYears.filter(y=>(y>=900)===(year>=900));}
 export function partitionTopic(year:number){return year>=900?'法兰克继承诸国':'法兰克分国';}
 export const partitionSources:PartitionSource[]=[

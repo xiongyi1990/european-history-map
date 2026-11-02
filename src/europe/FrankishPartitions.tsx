@@ -1,3 +1,5 @@
+import {turningPointAt} from './historical-chronology';
+import {courseSources} from './course-sources';
 import {Contemporary1000} from './Contemporary1000';
 import {partitionAt,partitionSources,partitionStageYears} from './frankish-partitions';
 
@@ -11,6 +13,7 @@ export function FrankishPartitions({year,active,selected,context,onContext,onOpe
  const frame=partitionAt(year);
  if(!frame)return null;
  if(active&&year===1000&&context&&onContext)return <Contemporary1000 selected={context} onSelect={onContext} onPlace={onPlace}/>;
+ const point=turningPointAt(year);
  const successors=year>=900;
  const topic=successors?'法兰克继承诸国':'法兰克分裂';
  const realm=active?frame.realms.find(r=>r.id===selected):undefined;
@@ -25,6 +28,7 @@ export function FrankishPartitions({year,active,selected,context,onContext,onOpe
    {successors&&<p className="frankish-scope"><strong>这张图怎么读</strong>色块定位中西欧的历史地域，颜色与资料说明所选年份的王权关系。它不是每年的实控疆界；未着色地区仍有居民和政权。</p>}
    <div className="frankish-change"><strong>这一次变了什么？</strong><p>{frame.change}</p></div>
    {frame.relationships&&<section className="frankish-relations" aria-label="此时的政治关系"><h3>先看谁与谁相连</h3>{frame.relationships.map(relation=><article key={relation.title}><strong>{relation.title}</strong><p>{relation.text}</p><div>{relation.realmIds.map(id=>{const item=frame.realms.find(r=>r.id===id);return item?<button key={id} onClick={()=>onSelect(id)} style={{borderLeftColor:item.color}}>{item.name} →</button>:null;})}</div></article>)}</section>}
+   {point&&<details className="frankish-reading frankish-year-event"><summary>本年事件：{point.title}</summary><p>{point.after}</p><p>{point.spatial}</p><p>{point.people}</p><div className="h-site-links">{point.places.map(([id,name])=><button key={id} onClick={()=>onPlace(id)}>{name}<span>事件地点与参照城市 →</span></button>)}</div>{point.sources.map(id=><a key={id} href={courseSources[id].url} target="_blank" rel="noreferrer">{courseSources[id].title} ↗</a>)}</details>}
    <p className="frankish-instruction">点选一个色块或下方名称，查看它在哪里、由哪些地域组成。</p>
    <div className="frankish-legend" role="group" aria-label="分国颜色与范围">{frame.realms.map(r=><button key={r.id} aria-pressed={realm?.id===r.id} onClick={()=>onSelect(r.id)} style={{borderLeftColor:r.color}}><span className="frankish-swatch" style={{backgroundColor:r.color}} aria-hidden="true"/><span><strong>{r.name}</strong><small>定位并展开 →</small></span></button>)}</div>
    {realm&&<article className="frankish-realm" aria-label="分国地域详情">
@@ -42,4 +46,14 @@ export function FrankishPartitions({year,active,selected,context,onContext,onOpe
    <button className="e-back frankish-close" onClick={onClose}>返回欧洲概览 →</button>
   </>}
  </section>;
+}
+
+/** Keep the map overlay compact as reviewed years grow. Full names remain in the sidebar. */
+export function FrankishMapYears({year,onYear}:{year:number;onYear:(year:number)=>void}){
+ const years=partitionStageYears(year),i=years.indexOf(year as typeof years[number]);
+ return <div className="control-map-switch" role="group" aria-label="地图分国年份">{year<900?years.map(y=><button key={y} aria-pressed={year===y} onClick={()=>onYear(y)}>{y}</button>):<>
+  <button aria-label="上一个已核对节点" disabled={i<=0} onClick={()=>onYear(years[i-1])}>← {i>0?years[i-1]:'起点'}</button>
+  <select aria-label="跳转继承诸国年份" value={year} onChange={e=>onYear(Number(e.target.value))}>{years.map(y=><option key={y} value={y}>{y} 年 · {partitionAt(y)!.treaty}</option>)}</select>
+  <button aria-label="下一个已核对节点" disabled={i<0||i===years.length-1} onClick={()=>onYear(years[i+1])}>{i<years.length-1?years[i+1]:'终点'} →</button>
+ </>}</div>;
 }

@@ -15,7 +15,7 @@ describe('Frankish atlas integration',()=>{
   expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(6);
   const nav=screen.getByRole('group',{name:'地图分国年份'});
   for(const [year,count] of [[911,6],[925,6],[962,5],[987,5],[1000,5]]){
-   fireEvent.click(within(nav).getByRole('button',{name:String(year)}));
+   fireEvent.change(within(nav).getByRole('combobox',{name:'跳转继承诸国年份'}),{target:{value:String(year)}});
    expect(location.search).toContain('year='+year);
    expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(count);
    expect(screen.getByRole('region',{name:'此时的政治关系'})).toBeTruthy();
@@ -74,4 +74,26 @@ describe('Frankish atlas integration',()=>{
   const input=screen.getByLabelText('搜索地点、政权或战役');fireEvent.focus(input);fireEvent.change(input,{target:{value:'博索'}});fireEvent.submit(screen.getByRole('search'));
   expect(location.search).toContain('kingdom=provence');expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('879—887');await act(async()=>{});
  });
+ it('opens 965 directly and preserves city evidence with its political map',async()=>{
+  const fetcher=setup('/?year=965');expect(location.search).toContain('view=partitions');
+  expect(screen.getByRole('combobox',{name:'跳转继承诸国年份'}).querySelectorAll('option')).toHaveLength(14);
+  fireEvent.click(screen.getByRole('button',{name:'展开分国与地域资料 →'}));
+  expect(screen.getByRole('heading',{name:'965年：帝国、洛林分治与城市社会'})).toBeTruthy();
+  expect(screen.getByText('本年事件：马格德堡特许状中的犹太人与商人')).toBeTruthy();
+  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：东部王国（东法兰克—德意志）'}));
+  const card=screen.getByRole('article',{name:'分国地域详情'});expect(card.textContent).toContain('奥托二世（共同国王）');expect(card.textContent).toContain('968年大主教区尚未建立');
+  fireEvent.click(within(card).getByRole('button',{name:/马格德堡/}));expect(location.search).toContain('year=965');expect(location.search).toContain('place=magdeburg');
+  fireEvent.click(screen.getByRole('button',{name:'← 返回 965 年法兰克继承诸国'}));expect(location.search).toContain('kingdom=east-francia');
+  fireEvent.click(screen.getByRole('button',{name:'下一个已核对节点'}));expect(location.search).toContain('year=973');expect(screen.getByRole('heading',{name:/973年：奥托一世去世/})).toBeTruthy();
+  await act(async()=>{});expect(fetcher.mock.calls.flat().some(u=>String(u).includes('historical-boundaries'))).toBe(false);
+ });
+ it('moves through all new reviewed dates and drops regional IDs that change',async()=>{
+  setup('/?year=936&view=partitions&kingdom=upper-burgundy');
+  for(const [year,count] of [[951,5],[955,5],[965,5],[973,5],[983,5],[996,5],[919,6],[936,6]]){
+   fireEvent.change(screen.getByRole('combobox',{name:'跳转继承诸国年份'}),{target:{value:String(year)}});
+   expect(location.search).toContain('year='+year);expect(location.search).not.toContain('kingdom=upper-burgundy');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(count);
+  }
+  await act(async()=>{});
+ });
+
 });

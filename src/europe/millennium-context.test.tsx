@@ -30,11 +30,11 @@ describe('1000 contemporaries navigation',()=>{
  it('restores a shared context and clears it on a year change',async()=>{
   setup('/?year=1000&view=partitions&context=england');expect(screen.getByRole('article',{name:'同期地域详情'}).textContent).toContain('埃塞尔雷德二世');
   expect(JSON.parse(screen.getByTestId('context-map').getAttribute('data-places')!)).toContain('winchester');
-  fireEvent.click(within(screen.getByRole('group',{name:'地图分国年份'})).getByRole('button',{name:'962'}));expect(location.search).not.toContain('context=');expect(screen.queryByRole('region',{name:'1000年同期欧洲'})).toBeNull();expect(within(screen.getByTestId('context-map')).queryAllByRole('button')).toHaveLength(0);await act(async()=>{});
+  fireEvent.change(screen.getByRole('combobox',{name:'跳转继承诸国年份'}),{target:{value:'962'}});expect(location.search).not.toContain('context=');expect(screen.queryByRole('region',{name:'1000年同期欧洲'})).toBeNull();expect(within(screen.getByTestId('context-map')).queryAllByRole('button')).toHaveLength(0);await act(async()=>{});
  });
  it('does not restore a stale context in another year or modern mode',async()=>{
   setup('/?year=987&view=partitions&context=england');expect(location.search).not.toContain('context=');expect(screen.queryByRole('region',{name:'1000年同期欧洲'})).toBeNull();
-  fireEvent.click(within(screen.getByRole('group',{name:'地图分国年份'})).getByRole('button',{name:'1000'}));fireEvent.click(screen.getByRole('button',{name:'展开分国与地域资料 →'}));fireEvent.click(screen.getByRole('button',{name:'同时代欧洲：看英格兰、伊比利亚与东方 →'}));
+  fireEvent.change(screen.getByRole('combobox',{name:'跳转继承诸国年份'}),{target:{value:'1000'}});fireEvent.click(screen.getByRole('button',{name:'展开分国与地域资料 →'}));fireEvent.click(screen.getByRole('button',{name:'同时代欧洲：看英格兰、伊比利亚与东方 →'}));
   fireEvent.click(screen.getByRole('button',{name:'现代对照'}));expect(location.search).not.toContain('context=');expect(screen.queryByRole('region',{name:'1000年同期欧洲'})).toBeNull();await act(async()=>{});
  });
 });
