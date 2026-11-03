@@ -114,4 +114,24 @@ describe('Frankish atlas integration',()=>{
   expect(location.search).not.toContain('view=partitions');expect(screen.getByTestId('partition-map').textContent).toBe('');await act(async()=>{});
  });
 
+ it('connects the fourth stage, all fifteen dates, treaty cities and return to the previous stage',async()=>{
+  const fetcher=setup('/?year=1100&view=partitions&kingdom=italy');
+  fireEvent.click(screen.getByRole('button',{name:'1105—1183 帝国与城市'}));expect(location.search).toContain('year=1105');expect(location.search).not.toContain('kingdom=');
+  expect(screen.getByRole('navigation',{name:'帝国与城市关键年份'})).toBeTruthy();
+  const nav=screen.getByRole('combobox',{name:'跳转帝国与城市年份'});expect(nav.querySelectorAll('option')).toHaveLength(15);
+  for(const year of [1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]){fireEvent.change(nav,{target:{value:String(year)}});expect(location.search).toContain('year='+year);expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(5);}
+  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:/地图：意大利王国/}));
+  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/康斯坦茨/}));expect(location.search).toContain('place=konstanz');expect(location.search).toContain('kingdom=italy');
+  expect(screen.getByText(/签约地在博登湖畔、阿尔卑斯北侧/)).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:'← 返回 1183 年帝国与城市'}));expect(location.search).not.toContain('place=');expect(location.search).toContain('kingdom=italy');
+  fireEvent.click(screen.getByRole('button',{name:'1002—1100 帝国与教皇'}));expect(location.search).toContain('year=1002');expect(screen.queryByRole('combobox',{name:'跳转帝国与城市年份'})).toBeNull();
+  await act(async()=>{});expect(fetcher.mock.calls.flat().some(u=>String(u).includes('historical-boundaries'))).toBe(false);
+ });
+ it('restores a 1122 deep link and never carries the concordat map into 1123',async()=>{
+  setup('/?year=1122&view=partitions&kingdom=east-francia&context=poland');expect(location.search).not.toContain('context=');
+  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/沃尔姆斯/}));expect(location.search).toContain('place=worms');expect(screen.getByText(/不是两国划定新边界/)).toBeTruthy();
+  fireEvent.click(screen.getByRole('button',{name:'← 返回 1122 年帝国与城市'}));
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1123'}});fireEvent.click(screen.getByLabelText('前往输入年份'));expect(location.search).not.toContain('view=partitions');expect(location.search).not.toContain('kingdom=');expect(screen.getByTestId('partition-map').textContent).toBe('');await act(async()=>{});
+ });
+
 });

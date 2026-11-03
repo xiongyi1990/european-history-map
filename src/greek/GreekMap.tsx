@@ -180,7 +180,7 @@ export function GreekMap({threeD,modern,layer,selected,compare,command,onSelect,
       if(p.control){button.classList.add('has-control-color');button.title=`${p.name} · ${p.control.name}。${p.control.note}`;button.setAttribute('aria-label',`地图地点：${p.name}，${p.control.name}`)}
       const dot=document.createElement('i');dot.className='g-map-dot';
       const label=document.createElement('span');label.textContent=modern?p.modern:p.name;
-      button.append(dot,label);button.addEventListener('click',()=>handlers.current.onSelect(p.id));
+      button.append(dot,label);button.addEventListener('click',event=>{event.stopPropagation();handlers.current.onSelect(p.id)});
       labelNodes.push({node:label,coords:p.coords,priority:p.id===selected?0:compare.includes(p.id)?1:['athens','sparta','corinth'].includes(p.id)?2:3});
       return new maplibregl.Marker({element:button,anchor:'left',offset:[-5,0],opacityWhenCovered:1}).setLngLat(p.coords).addTo(m);
     });

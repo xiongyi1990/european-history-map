@@ -18,9 +18,9 @@ export function FrankishPartitions({year,active,selected,context,onContext,onOpe
  const topic=year>1000?partitionTopic(year):successors?'法兰克继承诸国':'法兰克分裂';
  const realm=active?frame.realms.find(r=>r.id===selected):undefined;
  return <section className="frankish-partitions" aria-label={`${topic}地图`}>
-  <header><small>{year>1000?'1002—1100 · 王权、继承与教皇':successors?'900—1000 · 中西欧地域关系':'加洛林王朝 · 分国地图'}</small><h2>{frame.title}</h2></header>
-  {!active?<><p>{year>1000?'从王位继承到教皇冲突，在同一张地图理解11世纪的王权层次。':successors?'接着880年的分国往下看：洛塔林吉亚转向何处？奥托为什么既是国王又是皇帝？':'从凡尔登三分，到中部王国继续分割。在同一张地图比较王国范围、组成地域和统治者。'}</p><button className="e-primary" onClick={onOpen}>查看{topic}示意 →</button></>:<>
-   <div className="frankish-stages" role="group" aria-label="选择历史阶段"><button aria-pressed={!successors} onClick={()=>onYear(843)}>843—880 分国</button><button aria-pressed={successors&&year<=1000} onClick={()=>onYear(900)}>900—1000 继承诸国</button><button aria-pressed={year>1000} onClick={()=>onYear(1002)}>1002—1100 帝国与教皇</button></div>
+  <header><small>{year>1100?'1105—1183 · 叙任、城市与和约':year>1000?'1002—1100 · 王权、继承与教皇':successors?'900—1000 · 中西欧地域关系':'加洛林王朝 · 分国地图'}</small><h2>{frame.title}</h2></header>
+  {!active?<><p>{year>1100?'从沃尔姆斯协约到伦巴第城市同盟，连起来看谁在治理、在哪里交战、怎样和解。':year>1000?'从王位继承到教皇冲突，在同一张地图理解11世纪的王权层次。':successors?'接着880年的分国往下看：洛塔林吉亚转向何处？奥托为什么既是国王又是皇帝？':'从凡尔登三分，到中部王国继续分割。在同一张地图比较王国范围、组成地域和统治者。'}</p><button className="e-primary" onClick={onOpen}>查看{topic}示意 →</button></>:<>
+   <div className="frankish-stages" role="group" aria-label="选择历史阶段"><button aria-pressed={!successors} onClick={()=>onYear(843)}>843—880 分国</button><button aria-pressed={successors&&year<=1000} onClick={()=>onYear(900)}>900—1000 继承诸国</button><button aria-pressed={year>1000&&year<=1100} onClick={()=>onYear(1002)}>1002—1100 帝国与教皇</button><button aria-pressed={year>1100} onClick={()=>onYear(1105)}>1105—1183 帝国与城市</button></div>
    <nav className={`frankish-years${successors?' successor-years':''}`} aria-label={`${topic}关键年份`}>{partitionStageYears(year).map(y=><button key={y} aria-current={year===y?'date':undefined} onClick={()=>onYear(y)}>{y}</button>)}</nav>
    {year===1000&&onContext&&<button className="e-primary millennium-context-entry" onClick={()=>onContext('all')}>同时代欧洲：看英格兰、伊比利亚与东方 →</button>}
    <p className="frankish-event-date">{frame.eventDate}</p>
@@ -53,7 +53,7 @@ export function FrankishMapYears({year,onYear}:{year:number;onYear:(year:number)
  const years=partitionStageYears(year),i=years.indexOf(year as typeof years[number]);
  return <div className="control-map-switch" role="group" aria-label="地图分国年份">{year<900?years.map(y=><button key={y} aria-pressed={year===y} onClick={()=>onYear(y)}>{y}</button>):<>
   <button aria-label="上一个已核对节点" disabled={i<=0} onClick={()=>onYear(years[i-1])}>← {i>0?years[i-1]:'起点'}</button>
-  <select aria-label={year>1000?"跳转帝国与教皇年份":"跳转继承诸国年份"} value={year} onChange={e=>onYear(Number(e.target.value))}>{years.map(y=><option key={y} value={y}>{y} 年 · {partitionAt(y)!.treaty}</option>)}</select>
+  <select aria-label={year>1100?"跳转帝国与城市年份":year>1000?"跳转帝国与教皇年份":"跳转继承诸国年份"} value={year} onChange={e=>onYear(Number(e.target.value))}>{years.map(y=><option key={y} value={y}>{y} 年 · {partitionAt(y)!.treaty}</option>)}</select>
   <button aria-label="下一个已核对节点" disabled={i<0||i===years.length-1} onClick={()=>onYear(years[i+1])}>{i<years.length-1?years[i+1]:'终点'} →</button>
  </>}</div>;
 }
