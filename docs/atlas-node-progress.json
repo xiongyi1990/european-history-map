@@ -2,18 +2,18 @@
   "schemaVersion": 1,
   "scope": "Current atlas targets and course geographic leads; not all integer years",
   "courseChapters": 260,
-  "chaptersReferenced": 61,
+  "chaptersReferenced": 64,
   "chaptersReviewed": 0,
-  "targetYears": 589,
+  "targetYears": 599,
   "reviewedYears": 0,
-  "partialYears": 509,
+  "partialYears": 519,
   "pendingYears": 80,
-  "politicalReadingYears": 71,
-  "coursePeriodRecords": 3445,
+  "politicalReadingYears": 92,
+  "coursePeriodRecords": 3649,
   "routeTopics": 22,
   "unresolvedReferenceIssues": 0,
   "allReviewed": false,
-  "inputHash": "5e7832ab7467032225a140833b134d25769e20ad04d1dd3c5452f861d5a8ad2d",
+  "inputHash": "a51479351aff46303d0929192f77ff7c49853d27d35e06b14a4a760f721a0dda",
   "completionRule": "All year facets and all course geographic leads need explicit review; links and record counts never imply completion",
   "duplicatePlaceIds": [],
   "referenceIssues": [],
@@ -21,7 +21,8 @@
     {
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
-      "status": "pending"
+      "status": "partial",
+      "note": "1285-1356:21 exact moments,12 reading regions,204 single-year city records; expand1356-1453 and audit simultaneous omitted regions, frontiers and community evidence."
     },
     {
       "id": "high-medieval-contemporary-regions",
@@ -8147,11 +8148,76 @@
       "review": null
     },
     {
+      "year": 1285,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1285年：海峡两侧继续分治，法兰西与南部大陆换王",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1285",
+          "paris-late-1285",
+          "bordeaux-late-1285",
+          "edinburgh-late-1285",
+          "prague-late-1285",
+          "palermo-late-1285",
+          "naples-late-1285",
+          "avignon-late-1285"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
       "year": 1291,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1291年：继承空缺不等于地图上的帝国消失",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1291",
+          "paris-late-1291",
+          "bordeaux-late-1291",
+          "edinburgh-late-1291",
+          "prague-late-1291",
+          "palermo-late-1291",
+          "naples-late-1291",
+          "avignon-late-1291"
+        ],
         "periodCityRecordCount": 1,
         "turningPoint": "阿克陷落：大陆拉丁据点的终局",
         "referenceSnapshot": false,
@@ -8163,8 +8229,82 @@
       "year": 1295,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1295年：法兰西—苏格兰联盟与西西里继承过渡",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1295",
+          "paris-late-1295",
+          "bordeaux-late-1295",
+          "edinburgh-late-1295",
+          "prague-late-1295",
+          "palermo-late-1295",
+          "naples-late-1295",
+          "avignon-late-1295",
+          "anagni-late-1295",
+          "bruges-late-1295",
+          "ghent-late-1295",
+          "kortrijk-late-1295",
+          "bayonne-late-1295"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1297,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1297年：斯特灵桥与佛兰德战争：英王面对不同战线",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1297",
+          "paris-late-1297",
+          "bordeaux-late-1297",
+          "edinburgh-late-1297",
+          "prague-late-1297",
+          "palermo-late-1297",
+          "naples-late-1297",
+          "avignon-late-1297",
+          "stirling-late-1297",
+          "bruges-late-1297",
+          "ghent-late-1297",
+          "kortrijk-late-1297"
+        ],
         "periodCityRecordCount": 1,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -8189,8 +8329,37 @@
       "year": 1302,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1302年：科特赖克与卡尔塔贝洛塔：北方会战，南方和约",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1302",
+          "paris-late-1302",
+          "bordeaux-late-1302",
+          "edinburgh-late-1302",
+          "prague-late-1302",
+          "palermo-late-1302",
+          "naples-late-1302",
+          "avignon-late-1302",
+          "bruges-late-1302",
+          "ghent-late-1302",
+          "kortrijk-late-1302"
+        ],
         "periodCityRecordCount": 1,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -8202,8 +8371,115 @@
       "year": 1303,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1303年：阿纳尼事件：教皇、法王与意大利城镇",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1303",
+          "paris-late-1303",
+          "bordeaux-late-1303",
+          "edinburgh-late-1303",
+          "prague-late-1303",
+          "palermo-late-1303",
+          "naples-late-1303",
+          "avignon-late-1303",
+          "anagni-late-1303",
+          "bayonne-late-1303"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1306,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1306年：苏格兰加冕与波希米亚争位",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1306",
+          "paris-late-1306",
+          "bordeaux-late-1306",
+          "edinburgh-late-1306",
+          "prague-late-1306",
+          "palermo-late-1306",
+          "naples-late-1306",
+          "avignon-late-1306",
+          "scone-late-1306"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1308,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1308年：英格兰加冕与帝国重新选王",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1308",
+          "paris-late-1308",
+          "bordeaux-late-1308",
+          "edinburgh-late-1308",
+          "prague-late-1308",
+          "palermo-late-1308",
+          "naples-late-1308",
+          "avignon-late-1308"
+        ],
         "periodCityRecordCount": 1,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -8215,10 +8491,75 @@
       "year": 1309,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1309年：教廷迁驻阿维尼翁；南部大陆换王",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1309",
+          "paris-late-1309",
+          "bordeaux-late-1309",
+          "edinburgh-late-1309",
+          "prague-late-1309",
+          "palermo-late-1309",
+          "naples-late-1309",
+          "avignon-late-1309"
+        ],
         "periodCityRecordCount": 2,
         "turningPoint": "教皇移驻阿维尼翁",
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1312,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1312年：拉特朗帝冠：罗马、阿维尼翁与那不勒斯各有层次",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1312",
+          "paris-late-1312",
+          "bordeaux-late-1312",
+          "edinburgh-late-1312",
+          "prague-late-1312",
+          "palermo-late-1312",
+          "naples-late-1312",
+          "avignon-late-1312"
+        ],
+        "periodCityRecordCount": 2,
+        "turningPoint": null,
         "referenceSnapshot": false,
         "realmGuide": false
       },
@@ -8228,8 +8569,191 @@
       "year": 1314,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1314年：班诺克本之后：苏格兰胜利与两处王位继承",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1314",
+          "paris-late-1314",
+          "bordeaux-late-1314",
+          "edinburgh-late-1314",
+          "prague-late-1314",
+          "palermo-late-1314",
+          "naples-late-1314",
+          "avignon-late-1314",
+          "bannockburn-late-1314"
+        ],
+        "periodCityRecordCount": 2,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1317,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1317年：腓力五世与跨海的王国、封地和贸易",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1317",
+          "paris-late-1317",
+          "bordeaux-late-1317",
+          "edinburgh-late-1317",
+          "prague-late-1317",
+          "palermo-late-1317",
+          "naples-late-1317",
+          "avignon-late-1317"
+        ],
+        "periodCityRecordCount": 2,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1322,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1322年：米尔多夫战后：王位优势与帝号仍有距离",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1322",
+          "paris-late-1322",
+          "bordeaux-late-1322",
+          "edinburgh-late-1322",
+          "prague-late-1322",
+          "palermo-late-1322",
+          "naples-late-1322",
+          "avignon-late-1322"
+        ],
+        "periodCityRecordCount": 2,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1327,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1327年：英格兰换王，帝国尚未出现1328年帝冠",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1327",
+          "paris-late-1327",
+          "bordeaux-late-1327",
+          "edinburgh-late-1327",
+          "prague-late-1327",
+          "palermo-late-1327",
+          "naples-late-1327",
+          "avignon-late-1327"
+        ],
+        "periodCityRecordCount": 2,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1328,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1328年：法兰西瓦卢瓦继承、苏格兰和约与罗马帝冠",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1328",
+          "paris-late-1328",
+          "bordeaux-late-1328",
+          "edinburgh-late-1328",
+          "prague-late-1328",
+          "palermo-late-1328",
+          "naples-late-1328",
+          "avignon-late-1328"
+        ],
         "periodCityRecordCount": 2,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -8241,8 +8765,38 @@
       "year": 1337,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1337年：百年战争开端：先找加斯科涅，再看两国王位",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1337",
+          "paris-late-1337",
+          "bordeaux-late-1337",
+          "edinburgh-late-1337",
+          "prague-late-1337",
+          "palermo-late-1337",
+          "naples-late-1337",
+          "avignon-late-1337",
+          "bruges-late-1337",
+          "ghent-late-1337",
+          "kortrijk-late-1337",
+          "bayonne-late-1337"
+        ],
         "periodCityRecordCount": 2,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -8254,8 +8808,36 @@
       "year": 1346,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1346年：克雷西、内维尔十字与波恩：同年的三处位置",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1346",
+          "paris-late-1346",
+          "bordeaux-late-1346",
+          "edinburgh-late-1346",
+          "prague-late-1346",
+          "palermo-late-1346",
+          "naples-late-1346",
+          "avignon-late-1346",
+          "crecy-late-1346",
+          "nevilles-cross-late-1346"
+        ],
         "periodCityRecordCount": 2,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -8267,8 +8849,35 @@
       "year": 1347,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1347年：加来易主与帝国竞争阶段的转折",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1347",
+          "paris-late-1347",
+          "bordeaux-late-1347",
+          "edinburgh-late-1347",
+          "prague-late-1347",
+          "palermo-late-1347",
+          "naples-late-1347",
+          "avignon-late-1347",
+          "calais-late-1347"
+        ],
         "periodCityRecordCount": 2,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -8280,8 +8889,35 @@
       "year": 1348,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1348年：阿维尼翁购城与布拉格大学：不同的权利文书",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1348",
+          "paris-late-1348",
+          "bordeaux-late-1348",
+          "edinburgh-late-1348",
+          "prague-late-1348",
+          "palermo-late-1348",
+          "naples-late-1348",
+          "avignon-late-1348",
+          "calais-late-1348"
+        ],
         "periodCityRecordCount": 2,
         "turningPoint": "教皇购得阿维尼翁",
         "referenceSnapshot": false,
@@ -8303,11 +8939,88 @@
       "review": null
     },
     {
+      "year": 1355,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": {
+          "title": "1355年：查理取得帝号；西西里岛内部仍有竞争",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1355",
+          "paris-late-1355",
+          "bordeaux-late-1355",
+          "edinburgh-late-1355",
+          "prague-late-1355",
+          "palermo-late-1355",
+          "naples-late-1355",
+          "avignon-late-1355"
+        ],
+        "periodCityRecordCount": 2,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
       "year": 1356,
       "status": "partial",
       "evidence": {
-        "regionalFrame": null,
-        "exactCityRecordIds": [],
+        "regionalFrame": {
+          "title": "1356年：金玺诏书与普瓦捷：选帝制度、战争和被俘的国王",
+          "realmIds": [
+            "west-francia",
+            "east-francia",
+            "lotharingia",
+            "burgundy",
+            "italy",
+            "england",
+            "sicily",
+            "south-italy",
+            "scotland",
+            "flanders",
+            "bohemia",
+            "gascony"
+          ],
+          "precision": "reading-envelope-not-annual-control"
+        },
+        "exactCityRecordIds": [
+          "london-late-1356",
+          "paris-late-1356",
+          "bordeaux-late-1356",
+          "edinburgh-late-1356",
+          "prague-late-1356",
+          "palermo-late-1356",
+          "naples-late-1356",
+          "avignon-late-1356",
+          "bayonne-late-1356",
+          "calais-late-1356",
+          "poitiers-1356-late-1356",
+          "nuremberg-late-1356",
+          "metz-late-1356",
+          "frankfurt-late-1356",
+          "mainz-late-1356",
+          "trier-late-1356",
+          "cologne-late-1356",
+          "wittenberg-late-1356",
+          "brandenburg-late-1356",
+          "heidelberg-late-1356"
+        ],
         "periodCityRecordCount": 2,
         "turningPoint": null,
         "referenceSnapshot": false,
@@ -12132,9 +12845,12 @@
         1585,
         1593
       ],
-      "status": "pending",
-      "linkedEvidenceCount": 0,
-      "review": null
+      "status": "partial",
+      "linkedEvidenceCount": 225,
+      "review": {
+        "status": "partial",
+        "note": "Read PDF1587: papal court, war and society provide geographic reading leads. Added selected 1285-1356 western regions; this is not full Europe or final community review."
+      }
     },
     {
       "chapter": 187,
@@ -12143,8 +12859,11 @@
         1602
       ],
       "status": "partial",
-      "linkedEvidenceCount": 2,
-      "review": null
+      "linkedEvidenceCount": 46,
+      "review": {
+        "status": "partial",
+        "note": "Read PDF1599-1600: distinguish Anagni1303, Avignon1309 and purchase1348. Correct modern geographic simplification and avoid copying disputed assault details."
+      }
     },
     {
       "chapter": 188,
@@ -12212,9 +12931,12 @@
         1652,
         1661
       ],
-      "status": "pending",
-      "linkedEvidenceCount": 0,
-      "review": null
+      "status": "partial",
+      "linkedEvidenceCount": 225,
+      "review": {
+        "status": "partial",
+        "note": "Read PDF1654-1655 and1660: England and continental duchy rights separated with Gascon core. Normandy, Anjou, Maine and wider Aquitaine still need fuller subdivisions."
+      }
     },
     {
       "chapter": 195,
@@ -12222,9 +12944,12 @@
         1661,
         1669
       ],
-      "status": "pending",
-      "linkedEvidenceCount": 0,
-      "review": null
+      "status": "partial",
+      "linkedEvidenceCount": 92,
+      "review": {
+        "status": "partial",
+        "note": "Read PDF1661 and1665: French succession and cross-Channel urban trade are linked. New military and election points use independent sources; full social evidence remains partial."
+      }
     },
     {
       "chapter": 196,

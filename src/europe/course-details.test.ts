@@ -29,7 +29,7 @@ describe('course material enriches the shared time atlas',()=>{
   expect(historicalDetail('cordoba',929)?.polity.text).toContain('称哈里发');
   expect(historicalDetail('cordoba',1009)?.polity.text).toContain('内乱');
   expect(historicalDetail('cordoba',1032)).toBeUndefined();
-  expect(historicalDetail('avignon',1347)?.polity.text).toContain('尚非教皇购得');
+  expect(historicalDetail('avignon',1347)?.polity.text).toMatch(/尚非教皇购得|尚未发生1348年购城/);
   expect(historicalDetail('avignon',1348)?.polity.text).toContain('购得');
   expect(historicalDetail('avignon',1367)).toBeUndefined();
  });

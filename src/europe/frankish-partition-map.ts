@@ -3,7 +3,7 @@ import successorGeometry from './frankish-successor-geometry.json';
 import {partitionAt,partitionRealmAt} from './frankish-partitions';
 import type {AreaLabel} from '../greek/GreekMap';
 export const partitionMapBounds:[[number,number],[number,number]]=[[-4,40.8],[17,55]];
-export function partitionBoundsAt(year:number):[[number,number],[number,number]]{return year>=1190?[[-6,35.8],[19,56]]:partitionMapBounds;}
+export function partitionBoundsAt(year:number):[[number,number],[number,number]]{return year>=1285?[[-6.8,35.8],[19,59.4]]:year>=1190?[[-6,35.8],[19,56]]:partitionMapBounds;}
 export function partitionAreas(year:number):GeoJSON.FeatureCollection {
  const frame=partitionAt(year);
  return {type:'FeatureCollection',features:!frame?[]:[...geometry.features,...successorGeometry.features].filter(f=>f.properties.year===year).map(f=>{const r=partitionRealmAt(year,f.properties.id)!;return {...f,properties:{...f.properties,name:r.name,atlasId:'partition:'+r.id,atlasColor:r.color,schematic:true}}})} as GeoJSON.FeatureCollection;
@@ -25,8 +25,15 @@ const successorLabelHints:Record<string,{name:string;coords:[number,number]}>={
  'burgundy':{name:'勃艮第王国',coords:[5.6,44.9]},
  'italy':{name:'意大利王国',coords:[10.7,44.4]},
 };
-export function partitionLabels(year:number):AreaLabel[]{return (partitionAt(year)?.realms??[]).map(r=>({id:'partition:'+r.id,name:year>=1190&&r.id==='sicily'?(year===1282?'西西里岛':'西西里王国'):year>=1190&&r.id==='south-italy'?'南部大陆（安茹）':year>1000&&r.id==='east-francia'?'德意志王权':year>1000&&r.id==='west-francia'?'法兰西':(year>=900?successorLabelHints[r.id]?.name:labelHints[r.id]?.name)??r.name,coords:(year>=900?successorLabelHints[r.id]?.coords:labelHints[r.id]?.coords)??r.coords,color:r.color,minZoom:2.5}));}
-export function partitionPlaceIds(year:number):string[]{return partitionAt(year)?[...new Set([...partitionAt(year)!.realms.flatMap(r=>r.places.map(([id])=>id)),'arles'])]:[];}
+const lateLabelHints:Record<string,{name:string;coords:[number,number]}>= {
+ scotland:{name:'苏格兰',coords:[-4.1,57]},flanders:{name:'佛兰德',coords:[3.1,51.35]},bohemia:{name:'波希米亚',coords:[14.8,49.8]},gascony:{name:'加斯科涅',coords:[-.55,44.15]},
+ lotharingia:{name:'低地—洛林',coords:[6.1,49.5]},burgundy:{name:'勃艮第—罗讷河',coords:[5.4,44.8]},italy:{name:'北中部意大利',coords:[10.7,44.4]},
+};
+export function partitionLabels(year:number):AreaLabel[]{return (partitionAt(year)?.realms??[]).map(r=>{
+ const late=year>=1285?lateLabelHints[r.id]:undefined;
+ return {id:'partition:'+r.id,name:late?.name??(year>=1190&&r.id==='sicily'?(year>=1282?'西西里岛':'西西里王国'):year>=1190&&r.id==='south-italy'?'南部大陆（安茹）':year>1000&&r.id==='east-francia'?'德意志王权':year>1000&&r.id==='west-francia'?'法兰西':(year>=900?successorLabelHints[r.id]?.name:labelHints[r.id]?.name)??r.name),coords:late?.coords??(year>=900?successorLabelHints[r.id]?.coords:labelHints[r.id]?.coords)??r.coords,color:r.color,minZoom:2.5};
+});}
+export function partitionPlaceIds(year:number):string[]{return partitionAt(year)?[...new Set([...partitionAt(year)!.realms.flatMap(r=>r.places.map(([id])=>id)),...(partitionAt(year)!.electors??[]).map(e=>e.placeId),'arles'])]:[];}
 // Some linked cities are comparisons, not members. Never infer political color from a link.
 export function partitionCityRealmAt(year:number,id:string){
  if(!partitionAt(year))return undefined;

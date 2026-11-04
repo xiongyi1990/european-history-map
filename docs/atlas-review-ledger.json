@@ -106,13 +106,30 @@
     "185": {
       "status": "partial",
       "note": "Read PDF1576,1580-1581; Bouvines and Magna Carta dates separated. Wider geography and full novice review remain."
+    },
+    "186": {
+      "status": "partial",
+      "note": "Read PDF1587: papal court, war and society provide geographic reading leads. Added selected 1285-1356 western regions; this is not full Europe or final community review."
+    },
+    "187": {
+      "status": "partial",
+      "note": "Read PDF1599-1600: distinguish Anagni1303, Avignon1309 and purchase1348. Correct modern geographic simplification and avoid copying disputed assault details."
+    },
+    "194": {
+      "status": "partial",
+      "note": "Read PDF1654-1655 and1660: England and continental duchy rights separated with Gascon core. Normandy, Anjou, Maine and wider Aquitaine still need fuller subdivisions."
+    },
+    "195": {
+      "status": "partial",
+      "note": "Read PDF1661 and1665: French succession and cross-Channel urban trade are linked. New military and election points use independent sources; full social evidence remains partial."
     }
   },
   "priorityQueue": [
     {
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
-      "status": "pending"
+      "status": "partial",
+      "note": "1285-1356:21 exact moments,12 reading regions,204 single-year city records; expand1356-1453 and audit simultaneous omitted regions, frontiers and community evidence."
     },
     {
       "id": "high-medieval-contemporary-regions",

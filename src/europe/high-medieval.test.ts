@@ -1,7 +1,7 @@
 import {describe,it,expect} from 'vitest';
 import {highMedievalFrames,highMedievalYears} from './high-medieval';
 import {highMedievalDetails,highMedievalPlaces} from './high-medieval-places';
-import {partitionAt,partitionRealmAt,partitionStageYears,partitionTopic} from './frankish-partitions';
+import {partitionAt,partitionRealmAt,partitionStageYears,partitionTopic,partitionYears} from './frankish-partitions';
 import {partitionAreas,partitionLabels,partitionPlaceIds,partitionBoundsAt,partitionCityRealmAt} from './frankish-partition-map';
 import {ancientPlaces} from './model';
 import {historicalDetail,historySources} from './history-details';
@@ -36,6 +36,6 @@ describe('1190-1282 multi-kingdom spatial reading',()=>{
   expect(historicalDetail('tagliacozzo',1268)?.territory.text).toContain('帕伦蒂尼平原');expect(historicalDetail('naples',1268)?.territory.text).toContain('两地不能合成一个点');expect(historicalDetail('runnymede',1215)?.people.text).toContain('不自由人口');expect(historicalDetail('runnymede',1216)).toBeUndefined();expect(historicalDetail('melfi',1232)).toBeUndefined();
  });
  it('never counts links or large record totals as final reviewed coverage',()=>{
-  expect(progress.targetYears).toBeGreaterThan(500);expect(progress.courseChapters).toBe(260);expect(progress.chaptersReferenced).toBeGreaterThan(56);expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);expect(progress.reviewedYears).toBeLessThan(progress.targetYears);expect(progress.politicalReadingYears).toBe(71);
+  expect(progress.targetYears).toBeGreaterThan(500);expect(progress.courseChapters).toBe(260);expect(progress.chaptersReferenced).toBeGreaterThan(56);expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);expect(progress.reviewedYears).toBeLessThan(progress.targetYears);expect(progress.politicalReadingYears).toBe(partitionYears.length);
  });
 });

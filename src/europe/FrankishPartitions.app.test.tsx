@@ -148,4 +148,20 @@ describe('Frankish atlas integration',()=>{
   fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1217'}});fireEvent.click(screen.getByLabelText('前往输入年份'));expect(location.search).not.toContain('view=partitions');expect(screen.getByTestId('partition-map').textContent).toBe('');await act(async()=>{});
  });
 
+ it('enters 1285-1356, changes regions and preserves city return without borrowing an unreviewed year',async()=>{
+  const fetcher=setup('/?year=1282&view=partitions&kingdom=sicily');fireEvent.click(screen.getByRole('button',{name:'1285—1356 战争与教廷'}));expect(location.search).toContain('year=1285');
+  const nav=screen.getByRole('combobox',{name:'跳转战争与教廷年份'});expect(nav.querySelectorAll('option')).toHaveLength(21);
+  for(const year of [1291,1295,1297,1302,1303,1306,1308,1309,1312,1314,1317,1322,1327,1328,1337,1346,1347,1348,1355,1356]){fireEvent.change(nav,{target:{value:String(year)}});expect(location.search).toContain('year='+year);expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(12);}
+  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:/地图：波希米亚/}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/布拉格/}));expect(location.search).toContain('place=prague');fireEvent.click(screen.getByRole('button',{name:'← 返回 1356 年战争、教廷与选帝'}));expect(location.search).toContain('kingdom=bohemia');expect(location.search).not.toContain('place=');
+  fireEvent.click(screen.getByRole('button',{name:'1190—1282 诸王国与继承'}));expect(location.search).toContain('year=1190');expect(location.search).not.toContain('kingdom=bohemia');
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1357'}});fireEvent.click(screen.getByLabelText('前往输入年份'));expect(location.search).not.toContain('view=partitions');expect(screen.getByTestId('partition-map').textContent).toBe('');await act(async()=>{});expect(fetcher.mock.calls.flat().some(u=>String(u).includes('historical-boundaries/1356'))).toBe(false);
+ });
+ it('opens each 1356 elector location and keeps the selected Bohemian region on return',async()=>{
+  setup('/?year=1356&view=partitions&kingdom=bohemia');
+  for(const [label,id] of [['美因茨大主教','mainz'],['特里尔大主教','trier'],['科隆大主教','cologne'],['波希米亚国王','prague'],['莱茵行宫伯爵','heidelberg'],['萨克森公爵','wittenberg'],['勃兰登堡边侯','brandenburg']]){
+   const electors=screen.getByRole('region',{name:'1356年七位选帝侯'});expect(within(electors).getAllByRole('button')).toHaveLength(7);fireEvent.click(within(electors).getByRole('button',{name:new RegExp(label)}));expect(location.search).toContain('place='+id);fireEvent.click(screen.getByRole('button',{name:'← 返回 1356 年战争、教廷与选帝'}));expect(location.search).toContain('kingdom=bohemia');
+  }
+  await act(async()=>{});
+ });
+
 });
