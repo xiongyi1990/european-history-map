@@ -26,8 +26,8 @@ const successorLabelHints:Record<string,{name:string;coords:[number,number]}>={
  'italy':{name:'意大利王国',coords:[10.7,44.4]},
 };
 const lateLabelHints:Record<string,{name:string;coords:[number,number]}>= {
- scotland:{name:'苏格兰',coords:[-4.1,57]},flanders:{name:'佛兰德',coords:[3.1,51.35]},bohemia:{name:'波希米亚',coords:[14.8,49.8]},gascony:{name:'加斯科涅',coords:[-.55,44.15]},
- lotharingia:{name:'低地—洛林',coords:[6.1,49.5]},burgundy:{name:'勃艮第—罗讷河',coords:[5.4,44.8]},italy:{name:'北中部意大利',coords:[10.7,44.4]},
+ england:{name:'英格兰',coords:[-2,53.2]},scotland:{name:'苏格兰',coords:[-4.1,57]},flanders:{name:'佛兰德',coords:[3.1,51.35]},bohemia:{name:'波希米亚',coords:[15,49.2]},gascony:{name:'加斯科涅',coords:[-.55,44.15]},
+ lotharingia:{name:'低地—洛林',coords:[6.1,49.5]},burgundy:{name:'勃艮第—罗讷河',coords:[5.4,44.8]},italy:{name:'北中部意大利',coords:[11.6,43.4]},
 };
 export function partitionLabels(year:number):AreaLabel[]{return (partitionAt(year)?.realms??[]).map(r=>{
  const late=year>=1285?lateLabelHints[r.id]:undefined;
