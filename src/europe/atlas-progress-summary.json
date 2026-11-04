@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "scope": "Current atlas targets and course geographic leads; not all integer years",
+  "courseChapters": 260,
+  "chaptersReferenced": 61,
+  "chaptersReviewed": 0,
+  "targetYears": 589,
+  "reviewedYears": 0,
+  "partialYears": 509,
+  "pendingYears": 80,
+  "politicalReadingYears": 71,
+  "coursePeriodRecords": 3445,
+  "routeTopics": 22,
+  "unresolvedReferenceIssues": 0,
+  "allReviewed": false
+}

@@ -1,4 +1,4 @@
-"""Reproducible regional reading envelopes for 900–1183; NOT annual borders.
+"""Reproducible regional reading envelopes for 900–1282; NOT annual borders.
 Original editorial coordinates with public-domain Natural Earth modern land clipping.
 See docs/frankish-successors.md. No historical map pixels or traced vectors used.
 """
@@ -34,15 +34,30 @@ def clipped(g):
     assert result.is_valid and not result.is_empty
     return result
 base={k:clipped(v) for k,v in {'west-francia':west,'east-francia':east,'lotharingia':loth,'upper-burgundy':upper,'provence':prov,'italy':italy}.items()}
+high_years=[s['year'] for s in json.loads((ROOT/'src/europe/high-medieval-states.json').read_text(encoding='utf-8'))]
+great_britain=next(g for g in land.geoms if g.covers(Point(-1,52)))
+england=clipped(poly([(-5.8,49.8),(-3,49.8),(1.9,50.5),(2,53),(-1.8,55.9),(-2.4,55.8),(-3.5,54.8),(-3.8,54.2),(-3.1,53.4),(-2.7,52.8),(-2.4,51.6),(-3.5,51.1),(-5.8,50.3)]).intersection(great_britain))
+sicily=next(g for g in land.geoms if g.covers(Point(14,37.5)))
+south=clipped(poly([(12.95,41.35),(13.23,42.2),(15,42.4),(18.8,41.2),(18.7,39.5),(16.5,37.6),(15.6,38),(14.8,39.4),(13.1,40.7)]).difference(sicily))
 features=[]
-for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]:
+for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]+high_years:
     realms=base.copy()
     if year>=951:realms['burgundy']=unary_union([realms.pop('upper-burgundy'),realms.pop('provence')])
+    if year>=1190:
+        realms['england']=england
+        realms['sicily']=sicily if year==1282 else unary_union([sicily,south])
+        if year==1282:realms['south-italy']=south
     for i,(id,g) in enumerate(realms.items()):
         for other,h in list(realms.items())[i+1:]:assert g.intersection(h).area<1e-7,(year,id,other)
         features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md','note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
     checks=[('west-francia',(2.35,48.86)),('west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
     for id,xy in checks:assert realms[id].covers(Point(xy)),(year,id,xy)
+    if year>=1190:
+        assert realms['england'].covers(Point(-.13,51.5))
+        assert not realms['england'].covers(Point(-3.18,51.48)),(year,'Cardiff not English reading region')
+        assert not realms['england'].covers(Point(-3.19,55.95)),(year,'Edinburgh not English reading region')
+        assert realms['sicily'].covers(Point(13.36,38.12))
+        assert realms['south-italy' if year==1282 else 'sicily'].covers(Point(14.27,40.85))
     for name,xy in [('Rome',(12.4964,41.9028)),('Prague',(14.42,50.08)),('Gniezno',(17.60,52.54)),('Esztergom',(18.74,47.79)),('Venice',(12.33,45.44)),('Ravenna',(12.20,44.42))]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,'not direct regional inclusion',name)
 output=ROOT/'src/europe/frankish-successor-geometry.json'
 output.write_text(json.dumps({'type':'FeatureCollection','features':features},ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')

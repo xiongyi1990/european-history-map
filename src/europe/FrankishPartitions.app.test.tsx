@@ -134,4 +134,18 @@ describe('Frankish atlas integration',()=>{
   fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1123'}});fireEvent.click(screen.getByLabelText('前往输入年份'));expect(location.search).not.toContain('view=partitions');expect(location.search).not.toContain('kingdom=');expect(screen.getByTestId('partition-map').textContent).toBe('');await act(async()=>{});
  });
 
+ it('connects the 1190-1282 stage and preserves the Sicilian island on city return',async()=>{
+  const fetcher=setup('/?year=1183&view=partitions&kingdom=italy');fireEvent.click(screen.getByRole('button',{name:'1190—1282 诸王国与继承'}));expect(location.search).toContain('year=1190');expect(location.search).not.toContain('kingdom=');
+  const nav=screen.getByRole('combobox',{name:'跳转诸王国与继承年份'});expect(nav.querySelectorAll('option')).toHaveLength(28);
+  for(const year of [1194,1198,1204,1214,1215,1220,1231,1250,1254,1266,1268,1273]){fireEvent.change(nav,{target:{value:String(year)}});expect(location.search).toContain('year='+year);expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(7);}
+  fireEvent.change(nav,{target:{value:'1282'}});expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(8);fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:/地图：西西里岛王权/}));expect(location.search).toContain('kingdom=sicily');
+  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/巴勒莫/}));expect(location.search).toContain('place=palermo');expect(screen.getByText(/佩德罗三世及康斯坦丝的岛上王权/)).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'← 返回 1282 年诸王国与继承'}));expect(location.search).not.toContain('place=');expect(location.search).toContain('kingdom=sicily');
+  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:/地图：南部大陆王权/}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('安茹的查理');fireEvent.change(nav,{target:{value:'1273'}});expect(location.search).not.toContain('kingdom=south-italy');
+  fireEvent.click(screen.getByRole('button',{name:'1105—1183 帝国与城市'}));expect(location.search).toContain('year=1105');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(5);await act(async()=>{});expect(fetcher.mock.calls.flat().some(u=>String(u).includes('historical-boundaries'))).toBe(false);
+ });
+ it('opens the English charter location and does not borrow it into an unreviewed year',async()=>{
+  setup('/?year=1215&view=partitions&kingdom=england');fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/兰尼米德/}));expect(location.search).toContain('place=runnymede');expect(screen.getByText(/自由人和不自由人口/)).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'← 返回 1215 年诸王国与继承'}));
+  fireEvent.change(screen.getByLabelText('输入历史年份'),{target:{value:'1217'}});fireEvent.click(screen.getByLabelText('前往输入年份'));expect(location.search).not.toContain('view=partitions');expect(screen.getByTestId('partition-map').textContent).toBe('');await act(async()=>{});
+ });
+
 });
