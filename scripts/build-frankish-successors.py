@@ -53,6 +53,13 @@ new_regions={
  'hungary':clipped(poly([(16.5,46.1),(18,45.6),(21.8,46),(22.8,47.5),(21.3,49.2),(18.5,49.5),(16.5,48.4)])),
  'straits':clipped(poly([(26.2,39.7),(30.8,39.7),(31,42),(28.5,43),(26,42.6),(25.6,41)])),
 }
+# Iberian mainland reading cores. Mountain-side and disputed edge details are omitted.
+navarre_late=clipped(poly([(-2.5,42.5),(-2.3,41.9),(-1.9,41.9),(-.8,41.9),(-.5,42.35),(.4,42.55),(-.5,43.15),(-1.5,43.2),(-2.5,42.9)]).difference(base['west-francia']))
+portugal_late=clipped(poly([(-9.6,36.9),(-7.4,36.9),(-7.5,38.7),(-6.9,39.6),(-7.2,41.9),(-8.3,42.15),(-9.5,41.6)]))
+granada_late=clipped(poly([(-4.8,36.35),(-1.7,36.6),(-1.5,37.4),(-2.1,38.2),(-4.8,37.8),(-5.3,37.0)]))
+aragon_late=clipped(poly([(-1.9,41),(-.9,39.7),(-.9,38.5),(-.5,38.0),(.7,38.9),(3.3,41.3),(3.3,42.55),(.4,42.55),(-.5,42.35),(-.8,41.9),(-1.9,41.9)]).difference(navarre_late))
+castile_late=clipped(poly([(-7.3,37.4),(-5.6,36.4),(-4.8,36.9),(-4.8,37.8),(-2.1,38.2),(-1,38.4),(-.9,39.7),(-1.9,41.0),(-2.5,42.6),(-4.4,43.75),(-8.8,43.75),(-9.4,42.2),(-8.3,42.15),(-7.2,41.9),(-6.9,39.6),(-7.5,38.7)]).difference(unary_union([portugal_late,granada_late,aragon_late,navarre_late])))
+iberian_late_regions={'castile-crown':castile_late,'aragon-crown':aragon_late,'portugal-late':portugal_late,'navarre-late':navarre_late,'granada-late':granada_late}
 features=[]
 for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]+high_years+late_years+transition_years:
     realms=base.copy()
@@ -68,9 +75,10 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
     if year>=1360:
         realms['west-francia']=clipped(realms['west-francia'].difference(new_regions['burgundy-duchy']))
         realms.update(new_regions)
+        realms.update(iberian_late_regions)
     for i,(id,g) in enumerate(realms.items()):
         for other,h in list(realms.items())[i+1:]:assert g.intersection(h).area<1e-7,(year,id,other)
-        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
+        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial Iberian mainland reading cores. See docs/iberian-late.md' if id in iberian_late_regions else 'Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
     checks=[('west-francia',(2.35,48.86)),('burgundy-duchy' if year>=1360 else 'west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
     for id,xy in checks:assert realms[id].covers(Point(xy)),(year,id,xy)
     if year>=1190:
@@ -86,6 +94,9 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         for xy in [(17.60,52.54),(18.74,47.79)]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,xy)
     if year<1285:assert not any(g.covers(Point(14.42,50.08)) for g in realms.values()),(year,'Prague not in earlier core')
     if year>=1360:
+        for id,xy in [('castile-crown',(-4.02,39.86)),('castile-crown',(-5.99,37.39)),('castile-crown',(-4.77,37.88)),('portugal-late',(-9.2,38.75)),('portugal-late',(-8.61,41.15)),('portugal-late',(-8.43,40.21)),('aragon-crown',(-.88,41.65)),('aragon-crown',(2.17,41.39)),('aragon-crown',(-.38,39.47)),('navarre-late',(-1.644,42.818)),('navarre-late',(-1.61,42.06)),('granada-late',(-3.59,37.17)),('granada-late',(-4.42,36.72)),('granada-late',(-2.46,36.84))]:assert realms[id].covers(Point(xy)),(year,id,xy)
+        assert not any(g.covers(Point(2.65,39.57)) for g in iberian_late_regions.values()),'Mallorca is linked separately, not mainland core'
+        assert not any(g.covers(Point(-5.32,35.89)) for g in iberian_late_regions.values()),'Ceuta is not Iberian mainland'
         for id,xy in [('poland',(17.6,52.54)),('poland',(19.94,50.06)),('lithuania',(25.28,54.68)),('hungary',(18.74,47.79)),('hungary',(19.04,47.5)),('straits',(28.95,41.02)),('straits',(29.06,40.19)),('straits',(26.56,41.68))]:assert realms[id].covers(Point(xy)),(year,id,xy)
         for name,xy in [('Gdansk',(18.64,54.35)),('Malbork',(19.03,54.04)),('Wroclaw',(17.04,51.11)),('Vienna',(16.37,48.21))]:assert not any(new_regions[k].covers(Point(xy)) for k in ['poland','lithuania','hungary']),(year,name)
     for name,xy in [('Rome',(12.4964,41.9028)),('Venice',(12.33,45.44)),('Ravenna',(12.20,44.42))]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,'not direct regional inclusion',name)

@@ -169,7 +169,7 @@ describe('Frankish atlas integration',()=>{
 it('connects the final medieval stage to a joint-crown region, city return and exact-year control changes',async()=>{
  setup('/?year=1356&view=partitions&kingdom=west-francia');
  fireEvent.click(screen.getByRole('button',{name:'1360—1453 王权与分裂'}));expect(location.search).toContain('year=1360');
- expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(17);
+ expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(22);
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1386'}});
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：波兰王国：核心地域'}));
  expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('雅德维加与');
@@ -183,4 +183,15 @@ it('opens a chapter event and returns to the same region without switching the y
  fireEvent.click(within(screen.getByRole('region',{name:'本年事件地点'})).getByRole('button',{name:/奥尔良解围/}));expect(location.search).toContain('place=orleans5');expect(location.search).toContain('year=1429');
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1429 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=west-francia');
  fireEvent.click(screen.getByRole('button',{name:'1285—1356 战争与教廷'}));expect(location.search).toContain('year=1285');await act(async()=>{});
+});
+
+it('preserves Iberian crown selection through city return and distinguishes the Aragonese vacancy',async()=>{
+ setup('/?year=1386&view=partitions&kingdom=portugal-late');
+ expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('温莎条约5月9日尚未');
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/里斯本/}));expect(location.search).toContain('place=lisbon');
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1386 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=portugal-late');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1410'}});
+ fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：阿拉贡王冠：共享君主的诸地域'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('王位空缺');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});
+ fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:/地图：纳瓦拉王国/}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('内战');await act(async()=>{});
 });

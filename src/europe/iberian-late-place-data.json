@@ -1,0 +1,192 @@
+[
+ {
+  "id": "lisbon",
+  "name": "里斯本",
+  "modern": "葡萄牙 · 塔霍河口",
+  "aliases": [
+   "Lisbon",
+   "Lisboa",
+   "里斯本王权"
+  ],
+  "coords": [
+   -9.14,
+   38.72
+  ],
+  "key": "iberianPortugal"
+ },
+ {
+  "id": "porto",
+  "name": "波尔图",
+  "modern": "葡萄牙 · 杜罗河口",
+  "aliases": [
+   "Porto",
+   "Oporto"
+  ],
+  "coords": [
+   -8.61,
+   41.15
+  ],
+  "key": "iberianPortugal"
+ },
+ {
+  "id": "coimbra",
+  "name": "科英布拉",
+  "modern": "葡萄牙 · 蒙德古河畔",
+  "aliases": [
+   "Coimbra",
+   "科英布拉会议"
+  ],
+  "coords": [
+   -8.43,
+   40.21
+  ],
+  "key": "iberianWindsor"
+ },
+ {
+  "id": "aljubarrota",
+  "name": "阿尔茹巴罗塔战役地域",
+  "modern": "葡萄牙 · 巴塔利亚附近圣若热",
+  "aliases": [
+   "Aljubarrota",
+   "阿尔朱巴罗塔",
+   "1385葡萄牙战役"
+  ],
+  "coords": [
+   -8.84,
+   39.64
+  ],
+  "key": "iberianWindsor"
+ },
+ {
+  "id": "ceuta",
+  "name": "休达",
+  "modern": "北非 · 直布罗陀海峡南岸 · 今西班牙辖市",
+  "aliases": [
+   "Ceuta",
+   "Sebta",
+   "休达征服"
+  ],
+  "coords": [
+   -5.32,
+   35.89
+  ],
+  "key": "iberianCeuta"
+ },
+ {
+  "id": "barcelona",
+  "name": "巴塞罗那",
+  "modern": "西班牙 · 加泰罗尼亚 · 地中海岸",
+  "aliases": [
+   "Barcelona",
+   "巴塞罗那伯爵"
+  ],
+  "coords": [
+   2.17,
+   41.39
+  ],
+  "key": "iberianCrown"
+ },
+ {
+  "id": "valencia",
+  "name": "瓦伦西亚（巴伦西亚）",
+  "modern": "西班牙 · 伊比利亚东海岸",
+  "aliases": [
+   "València",
+   "Valencia",
+   "巴伦西亚王国"
+  ],
+  "coords": [
+   -0.38,
+   39.47
+  ],
+  "key": "iberianCrown"
+ },
+ {
+  "id": "palma",
+  "name": "帕尔马",
+  "modern": "西班牙 · 马略卡岛",
+  "aliases": [
+   "Palma",
+   "Mallorca",
+   "马略卡"
+  ],
+  "coords": [
+   2.65,
+   39.57
+  ],
+  "key": "iberianCrown"
+ },
+ {
+  "id": "caspe",
+  "name": "卡斯佩",
+  "modern": "西班牙 · 阿拉贡 · 埃布罗河方向",
+  "aliases": [
+   "Caspe",
+   "Compromiso de Caspe",
+   "卡斯佩协议"
+  ],
+  "coords": [
+   0.04,
+   41.23
+  ],
+  "key": "iberianCaspe"
+ },
+ {
+  "id": "tudela",
+  "name": "图德拉",
+  "modern": "西班牙 · 纳瓦拉南部 · 埃布罗河畔",
+  "aliases": [
+   "Tudela",
+   "图德拉城"
+  ],
+  "coords": [
+   -1.61,
+   42.06
+  ],
+  "key": "iberianNavarreStudy"
+ },
+ {
+  "id": "malaga",
+  "name": "马拉加",
+  "modern": "西班牙 · 安达卢西亚南岸",
+  "aliases": [
+   "Málaga",
+   "Malaga",
+   "马拉加港"
+  ],
+  "coords": [
+   -4.42,
+   36.72
+  ],
+  "key": "iberianGranada"
+ },
+ {
+  "id": "almeria",
+  "name": "阿尔梅里亚",
+  "modern": "西班牙 · 安达卢西亚东南海岸",
+  "aliases": [
+   "Almería",
+   "Almeria"
+  ],
+  "coords": [
+   -2.46,
+   36.84
+  ],
+  "key": "iberianGranada"
+ },
+ {
+  "id": "seville",
+  "name": "塞维利亚",
+  "modern": "西班牙 · 瓜达尔基维尔河畔",
+  "aliases": [
+   "Seville",
+   "Sevilla",
+   "塞维亚"
+  ],
+  "coords": [
+   -5.99,
+   37.39
+  ],
+  "key": "iberianKings"
+ }
+]
