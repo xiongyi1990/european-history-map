@@ -1,0 +1,312 @@
+[
+ {
+  "id": "dijon",
+  "name": "第戎",
+  "modern": "法国 · 勃艮第内陆",
+  "aliases": [
+   "Dijon",
+   "勃艮第公国"
+  ],
+  "coords": [
+   5.04,
+   47.32
+  ],
+  "key": "transitionBurgundy"
+ },
+ {
+  "id": "krakow",
+  "name": "克拉科夫",
+  "modern": "波兰 · 维斯瓦河上游",
+  "aliases": [
+   "Kraków",
+   "Krakow",
+   "Cracow",
+   "克拉科夫加冕"
+  ],
+  "coords": [
+   19.94,
+   50.06
+  ],
+  "key": "transitionJadwiga"
+ },
+ {
+  "id": "vilnius",
+  "name": "维尔纽斯",
+  "modern": "立陶宛 · 内陆",
+  "aliases": [
+   "Vilnius",
+   "Wilno",
+   "维尔诺"
+  ],
+  "coords": [
+   25.28,
+   54.68
+  ],
+  "key": "transitionLithuania"
+ },
+ {
+  "id": "trakai",
+  "name": "特拉凯",
+  "modern": "立陶宛 · 维尔纽斯以西",
+  "aliases": [
+   "Trakai",
+   "特拉开"
+  ],
+  "coords": [
+   24.93,
+   54.64
+  ],
+  "key": "transitionLithuania"
+ },
+ {
+  "id": "buda",
+  "name": "布达",
+  "modern": "匈牙利 · 布达佩斯多瑙河西岸",
+  "aliases": [
+   "Buda",
+   "Ofen",
+   "布达佩斯"
+  ],
+  "coords": [
+   19.04,
+   47.5
+  ],
+  "key": "transitionHungary"
+ },
+ {
+  "id": "bursa",
+  "name": "布尔萨",
+  "modern": "土耳其 · 马尔马拉海以南",
+  "aliases": [
+   "Bursa",
+   "普鲁萨",
+   "Prusa"
+  ],
+  "coords": [
+   29.06,
+   40.19
+  ],
+  "key": "transitionMehmedI"
+ },
+ {
+  "id": "fondi",
+  "name": "丰迪",
+  "modern": "意大利 · 拉齐奥南部内陆",
+  "aliases": [
+   "Fondi",
+   "丰迪选举"
+  ],
+  "coords": [
+   13.43,
+   41.36
+  ],
+  "key": "transitionClement"
+ },
+ {
+  "id": "pisa",
+  "name": "比萨",
+  "modern": "意大利 · 托斯卡纳 · 阿尔诺河畔",
+  "aliases": [
+   "Pisa",
+   "比萨会议"
+  ],
+  "coords": [
+   10.4,
+   43.72
+  ],
+  "key": "transitionGregory"
+ },
+ {
+  "id": "florence",
+  "name": "佛罗伦萨",
+  "modern": "意大利 · 托斯卡纳 · 阿尔诺河畔",
+  "aliases": [
+   "Florence",
+   "Firenze",
+   "佛罗伦萨会议"
+  ],
+  "coords": [
+   11.25,
+   43.77
+  ],
+  "key": "transitionEugenius"
+ },
+ {
+  "id": "basel",
+  "name": "巴塞尔",
+  "modern": "瑞士 · 莱茵河畔",
+  "aliases": [
+   "Basel",
+   "Bâle",
+   "巴塞尔会议"
+  ],
+  "coords": [
+   7.59,
+   47.56
+  ],
+  "key": "transitionEugenius"
+ },
+ {
+  "id": "krevo",
+  "name": "克雷沃",
+  "modern": "白俄罗斯 · 克雷瓦",
+  "aliases": [
+   "Krewo",
+   "Krėva",
+   "Kreva",
+   "克雷沃协议"
+  ],
+  "coords": [
+   26.29,
+   54.31
+  ],
+  "key": "transitionJogaila"
+ },
+ {
+  "id": "grunwald",
+  "name": "格伦瓦尔德战役地域",
+  "modern": "波兰 · 格伦瓦尔德—斯滕巴尔克附近",
+  "aliases": [
+   "Grunwald",
+   "Tannenberg 1410",
+   "1410坦能堡"
+  ],
+  "coords": [
+   20.12,
+   53.49
+  ],
+  "key": "transitionGrunwald"
+ },
+ {
+  "id": "varna",
+  "name": "瓦尔纳",
+  "modern": "保加利亚 · 黑海西岸",
+  "aliases": [
+   "Varna",
+   "瓦尔纳战役"
+  ],
+  "coords": [
+   27.91,
+   43.21
+  ],
+  "key": "transitionVarna"
+ },
+ {
+  "id": "ankara",
+  "name": "安卡拉",
+  "modern": "土耳其 · 安纳托利亚内陆",
+  "aliases": [
+   "Ankara",
+   "Angora",
+   "安哥拉战役",
+   "安卡拉战役"
+  ],
+  "coords": [
+   32.86,
+   39.93
+  ],
+  "key": "transitionBayezid"
+ },
+ {
+  "id": "kosovo-field",
+  "name": "科索沃会战地域",
+  "modern": "科索沃 · 普里什蒂纳附近",
+  "aliases": [
+   "Kosovo Polje",
+   "1389科索沃战役"
+  ],
+  "coords": [
+   21.08,
+   42.65
+  ],
+  "key": "transitionBayezid"
+ },
+ {
+  "id": "nicopolis-1396",
+  "name": "尼科波利斯战役地域（1396）",
+  "modern": "保加利亚 · 尼科波尔 · 多瑙河南岸",
+  "aliases": [
+   "Nicopolis 1396",
+   "Nikopol",
+   "尼科堡战役"
+  ],
+  "coords": [
+   24.9,
+   43.7
+  ],
+  "key": "transitionBayezid"
+ },
+ {
+  "id": "agincourt",
+  "name": "阿金库尔战役地域",
+  "modern": "法国 · 阿赞库尔附近",
+  "aliases": [
+   "Agincourt",
+   "Azincourt",
+   "阿金库尔战役",
+   "阿赞库尔"
+  ],
+  "coords": [
+   2.14,
+   50.46
+  ],
+  "key": "transitionWar"
+ },
+ {
+  "id": "troyes",
+  "name": "特鲁瓦",
+  "modern": "法国 · 香槟 · 塞纳河上游",
+  "aliases": [
+   "Troyes",
+   "特鲁瓦条约"
+  ],
+  "coords": [
+   4.07,
+   48.3
+  ],
+  "key": "transitionTroyes"
+ },
+ {
+  "id": "arras",
+  "name": "阿拉斯",
+  "modern": "法国 · 阿图瓦地域",
+  "aliases": [
+   "Arras",
+   "阿拉斯和约"
+  ],
+  "coords": [
+   2.78,
+   50.29
+  ],
+  "key": "transitionArras"
+ },
+ {
+  "id": "formigny",
+  "name": "福尔米尼战役地域",
+  "modern": "法国 · 诺曼底 · 巴约以西",
+  "aliases": [
+   "Formigny",
+   "福尔米尼战役"
+  ],
+  "coords": [
+   -0.9,
+   49.34
+  ],
+  "key": "transitionWar"
+ },
+ {
+  "id": "castillon",
+  "name": "卡斯蒂永战役地域",
+  "modern": "法国 · 多尔多涅河畔卡斯蒂永附近",
+  "aliases": [
+   "Castillon",
+   "Castillon-la-Bataille",
+   "卡斯蒂永战役"
+  ],
+  "coords": [
+   -0.04,
+   44.85
+  ],
+  "key": "transitionCastillon"
+ }
+]

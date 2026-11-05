@@ -24,16 +24,30 @@
     1356,
     1360,
     1364,
+    1377,
     1378,
     1381,
+    1385,
+    1386,
     1389,
     1396,
+    1399,
     1402,
+    1409,
+    1410,
     1414,
     1415,
+    1417,
     1420,
+    1422,
     1429,
     1431,
+    1435,
+    1439,
+    1440,
+    1444,
+    1450,
+    1453,
     1455,
     1461,
     1477,
@@ -122,6 +136,22 @@
     "195": {
       "status": "partial",
       "note": "Read PDF1661 and1665: French succession and cross-Channel urban trade are linked. New military and election points use independent sources; full social evidence remains partial."
+    },
+    "190": {
+      "status": "partial",
+      "note": "Read PDF1623-1624. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
+    },
+    "191": {
+      "status": "partial",
+      "note": "Read PDF1629 and1631. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
+    },
+    "200": {
+      "status": "partial",
+      "note": "Read PDF1707 and1709. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
+    },
+    "201": {
+      "status": "partial",
+      "note": "Read PDF1715 and1718. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
     }
   },
   "priorityQueue": [
@@ -129,7 +159,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1285-1356:21 exact moments,12 reading regions,204 single-year city records; expand1356-1453 and audit simultaneous omitted regions, frontiers and community evidence."
+      "note": "1285-1356:21 moments/12 regions;1360-1453:26 moments/17 reading regions, including selected eastern cores. Reading envelopes are not annual control borders. Next audit omitted contemporary regions and1453-1517."
     },
     {
       "id": "high-medieval-contemporary-regions",

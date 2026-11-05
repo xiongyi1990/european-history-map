@@ -1,4 +1,4 @@
-"""Reproducible regional reading envelopes for 900–1356; NOT annual borders.
+"""Reproducible regional reading envelopes for 900–1453; NOT annual borders.
 Original editorial coordinates with public-domain Natural Earth modern land clipping.
 See docs/frankish-successors.md. No historical map pixels or traced vectors used.
 """
@@ -45,8 +45,16 @@ scotland=clipped(poly([(-6.8,54.5),(-4.8,54.6),(-3.5,55),(-2.4,55.8),(-1.6,55.85
 flanders=clipped(poly([(2.35,50.45),(3.25,50.45),(4.35,50.8),(4.35,51.6),(2.7,51.65)]))
 gascony=clipped(poly([(-1.9,43.2),(-.4,43.2),(.65,43.7),(.65,45.5),(-1.1,45.5),(-1.9,44.7)]).intersection(base['west-francia']))
 bohemia=clipped(poly([(12.5,49.1),(13.5,48.5),(15.6,48.6),(16.5,49.3),(16.3,50.6),(14.9,51.1),(13.2,50.8)]).difference(base['east-francia']))
+transition_years=[s['year'] for s in json.loads((ROOT/'src/europe/medieval-transition-states.json').read_text(encoding='utf-8'))]
+new_regions={
+ 'burgundy-duchy':clipped(poly([(3.6,46.2),(4.9,46.1),(5.5,47),(5.4,48),(4.1,48),(3.5,47.4)]).intersection(base['west-francia'])),
+ 'poland':clipped(poly([(16,51.6),(18.6,51),(19.2,49.7),(23.8,49.8),(23.8,53.3),(20.6,53.4),(18,53.2),(16.2,53.1)])),
+ 'lithuania':clipped(poly([(22.5,53.7),(26.7,53.5),(27.5,54.7),(26.8,56.4),(23,56.3),(22.3,55)])),
+ 'hungary':clipped(poly([(16.5,46.1),(18,45.6),(21.8,46),(22.8,47.5),(21.3,49.2),(18.5,49.5),(16.5,48.4)])),
+ 'straits':clipped(poly([(26.2,39.7),(30.8,39.7),(31,42),(28.5,43),(26,42.6),(25.6,41)])),
+}
 features=[]
-for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]+high_years+late_years:
+for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]+high_years+late_years+transition_years:
     realms=base.copy()
     if year>=951:realms['burgundy']=unary_union([realms.pop('upper-burgundy'),realms.pop('provence')])
     if year>=1190:
@@ -57,10 +65,13 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         realms['west-francia']=clipped(realms['west-francia'].difference(flanders).difference(gascony))
         realms['lotharingia']=clipped(realms['lotharingia'].difference(flanders))
         realms.update({'scotland':scotland,'flanders':flanders,'bohemia':bohemia,'gascony':gascony})
+    if year>=1360:
+        realms['west-francia']=clipped(realms['west-francia'].difference(new_regions['burgundy-duchy']))
+        realms.update(new_regions)
     for i,(id,g) in enumerate(realms.items()):
         for other,h in list(realms.items())[i+1:]:assert g.intersection(h).area<1e-7,(year,id,other)
-        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
-    checks=[('west-francia',(2.35,48.86)),('west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
+        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
+    checks=[('west-francia',(2.35,48.86)),('burgundy-duchy' if year>=1360 else 'west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
     for id,xy in checks:assert realms[id].covers(Point(xy)),(year,id,xy)
     if year>=1190:
         assert realms['england'].covers(Point(-.13,51.5))
@@ -71,8 +82,13 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
     if year>=1285:
         for id,xy in [('scotland',(-3.219,55.948)),('flanders',(3.27,50.83)),('gascony',(-.58,44.84)),('gascony',(-1.47,43.49)),('bohemia',(14.42,50.08))]:assert realms[id].covers(Point(xy)),(year,id,xy)
         assert not realms['gascony'].covers(Point(1.44,43.6)),(year,'Toulouse is not Gascon core')
+    if year<1360:
+        for xy in [(17.60,52.54),(18.74,47.79)]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,xy)
     if year<1285:assert not any(g.covers(Point(14.42,50.08)) for g in realms.values()),(year,'Prague not in earlier core')
-    for name,xy in [('Rome',(12.4964,41.9028)),('Gniezno',(17.60,52.54)),('Esztergom',(18.74,47.79)),('Venice',(12.33,45.44)),('Ravenna',(12.20,44.42))]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,'not direct regional inclusion',name)
+    if year>=1360:
+        for id,xy in [('poland',(17.6,52.54)),('poland',(19.94,50.06)),('lithuania',(25.28,54.68)),('hungary',(18.74,47.79)),('hungary',(19.04,47.5)),('straits',(28.95,41.02)),('straits',(29.06,40.19)),('straits',(26.56,41.68))]:assert realms[id].covers(Point(xy)),(year,id,xy)
+        for name,xy in [('Gdansk',(18.64,54.35)),('Malbork',(19.03,54.04)),('Wroclaw',(17.04,51.11)),('Vienna',(16.37,48.21))]:assert not any(new_regions[k].covers(Point(xy)) for k in ['poland','lithuania','hungary']),(year,name)
+    for name,xy in [('Rome',(12.4964,41.9028)),('Venice',(12.33,45.44)),('Ravenna',(12.20,44.42))]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,'not direct regional inclusion',name)
 output=ROOT/'src/europe/frankish-successor-geometry.json'
 output.write_text(json.dumps({'type':'FeatureCollection','features':features},ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 print(f'{len(features)} valid non-overlapping regional envelopes; representative inclusion/exclusion checks passed')

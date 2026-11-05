@@ -165,3 +165,22 @@ describe('Frankish atlas integration',()=>{
  });
 
 });
+
+it('connects the final medieval stage to a joint-crown region, city return and exact-year control changes',async()=>{
+ setup('/?year=1356&view=partitions&kingdom=west-francia');
+ fireEvent.click(screen.getByRole('button',{name:'1360—1453 王权与分裂'}));expect(location.search).toContain('year=1360');
+ expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(17);
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1386'}});
+ fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：波兰王国：核心地域'}));
+ expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('雅德维加与');
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/克拉科夫/}));expect(location.search).toContain('place=krakow');
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1386 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=poland');expect(location.search).not.toContain('place=');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});
+ fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:/地图：海峡地区/}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('1461');await act(async()=>{});
+});
+it('opens a chapter event and returns to the same region without switching the year or inventing a route',async()=>{
+ setup('/?year=1429&view=partitions&kingdom=west-francia');
+ fireEvent.click(within(screen.getByRole('region',{name:'本年事件地点'})).getByRole('button',{name:/奥尔良解围/}));expect(location.search).toContain('place=orleans5');expect(location.search).toContain('year=1429');
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1429 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=west-francia');
+ fireEvent.click(screen.getByRole('button',{name:'1285—1356 战争与教廷'}));expect(location.search).toContain('year=1285');await act(async()=>{});
+});
