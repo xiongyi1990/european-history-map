@@ -1,0 +1,128 @@
+[
+ {
+  "id": "novgorod",
+  "name": "大诺夫哥罗德",
+  "modern": "俄罗斯 · 伊尔门湖北侧",
+  "aliases": [
+   "Novgorod",
+   "Veliky Novgorod",
+   "Великий Новгород",
+   "诺夫哥罗德",
+   "诺夫哥罗德共和国"
+  ],
+  "coords": [
+   31.28,
+   58.52
+  ],
+  "key": "rusNovUnesco"
+ },
+ {
+  "id": "tver",
+  "name": "特维尔",
+  "modern": "俄罗斯 · 伏尔加河上游",
+  "aliases": [
+   "Tver",
+   "Тверь",
+   "特维尔公国"
+  ],
+  "coords": [
+   35.91,
+   56.86
+  ],
+  "key": "rusTver"
+ },
+ {
+  "id": "pskov",
+  "name": "普斯科夫",
+  "modern": "俄罗斯 · 韦利卡亚河畔",
+  "aliases": [
+   "Pskov",
+   "Псков",
+   "Pleskau",
+   "普斯科夫共和国"
+  ],
+  "coords": [
+   28.33,
+   57.82
+  ],
+  "key": "rusPskovUnesco"
+ },
+ {
+  "id": "vladimir-on-klyazma",
+  "name": "弗拉基米尔",
+  "modern": "俄罗斯 · 克利亚济马河畔",
+  "aliases": [
+   "Vladimir",
+   "Владимир",
+   "弗拉基米尔大公"
+  ],
+  "coords": [
+   40.41,
+   56.13
+  ],
+  "key": "rusVladimir"
+ },
+ {
+  "id": "trinity-sergius",
+  "name": "特罗伊采修道院",
+  "modern": "俄罗斯 · 今谢尔吉耶夫镇",
+  "aliases": [
+   "Trinity-Sergius",
+   "Trinity Sergius Lavra",
+   "Sergiev Posad",
+   "谢尔吉耶夫",
+   "三一修道院"
+  ],
+  "coords": [
+   38.13,
+   56.31
+  ],
+  "key": "rusTrinity"
+ },
+ {
+  "id": "torzhok",
+  "name": "托尔若克",
+  "modern": "俄罗斯 · 特韦尔察河畔",
+  "aliases": [
+   "Torzhok",
+   "Торжок",
+   "托尔日克"
+  ],
+  "coords": [
+   34.97,
+   57.04
+  ],
+  "key": "rusTorzhok"
+ },
+ {
+  "id": "staraya-russa",
+  "name": "斯塔拉亚鲁萨",
+  "modern": "俄罗斯 · 伊尔门湖南侧",
+  "aliases": [
+   "Staraya Russa",
+   "Старая Русса",
+   "旧鲁萨"
+  ],
+  "coords": [
+   31.36,
+   57.99
+  ],
+  "key": "rusRussa"
+ },
+ {
+  "id": "kulikovo",
+  "name": "库利科沃会战地域",
+  "modern": "俄罗斯 · 顿河上游",
+  "aliases": [
+   "Kulikovo",
+   "Куликово поле",
+   "库利科沃战役",
+   "1380年会战"
+  ],
+  "coords": [
+   38.67,
+   53.61
+  ],
+  "key": "rusKulikovo"
+ }
+]

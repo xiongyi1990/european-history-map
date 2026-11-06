@@ -9,11 +9,11 @@
   "partialYears": 533,
   "pendingYears": 80,
   "politicalReadingYears": 119,
-  "coursePeriodRecords": 5007,
+  "coursePeriodRecords": 5246,
   "routeTopics": 22,
   "unresolvedReferenceIssues": 0,
   "allReviewed": false,
-  "inputHash": "e9ca4e111d1f52c4a5d234bce3fe8ed50cd80fe4e0d3c688abb99e9037bf0aa4",
+  "inputHash": "209d5b1268592fe8516292c5cacaea10c6d2a6132aa81871e791831d8076877f",
   "completionRule": "All year facets and all course geographic leads need explicit review; links and record counts never imply completion",
   "duplicatePlaceIds": [],
   "referenceIssues": [],
@@ -22,7 +22,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now27 exact moments/25 reading cores including1397 and Nordic three crowns. Stockholm1398 handover, country-specific deposition/coronation and islands separated.1440 Norway transition and earlier Granada uncertainties remain explicit. Next audit Rus/Balkans and Italian/Low Countries subdivisions, then1453-1517."
+      "note": "1360-1453 now27 explicit moments/29 reading cores, adding Moscow-Vladimir, Tver, Novgorod and Pskov.1360 distinct Dmitrys,1397/1398 Dvina reversal,1431 petition/1432 judgment, interrupted Moscow reign and1450/1453 co-rule distinguished. Manuscript/monastery date layers preserved. Other Rus lands, full Balkans/Italian/Low Countries subdivisions and later years remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
@@ -9059,11 +9059,23 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1360",
+          "vladimir-on-klyazma-rus-late-1360",
+          "tver-rus-late-1360",
+          "novgorod-rus-late-1360",
+          "pskov-rus-late-1360",
+          "trinity-sergius-rus-late-1360",
+          "torzhok-rus-late-1360",
+          "staraya-russa-rus-late-1360",
           "copenhagen-nordic-late-1360",
           "roskilde-nordic-late-1360",
           "helsingborg-nordic-late-1360",
@@ -9150,11 +9162,23 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1364",
+          "vladimir-on-klyazma-rus-late-1364",
+          "tver-rus-late-1364",
+          "novgorod-rus-late-1364",
+          "pskov-rus-late-1364",
+          "trinity-sergius-rus-late-1364",
+          "torzhok-rus-late-1364",
+          "staraya-russa-rus-late-1364",
           "copenhagen-nordic-late-1364",
           "roskilde-nordic-late-1364",
           "helsingborg-nordic-late-1364",
@@ -9241,11 +9265,23 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1377",
+          "vladimir-on-klyazma-rus-late-1377",
+          "tver-rus-late-1377",
+          "novgorod-rus-late-1377",
+          "pskov-rus-late-1377",
+          "trinity-sergius-rus-late-1377",
+          "torzhok-rus-late-1377",
+          "staraya-russa-rus-late-1377",
           "copenhagen-nordic-late-1377",
           "roskilde-nordic-late-1377",
           "helsingborg-nordic-late-1377",
@@ -9332,11 +9368,23 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1378",
+          "vladimir-on-klyazma-rus-late-1378",
+          "tver-rus-late-1378",
+          "novgorod-rus-late-1378",
+          "pskov-rus-late-1378",
+          "trinity-sergius-rus-late-1378",
+          "torzhok-rus-late-1378",
+          "staraya-russa-rus-late-1378",
           "copenhagen-nordic-late-1378",
           "roskilde-nordic-late-1378",
           "helsingborg-nordic-late-1378",
@@ -9424,11 +9472,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1381",
+          "vladimir-on-klyazma-rus-late-1381",
+          "tver-rus-late-1381",
+          "novgorod-rus-late-1381",
+          "pskov-rus-late-1381",
+          "trinity-sergius-rus-late-1381",
+          "torzhok-rus-late-1381",
+          "staraya-russa-rus-late-1381",
+          "kulikovo-rus-late-1381",
           "copenhagen-nordic-late-1381",
           "roskilde-nordic-late-1381",
           "helsingborg-nordic-late-1381",
@@ -9515,11 +9576,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1385",
+          "vladimir-on-klyazma-rus-late-1385",
+          "tver-rus-late-1385",
+          "novgorod-rus-late-1385",
+          "pskov-rus-late-1385",
+          "trinity-sergius-rus-late-1385",
+          "torzhok-rus-late-1385",
+          "staraya-russa-rus-late-1385",
+          "kulikovo-rus-late-1385",
           "copenhagen-nordic-late-1385",
           "roskilde-nordic-late-1385",
           "helsingborg-nordic-late-1385",
@@ -9608,11 +9682,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1386",
+          "vladimir-on-klyazma-rus-late-1386",
+          "tver-rus-late-1386",
+          "novgorod-rus-late-1386",
+          "pskov-rus-late-1386",
+          "trinity-sergius-rus-late-1386",
+          "torzhok-rus-late-1386",
+          "staraya-russa-rus-late-1386",
+          "kulikovo-rus-late-1386",
           "copenhagen-nordic-late-1386",
           "roskilde-nordic-late-1386",
           "helsingborg-nordic-late-1386",
@@ -9700,11 +9787,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1389",
+          "vladimir-on-klyazma-rus-late-1389",
+          "tver-rus-late-1389",
+          "novgorod-rus-late-1389",
+          "pskov-rus-late-1389",
+          "trinity-sergius-rus-late-1389",
+          "torzhok-rus-late-1389",
+          "staraya-russa-rus-late-1389",
+          "kulikovo-rus-late-1389",
           "copenhagen-nordic-late-1389",
           "roskilde-nordic-late-1389",
           "helsingborg-nordic-late-1389",
@@ -9794,11 +9894,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1396",
+          "vladimir-on-klyazma-rus-late-1396",
+          "tver-rus-late-1396",
+          "novgorod-rus-late-1396",
+          "pskov-rus-late-1396",
+          "trinity-sergius-rus-late-1396",
+          "torzhok-rus-late-1396",
+          "staraya-russa-rus-late-1396",
+          "kulikovo-rus-late-1396",
           "copenhagen-nordic-late-1396",
           "roskilde-nordic-late-1396",
           "helsingborg-nordic-late-1396",
@@ -9888,11 +10001,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1397",
+          "vladimir-on-klyazma-rus-late-1397",
+          "tver-rus-late-1397",
+          "novgorod-rus-late-1397",
+          "pskov-rus-late-1397",
+          "trinity-sergius-rus-late-1397",
+          "torzhok-rus-late-1397",
+          "staraya-russa-rus-late-1397",
+          "kulikovo-rus-late-1397",
           "copenhagen-nordic-late-1397",
           "roskilde-nordic-late-1397",
           "helsingborg-nordic-late-1397",
@@ -9981,11 +10107,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1399",
+          "vladimir-on-klyazma-rus-late-1399",
+          "tver-rus-late-1399",
+          "novgorod-rus-late-1399",
+          "pskov-rus-late-1399",
+          "trinity-sergius-rus-late-1399",
+          "torzhok-rus-late-1399",
+          "staraya-russa-rus-late-1399",
+          "kulikovo-rus-late-1399",
           "copenhagen-nordic-late-1399",
           "roskilde-nordic-late-1399",
           "helsingborg-nordic-late-1399",
@@ -10087,11 +10226,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1402",
+          "vladimir-on-klyazma-rus-late-1402",
+          "tver-rus-late-1402",
+          "novgorod-rus-late-1402",
+          "pskov-rus-late-1402",
+          "trinity-sergius-rus-late-1402",
+          "torzhok-rus-late-1402",
+          "staraya-russa-rus-late-1402",
+          "kulikovo-rus-late-1402",
           "copenhagen-nordic-late-1402",
           "roskilde-nordic-late-1402",
           "helsingborg-nordic-late-1402",
@@ -10181,11 +10333,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1409",
+          "vladimir-on-klyazma-rus-late-1409",
+          "tver-rus-late-1409",
+          "novgorod-rus-late-1409",
+          "pskov-rus-late-1409",
+          "trinity-sergius-rus-late-1409",
+          "torzhok-rus-late-1409",
+          "staraya-russa-rus-late-1409",
+          "kulikovo-rus-late-1409",
           "copenhagen-nordic-late-1409",
           "roskilde-nordic-late-1409",
           "helsingborg-nordic-late-1409",
@@ -10275,11 +10440,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1410",
+          "vladimir-on-klyazma-rus-late-1410",
+          "tver-rus-late-1410",
+          "novgorod-rus-late-1410",
+          "pskov-rus-late-1410",
+          "trinity-sergius-rus-late-1410",
+          "torzhok-rus-late-1410",
+          "staraya-russa-rus-late-1410",
+          "kulikovo-rus-late-1410",
           "copenhagen-nordic-late-1410",
           "roskilde-nordic-late-1410",
           "helsingborg-nordic-late-1410",
@@ -10369,11 +10547,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1414",
+          "vladimir-on-klyazma-rus-late-1414",
+          "tver-rus-late-1414",
+          "novgorod-rus-late-1414",
+          "pskov-rus-late-1414",
+          "trinity-sergius-rus-late-1414",
+          "torzhok-rus-late-1414",
+          "staraya-russa-rus-late-1414",
+          "kulikovo-rus-late-1414",
           "copenhagen-nordic-late-1414",
           "roskilde-nordic-late-1414",
           "helsingborg-nordic-late-1414",
@@ -10465,11 +10656,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1415",
+          "vladimir-on-klyazma-rus-late-1415",
+          "tver-rus-late-1415",
+          "novgorod-rus-late-1415",
+          "pskov-rus-late-1415",
+          "trinity-sergius-rus-late-1415",
+          "torzhok-rus-late-1415",
+          "staraya-russa-rus-late-1415",
+          "kulikovo-rus-late-1415",
           "copenhagen-nordic-late-1415",
           "roskilde-nordic-late-1415",
           "helsingborg-nordic-late-1415",
@@ -10562,11 +10766,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1417",
+          "vladimir-on-klyazma-rus-late-1417",
+          "tver-rus-late-1417",
+          "novgorod-rus-late-1417",
+          "pskov-rus-late-1417",
+          "trinity-sergius-rus-late-1417",
+          "torzhok-rus-late-1417",
+          "staraya-russa-rus-late-1417",
+          "kulikovo-rus-late-1417",
           "copenhagen-nordic-late-1417",
           "roskilde-nordic-late-1417",
           "helsingborg-nordic-late-1417",
@@ -10658,11 +10875,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1420",
+          "vladimir-on-klyazma-rus-late-1420",
+          "tver-rus-late-1420",
+          "novgorod-rus-late-1420",
+          "pskov-rus-late-1420",
+          "trinity-sergius-rus-late-1420",
+          "torzhok-rus-late-1420",
+          "staraya-russa-rus-late-1420",
+          "kulikovo-rus-late-1420",
           "copenhagen-nordic-late-1420",
           "roskilde-nordic-late-1420",
           "helsingborg-nordic-late-1420",
@@ -10754,11 +10984,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1422",
+          "vladimir-on-klyazma-rus-late-1422",
+          "tver-rus-late-1422",
+          "novgorod-rus-late-1422",
+          "pskov-rus-late-1422",
+          "trinity-sergius-rus-late-1422",
+          "torzhok-rus-late-1422",
+          "staraya-russa-rus-late-1422",
+          "kulikovo-rus-late-1422",
           "copenhagen-nordic-late-1422",
           "roskilde-nordic-late-1422",
           "helsingborg-nordic-late-1422",
@@ -10849,11 +11092,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1429",
+          "vladimir-on-klyazma-rus-late-1429",
+          "tver-rus-late-1429",
+          "novgorod-rus-late-1429",
+          "pskov-rus-late-1429",
+          "trinity-sergius-rus-late-1429",
+          "torzhok-rus-late-1429",
+          "staraya-russa-rus-late-1429",
+          "kulikovo-rus-late-1429",
           "copenhagen-nordic-late-1429",
           "roskilde-nordic-late-1429",
           "helsingborg-nordic-late-1429",
@@ -10946,11 +11202,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1431",
+          "vladimir-on-klyazma-rus-late-1431",
+          "tver-rus-late-1431",
+          "novgorod-rus-late-1431",
+          "pskov-rus-late-1431",
+          "trinity-sergius-rus-late-1431",
+          "torzhok-rus-late-1431",
+          "staraya-russa-rus-late-1431",
+          "kulikovo-rus-late-1431",
           "copenhagen-nordic-late-1431",
           "roskilde-nordic-late-1431",
           "helsingborg-nordic-late-1431",
@@ -11042,11 +11311,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1435",
+          "vladimir-on-klyazma-rus-late-1435",
+          "tver-rus-late-1435",
+          "novgorod-rus-late-1435",
+          "pskov-rus-late-1435",
+          "trinity-sergius-rus-late-1435",
+          "torzhok-rus-late-1435",
+          "staraya-russa-rus-late-1435",
+          "kulikovo-rus-late-1435",
           "copenhagen-nordic-late-1435",
           "roskilde-nordic-late-1435",
           "helsingborg-nordic-late-1435",
@@ -11138,11 +11420,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1439",
+          "vladimir-on-klyazma-rus-late-1439",
+          "tver-rus-late-1439",
+          "novgorod-rus-late-1439",
+          "pskov-rus-late-1439",
+          "trinity-sergius-rus-late-1439",
+          "torzhok-rus-late-1439",
+          "staraya-russa-rus-late-1439",
+          "kulikovo-rus-late-1439",
           "copenhagen-nordic-late-1439",
           "roskilde-nordic-late-1439",
           "helsingborg-nordic-late-1439",
@@ -11235,11 +11530,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1440",
+          "vladimir-on-klyazma-rus-late-1440",
+          "tver-rus-late-1440",
+          "novgorod-rus-late-1440",
+          "pskov-rus-late-1440",
+          "trinity-sergius-rus-late-1440",
+          "torzhok-rus-late-1440",
+          "staraya-russa-rus-late-1440",
+          "kulikovo-rus-late-1440",
           "copenhagen-nordic-late-1440",
           "roskilde-nordic-late-1440",
           "helsingborg-nordic-late-1440",
@@ -11330,11 +11638,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1444",
+          "vladimir-on-klyazma-rus-late-1444",
+          "tver-rus-late-1444",
+          "novgorod-rus-late-1444",
+          "pskov-rus-late-1444",
+          "trinity-sergius-rus-late-1444",
+          "torzhok-rus-late-1444",
+          "staraya-russa-rus-late-1444",
+          "kulikovo-rus-late-1444",
           "copenhagen-nordic-late-1444",
           "roskilde-nordic-late-1444",
           "helsingborg-nordic-late-1444",
@@ -11426,11 +11747,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1450",
+          "vladimir-on-klyazma-rus-late-1450",
+          "tver-rus-late-1450",
+          "novgorod-rus-late-1450",
+          "pskov-rus-late-1450",
+          "trinity-sergius-rus-late-1450",
+          "torzhok-rus-late-1450",
+          "staraya-russa-rus-late-1450",
+          "kulikovo-rus-late-1450",
           "copenhagen-nordic-late-1450",
           "roskilde-nordic-late-1450",
           "helsingborg-nordic-late-1450",
@@ -11522,11 +11856,24 @@
             "granada-late",
             "denmark-late",
             "norway-late",
-            "sweden-late"
+            "sweden-late",
+            "moscow-rus",
+            "tver-rus",
+            "novgorod-rus",
+            "pskov-rus"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "moscow-rus-late-1453",
+          "vladimir-on-klyazma-rus-late-1453",
+          "tver-rus-late-1453",
+          "novgorod-rus-late-1453",
+          "pskov-rus-late-1453",
+          "trinity-sergius-rus-late-1453",
+          "torzhok-rus-late-1453",
+          "staraya-russa-rus-late-1453",
+          "kulikovo-rus-late-1453",
           "copenhagen-nordic-late-1453",
           "roskilde-nordic-late-1453",
           "helsingborg-nordic-late-1453",
@@ -14912,8 +15259,11 @@
         1307
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1,
-      "review": null
+      "linkedEvidenceCount": 829,
+      "review": {
+        "status": "partial",
+        "note": "Read PDF1305-1306: early Slavic writing/church background only, not1360-1453 spoken-language evidence. Wider chapter geography and final review remain."
+      }
     },
     {
       "chapter": 156,
@@ -14922,8 +15272,11 @@
         1315
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1,
-      "review": null
+      "linkedEvidenceCount": 829,
+      "review": {
+        "status": "partial",
+        "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain."
+      }
     },
     {
       "chapter": 157,

@@ -66,6 +66,13 @@ denmark_late=clipped(unary_union([poly([(7.7,54.7),(10.9,54.7),(11.0,56.2),(10.7
 norway_late=clipped(poly([(4.4,58.2),(7.5,57.8),(10,58.4),(11.7,59.5),(11.5,60.5),(11.5,61.9),(12,64.2),(9.4,64.2),(6.9,62.9),(4.2,61.4)]).difference(denmark_late))
 sweden_late=clipped(poly([(11.6,56.4),(12.55,56.35),(13.2,56.5),(14.5,56.2),(16,56.1),(17.2,57.2),(18.7,58.8),(19,60.7),(17.8,61.6),(14,62.5),(11.5,61.9),(11.5,60.5),(11.7,59.5),(11.4,58.5)]).difference(unary_union([denmark_late,norway_late])))
 nordic_late_regions={'denmark-late':denmark_late,'norway-late':norway_late,'sweden-late':sweden_late}
+# Rus reading cores only locate four different political contexts. Northern domains,
+# other principalities and annual military control are intentionally not inferred.
+moscow_rus=clipped(poly([(36.4,55.0),(40.9,55.0),(41.8,55.6),(41.8,57.0),(38.4,57.2),(36.7,56.5),(36.1,55.6)]))
+tver_rus=clipped(poly([(35.45,56.5),(36.6,56.6),(37.1,57.2),(36.4,57.9),(35.4,58.0),(35.35,57.5)]).difference(moscow_rus))
+pskov_rus=clipped(poly([(27.55,56.5),(28.9,56.5),(29.45,57.6),(29.3,58.35),(28.0,58.35),(27.55,57.7)]))
+novgorod_rus=clipped(poly([(29.6,57.1),(32.8,56.6),(35.25,56.7),(35.3,57.5),(33.9,58.1),(33.6,60.0),(30.0,60.1),(29.6,58.4)]).difference(unary_union([pskov_rus,tver_rus,moscow_rus])))
+rus_late_regions={'moscow-rus':moscow_rus,'tver-rus':tver_rus,'novgorod-rus':novgorod_rus,'pskov-rus':pskov_rus}
 features=[]
 for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]+high_years+late_years+transition_years:
     realms=base.copy()
@@ -83,9 +90,10 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         realms.update(new_regions)
         realms.update(iberian_late_regions)
         realms.update(nordic_late_regions)
+        realms.update(rus_late_regions)
     for i,(id,g) in enumerate(realms.items()):
         for other,h in list(realms.items())[i+1:]:assert g.intersection(h).area<1e-7,(year,id,other)
-        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial Nordic reading cores; Danish Scanian rights, Swedish eastern regions and overseas lands require separate detail. See docs/nordic-late.md' if id in nordic_late_regions else 'Original editorial Iberian mainland reading cores. See docs/iberian-late.md' if id in iberian_late_regions else 'Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
+        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial Rus reading cores, not yearly control or a united Russian state. See docs/rus-late.md' if id in rus_late_regions else 'Original editorial Nordic reading cores; Danish Scanian rights, Swedish eastern regions and overseas lands require separate detail. See docs/nordic-late.md' if id in nordic_late_regions else 'Original editorial Iberian mainland reading cores. See docs/iberian-late.md' if id in iberian_late_regions else 'Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
     checks=[('west-francia',(2.35,48.86)),('burgundy-duchy' if year>=1360 else 'west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
     for id,xy in checks:assert realms[id].covers(Point(xy)),(year,id,xy)
     if year>=1190:
@@ -101,6 +109,10 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         for xy in [(17.60,52.54),(18.74,47.79)]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,xy)
     if year<1285:assert not any(g.covers(Point(14.42,50.08)) for g in realms.values()),(year,'Prague not in earlier core')
     if year>=1360:
+        for id,xy in [('moscow-rus',(37.613577,55.75411)),('moscow-rus',(40.41,56.13)),('moscow-rus',(38.13,56.31)),('tver-rus',(35.91,56.86)),('novgorod-rus',(31.28,58.52)),('novgorod-rus',(31.36,57.99)),('novgorod-rus',(34.97,57.04)),('pskov-rus',(28.33,57.82))]:assert realms[id].covers(Point(xy)),(year,id,xy)
+        for xy in [(30.52,50.45),(39.74,54.63),(38.67,53.61),(44,60)]:assert not any(g.covers(Point(xy)) for g in rus_late_regions.values()),(year,'other Rus lands/battle comparison excluded',xy)
+        assert not novgorod_rus.covers(Point(28.33,57.82)),(year,'Pskov is a distinct core')
+        assert not tver_rus.covers(Point(34.97,57.04)),(year,'Torzhok not a Tver membership assertion')
         for id,xy in [('denmark-late',(12.57,55.68)),('denmark-late',(12.09,55.64)),('denmark-late',(12.7,56.05)),('denmark-late',(8.7648,55.3284)),('norway-late',(5.32,60.39)),('norway-late',(10.75,59.91)),('norway-late',(10.4,63.43)),('sweden-late',(18.07,59.33)),('sweden-late',(17.64,59.86)),('sweden-late',(16.36,56.66)),('sweden-late',(13.7,58.19))]:
             # Natural Earth50m omits narrow coastal/archipelago details around these city references.
             # Keep the catalog point unchanged; allow only documented small clipping offsets.
