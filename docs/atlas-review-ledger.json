@@ -31,6 +31,7 @@
     1386,
     1389,
     1396,
+    1397,
     1399,
     1402,
     1409,
@@ -164,6 +165,18 @@
     "250": {
       "status": "partial",
       "note": "Read PDF2149-2150:1578-1580 Portuguese inheritance discussion is later; not used as1360-1453 ruler or frontier evidence. Full course geography and community audit remain."
+    },
+    "144": {
+      "status": "partial",
+      "note": "Read PDF1210-1212.9th-century sea geography only; not1360-1453 Nordic royal control evidence. Wider geographic leads and final community/border audit remain."
+    },
+    "204": {
+      "status": "partial",
+      "note": "Read PDF1739-1740.14th-century social comparison; no direct Nordic city details in pages read. Wider geographic leads and final community/border audit remain."
+    },
+    "214": {
+      "status": "partial",
+      "note": "Read PDF1852-1856.1620s-1630s Danish/Swedish wars are later; not used to fill14th-15th-century control. Wider geographic leads and final community/border audit remain."
     }
   },
   "priorityQueue": [
@@ -171,7 +184,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now26 moments/22 reading cores including five Iberian crowns. Selected regnal vacancies and city communities checked; five Granada intra-year successions remain unresolved. Next audit northern/Rus/Balkan omissions, Italian/Low Countries subdivisions and1453-1517."
+      "note": "1360-1453 now27 exact moments/25 reading cores including1397 and Nordic three crowns. Stockholm1398 handover, country-specific deposition/coronation and islands separated.1440 Norway transition and earlier Granada uncertainties remain explicit. Next audit Rus/Balkans and Italian/Low Countries subdivisions, then1453-1517."
     },
     {
       "id": "high-medieval-contemporary-regions",

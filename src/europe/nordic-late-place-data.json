@@ -1,0 +1,189 @@
+[
+ {
+  "id": "copenhagen",
+  "name": "哥本哈根",
+  "modern": "丹麦 · 西兰岛东岸",
+  "aliases": [
+   "Copenhagen",
+   "København",
+   "Kobenhavn",
+   "哥本哈根老集市"
+  ],
+  "coords": [
+   12.57,
+   55.68
+  ],
+  "key": "nordicCopenhagen"
+ },
+ {
+  "id": "roskilde",
+  "name": "罗斯基勒",
+  "modern": "丹麦 · 西兰岛",
+  "aliases": [
+   "Roskilde",
+   "罗斯基勒主教座"
+  ],
+  "coords": [
+   12.09,
+   55.64
+  ],
+  "key": "nordicCopenhagen"
+ },
+ {
+  "id": "helsingborg",
+  "name": "赫尔辛堡",
+  "modern": "瑞典 · 斯堪尼亚 · 厄勒海峡东岸",
+  "aliases": [
+   "Helsingborg",
+   "赫尔辛堡城堡"
+  ],
+  "coords": [
+   12.7,
+   56.05
+  ],
+  "key": "nordicMortgage"
+ },
+ {
+  "id": "bergen",
+  "name": "卑尔根",
+  "modern": "挪威 · 西海岸 · 布吕根港区所在城市",
+  "aliases": [
+   "Bergen",
+   "Bryggen",
+   "布吕根",
+   "布吕根码头"
+  ],
+  "coords": [
+   5.32,
+   60.39
+  ],
+  "key": "nordicBergen"
+ },
+ {
+  "id": "oslo",
+  "name": "奥斯陆",
+  "modern": "挪威 · 奥斯陆峡湾",
+  "aliases": [
+   "Oslo",
+   "奥斯陆中世纪城区"
+  ],
+  "coords": [
+   10.75,
+   59.91
+  ],
+  "key": "nordicOslo"
+ },
+ {
+  "id": "trondheim",
+  "name": "尼达罗斯（特隆赫姆）",
+  "modern": "挪威 · 特隆赫姆",
+  "aliases": [
+   "Trondheim",
+   "Nidaros",
+   "尼达罗斯",
+   "特隆赫姆"
+  ],
+  "coords": [
+   10.4,
+   63.43
+  ],
+  "key": "nordicNidaros"
+ },
+ {
+  "id": "stockholm",
+  "name": "斯德哥尔摩",
+  "modern": "瑞典 · 波罗的海沿岸水道",
+  "aliases": [
+   "Stockholm",
+   "斯德哥尔摩老城"
+  ],
+  "coords": [
+   18.07,
+   59.33
+  ],
+  "key": "nordicStockholm"
+ },
+ {
+  "id": "uppsala",
+  "name": "乌普萨拉",
+  "modern": "瑞典 · 今乌普萨拉城区",
+  "aliases": [
+   "Uppsala",
+   "Östra Aros",
+   "Ostra Aros",
+   "东阿罗斯",
+   "乌普萨拉主教座"
+  ],
+  "coords": [
+   17.64,
+   59.86
+  ],
+  "key": "nordicUppsala"
+ },
+ {
+  "id": "kalmar",
+  "name": "卡尔马",
+  "modern": "瑞典 · 东南岸",
+  "aliases": [
+   "Kalmar",
+   "卡尔马联盟",
+   "卡尔马城堡"
+  ],
+  "coords": [
+   16.36,
+   56.66
+  ],
+  "key": "nordicKalmar"
+ },
+ {
+  "id": "turku",
+  "name": "图尔库（奥布）",
+  "modern": "芬兰 · 西南海岸",
+  "aliases": [
+   "Turku",
+   "Åbo",
+   "Abo",
+   "奥布"
+  ],
+  "coords": [
+   22.27,
+   60.45
+  ],
+  "key": "nordicFinland"
+ },
+ {
+  "id": "visby",
+  "name": "维斯比",
+  "modern": "瑞典 · 哥特兰岛",
+  "aliases": [
+   "Visby",
+   "Wisby",
+   "哥特兰",
+   "哥得兰",
+   "维斯堡"
+  ],
+  "coords": [
+   18.29,
+   57.64
+  ],
+  "key": "nordicVisby1361"
+ },
+ {
+  "id": "falkoping-late",
+  "name": "法尔雪平—奥斯勒会战地域",
+  "modern": "瑞典 · 法尔雪平以东奥斯勒附近",
+  "aliases": [
+   "Falköping",
+   "Falkoping",
+   "Åsle",
+   "Asle",
+   "奥斯勒战役",
+   "法尔雪平战役"
+  ],
+  "coords": [
+   13.7,
+   58.19
+  ],
+  "key": "nordicFalkoping"
+ }
+]

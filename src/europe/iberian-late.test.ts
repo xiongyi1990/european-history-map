@@ -8,7 +8,7 @@ import {ancientPlaces} from './model';
 import progress from './atlas-progress-summary.json';
 describe('late medieval Iberian crowns and local institutions',()=>{
  it('adds five distinct cores and their resolvable Chinese cities only to reviewed moments',()=>{
-  expect(iberianLatePlaces).toHaveLength(13);for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(22);for(const id of ['castile-crown','aragon-crown','portugal-late','navarre-late','granada-late'])expect(partitionRealmAt(y,id)).toBeDefined();expect(partitionLabels(y).some(l=>l.name==='葡萄牙')).toBe(true);}
+  expect(iberianLatePlaces).toHaveLength(13);for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(25);for(const id of ['castile-crown','aragon-crown','portugal-late','navarre-late','granada-late'])expect(partitionRealmAt(y,id)).toBeDefined();expect(partitionLabels(y).some(l=>l.name==='葡萄牙')).toBe(true);}
   expect(partitionBoundsAt(1385)[0][0]).toBeLessThan(-9);expect(partitionRealmAt(1356,'castile-crown')).toBeUndefined();expect(partitionAt(1384)).toBeUndefined();
   for(const d of iberianLateDetails){expect(historicalDetail(d.placeId,d.from)?.id,d.id).toBe(d.id);for(const id of d.related)expect(ancientPlaces.some(p=>p.id===id),id).toBe(true);for(const key of [...d.polity.sources,...d.language.sources,...d.people.sources])expect(historySources[key].url).toMatch(/^https:/);}
   expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);
