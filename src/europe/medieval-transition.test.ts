@@ -9,7 +9,7 @@ import progress from './atlas-progress-summary.json';
 describe('1360-1453 political relationships without invented annual fronts',()=>{
  it('connects exact events and twenty-nine regional envelopes with resolvable city and source links',()=>{
   expect(medievalTransitionYears).toHaveLength(27);expect(partitionStageYears(1453)).toEqual(medievalTransitionYears);expect(partitionStageYears(1356)).toHaveLength(21);
-  for(const f of medievalTransitionFrames){expect(partitionAreas(f.year).features).toHaveLength(29);for(const id of partitionPlaceIds(f.year))expect(ancientPlaces.filter(p=>p.id===id),id).toHaveLength(1);for(const p of f.focusPlaces??[])expect(historicalDetail(p.placeId,f.year)?.from,p.placeId+f.year).toBe(f.year);for(const r of f.relationships??[])for(const id of r.realmIds)expect(partitionRealmAt(f.year,id)).toBeDefined();}
+  for(const f of medievalTransitionFrames){expect(partitionAreas(f.year).features).toHaveLength(33);for(const id of partitionPlaceIds(f.year))expect(ancientPlaces.filter(p=>p.id===id),id).toHaveLength(1);for(const p of f.focusPlaces??[])expect(historicalDetail(p.placeId,f.year)?.from,p.placeId+f.year).toBe(f.year);for(const r of f.relationships??[])for(const id of r.realmIds)expect(partitionRealmAt(f.year,id)).toBeDefined();}
   expect(partitionAt(1403)).toBeUndefined();expect(partitionAreas(1454).features).toHaveLength(0);
   for(const d of medievalTransitionDetails){expect(historicalDetail(d.placeId,d.from)?.id,d.id).toBe(d.id);for(const id of d.related)expect(ancientPlaces.some(p=>p.id===id),id).toBe(true);for(const key of d.polity.sources)expect(historySources[key].url).toMatch(/^https:/);}
   expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);

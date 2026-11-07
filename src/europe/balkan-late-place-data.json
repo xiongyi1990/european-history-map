@@ -1,0 +1,175 @@
+[
+ {
+  "id": "belgrade",
+  "name": "贝尔格莱德",
+  "modern": "塞尔维亚 · 贝尔格莱德",
+  "aliases": [
+   "Belgrade",
+   "Beograd",
+   "Nándorfehérvár",
+   "贝城"
+  ],
+  "coords": [
+   20.466045,
+   44.820591
+  ],
+  "key": "balkanBelgrade"
+ },
+ {
+  "id": "smederevo",
+  "name": "斯梅代雷沃",
+  "modern": "塞尔维亚 · 斯梅代雷沃",
+  "aliases": [
+   "Smederevo",
+   "Semendria",
+   "斯梅德雷沃"
+  ],
+  "coords": [
+   20.93,
+   44.66
+  ],
+  "key": "balkanSmederevo"
+ },
+ {
+  "id": "krusevac",
+  "name": "克鲁舍瓦茨",
+  "modern": "塞尔维亚 · 克鲁舍瓦茨",
+  "aliases": [
+   "Kruševac",
+   "Krusevac",
+   "拉扎里察"
+  ],
+  "coords": [
+   21.33,
+   43.58
+  ],
+  "key": "balkanLazarica"
+ },
+ {
+  "id": "novo-brdo",
+  "name": "新布尔多矿城",
+  "modern": "科索沃地区 · 新布尔多/Novobërda",
+  "aliases": [
+   "Novo Brdo",
+   "Novobërdë",
+   "Novobërda",
+   "新布尔多"
+  ],
+  "coords": [
+   21.43,
+   42.62
+  ],
+  "key": "balkanMining"
+ },
+ {
+  "id": "prizren",
+  "name": "普里兹伦",
+  "modern": "科索沃地区 · 普里兹伦/Prizreni",
+  "aliases": [
+   "Prizren",
+   "Prizreni",
+   "普里兹仁"
+  ],
+  "coords": [
+   20.74,
+   42.21
+  ],
+  "key": "balkanPrizren"
+ },
+ {
+  "id": "visoko",
+  "name": "维索科与波德维索基",
+  "modern": "波斯尼亚和黑塞哥维那 · 维索科",
+  "aliases": [
+   "Visoko",
+   "Visoki",
+   "Podvisoki",
+   "波德维索基",
+   "维索基堡"
+  ],
+  "coords": [
+   18.18,
+   43.99
+  ],
+  "key": "balkanVisoko"
+ },
+ {
+  "id": "bobovac",
+  "name": "博博瓦茨王城遗址",
+  "modern": "波斯尼亚和黑塞哥维那 · 克拉列瓦苏捷斯卡以北",
+  "aliases": [
+   "Bobovac",
+   "博博瓦茨"
+  ],
+  "coords": [
+   18.33,
+   44.16
+  ],
+  "key": "balkanBobovac"
+ },
+ {
+  "id": "jajce",
+  "name": "亚伊采",
+  "modern": "波斯尼亚和黑塞哥维那 · 亚伊采",
+  "aliases": [
+   "Jajce",
+   "亚伊策"
+  ],
+  "coords": [
+   17.27,
+   44.34
+  ],
+  "key": "balkanJajce"
+ },
+ {
+  "id": "dubrovnik",
+  "name": "杜布罗夫尼克（拉古萨）",
+  "modern": "克罗地亚 · 杜布罗夫尼克",
+  "aliases": [
+   "Dubrovnik",
+   "Ragusa",
+   "拉古萨",
+   "杜布罗夫尼克"
+  ],
+  "coords": [
+   18.11,
+   42.65
+  ],
+  "key": "balkanRagusa"
+ },
+ {
+  "id": "tarnovo",
+  "name": "特尔诺沃",
+  "modern": "保加利亚 · 大特尔诺沃",
+  "aliases": [
+   "Tarnovo",
+   "Tărnovo",
+   "Veliko Tarnovo",
+   "Търново",
+   "特尔诺沃",
+   "大特尔诺沃"
+  ],
+  "coords": [
+   25.64,
+   43.08
+  ],
+  "key": "balkanTarnovo"
+ },
+ {
+  "id": "vidin",
+  "name": "维丁",
+  "modern": "保加利亚 · 维丁",
+  "aliases": [
+   "Vidin",
+   "Bdin",
+   "Видин",
+   "Бдин",
+   "维丁"
+  ],
+  "coords": [
+   22.88,
+   43.99
+  ],
+  "key": "balkanVidinTown"
+ }
+]

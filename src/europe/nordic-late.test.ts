@@ -8,7 +8,7 @@ import {ancientPlaces} from './model';
 import progress from './atlas-progress-summary.json';
 describe('Nordic crowns, shared rulers and local control1360-1453',()=>{
  it('adds one explicit union moment and three distinguishable cores without interpolating neighboring years',()=>{
-  expect(medievalTransitionYears).toContain(1397);expect(partitionAt(1397)?.eventDate).toContain('6月17日');expect(partitionAreas(1397).features).toHaveLength(29);expect(partitionAt(1398)).toBeUndefined();expect(partitionRealmAt(1356,'norway-late')).toBeUndefined();expect(partitionBoundsAt(1397)[1][1]).toBeGreaterThan(64);
+  expect(medievalTransitionYears).toContain(1397);expect(partitionAt(1397)?.eventDate).toContain('6月17日');expect(partitionAreas(1397).features).toHaveLength(33);expect(partitionAt(1398)).toBeUndefined();expect(partitionRealmAt(1356,'norway-late')).toBeUndefined();expect(partitionBoundsAt(1397)[1][1]).toBeGreaterThan(64);
   for(const y of medievalTransitionYears){for(const id of ['denmark-late','norway-late','sweden-late'])expect(partitionRealmAt(y,id)).toBeDefined();for(const n of ['丹麦','挪威','瑞典'])expect(partitionLabels(y).some(l=>l.name===n)).toBe(true);}
   expect(nordicLatePlaces).toHaveLength(12);for(const d of nordicLateDetails){expect(historicalDetail(d.placeId,d.from)?.id,d.id).toBe(d.id);for(const id of d.related)expect(ancientPlaces.some(p=>p.id===id),id).toBe(true);for(const k of d.polity.sources)expect(historySources[k].url).toMatch(/^https:/);}
   expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);

@@ -2,18 +2,18 @@
   "schemaVersion": 1,
   "scope": "Current atlas targets and course geographic leads; not all integer years",
   "courseChapters": 260,
-  "chaptersReferenced": 69,
+  "chaptersReferenced": 71,
   "chaptersReviewed": 0,
   "targetYears": 613,
   "reviewedYears": 0,
   "partialYears": 533,
   "pendingYears": 80,
   "politicalReadingYears": 119,
-  "coursePeriodRecords": 5246,
+  "coursePeriodRecords": 5570,
   "routeTopics": 22,
   "unresolvedReferenceIssues": 0,
   "allReviewed": false,
-  "inputHash": "209d5b1268592fe8516292c5cacaea10c6d2a6132aa81871e791831d8076877f",
+  "inputHash": "a269eb5aa6b81b0b835e7b9a025c0a2e15996907a6005fdc1f216bdcfef09334",
   "completionRule": "All year facets and all course geographic leads need explicit review; links and record counts never imply completion",
   "duplicatePlaceIds": [],
   "referenceIssues": [],
@@ -22,7 +22,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now27 explicit moments/29 reading cores, adding Moscow-Vladimir, Tver, Novgorod and Pskov.1360 distinct Dmitrys,1397/1398 Dvina reversal,1431 petition/1432 judgment, interrupted Moscow reign and1450/1453 co-rule distinguished. Manuscript/monastery date layers preserved. Other Rus lands, full Balkans/Italian/Low Countries subdivisions and later years remain partial."
+      "note": "1360-1453 now27 explicit moments/33 reading cores, adding Serbia-Morava, Bosnia, Tarnovo and Vidin. Distinguish imperial/knez/despot/ban/royal titles,1409/1410 division,1393/1395/1396 distinct falls,1439/1441 separate city losses,1444 restoration and1453 continuing local states. Fixed cores, contested Vidin continuity and local control not precise frontiers. Other Balkans, Italian/Low Countries subdivisions and later years remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
@@ -9063,11 +9063,24 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1360",
+          "belgrade-balkan-late-1360",
+          "novo-brdo-balkan-late-1360",
+          "prizren-balkan-late-1360",
+          "visoko-balkan-late-1360",
+          "bobovac-balkan-late-1360",
+          "dubrovnik-balkan-late-1360",
+          "tarnovo-balkan-late-1360",
+          "vidin-balkan-late-1360",
           "moscow-rus-late-1360",
           "vladimir-on-klyazma-rus-late-1360",
           "tver-rus-late-1360",
@@ -9166,11 +9179,24 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1364",
+          "belgrade-balkan-late-1364",
+          "novo-brdo-balkan-late-1364",
+          "prizren-balkan-late-1364",
+          "visoko-balkan-late-1364",
+          "bobovac-balkan-late-1364",
+          "dubrovnik-balkan-late-1364",
+          "tarnovo-balkan-late-1364",
+          "vidin-balkan-late-1364",
           "moscow-rus-late-1364",
           "vladimir-on-klyazma-rus-late-1364",
           "tver-rus-late-1364",
@@ -9269,11 +9295,24 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1377",
+          "belgrade-balkan-late-1377",
+          "novo-brdo-balkan-late-1377",
+          "prizren-balkan-late-1377",
+          "visoko-balkan-late-1377",
+          "bobovac-balkan-late-1377",
+          "dubrovnik-balkan-late-1377",
+          "tarnovo-balkan-late-1377",
+          "vidin-balkan-late-1377",
           "moscow-rus-late-1377",
           "vladimir-on-klyazma-rus-late-1377",
           "tver-rus-late-1377",
@@ -9372,11 +9411,24 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1378",
+          "belgrade-balkan-late-1378",
+          "novo-brdo-balkan-late-1378",
+          "prizren-balkan-late-1378",
+          "visoko-balkan-late-1378",
+          "bobovac-balkan-late-1378",
+          "dubrovnik-balkan-late-1378",
+          "tarnovo-balkan-late-1378",
+          "vidin-balkan-late-1378",
           "moscow-rus-late-1378",
           "vladimir-on-klyazma-rus-late-1378",
           "tver-rus-late-1378",
@@ -9476,11 +9528,25 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1381",
+          "belgrade-balkan-late-1381",
+          "novo-brdo-balkan-late-1381",
+          "prizren-balkan-late-1381",
+          "visoko-balkan-late-1381",
+          "bobovac-balkan-late-1381",
+          "dubrovnik-balkan-late-1381",
+          "tarnovo-balkan-late-1381",
+          "vidin-balkan-late-1381",
+          "smederevo-balkan-late-1381",
           "moscow-rus-late-1381",
           "vladimir-on-klyazma-rus-late-1381",
           "tver-rus-late-1381",
@@ -9580,11 +9646,25 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1385",
+          "belgrade-balkan-late-1385",
+          "novo-brdo-balkan-late-1385",
+          "prizren-balkan-late-1385",
+          "visoko-balkan-late-1385",
+          "bobovac-balkan-late-1385",
+          "dubrovnik-balkan-late-1385",
+          "tarnovo-balkan-late-1385",
+          "vidin-balkan-late-1385",
+          "smederevo-balkan-late-1385",
           "moscow-rus-late-1385",
           "vladimir-on-klyazma-rus-late-1385",
           "tver-rus-late-1385",
@@ -9686,11 +9766,25 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1386",
+          "belgrade-balkan-late-1386",
+          "novo-brdo-balkan-late-1386",
+          "prizren-balkan-late-1386",
+          "visoko-balkan-late-1386",
+          "bobovac-balkan-late-1386",
+          "dubrovnik-balkan-late-1386",
+          "tarnovo-balkan-late-1386",
+          "vidin-balkan-late-1386",
+          "smederevo-balkan-late-1386",
           "moscow-rus-late-1386",
           "vladimir-on-klyazma-rus-late-1386",
           "tver-rus-late-1386",
@@ -9791,11 +9885,26 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1389",
+          "belgrade-balkan-late-1389",
+          "novo-brdo-balkan-late-1389",
+          "prizren-balkan-late-1389",
+          "visoko-balkan-late-1389",
+          "bobovac-balkan-late-1389",
+          "dubrovnik-balkan-late-1389",
+          "tarnovo-balkan-late-1389",
+          "vidin-balkan-late-1389",
+          "smederevo-balkan-late-1389",
+          "kosovo-field-balkan-late-1389",
           "moscow-rus-late-1389",
           "vladimir-on-klyazma-rus-late-1389",
           "tver-rus-late-1389",
@@ -9853,8 +9962,7 @@
           "avignon-transition-1389",
           "byzantium-transition-1389",
           "hadrianople-transition-1389",
-          "bursa-transition-1389",
-          "kosovo-field-transition-1389"
+          "bursa-transition-1389"
         ],
         "periodCityRecordCount": 1,
         "turningPoint": null,
@@ -9898,11 +10006,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1396",
+          "belgrade-balkan-late-1396",
+          "novo-brdo-balkan-late-1396",
+          "prizren-balkan-late-1396",
+          "visoko-balkan-late-1396",
+          "bobovac-balkan-late-1396",
+          "dubrovnik-balkan-late-1396",
+          "tarnovo-balkan-late-1396",
+          "vidin-balkan-late-1396",
+          "smederevo-balkan-late-1396",
+          "jajce-balkan-late-1396",
+          "kosovo-field-balkan-late-1396",
+          "nicopolis-1396-balkan-late-1396",
           "moscow-rus-late-1396",
           "vladimir-on-klyazma-rus-late-1396",
           "tver-rus-late-1396",
@@ -9960,8 +10085,7 @@
           "avignon-transition-1396",
           "byzantium-transition-1396",
           "hadrianople-transition-1396",
-          "bursa-transition-1396",
-          "nicopolis-1396-transition-1396"
+          "bursa-transition-1396"
         ],
         "periodCityRecordCount": 1,
         "turningPoint": null,
@@ -10005,11 +10129,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1397",
+          "belgrade-balkan-late-1397",
+          "novo-brdo-balkan-late-1397",
+          "prizren-balkan-late-1397",
+          "visoko-balkan-late-1397",
+          "bobovac-balkan-late-1397",
+          "dubrovnik-balkan-late-1397",
+          "tarnovo-balkan-late-1397",
+          "vidin-balkan-late-1397",
+          "smederevo-balkan-late-1397",
+          "jajce-balkan-late-1397",
+          "kosovo-field-balkan-late-1397",
+          "nicopolis-1396-balkan-late-1397",
           "moscow-rus-late-1397",
           "vladimir-on-klyazma-rus-late-1397",
           "tver-rus-late-1397",
@@ -10111,11 +10252,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1399",
+          "belgrade-balkan-late-1399",
+          "novo-brdo-balkan-late-1399",
+          "prizren-balkan-late-1399",
+          "visoko-balkan-late-1399",
+          "bobovac-balkan-late-1399",
+          "dubrovnik-balkan-late-1399",
+          "tarnovo-balkan-late-1399",
+          "vidin-balkan-late-1399",
+          "smederevo-balkan-late-1399",
+          "jajce-balkan-late-1399",
+          "kosovo-field-balkan-late-1399",
+          "nicopolis-1396-balkan-late-1399",
           "moscow-rus-late-1399",
           "vladimir-on-klyazma-rus-late-1399",
           "tver-rus-late-1399",
@@ -10230,11 +10388,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1402",
+          "belgrade-balkan-late-1402",
+          "novo-brdo-balkan-late-1402",
+          "prizren-balkan-late-1402",
+          "visoko-balkan-late-1402",
+          "bobovac-balkan-late-1402",
+          "dubrovnik-balkan-late-1402",
+          "tarnovo-balkan-late-1402",
+          "vidin-balkan-late-1402",
+          "smederevo-balkan-late-1402",
+          "jajce-balkan-late-1402",
+          "kosovo-field-balkan-late-1402",
+          "nicopolis-1396-balkan-late-1402",
           "moscow-rus-late-1402",
           "vladimir-on-klyazma-rus-late-1402",
           "tver-rus-late-1402",
@@ -10337,11 +10512,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1409",
+          "belgrade-balkan-late-1409",
+          "novo-brdo-balkan-late-1409",
+          "prizren-balkan-late-1409",
+          "visoko-balkan-late-1409",
+          "bobovac-balkan-late-1409",
+          "dubrovnik-balkan-late-1409",
+          "tarnovo-balkan-late-1409",
+          "vidin-balkan-late-1409",
+          "smederevo-balkan-late-1409",
+          "jajce-balkan-late-1409",
+          "kosovo-field-balkan-late-1409",
+          "nicopolis-1396-balkan-late-1409",
           "moscow-rus-late-1409",
           "vladimir-on-klyazma-rus-late-1409",
           "tver-rus-late-1409",
@@ -10444,11 +10636,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1410",
+          "belgrade-balkan-late-1410",
+          "novo-brdo-balkan-late-1410",
+          "prizren-balkan-late-1410",
+          "visoko-balkan-late-1410",
+          "bobovac-balkan-late-1410",
+          "dubrovnik-balkan-late-1410",
+          "tarnovo-balkan-late-1410",
+          "vidin-balkan-late-1410",
+          "smederevo-balkan-late-1410",
+          "jajce-balkan-late-1410",
+          "kosovo-field-balkan-late-1410",
+          "nicopolis-1396-balkan-late-1410",
           "moscow-rus-late-1410",
           "vladimir-on-klyazma-rus-late-1410",
           "tver-rus-late-1410",
@@ -10551,11 +10760,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1414",
+          "belgrade-balkan-late-1414",
+          "novo-brdo-balkan-late-1414",
+          "prizren-balkan-late-1414",
+          "visoko-balkan-late-1414",
+          "bobovac-balkan-late-1414",
+          "dubrovnik-balkan-late-1414",
+          "tarnovo-balkan-late-1414",
+          "vidin-balkan-late-1414",
+          "smederevo-balkan-late-1414",
+          "jajce-balkan-late-1414",
+          "kosovo-field-balkan-late-1414",
+          "nicopolis-1396-balkan-late-1414",
           "moscow-rus-late-1414",
           "vladimir-on-klyazma-rus-late-1414",
           "tver-rus-late-1414",
@@ -10660,11 +10886,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1415",
+          "belgrade-balkan-late-1415",
+          "novo-brdo-balkan-late-1415",
+          "prizren-balkan-late-1415",
+          "visoko-balkan-late-1415",
+          "bobovac-balkan-late-1415",
+          "dubrovnik-balkan-late-1415",
+          "tarnovo-balkan-late-1415",
+          "vidin-balkan-late-1415",
+          "smederevo-balkan-late-1415",
+          "jajce-balkan-late-1415",
+          "kosovo-field-balkan-late-1415",
+          "nicopolis-1396-balkan-late-1415",
           "moscow-rus-late-1415",
           "vladimir-on-klyazma-rus-late-1415",
           "tver-rus-late-1415",
@@ -10770,11 +11013,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1417",
+          "belgrade-balkan-late-1417",
+          "novo-brdo-balkan-late-1417",
+          "prizren-balkan-late-1417",
+          "visoko-balkan-late-1417",
+          "bobovac-balkan-late-1417",
+          "dubrovnik-balkan-late-1417",
+          "tarnovo-balkan-late-1417",
+          "vidin-balkan-late-1417",
+          "smederevo-balkan-late-1417",
+          "jajce-balkan-late-1417",
+          "kosovo-field-balkan-late-1417",
+          "nicopolis-1396-balkan-late-1417",
           "moscow-rus-late-1417",
           "vladimir-on-klyazma-rus-late-1417",
           "tver-rus-late-1417",
@@ -10879,11 +11139,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1420",
+          "belgrade-balkan-late-1420",
+          "novo-brdo-balkan-late-1420",
+          "prizren-balkan-late-1420",
+          "visoko-balkan-late-1420",
+          "bobovac-balkan-late-1420",
+          "dubrovnik-balkan-late-1420",
+          "tarnovo-balkan-late-1420",
+          "vidin-balkan-late-1420",
+          "smederevo-balkan-late-1420",
+          "jajce-balkan-late-1420",
+          "kosovo-field-balkan-late-1420",
+          "nicopolis-1396-balkan-late-1420",
           "moscow-rus-late-1420",
           "vladimir-on-klyazma-rus-late-1420",
           "tver-rus-late-1420",
@@ -10988,11 +11265,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1422",
+          "belgrade-balkan-late-1422",
+          "novo-brdo-balkan-late-1422",
+          "prizren-balkan-late-1422",
+          "visoko-balkan-late-1422",
+          "bobovac-balkan-late-1422",
+          "dubrovnik-balkan-late-1422",
+          "tarnovo-balkan-late-1422",
+          "vidin-balkan-late-1422",
+          "smederevo-balkan-late-1422",
+          "jajce-balkan-late-1422",
+          "kosovo-field-balkan-late-1422",
+          "nicopolis-1396-balkan-late-1422",
           "moscow-rus-late-1422",
           "vladimir-on-klyazma-rus-late-1422",
           "tver-rus-late-1422",
@@ -11096,11 +11390,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1429",
+          "belgrade-balkan-late-1429",
+          "novo-brdo-balkan-late-1429",
+          "prizren-balkan-late-1429",
+          "visoko-balkan-late-1429",
+          "bobovac-balkan-late-1429",
+          "dubrovnik-balkan-late-1429",
+          "tarnovo-balkan-late-1429",
+          "vidin-balkan-late-1429",
+          "smederevo-balkan-late-1429",
+          "jajce-balkan-late-1429",
+          "kosovo-field-balkan-late-1429",
+          "nicopolis-1396-balkan-late-1429",
           "moscow-rus-late-1429",
           "vladimir-on-klyazma-rus-late-1429",
           "tver-rus-late-1429",
@@ -11206,11 +11517,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1431",
+          "belgrade-balkan-late-1431",
+          "novo-brdo-balkan-late-1431",
+          "prizren-balkan-late-1431",
+          "visoko-balkan-late-1431",
+          "bobovac-balkan-late-1431",
+          "dubrovnik-balkan-late-1431",
+          "tarnovo-balkan-late-1431",
+          "vidin-balkan-late-1431",
+          "smederevo-balkan-late-1431",
+          "jajce-balkan-late-1431",
+          "kosovo-field-balkan-late-1431",
+          "nicopolis-1396-balkan-late-1431",
           "moscow-rus-late-1431",
           "vladimir-on-klyazma-rus-late-1431",
           "tver-rus-late-1431",
@@ -11315,11 +11643,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1435",
+          "belgrade-balkan-late-1435",
+          "novo-brdo-balkan-late-1435",
+          "prizren-balkan-late-1435",
+          "visoko-balkan-late-1435",
+          "bobovac-balkan-late-1435",
+          "dubrovnik-balkan-late-1435",
+          "tarnovo-balkan-late-1435",
+          "vidin-balkan-late-1435",
+          "smederevo-balkan-late-1435",
+          "jajce-balkan-late-1435",
+          "kosovo-field-balkan-late-1435",
+          "nicopolis-1396-balkan-late-1435",
           "moscow-rus-late-1435",
           "vladimir-on-klyazma-rus-late-1435",
           "tver-rus-late-1435",
@@ -11424,11 +11769,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1439",
+          "belgrade-balkan-late-1439",
+          "novo-brdo-balkan-late-1439",
+          "prizren-balkan-late-1439",
+          "visoko-balkan-late-1439",
+          "bobovac-balkan-late-1439",
+          "dubrovnik-balkan-late-1439",
+          "tarnovo-balkan-late-1439",
+          "vidin-balkan-late-1439",
+          "smederevo-balkan-late-1439",
+          "jajce-balkan-late-1439",
+          "kosovo-field-balkan-late-1439",
+          "nicopolis-1396-balkan-late-1439",
           "moscow-rus-late-1439",
           "vladimir-on-klyazma-rus-late-1439",
           "tver-rus-late-1439",
@@ -11534,11 +11896,28 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1440",
+          "belgrade-balkan-late-1440",
+          "novo-brdo-balkan-late-1440",
+          "prizren-balkan-late-1440",
+          "visoko-balkan-late-1440",
+          "bobovac-balkan-late-1440",
+          "dubrovnik-balkan-late-1440",
+          "tarnovo-balkan-late-1440",
+          "vidin-balkan-late-1440",
+          "smederevo-balkan-late-1440",
+          "jajce-balkan-late-1440",
+          "kosovo-field-balkan-late-1440",
+          "nicopolis-1396-balkan-late-1440",
           "moscow-rus-late-1440",
           "vladimir-on-klyazma-rus-late-1440",
           "tver-rus-late-1440",
@@ -11642,11 +12021,29 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1444",
+          "belgrade-balkan-late-1444",
+          "novo-brdo-balkan-late-1444",
+          "prizren-balkan-late-1444",
+          "visoko-balkan-late-1444",
+          "bobovac-balkan-late-1444",
+          "dubrovnik-balkan-late-1444",
+          "tarnovo-balkan-late-1444",
+          "vidin-balkan-late-1444",
+          "smederevo-balkan-late-1444",
+          "jajce-balkan-late-1444",
+          "kosovo-field-balkan-late-1444",
+          "nicopolis-1396-balkan-late-1444",
+          "varna-balkan-late-1444",
           "moscow-rus-late-1444",
           "vladimir-on-klyazma-rus-late-1444",
           "tver-rus-late-1444",
@@ -11706,8 +12103,7 @@
           "avignon-transition-1444",
           "byzantium-transition-1444",
           "hadrianople-transition-1444",
-          "bursa-transition-1444",
-          "varna-transition-1444"
+          "bursa-transition-1444"
         ],
         "periodCityRecordCount": 1,
         "turningPoint": null,
@@ -11751,11 +12147,29 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1450",
+          "belgrade-balkan-late-1450",
+          "novo-brdo-balkan-late-1450",
+          "prizren-balkan-late-1450",
+          "visoko-balkan-late-1450",
+          "bobovac-balkan-late-1450",
+          "dubrovnik-balkan-late-1450",
+          "tarnovo-balkan-late-1450",
+          "vidin-balkan-late-1450",
+          "smederevo-balkan-late-1450",
+          "jajce-balkan-late-1450",
+          "kosovo-field-balkan-late-1450",
+          "nicopolis-1396-balkan-late-1450",
+          "varna-balkan-late-1450",
           "moscow-rus-late-1450",
           "vladimir-on-klyazma-rus-late-1450",
           "tver-rus-late-1450",
@@ -11860,11 +12274,29 @@
             "moscow-rus",
             "tver-rus",
             "novgorod-rus",
-            "pskov-rus"
+            "pskov-rus",
+            "serbia-late",
+            "bosnia-late",
+            "tarnovo-late",
+            "vidin-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "krusevac-balkan-late-1453",
+          "belgrade-balkan-late-1453",
+          "novo-brdo-balkan-late-1453",
+          "prizren-balkan-late-1453",
+          "visoko-balkan-late-1453",
+          "bobovac-balkan-late-1453",
+          "dubrovnik-balkan-late-1453",
+          "tarnovo-balkan-late-1453",
+          "vidin-balkan-late-1453",
+          "smederevo-balkan-late-1453",
+          "jajce-balkan-late-1453",
+          "kosovo-field-balkan-late-1453",
+          "nicopolis-1396-balkan-late-1453",
+          "varna-balkan-late-1453",
           "moscow-rus-late-1453",
           "vladimir-on-klyazma-rus-late-1453",
           "tver-rus-late-1453",
@@ -15143,7 +15575,7 @@
         1216
       ],
       "status": "partial",
-      "linkedEvidenceCount": 977,
+      "linkedEvidenceCount": 974,
       "review": {
         "status": "partial",
         "note": "Read PDF1210-1212.9th-century sea geography only; not1360-1453 Nordic royal control evidence. Wider geographic leads and final community/border audit remain."
@@ -15186,7 +15618,7 @@
         1247
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1053,
+      "linkedEvidenceCount": 1050,
       "review": {
         "status": "partial",
         "note": "Read PDF1239-1240 and1244-1246: peninsula topography and early cities. These earlier-era passages are not1360-1453 border evidence. Full course geography and community audit remain."
@@ -15248,9 +15680,12 @@
         1290,
         1299
       ],
-      "status": "pending",
-      "linkedEvidenceCount": 0,
-      "review": null
+      "status": "partial",
+      "linkedEvidenceCount": 913,
+      "review": {
+        "status": "partial",
+        "note": "Read physical PDF1291,1295,1298. Early Slavic movement geography is background only, not1360-1453 borders or ethnic labels. Course etymology is not a population classification."
+      }
     },
     {
       "chapter": 155,
@@ -15259,10 +15694,10 @@
         1307
       ],
       "status": "partial",
-      "linkedEvidenceCount": 829,
+      "linkedEvidenceCount": 1153,
       "review": {
         "status": "partial",
-        "note": "Read PDF1305-1306: early Slavic writing/church background only, not1360-1453 spoken-language evidence. Wider chapter geography and final review remain."
+        "note": "Read PDF1305-1306: early Slavic writing/church background only, not1360-1453 spoken-language evidence. Wider chapter geography and final review remain. Additional read physical1302,1304,1305; writing systems, liturgy and local speech are separate."
       }
     },
     {
@@ -15272,7 +15707,7 @@
         1315
       ],
       "status": "partial",
-      "linkedEvidenceCount": 829,
+      "linkedEvidenceCount": 826,
       "review": {
         "status": "partial",
         "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain."
@@ -15627,7 +16062,7 @@
         1627
       ],
       "status": "partial",
-      "linkedEvidenceCount": 324,
+      "linkedEvidenceCount": 322,
       "review": {
         "status": "partial",
         "note": "Read PDF1623-1624. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
@@ -15739,7 +16174,7 @@
         1711
       ],
       "status": "partial",
-      "linkedEvidenceCount": 265,
+      "linkedEvidenceCount": 264,
       "review": {
         "status": "partial",
         "note": "Read PDF1707 and1709. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
@@ -15752,7 +16187,7 @@
         1722
       ],
       "status": "partial",
-      "linkedEvidenceCount": 265,
+      "linkedEvidenceCount": 264,
       "review": {
         "status": "partial",
         "note": "Read PDF1715 and1718. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
@@ -15785,7 +16220,7 @@
         1747
       ],
       "status": "partial",
-      "linkedEvidenceCount": 933,
+      "linkedEvidenceCount": 930,
       "review": {
         "status": "partial",
         "note": "Read PDF1739-1740.14th-century social comparison; no direct Nordic city details in pages read. Wider geographic leads and final community/border audit remain."
@@ -15807,9 +16242,12 @@
         1756,
         1769
       ],
-      "status": "pending",
-      "linkedEvidenceCount": 0,
-      "review": null
+      "status": "partial",
+      "linkedEvidenceCount": 913,
+      "review": {
+        "status": "partial",
+        "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain."
+      }
     },
     {
       "chapter": 207,
@@ -16081,7 +16519,7 @@
         2020
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1043,
+      "linkedEvidenceCount": 1040,
       "review": {
         "status": "partial",
         "note": "Read PDF2013-2014: distinguish Castile and the composite Crown of Aragon;1469 marriage is later than current nodes and does not imply a unitary administration. Full course geography and community audit remain."

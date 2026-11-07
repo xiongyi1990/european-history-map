@@ -169,7 +169,7 @@ describe('Frankish atlas integration',()=>{
 it('connects the final medieval stage to a joint-crown region, city return and exact-year control changes',async()=>{
  setup('/?year=1356&view=partitions&kingdom=west-francia');
  fireEvent.click(screen.getByRole('button',{name:'1360—1453 王权与分裂'}));expect(location.search).toContain('year=1360');
- expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(29);
+ expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(33);
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1386'}});
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：波兰王国：核心地域'}));
  expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('雅德维加与');
@@ -198,7 +198,7 @@ it('preserves Iberian crown selection through city return and distinguishes the 
 
 it('opens1397 Nordic union, preserves crown through Stockholm and distinguishes the1439 Norwegian transition',async()=>{
  setup('/?year=1396&view=partitions&kingdom=sweden-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(29);
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(33);
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：瑞典王国：本土核心与东部联系'}));
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/斯德哥尔摩/}));expect(location.search).toContain('place=stockholm');expect(screen.getByText(/斯德哥尔摩仍由梅克伦堡派/)).toBeTruthy();
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1397 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=sweden-late');
@@ -214,4 +214,12 @@ it('keeps the Rus realm through a city return and changes the Dvina note at the 
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});
  fireEvent.click(screen.getByRole('button',{name:'地图：诺夫哥罗德：城市共和国与王公联系'}));expect(screen.getAllByText(/北德维纳地区本年暂转莫斯科/).length).toBeGreaterThan(0);
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1399'}});fireEvent.click(screen.getByRole('button',{name:'地图：诺夫哥罗德：城市共和国与王公联系'}));expect(screen.getAllByText(/1398年德维纳已归还/).length).toBeGreaterThan(0);await act(async()=>{});
+});
+
+it('keeps Balkan selection through a city return and shows1439 unequal city losses',async()=>{
+ setup('/?year=1439&view=partitions&kingdom=serbia-late');
+ const article=screen.getByRole('article',{name:'分国地域详情'});expect(article.textContent).toContain('新布尔多仍抵抗至1441');
+ fireEvent.click(within(article).getByRole('button',{name:/斯梅代雷沃：从旧聚落到新王城/}));expect(location.search).toContain('place=smederevo');expect(screen.getAllByText(/1439失守后的奥斯曼占领城市/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1439 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=serbia-late');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1444'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：塞尔维亚：摩拉瓦与多瑙河地域'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('1444恢复的地方领国');await act(async()=>{});
 });

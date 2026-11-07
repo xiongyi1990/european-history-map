@@ -180,11 +180,19 @@
     },
     "155": {
       "status": "partial",
-      "note": "Read PDF1305-1306: early Slavic writing/church background only, not1360-1453 spoken-language evidence. Wider chapter geography and final review remain."
+      "note": "Read PDF1305-1306: early Slavic writing/church background only, not1360-1453 spoken-language evidence. Wider chapter geography and final review remain. Additional read physical1302,1304,1305; writing systems, liturgy and local speech are separate."
     },
     "156": {
       "status": "partial",
       "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain."
+    },
+    "154": {
+      "status": "partial",
+      "note": "Read physical PDF1291,1295,1298. Early Slavic movement geography is background only, not1360-1453 borders or ethnic labels. Course etymology is not a population classification."
+    },
+    "206": {
+      "status": "partial",
+      "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain."
     }
   },
   "priorityQueue": [
@@ -192,7 +200,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now27 explicit moments/29 reading cores, adding Moscow-Vladimir, Tver, Novgorod and Pskov.1360 distinct Dmitrys,1397/1398 Dvina reversal,1431 petition/1432 judgment, interrupted Moscow reign and1450/1453 co-rule distinguished. Manuscript/monastery date layers preserved. Other Rus lands, full Balkans/Italian/Low Countries subdivisions and later years remain partial."
+      "note": "1360-1453 now27 explicit moments/33 reading cores, adding Serbia-Morava, Bosnia, Tarnovo and Vidin. Distinguish imperial/knez/despot/ban/royal titles,1409/1410 division,1393/1395/1396 distinct falls,1439/1441 separate city losses,1444 restoration and1453 continuing local states. Fixed cores, contested Vidin continuity and local control not precise frontiers. Other Balkans, Italian/Low Countries subdivisions and later years remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",

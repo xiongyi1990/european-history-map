@@ -9,7 +9,7 @@ import progress from './atlas-progress-summary.json';
 describe('Rus political institutions, contested titles and manuscript dates1360-1453',()=>{
  it('adds four separate cores at existing moments and reuses Moscow without inventing missing years',()=>{
   expect(medievalTransitionYears).toHaveLength(27);expect(rusLatePlaces).toHaveLength(8);expect(rusLateDetails).toHaveLength(239);
-  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(29);for(const id of ['moscow-rus','tver-rus','novgorod-rus','pskov-rus'])expect(partitionRealmAt(y,id)).toBeDefined();for(const n of ['特维尔','普斯科夫','诺夫哥罗德'])expect(partitionLabels(y).some(l=>l.name===n)).toBe(true);}
+  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(33);for(const id of ['moscow-rus','tver-rus','novgorod-rus','pskov-rus'])expect(partitionRealmAt(y,id)).toBeDefined();for(const n of ['特维尔','普斯科夫','诺夫哥罗德'])expect(partitionLabels(y).some(l=>l.name===n)).toBe(true);}
   expect(partitionBoundsAt(1453)[1][0]).toBeGreaterThan(42);expect(partitionAt(1380)).toBeUndefined();expect(partitionRealmAt(1356,'moscow-rus')).toBeUndefined();expect(ancientPlaces.filter(p=>p.id==='moscow')).toHaveLength(1);
   for(const d of rusLateDetails){expect(historicalDetail(d.placeId,d.from)?.id,d.id).toBe(d.id);for(const id of d.related)expect(ancientPlaces.some(p=>p.id===id),id).toBe(true);for(const field of [d.polity,d.territory,d.people,d.language,d.nameNote])for(const k of field.sources)expect(historySources[k]?.url,k).toMatch(/^https:/);}
   expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);
