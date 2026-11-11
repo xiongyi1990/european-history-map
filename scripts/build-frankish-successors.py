@@ -79,6 +79,12 @@ bosnia_late=clipped(poly([(16.8,43.7),(17.3,43.55),(18.8,43.7),(19.05,44.2),(18.
 tarnovo_late=clipped(poly([(24.4,42.7),(26.1,42.7),(26.6,43.3),(25.7,43.9),(24.5,43.85)]).difference(new_regions['straits']))
 vidin_late=clipped(poly([(22.2,43.5),(23.9,43.45),(24.2,44.2),(22.9,44.4),(22.2,44.05)]).difference(serbia_late))
 balkan_late_regions={'serbia-late':serbia_late,'bosnia-late':bosnia_late,'tarnovo-late':tarnovo_late,'vidin-late':vidin_late}
+# Original fixed city reading cores; these are not yearly state frontiers.
+milan_late=clipped(poly([(8.4,44.9),(9.9,44.9),(10.05,45.6),(9.9,46.15),(8.9,46.15),(8.3,45.5)]).intersection(base['italy']))
+florence_late=clipped(poly([(10.7,43.15),(11.7,43.15),(12.1,43.8),(11.9,44.15),(10.7,44.1)]).intersection(base['italy']))
+genoa_late=clipped(poly([(8.25,43.9),(9.8,43.9),(10.05,44.3),(9.6,44.8),(8.5,44.8),(8.1,44.3)]).intersection(base['italy']))
+venice_late=clipped(poly([(11.5,45.1),(12.7,45.1),(12.9,45.7),(12.2,46),(11.5,45.8)]).difference(base['east-francia']))
+italy_late_regions={'milan-late':milan_late,'florence-late':florence_late,'genoa-late':genoa_late,'venice-late':venice_late}
 features=[]
 for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]+high_years+late_years+transition_years:
     realms=base.copy()
@@ -98,10 +104,12 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         realms.update(nordic_late_regions)
         realms.update(rus_late_regions)
         realms.update(balkan_late_regions)
+        realms['italy']=clipped(realms['italy'].difference(unary_union(list(italy_late_regions.values()))))
+        realms.update(italy_late_regions)
     for i,(id,g) in enumerate(realms.items()):
         for other,h in list(realms.items())[i+1:]:assert g.intersection(h).area<1e-7,(year,id,other)
-        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial Balkan reading cores; titles, suzerainty, local control and disputed continuity are separate. See docs/balkan-late.md' if id in balkan_late_regions else 'Original editorial Rus reading cores, not yearly control or a united Russian state. See docs/rus-late.md' if id in rus_late_regions else 'Original editorial Nordic reading cores; Danish Scanian rights, Swedish eastern regions and overseas lands require separate detail. See docs/nordic-late.md' if id in nordic_late_regions else 'Original editorial Iberian mainland reading cores. See docs/iberian-late.md' if id in iberian_late_regions else 'Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
-    checks=[('west-francia',(2.35,48.86)),('burgundy-duchy' if year>=1360 else 'west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
+        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial Italian city reading core, not annual control or ethnic borders. See docs/italy-late.md' if id in italy_late_regions else 'Italian reading remainder after separate city cores, not a unified state. See docs/italy-late.md' if id=='italy' and year>=1360 else 'Original editorial Balkan reading cores; titles, suzerainty, local control and disputed continuity are separate. See docs/balkan-late.md' if id in balkan_late_regions else 'Original editorial Rus reading cores, not yearly control or a united Russian state. See docs/rus-late.md' if id in rus_late_regions else 'Original editorial Nordic reading cores; Danish Scanian rights, Swedish eastern regions and overseas lands require separate detail. See docs/nordic-late.md' if id in nordic_late_regions else 'Original editorial Iberian mainland reading cores. See docs/iberian-late.md' if id in iberian_late_regions else 'Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
+    checks=[('west-francia',(2.35,48.86)),('burgundy-duchy' if year>=1360 else 'west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('milan-late' if year>=1360 else 'italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
     for id,xy in checks:assert realms[id].covers(Point(xy)),(year,id,xy)
     if year>=1190:
         assert realms['england'].covers(Point(-.13,51.5))
@@ -134,7 +142,11 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         assert not any(g.covers(Point(-5.32,35.89)) for g in iberian_late_regions.values()),'Ceuta is not Iberian mainland'
         for id,xy in [('poland',(17.6,52.54)),('poland',(19.94,50.06)),('lithuania',(25.28,54.68)),('hungary',(18.74,47.79)),('hungary',(19.04,47.5)),('straits',(28.95,41.02)),('straits',(29.06,40.19)),('straits',(26.56,41.68))]:assert realms[id].covers(Point(xy)),(year,id,xy)
         for name,xy in [('Gdansk',(18.64,54.35)),('Malbork',(19.03,54.04)),('Wroclaw',(17.04,51.11)),('Vienna',(16.37,48.21))]:assert not any(new_regions[k].covers(Point(xy)) for k in ['poland','lithuania','hungary']),(year,name)
-    for name,xy in [('Rome',(12.4964,41.9028)),('Venice',(12.33,45.44)),('Ravenna',(12.20,44.42))]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,'not direct regional inclusion',name)
+    for name,xy in [('Rome',(12.4964,41.9028)),('Ravenna',(12.20,44.42))]+([] if year>=1360 else [('Venice',(12.33,45.44))]):assert not any(g.covers(Point(xy)) for g in realms.values()),(year,'not direct regional inclusion',name)
+    if year>=1360:
+        for id,xy in [('milan-late',(9.19,45.46)),('milan-late',(9.16,45.18)),('florence-late',(11.25,43.77)),('florence-late',(11.0952,43.88)),('genoa-late',(8.93,44.41)),('venice-late',(11.88,45.41))]:assert realms[id].covers(Point(xy)),(year,id,xy)
+        assert venice_late.distance(Point(12.34,45.43))<.10,(year,'Natural Earth50m omits lagoon islands; Venice point unchanged')
+        for xy in [(10.4,43.72),(10.5,43.84),(10.31,43.55),(10.99,45.44),(10.21,45.54),(12.06,43.54)]:assert not any(g.covers(Point(xy)) for g in italy_late_regions.values()),(year,'Italian comparison outside new cores',xy)
 output=ROOT/'src/europe/frankish-successor-geometry.json'
 output.write_text(json.dumps({'type':'FeatureCollection','features':features},ensure_ascii=False,separators=(',',':'))+'\n',encoding='utf-8')
 print(f'{len(features)} valid non-overlapping regional envelopes; representative inclusion/exclusion checks passed')

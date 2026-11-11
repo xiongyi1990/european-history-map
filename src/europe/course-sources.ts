@@ -1,3 +1,4 @@
+import {italyLateSources} from './italy-late-sources';
 import {balkanLateSources} from './balkan-late-sources';
 import {rusLateSources} from './rus-late-sources';
 import {nordicLateSources} from './nordic-late-sources';
@@ -20,7 +21,7 @@ import {fourthCenturySources} from './fourth-century-sources';
 export const courseDocument={title:'顾衡讲透欧洲史（不含加餐）',pages:2236,chapters:260,sha256:'913f657e7aed2079a6a96c93b63f259b2a60acf9e5b1bd4870a524a4993ec24b'};
 export interface ReadingReference {chapter:number;pages:[number,number];note?:string}
 export const courseSources={
- ...imperialCommuneSources,...highMedievalSources,...lateMedievalSources,...medievalTransitionSources,...iberianLateSources,...nordicLateSources,...rusLateSources,...balkanLateSources,
+ ...imperialCommuneSources,...highMedievalSources,...lateMedievalSources,...medievalTransitionSources,...iberianLateSources,...nordicLateSources,...rusLateSources,...balkanLateSources,...italyLateSources,
  salianHenryIV:{title:'德国传记：亨利四世王号、1077年卡诺莎与1084年帝号',url:'https://www.deutsche-biographie.de/sfz70049.html'},
  canossaSite:{title:'意大利地区博物馆：卡诺莎城堡及1077年会面',url:'https://musei.emiliaromagna.beniculturali.it/musei/castello-di-canossa-e-museo-nazionale-naborre-campanini'},
  ottonianLechfeld:{title:'奥格斯堡地区官方旅游局：955年战役与位置不确定性',url:'https://www.augsburger-land.de/augsburger-land/kultur-tradition/sagen-geschichten/lechfeldschlacht-955'},

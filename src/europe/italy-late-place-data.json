@@ -1,0 +1,118 @@
+[
+ {
+  "id": "genoa",
+  "name": "热那亚",
+  "modern": "意大利 · 利古里亚",
+  "aliases": [
+   "Genova",
+   "Genoa",
+   "圣乔治之家"
+  ],
+  "coords": [
+   8.93,
+   44.41
+  ],
+  "key": "italyGenoa"
+ },
+ {
+  "id": "padua",
+  "name": "帕多瓦",
+  "modern": "意大利 · 威尼托",
+  "aliases": [
+   "Padova",
+   "Padua",
+   "卡拉拉"
+  ],
+  "coords": [
+   11.88,
+   45.41
+  ],
+  "key": "italyPadua"
+ },
+ {
+  "id": "brescia",
+  "name": "布雷西亚",
+  "modern": "意大利 · 伦巴第",
+  "aliases": [
+   "Brescia",
+   "布雷西亞"
+  ],
+  "coords": [
+   10.21,
+   45.54
+  ],
+  "key": "italyMalatesta"
+ },
+ {
+  "id": "lucca",
+  "name": "卢卡",
+  "modern": "意大利 · 托斯卡纳",
+  "aliases": [
+   "Lucca",
+   "圭尼吉"
+  ],
+  "coords": [
+   10.5,
+   43.84
+  ],
+  "key": "italyLucca"
+ },
+ {
+  "id": "livorno",
+  "name": "里窝那",
+  "modern": "意大利 · 托斯卡纳",
+  "aliases": [
+   "Livorno",
+   "Leghorn",
+   "里沃诺"
+  ],
+  "coords": [
+   10.31,
+   43.55
+  ],
+  "key": "italyLivorno"
+ },
+ {
+  "id": "prato",
+  "name": "普拉托",
+  "modern": "意大利 · 托斯卡纳",
+  "aliases": [
+   "Prato",
+   "达蒂尼",
+   "Datini"
+  ],
+  "coords": [
+   11.0952,
+   43.88
+  ],
+  "key": "italyPratoArchive"
+ },
+ {
+  "id": "chioggia",
+  "name": "基奥贾",
+  "modern": "意大利 · 威尼托",
+  "aliases": [
+   "Chioggia",
+   "基奥贾战争"
+  ],
+  "coords": [
+   12.28,
+   45.22
+  ],
+  "key": "italyVeniceChronology"
+ },
+ {
+  "id": "anghiari",
+  "name": "安吉亚里战役地域",
+  "modern": "意大利 · 托斯卡纳",
+  "aliases": [
+   "Anghiari",
+   "安吉亚里会战"
+  ],
+  "coords": [
+   12.06,
+   43.54
+  ],
+  "key": "italyAnghiari"
+ }
+]

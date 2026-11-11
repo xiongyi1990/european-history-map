@@ -11,7 +11,7 @@ const city=(id:string,y:number)=>historicalDetail(id,y)!;
 describe('Balkan local polities, vassalage and distinct city chronology1360-1453',()=>{
  it('resolves four new cores and city/event cards at existing moments without inventing annual borders',()=>{
   expect(medievalTransitionYears).toHaveLength(27);expect(balkanLatePlaces).toHaveLength(11);expect(balkanLateDetails).toHaveLength(327);
-  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(33);for(const id of ['serbia-late','bosnia-late','tarnovo-late','vidin-late'])expect(realm(y,id)).toBeDefined();for(const name of ['波斯尼亚','特尔诺沃','维丁'])expect(partitionLabels(y).some(p=>p.name===name)).toBe(true);}
+  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(37);for(const id of ['serbia-late','bosnia-late','tarnovo-late','vidin-late'])expect(realm(y,id)).toBeDefined();for(const name of ['波斯尼亚','特尔诺沃','维丁'])expect(partitionLabels(y).some(p=>p.name===name)).toBe(true);}
   expect(partitionAt(1393)).toBeUndefined();expect(partitionRealmAt(1356,'serbia-late')).toBeUndefined();
   for(const p of balkanLatePlaces)expect(ancientPlaces.filter(x=>x.id===p.id)).toHaveLength(1);
   for(const d of balkanLateDetails){expect(city(d.placeId,d.from).id,d.id).toBe(d.id);for(const id of d.related)expect(ancientPlaces.some(p=>p.id===id),id).toBe(true);for(const field of [d.polity,d.territory,d.people,d.language,d.nameNote])for(const k of field.sources)expect(historySources[k]?.url,k).toMatch(/^https:/);}

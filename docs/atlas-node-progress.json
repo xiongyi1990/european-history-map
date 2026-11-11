@@ -2,18 +2,18 @@
   "schemaVersion": 1,
   "scope": "Current atlas targets and course geographic leads; not all integer years",
   "courseChapters": 260,
-  "chaptersReferenced": 71,
+  "chaptersReferenced": 73,
   "chaptersReviewed": 0,
   "targetYears": 613,
   "reviewedYears": 0,
   "partialYears": 533,
   "pendingYears": 80,
   "politicalReadingYears": 119,
-  "coursePeriodRecords": 5570,
+  "coursePeriodRecords": 5920,
   "routeTopics": 22,
   "unresolvedReferenceIssues": 0,
   "allReviewed": false,
-  "inputHash": "a269eb5aa6b81b0b835e7b9a025c0a2e15996907a6005fdc1f216bdcfef09334",
+  "inputHash": "e5cc950584260ff541535c0ae7a142598996dd03b642dd2d0ba0f7b434151784",
   "completionRule": "All year facets and all course geographic leads need explicit review; links and record counts never imply completion",
   "duplicatePlaceIds": [],
   "referenceIssues": [],
@@ -22,7 +22,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now27 explicit moments/33 reading cores, adding Serbia-Morava, Bosnia, Tarnovo and Vidin. Distinguish imperial/knez/despot/ban/royal titles,1409/1410 division,1393/1395/1396 distinct falls,1439/1441 separate city losses,1444 restoration and1453 continuing local states. Fixed cores, contested Vidin continuity and local control not precise frontiers. Other Balkans, Italian/Low Countries subdivisions and later years remain partial."
+      "note": "1360-1453 now27 moments/37 reading cores. Four Italian city contexts added: Milan/Pavia title-control splits, Florence republican institutions and1434 family influence, Venice elected doges/land cities, Genoa foreign lordship/1435 interim government. Pisa1406 and Livorno1421 separate. Old Italy remainder changed only at27 moments; other1513 geometry records retained. Not precise annual borders; Low Countries, remaining Balkans, Italian minor states and1453-1517 remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
@@ -9067,11 +9067,27 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1360",
+          "pavia-italy-late-1360",
+          "florence-italy-late-1360",
+          "pisa-italy-late-1360",
+          "lucca-italy-late-1360",
+          "livorno-italy-late-1360",
+          "prato-italy-late-1360",
+          "venice-italy-late-1360",
+          "genoa-italy-late-1360",
+          "padua-italy-late-1360",
+          "verona-italy-late-1360",
+          "brescia-italy-late-1360",
           "krusevac-balkan-late-1360",
           "belgrade-balkan-late-1360",
           "novo-brdo-balkan-late-1360",
@@ -9183,11 +9199,27 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1364",
+          "pavia-italy-late-1364",
+          "florence-italy-late-1364",
+          "pisa-italy-late-1364",
+          "lucca-italy-late-1364",
+          "livorno-italy-late-1364",
+          "prato-italy-late-1364",
+          "venice-italy-late-1364",
+          "genoa-italy-late-1364",
+          "padua-italy-late-1364",
+          "verona-italy-late-1364",
+          "brescia-italy-late-1364",
           "krusevac-balkan-late-1364",
           "belgrade-balkan-late-1364",
           "novo-brdo-balkan-late-1364",
@@ -9299,11 +9331,27 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1377",
+          "pavia-italy-late-1377",
+          "florence-italy-late-1377",
+          "pisa-italy-late-1377",
+          "lucca-italy-late-1377",
+          "livorno-italy-late-1377",
+          "prato-italy-late-1377",
+          "venice-italy-late-1377",
+          "genoa-italy-late-1377",
+          "padua-italy-late-1377",
+          "verona-italy-late-1377",
+          "brescia-italy-late-1377",
           "krusevac-balkan-late-1377",
           "belgrade-balkan-late-1377",
           "novo-brdo-balkan-late-1377",
@@ -9415,11 +9463,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1378",
+          "pavia-italy-late-1378",
+          "florence-italy-late-1378",
+          "pisa-italy-late-1378",
+          "lucca-italy-late-1378",
+          "livorno-italy-late-1378",
+          "prato-italy-late-1378",
+          "venice-italy-late-1378",
+          "genoa-italy-late-1378",
+          "padua-italy-late-1378",
+          "verona-italy-late-1378",
+          "brescia-italy-late-1378",
+          "chioggia-italy-late-1378",
           "krusevac-balkan-late-1378",
           "belgrade-balkan-late-1378",
           "novo-brdo-balkan-late-1378",
@@ -9532,11 +9597,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1381",
+          "pavia-italy-late-1381",
+          "florence-italy-late-1381",
+          "pisa-italy-late-1381",
+          "lucca-italy-late-1381",
+          "livorno-italy-late-1381",
+          "prato-italy-late-1381",
+          "venice-italy-late-1381",
+          "genoa-italy-late-1381",
+          "padua-italy-late-1381",
+          "verona-italy-late-1381",
+          "brescia-italy-late-1381",
+          "chioggia-italy-late-1381",
           "krusevac-balkan-late-1381",
           "belgrade-balkan-late-1381",
           "novo-brdo-balkan-late-1381",
@@ -9650,11 +9732,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1385",
+          "pavia-italy-late-1385",
+          "florence-italy-late-1385",
+          "pisa-italy-late-1385",
+          "lucca-italy-late-1385",
+          "livorno-italy-late-1385",
+          "prato-italy-late-1385",
+          "venice-italy-late-1385",
+          "genoa-italy-late-1385",
+          "padua-italy-late-1385",
+          "verona-italy-late-1385",
+          "brescia-italy-late-1385",
+          "chioggia-italy-late-1385",
           "krusevac-balkan-late-1385",
           "belgrade-balkan-late-1385",
           "novo-brdo-balkan-late-1385",
@@ -9770,11 +9869,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1386",
+          "pavia-italy-late-1386",
+          "florence-italy-late-1386",
+          "pisa-italy-late-1386",
+          "lucca-italy-late-1386",
+          "livorno-italy-late-1386",
+          "prato-italy-late-1386",
+          "venice-italy-late-1386",
+          "genoa-italy-late-1386",
+          "padua-italy-late-1386",
+          "verona-italy-late-1386",
+          "brescia-italy-late-1386",
+          "chioggia-italy-late-1386",
           "krusevac-balkan-late-1386",
           "belgrade-balkan-late-1386",
           "novo-brdo-balkan-late-1386",
@@ -9889,11 +10005,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1389",
+          "pavia-italy-late-1389",
+          "florence-italy-late-1389",
+          "pisa-italy-late-1389",
+          "lucca-italy-late-1389",
+          "livorno-italy-late-1389",
+          "prato-italy-late-1389",
+          "venice-italy-late-1389",
+          "genoa-italy-late-1389",
+          "padua-italy-late-1389",
+          "verona-italy-late-1389",
+          "brescia-italy-late-1389",
+          "chioggia-italy-late-1389",
           "krusevac-balkan-late-1389",
           "belgrade-balkan-late-1389",
           "novo-brdo-balkan-late-1389",
@@ -10010,11 +10143,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1396",
+          "pavia-italy-late-1396",
+          "florence-italy-late-1396",
+          "pisa-italy-late-1396",
+          "lucca-italy-late-1396",
+          "livorno-italy-late-1396",
+          "prato-italy-late-1396",
+          "venice-italy-late-1396",
+          "genoa-italy-late-1396",
+          "padua-italy-late-1396",
+          "verona-italy-late-1396",
+          "brescia-italy-late-1396",
+          "chioggia-italy-late-1396",
           "krusevac-balkan-late-1396",
           "belgrade-balkan-late-1396",
           "novo-brdo-balkan-late-1396",
@@ -10133,11 +10283,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1397",
+          "pavia-italy-late-1397",
+          "florence-italy-late-1397",
+          "pisa-italy-late-1397",
+          "lucca-italy-late-1397",
+          "livorno-italy-late-1397",
+          "prato-italy-late-1397",
+          "venice-italy-late-1397",
+          "genoa-italy-late-1397",
+          "padua-italy-late-1397",
+          "verona-italy-late-1397",
+          "brescia-italy-late-1397",
+          "chioggia-italy-late-1397",
           "krusevac-balkan-late-1397",
           "belgrade-balkan-late-1397",
           "novo-brdo-balkan-late-1397",
@@ -10256,11 +10423,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1399",
+          "pavia-italy-late-1399",
+          "florence-italy-late-1399",
+          "pisa-italy-late-1399",
+          "lucca-italy-late-1399",
+          "livorno-italy-late-1399",
+          "prato-italy-late-1399",
+          "venice-italy-late-1399",
+          "genoa-italy-late-1399",
+          "padua-italy-late-1399",
+          "verona-italy-late-1399",
+          "brescia-italy-late-1399",
+          "chioggia-italy-late-1399",
           "krusevac-balkan-late-1399",
           "belgrade-balkan-late-1399",
           "novo-brdo-balkan-late-1399",
@@ -10392,11 +10576,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1402",
+          "pavia-italy-late-1402",
+          "florence-italy-late-1402",
+          "pisa-italy-late-1402",
+          "lucca-italy-late-1402",
+          "livorno-italy-late-1402",
+          "prato-italy-late-1402",
+          "venice-italy-late-1402",
+          "genoa-italy-late-1402",
+          "padua-italy-late-1402",
+          "verona-italy-late-1402",
+          "brescia-italy-late-1402",
+          "chioggia-italy-late-1402",
           "krusevac-balkan-late-1402",
           "belgrade-balkan-late-1402",
           "novo-brdo-balkan-late-1402",
@@ -10516,11 +10717,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1409",
+          "pavia-italy-late-1409",
+          "florence-italy-late-1409",
+          "pisa-italy-late-1409",
+          "lucca-italy-late-1409",
+          "livorno-italy-late-1409",
+          "prato-italy-late-1409",
+          "venice-italy-late-1409",
+          "genoa-italy-late-1409",
+          "padua-italy-late-1409",
+          "verona-italy-late-1409",
+          "brescia-italy-late-1409",
+          "chioggia-italy-late-1409",
           "krusevac-balkan-late-1409",
           "belgrade-balkan-late-1409",
           "novo-brdo-balkan-late-1409",
@@ -10591,8 +10809,7 @@
           "avignon-transition-1409",
           "byzantium-transition-1409",
           "hadrianople-transition-1409",
-          "bursa-transition-1409",
-          "pisa-transition-1409"
+          "bursa-transition-1409"
         ],
         "periodCityRecordCount": 1,
         "turningPoint": null,
@@ -10640,11 +10857,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1410",
+          "pavia-italy-late-1410",
+          "florence-italy-late-1410",
+          "pisa-italy-late-1410",
+          "lucca-italy-late-1410",
+          "livorno-italy-late-1410",
+          "prato-italy-late-1410",
+          "venice-italy-late-1410",
+          "genoa-italy-late-1410",
+          "padua-italy-late-1410",
+          "verona-italy-late-1410",
+          "brescia-italy-late-1410",
+          "chioggia-italy-late-1410",
           "krusevac-balkan-late-1410",
           "belgrade-balkan-late-1410",
           "novo-brdo-balkan-late-1410",
@@ -10764,11 +10998,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1414",
+          "pavia-italy-late-1414",
+          "florence-italy-late-1414",
+          "pisa-italy-late-1414",
+          "lucca-italy-late-1414",
+          "livorno-italy-late-1414",
+          "prato-italy-late-1414",
+          "venice-italy-late-1414",
+          "genoa-italy-late-1414",
+          "padua-italy-late-1414",
+          "verona-italy-late-1414",
+          "brescia-italy-late-1414",
+          "chioggia-italy-late-1414",
           "krusevac-balkan-late-1414",
           "belgrade-balkan-late-1414",
           "novo-brdo-balkan-late-1414",
@@ -10890,11 +11141,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1415",
+          "pavia-italy-late-1415",
+          "florence-italy-late-1415",
+          "pisa-italy-late-1415",
+          "lucca-italy-late-1415",
+          "livorno-italy-late-1415",
+          "prato-italy-late-1415",
+          "venice-italy-late-1415",
+          "genoa-italy-late-1415",
+          "padua-italy-late-1415",
+          "verona-italy-late-1415",
+          "brescia-italy-late-1415",
+          "chioggia-italy-late-1415",
           "krusevac-balkan-late-1415",
           "belgrade-balkan-late-1415",
           "novo-brdo-balkan-late-1415",
@@ -11017,11 +11285,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1417",
+          "pavia-italy-late-1417",
+          "florence-italy-late-1417",
+          "pisa-italy-late-1417",
+          "lucca-italy-late-1417",
+          "livorno-italy-late-1417",
+          "prato-italy-late-1417",
+          "venice-italy-late-1417",
+          "genoa-italy-late-1417",
+          "padua-italy-late-1417",
+          "verona-italy-late-1417",
+          "brescia-italy-late-1417",
+          "chioggia-italy-late-1417",
           "krusevac-balkan-late-1417",
           "belgrade-balkan-late-1417",
           "novo-brdo-balkan-late-1417",
@@ -11143,11 +11428,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1420",
+          "pavia-italy-late-1420",
+          "florence-italy-late-1420",
+          "pisa-italy-late-1420",
+          "lucca-italy-late-1420",
+          "livorno-italy-late-1420",
+          "prato-italy-late-1420",
+          "venice-italy-late-1420",
+          "genoa-italy-late-1420",
+          "padua-italy-late-1420",
+          "verona-italy-late-1420",
+          "brescia-italy-late-1420",
+          "chioggia-italy-late-1420",
           "krusevac-balkan-late-1420",
           "belgrade-balkan-late-1420",
           "novo-brdo-balkan-late-1420",
@@ -11269,11 +11571,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1422",
+          "pavia-italy-late-1422",
+          "florence-italy-late-1422",
+          "pisa-italy-late-1422",
+          "lucca-italy-late-1422",
+          "livorno-italy-late-1422",
+          "prato-italy-late-1422",
+          "venice-italy-late-1422",
+          "genoa-italy-late-1422",
+          "padua-italy-late-1422",
+          "verona-italy-late-1422",
+          "brescia-italy-late-1422",
+          "chioggia-italy-late-1422",
           "krusevac-balkan-late-1422",
           "belgrade-balkan-late-1422",
           "novo-brdo-balkan-late-1422",
@@ -11394,11 +11713,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1429",
+          "pavia-italy-late-1429",
+          "florence-italy-late-1429",
+          "pisa-italy-late-1429",
+          "lucca-italy-late-1429",
+          "livorno-italy-late-1429",
+          "prato-italy-late-1429",
+          "venice-italy-late-1429",
+          "genoa-italy-late-1429",
+          "padua-italy-late-1429",
+          "verona-italy-late-1429",
+          "brescia-italy-late-1429",
+          "chioggia-italy-late-1429",
           "krusevac-balkan-late-1429",
           "belgrade-balkan-late-1429",
           "novo-brdo-balkan-late-1429",
@@ -11521,11 +11857,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1431",
+          "pavia-italy-late-1431",
+          "florence-italy-late-1431",
+          "pisa-italy-late-1431",
+          "lucca-italy-late-1431",
+          "livorno-italy-late-1431",
+          "prato-italy-late-1431",
+          "venice-italy-late-1431",
+          "genoa-italy-late-1431",
+          "padua-italy-late-1431",
+          "verona-italy-late-1431",
+          "brescia-italy-late-1431",
+          "chioggia-italy-late-1431",
           "krusevac-balkan-late-1431",
           "belgrade-balkan-late-1431",
           "novo-brdo-balkan-late-1431",
@@ -11647,11 +12000,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1435",
+          "pavia-italy-late-1435",
+          "florence-italy-late-1435",
+          "pisa-italy-late-1435",
+          "lucca-italy-late-1435",
+          "livorno-italy-late-1435",
+          "prato-italy-late-1435",
+          "venice-italy-late-1435",
+          "genoa-italy-late-1435",
+          "padua-italy-late-1435",
+          "verona-italy-late-1435",
+          "brescia-italy-late-1435",
+          "chioggia-italy-late-1435",
           "krusevac-balkan-late-1435",
           "belgrade-balkan-late-1435",
           "novo-brdo-balkan-late-1435",
@@ -11773,11 +12143,28 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1439",
+          "pavia-italy-late-1439",
+          "florence-italy-late-1439",
+          "pisa-italy-late-1439",
+          "lucca-italy-late-1439",
+          "livorno-italy-late-1439",
+          "prato-italy-late-1439",
+          "venice-italy-late-1439",
+          "genoa-italy-late-1439",
+          "padua-italy-late-1439",
+          "verona-italy-late-1439",
+          "brescia-italy-late-1439",
+          "chioggia-italy-late-1439",
           "krusevac-balkan-late-1439",
           "belgrade-balkan-late-1439",
           "novo-brdo-balkan-late-1439",
@@ -11851,7 +12238,6 @@
           "byzantium-transition-1439",
           "hadrianople-transition-1439",
           "bursa-transition-1439",
-          "florence-transition-1439",
           "basel-transition-1439"
         ],
         "periodCityRecordCount": 1,
@@ -11900,11 +12286,29 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1440",
+          "pavia-italy-late-1440",
+          "florence-italy-late-1440",
+          "pisa-italy-late-1440",
+          "lucca-italy-late-1440",
+          "livorno-italy-late-1440",
+          "prato-italy-late-1440",
+          "venice-italy-late-1440",
+          "genoa-italy-late-1440",
+          "padua-italy-late-1440",
+          "verona-italy-late-1440",
+          "brescia-italy-late-1440",
+          "chioggia-italy-late-1440",
+          "anghiari-italy-late-1440",
           "krusevac-balkan-late-1440",
           "belgrade-balkan-late-1440",
           "novo-brdo-balkan-late-1440",
@@ -12025,11 +12429,29 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1444",
+          "pavia-italy-late-1444",
+          "florence-italy-late-1444",
+          "pisa-italy-late-1444",
+          "lucca-italy-late-1444",
+          "livorno-italy-late-1444",
+          "prato-italy-late-1444",
+          "venice-italy-late-1444",
+          "genoa-italy-late-1444",
+          "padua-italy-late-1444",
+          "verona-italy-late-1444",
+          "brescia-italy-late-1444",
+          "chioggia-italy-late-1444",
+          "anghiari-italy-late-1444",
           "krusevac-balkan-late-1444",
           "belgrade-balkan-late-1444",
           "novo-brdo-balkan-late-1444",
@@ -12151,11 +12573,29 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1450",
+          "pavia-italy-late-1450",
+          "florence-italy-late-1450",
+          "pisa-italy-late-1450",
+          "lucca-italy-late-1450",
+          "livorno-italy-late-1450",
+          "prato-italy-late-1450",
+          "venice-italy-late-1450",
+          "genoa-italy-late-1450",
+          "padua-italy-late-1450",
+          "verona-italy-late-1450",
+          "brescia-italy-late-1450",
+          "chioggia-italy-late-1450",
+          "anghiari-italy-late-1450",
           "krusevac-balkan-late-1450",
           "belgrade-balkan-late-1450",
           "novo-brdo-balkan-late-1450",
@@ -12278,11 +12718,29 @@
             "serbia-late",
             "bosnia-late",
             "tarnovo-late",
-            "vidin-late"
+            "vidin-late",
+            "milan-late",
+            "florence-late",
+            "venice-late",
+            "genoa-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "milan-italy-late-1453",
+          "pavia-italy-late-1453",
+          "florence-italy-late-1453",
+          "pisa-italy-late-1453",
+          "lucca-italy-late-1453",
+          "livorno-italy-late-1453",
+          "prato-italy-late-1453",
+          "venice-italy-late-1453",
+          "genoa-italy-late-1453",
+          "padua-italy-late-1453",
+          "verona-italy-late-1453",
+          "brescia-italy-late-1453",
+          "chioggia-italy-late-1453",
+          "anghiari-italy-late-1453",
           "krusevac-balkan-late-1453",
           "belgrade-balkan-late-1453",
           "novo-brdo-balkan-late-1453",
@@ -15575,7 +16033,7 @@
         1216
       ],
       "status": "partial",
-      "linkedEvidenceCount": 974,
+      "linkedEvidenceCount": 972,
       "review": {
         "status": "partial",
         "note": "Read PDF1210-1212.9th-century sea geography only; not1360-1453 Nordic royal control evidence. Wider geographic leads and final community/border audit remain."
@@ -15588,7 +16046,7 @@
         1223
       ],
       "status": "partial",
-      "linkedEvidenceCount": 6,
+      "linkedEvidenceCount": 1,
       "review": null
     },
     {
@@ -15618,7 +16076,7 @@
         1247
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1050,
+      "linkedEvidenceCount": 1048,
       "review": {
         "status": "partial",
         "note": "Read PDF1239-1240 and1244-1246: peninsula topography and early cities. These earlier-era passages are not1360-1453 border evidence. Full course geography and community audit remain."
@@ -15681,7 +16139,7 @@
         1299
       ],
       "status": "partial",
-      "linkedEvidenceCount": 913,
+      "linkedEvidenceCount": 911,
       "review": {
         "status": "partial",
         "note": "Read physical PDF1291,1295,1298. Early Slavic movement geography is background only, not1360-1453 borders or ethnic labels. Course etymology is not a population classification."
@@ -15694,7 +16152,7 @@
         1307
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1153,
+      "linkedEvidenceCount": 1151,
       "review": {
         "status": "partial",
         "note": "Read PDF1305-1306: early Slavic writing/church background only, not1360-1453 spoken-language evidence. Wider chapter geography and final review remain. Additional read physical1302,1304,1305; writing systems, liturgy and local speech are separate."
@@ -15707,7 +16165,7 @@
         1315
       ],
       "status": "partial",
-      "linkedEvidenceCount": 826,
+      "linkedEvidenceCount": 824,
       "review": {
         "status": "partial",
         "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain."
@@ -16062,7 +16520,7 @@
         1627
       ],
       "status": "partial",
-      "linkedEvidenceCount": 322,
+      "linkedEvidenceCount": 321,
       "review": {
         "status": "partial",
         "note": "Read PDF1623-1624. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
@@ -16075,7 +16533,7 @@
         1636
       ],
       "status": "partial",
-      "linkedEvidenceCount": 245,
+      "linkedEvidenceCount": 243,
       "review": {
         "status": "partial",
         "note": "Read PDF1629 and1631. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
@@ -16174,7 +16632,7 @@
         1711
       ],
       "status": "partial",
-      "linkedEvidenceCount": 264,
+      "linkedEvidenceCount": 263,
       "review": {
         "status": "partial",
         "note": "Read PDF1707 and1709. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
@@ -16187,7 +16645,7 @@
         1722
       ],
       "status": "partial",
-      "linkedEvidenceCount": 264,
+      "linkedEvidenceCount": 263,
       "review": {
         "status": "partial",
         "note": "Read PDF1715 and1718. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
@@ -16220,10 +16678,10 @@
         1747
       ],
       "status": "partial",
-      "linkedEvidenceCount": 930,
+      "linkedEvidenceCount": 1285,
       "review": {
         "status": "partial",
-        "note": "Read PDF1739-1740.14th-century social comparison; no direct Nordic city details in pages read. Wider geographic leads and final community/border audit remain."
+        "note": "Read PDF1739-1740.14th-century social comparison; no direct Nordic city details in pages read. Wider geographic leads and final community/border audit remain. Read physical1738-1743 and1747 for Italian three-city comparison; later dynasty and social interpretations not automatically imported as political borders."
       }
     },
     {
@@ -16232,9 +16690,12 @@
         1747,
         1756
       ],
-      "status": "pending",
-      "linkedEvidenceCount": 0,
-      "review": null
+      "status": "partial",
+      "linkedEvidenceCount": 941,
+      "review": {
+        "status": "partial",
+        "note": "Read physical1747,1748,1750. Guild politics and literacy background only; constitutional detail and local dates checked independently. Wider chapter geographic/social audit remains."
+      }
     },
     {
       "chapter": 206,
@@ -16243,7 +16704,7 @@
         1769
       ],
       "status": "partial",
-      "linkedEvidenceCount": 913,
+      "linkedEvidenceCount": 911,
       "review": {
         "status": "partial",
         "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain."
@@ -16255,9 +16716,12 @@
         1769,
         1800
       ],
-      "status": "pending",
-      "linkedEvidenceCount": 0,
-      "review": null
+      "status": "partial",
+      "linkedEvidenceCount": 941,
+      "review": {
+        "status": "partial",
+        "note": "Read physical1769-1772. Family patronage and later descendants are separated from1434-1453 republican institutions; not used as precise frontier evidence. Full chapter geography and final audit remain."
+      }
     },
     {
       "chapter": 208,
@@ -16519,7 +16983,7 @@
         2020
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1040,
+      "linkedEvidenceCount": 1038,
       "review": {
         "status": "partial",
         "note": "Read PDF2013-2014: distinguish Castile and the composite Crown of Aragon;1469 marriage is later than current nodes and does not imply a unitary administration. Full course geography and community audit remain."

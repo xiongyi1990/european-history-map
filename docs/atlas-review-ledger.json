@@ -172,7 +172,7 @@
     },
     "204": {
       "status": "partial",
-      "note": "Read PDF1739-1740.14th-century social comparison; no direct Nordic city details in pages read. Wider geographic leads and final community/border audit remain."
+      "note": "Read PDF1739-1740.14th-century social comparison; no direct Nordic city details in pages read. Wider geographic leads and final community/border audit remain. Read physical1738-1743 and1747 for Italian three-city comparison; later dynasty and social interpretations not automatically imported as political borders."
     },
     "214": {
       "status": "partial",
@@ -193,6 +193,14 @@
     "206": {
       "status": "partial",
       "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain."
+    },
+    "205": {
+      "status": "partial",
+      "note": "Read physical1747,1748,1750. Guild politics and literacy background only; constitutional detail and local dates checked independently. Wider chapter geographic/social audit remains."
+    },
+    "207": {
+      "status": "partial",
+      "note": "Read physical1769-1772. Family patronage and later descendants are separated from1434-1453 republican institutions; not used as precise frontier evidence. Full chapter geography and final audit remain."
     }
   },
   "priorityQueue": [
@@ -200,7 +208,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now27 explicit moments/33 reading cores, adding Serbia-Morava, Bosnia, Tarnovo and Vidin. Distinguish imperial/knez/despot/ban/royal titles,1409/1410 division,1393/1395/1396 distinct falls,1439/1441 separate city losses,1444 restoration and1453 continuing local states. Fixed cores, contested Vidin continuity and local control not precise frontiers. Other Balkans, Italian/Low Countries subdivisions and later years remain partial."
+      "note": "1360-1453 now27 moments/37 reading cores. Four Italian city contexts added: Milan/Pavia title-control splits, Florence republican institutions and1434 family influence, Venice elected doges/land cities, Genoa foreign lordship/1435 interim government. Pisa1406 and Livorno1421 separate. Old Italy remainder changed only at27 moments; other1513 geometry records retained. Not precise annual borders; Low Countries, remaining Balkans, Italian minor states and1453-1517 remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
