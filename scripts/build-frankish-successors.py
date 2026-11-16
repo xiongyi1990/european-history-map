@@ -27,10 +27,10 @@ east=poly([*me,*alps[1:],(14.2,46.7),(14.4,48.1),(13.5,48.7),(12.4,49.4),(12.2,5
 # Trim a small unresolved coastal/southern fringe, avoiding fabricated control of Iberia.
 west=west.intersection(box(-10,42.65,20,60))
 land=unary_union([shape(f['geometry']) for f in json.loads((ROOT/'public/europe-reference/ne_50m_admin_0_countries.geojson').read_text(encoding='utf-8'))['features']]).simplify(.018,preserve_topology=True)
-def clipped(g):
+def clipped(g,min_area=.003):
     c=g.intersection(land)
     pieces=list(c.geoms) if hasattr(c,'geoms') else [c]
-    result=MultiPolygon([p for p in pieces if p.geom_type=='Polygon' and p.area>.003])
+    result=MultiPolygon([p for p in pieces if p.geom_type=='Polygon' and p.area>min_area])
     assert result.is_valid and not result.is_empty
     return result
 base={k:clipped(v) for k,v in {'west-francia':west,'east-francia':east,'lotharingia':loth,'upper-burgundy':upper,'provence':prov,'italy':italy}.items()}
@@ -85,6 +85,12 @@ florence_late=clipped(poly([(10.7,43.15),(11.7,43.15),(12.1,43.8),(11.9,44.15),(
 genoa_late=clipped(poly([(8.25,43.9),(9.8,43.9),(10.05,44.3),(9.6,44.8),(8.5,44.8),(8.1,44.3)]).intersection(base['italy']))
 venice_late=clipped(poly([(11.5,45.1),(12.7,45.1),(12.9,45.7),(12.2,46),(11.5,45.8)]).difference(base['east-francia']))
 italy_late_regions={'milan-late':milan_late,'florence-late':florence_late,'genoa-late':genoa_late,'venice-late':venice_late}
+# Editorial low-country cores, not copied modern provinces or annual frontiers.
+# Zeeland is a separate small land component; modern land clipping omits old waterways.
+brabant_late=clipped(poly([(4.15,50.68),(5.2,50.65),(5.35,51.45),(4.3,51.45),(4.15,50.95)]))
+holland_late=clipped(unary_union([box(4.1,51.75,5.1,52.5),box(3.35,51.4,4.05,51.7)]))
+hainaut_late=clipped(poly([(3.3,50.15),(4.25,50.15),(4.3,50.58),(3.8,50.6),(3.3,50.5)]))
+low_countries_regions={'brabant-late':brabant_late,'holland-late':holland_late,'hainaut-late':hainaut_late}
 features=[]
 for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,1024,1027,1032,1034,1056,1077,1084,1100,1105,1106,1111,1122,1125,1133,1138,1152,1155,1158,1162,1167,1176,1177,1183]+high_years+late_years+transition_years:
     realms=base.copy()
@@ -106,9 +112,12 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         realms.update(balkan_late_regions)
         realms['italy']=clipped(realms['italy'].difference(unary_union(list(italy_late_regions.values()))))
         realms.update(italy_late_regions)
+        for previous in ['west-francia','lotharingia','flanders']:
+            realms[previous]=clipped(realms[previous].difference(unary_union(list(low_countries_regions.values()))),min_area=0)
+        realms.update(low_countries_regions)
     for i,(id,g) in enumerate(realms.items()):
         for other,h in list(realms.items())[i+1:]:assert g.intersection(h).area<1e-7,(year,id,other)
-        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial Italian city reading core, not annual control or ethnic borders. See docs/italy-late.md' if id in italy_late_regions else 'Italian reading remainder after separate city cores, not a unified state. See docs/italy-late.md' if id=='italy' and year>=1360 else 'Original editorial Balkan reading cores; titles, suzerainty, local control and disputed continuity are separate. See docs/balkan-late.md' if id in balkan_late_regions else 'Original editorial Rus reading cores, not yearly control or a united Russian state. See docs/rus-late.md' if id in rus_late_regions else 'Original editorial Nordic reading cores; Danish Scanian rights, Swedish eastern regions and overseas lands require separate detail. See docs/nordic-late.md' if id in nordic_late_regions else 'Original editorial Iberian mainland reading cores. See docs/iberian-late.md' if id in iberian_late_regions else 'Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
+        features.append({'type':'Feature','properties':{'year':year,'id':id,'precision':'schematic','spatialScope':'regional-context','source':('Original editorial Low Countries reading core, not an annual border. See docs/low-countries-late.md' if id in low_countries_regions else 'Reading remainder after Low Countries subdivision, not one state. See docs/low-countries-late.md' if year>=1360 and id in ['west-francia','lotharingia','flanders'] else 'Original editorial Italian city reading core, not annual control or ethnic borders. See docs/italy-late.md' if id in italy_late_regions else 'Italian reading remainder after separate city cores, not a unified state. See docs/italy-late.md' if id=='italy' and year>=1360 else 'Original editorial Balkan reading cores; titles, suzerainty, local control and disputed continuity are separate. See docs/balkan-late.md' if id in balkan_late_regions else 'Original editorial Rus reading cores, not yearly control or a united Russian state. See docs/rus-late.md' if id in rus_late_regions else 'Original editorial Nordic reading cores; Danish Scanian rights, Swedish eastern regions and overseas lands require separate detail. See docs/nordic-late.md' if id in nordic_late_regions else 'Original editorial Iberian mainland reading cores. See docs/iberian-late.md' if id in iberian_late_regions else 'Original editorial reading regions; not annual control borders. See docs/medieval-transition.md' if year>=1360 else 'Original editorial reading envelopes; NDB, Golden Bull, Gascon Rolls, HES and Treccani context. See docs/late-medieval.md' if year>=1285 else 'Original editorial envelopes; political context: LVR, NDB, HLS. See docs/frankish-successors.md'),'note':'Fixed reading regions, not annual borders or royal demesne. Shared envelopes do not assert unchanged frontiers. Modern coastline; omitted regions are not ownerless.'},'geometry':mapping(g)})
     checks=[('west-francia',(2.35,48.86)),('burgundy-duchy' if year>=1360 else 'west-francia',(5.04,47.32)),('east-francia',(12.1,49.02)),('east-francia',(11.63,52.13)),('lotharingia',(6.0839,50.7747)),('milan-late' if year>=1360 else 'italy',(9.16,45.18)),('burgundy' if year>=951 else 'provence',(4.84,45.76)),('burgundy' if year>=951 else 'provence',(4.63,43.68)),('burgundy' if year>=951 else 'upper-burgundy',(6.14,46.204)),('burgundy' if year>=951 else 'upper-burgundy',(7.59,47.56))]
     for id,xy in checks:assert realms[id].covers(Point(xy)),(year,id,xy)
     if year>=1190:
@@ -124,6 +133,7 @@ for year in [900,911,919,925,936,951,955,962,965,973,983,987,996,1000,1002,1014,
         for xy in [(17.60,52.54),(18.74,47.79)]:assert not any(g.covers(Point(xy)) for g in realms.values()),(year,xy)
     if year<1285:assert not any(g.covers(Point(14.42,50.08)) for g in realms.values()),(year,'Prague not in earlier core')
     if year>=1360:
+        for id,xy in [('brabant-late',(4.35,50.85)),('brabant-late',(4.7,50.88)),('brabant-late',(4.4,51.22)),('holland-late',(4.31,52.08)),('holland-late',(4.36,52.01)),('holland-late',(4.49,52.16)),('holland-late',(4.71,52.01)),('holland-late',(3.61,51.5)),('hainaut-late',(3.95,50.45)),('hainaut-late',(3.53,50.36)),('flanders',(3.22,51.21)),('flanders',(3.72,51.05)),('flanders',(2.89,50.85))]:assert realms[id].covers(Point(xy)),(year,id,xy)
         for id,xy in [('serbia-late',(21.33,43.58)),('serbia-late',(20.93,44.66)),('bosnia-late',(18.18,43.99)),('bosnia-late',(18.33,44.16)),('bosnia-late',(17.27,44.34)),('tarnovo-late',(25.64,43.08)),('tarnovo-late',(24.9,43.7)),('vidin-late',(22.88,43.99))]:assert realms[id].covers(Point(xy)),(year,id,xy)
         for xy in [(20.466045,44.820591),(21.43,42.62),(20.74,42.21),(18.11,42.65),(27.91,43.21)]:assert not any(g.covers(Point(xy)) for g in balkan_late_regions.values()),(year,'Balkan comparison point outside reading cores',xy)
         for id,xy in [('moscow-rus',(37.613577,55.75411)),('moscow-rus',(40.41,56.13)),('moscow-rus',(38.13,56.31)),('tver-rus',(35.91,56.86)),('novgorod-rus',(31.28,58.52)),('novgorod-rus',(31.36,57.99)),('novgorod-rus',(34.97,57.04)),('pskov-rus',(28.33,57.82))]:assert realms[id].covers(Point(xy)),(year,id,xy)

@@ -1,0 +1,14 @@
+[
+ {"id":"leuven","name":"鲁汶","modern":"比利时 · 佛兰芒布拉班特","aliases":["Leuven","Louvain","卢万","欢悦入境"],"coords":[4.7,50.88],"key":"lowCharter"},
+ {"id":"antwerp","name":"安特卫普","modern":"比利时 · 安特卫普","aliases":["Antwerpen","Anvers","Antwerp"],"coords":[4.4,51.22],"key":"lowAntwerp"},
+ {"id":"the-hague","name":"海牙","modern":"荷兰 · 南荷兰省","aliases":["Den Haag","s-Gravenhage","The Hague","伯爵厅"],"coords":[4.31,52.08],"key":"lowJacoba"},
+ {"id":"delft","name":"代尔夫特","modern":"荷兰 · 南荷兰省","aliases":["Delft","代尔夫特和约","Zoen van Delft"],"coords":[4.36,52.01],"key":"lowJacoba"},
+ {"id":"leiden","name":"莱顿","modern":"荷兰 · 南荷兰省","aliases":["Leiden","Leyden"],"coords":[4.49,52.16],"key":"lowChronology"},
+ {"id":"gouda","name":"豪达","modern":"荷兰 · 南荷兰省","aliases":["Gouda","高达"],"coords":[4.71,52.01],"key":"lowChronology"},
+ {"id":"middelburg","name":"米德尔堡","modern":"荷兰 · 泽兰省","aliases":["Middelburg","米德尔伯赫","Zeeland"],"coords":[3.61,51.5],"key":"lowChronology"},
+ {"id":"mons","name":"蒙斯（贝尔亨）","modern":"比利时 · 埃诺省","aliases":["Mons","Bergen","Hainaut","Henegouwen","埃诺"],"coords":[3.95,50.45],"key":"lowHainautBook"},
+ {"id":"valenciennes","name":"瓦朗谢讷","modern":"法国 · 北部省","aliases":["Valenciennes","Valencijn"],"coords":[3.53,50.36],"key":"lowValenciennes"},
+ {"id":"ypres","name":"伊普尔","modern":"比利时 · 西佛兰德","aliases":["Ieper","Ypres","伊珀尔"],"coords":[2.89,50.85],"key":"lowYpres"},
+ {"id":"westrozebeke","name":"罗斯贝克会战地域","modern":"比利时 · 西罗斯贝克村南古德贝赫方向","aliases":["Westrozebeke","Roosebeke","Goudberg","1382罗斯贝克"],"coords":[3.02,50.91],"key":"lowRoosebeke"},
+ {"id":"gavere","name":"加弗尔—瑟默扎克会战地域","modern":"比利时 · 根特以南瑟默扎克高地","aliases":["Gavere","Semmerzake","加韦尔","1453加弗尔"],"coords":[3.67,50.94],"key":"lowGaverePlace"}
+]

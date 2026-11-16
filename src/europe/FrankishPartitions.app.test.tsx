@@ -169,7 +169,7 @@ describe('Frankish atlas integration',()=>{
 it('connects the final medieval stage to a joint-crown region, city return and exact-year control changes',async()=>{
  setup('/?year=1356&view=partitions&kingdom=west-francia');
  fireEvent.click(screen.getByRole('button',{name:'1360—1453 王权与分裂'}));expect(location.search).toContain('year=1360');
- expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(37);
+ expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(40);
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1386'}});
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：波兰王国：核心地域'}));
  expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('雅德维加与');
@@ -198,7 +198,7 @@ it('preserves Iberian crown selection through city return and distinguishes the 
 
 it('opens1397 Nordic union, preserves crown through Stockholm and distinguishes the1439 Norwegian transition',async()=>{
  setup('/?year=1396&view=partitions&kingdom=sweden-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(37);
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(40);
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：瑞典王国：本土核心与东部联系'}));
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/斯德哥尔摩/}));expect(location.search).toContain('place=stockholm');expect(screen.getByText(/斯德哥尔摩仍由梅克伦堡派/)).toBeTruthy();
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1397 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=sweden-late');
@@ -228,7 +228,7 @@ it('preserves an Italian core through Pavia and explains the1435 Genoese interim
  setup('/?year=1410&view=partitions&kingdom=milan-late');
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/帕维亚：伯爵头衔与城内权力/}));expect(location.search).toContain('place=pavia');expect(screen.getAllByText(/城内实际权力转入法奇诺/).length).toBeGreaterThan(0);
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1410 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=milan-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1435'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：热那亚：总督、外来领主与商贸'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('八位自由队长');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(37);await act(async()=>{});
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1435'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：热那亚：总督、外来领主与商贸'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('八位自由队长');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(40);await act(async()=>{});
 });
 
 it('keeps Padua city control independent of the fixed Venetian reading core',async()=>{
@@ -236,4 +236,24 @@ it('keeps Padua city control independent of the fixed Venetian reading core',asy
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/帕多瓦：卡拉拉与1405转换/}));expect(location.search).toContain('place=padua');expect(screen.getAllByText(/维斯孔蒂控制；卡拉拉1390夺回尚未发生/).length).toBeGreaterThan(0);
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1389 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=venice-late');
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1378'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：佛罗伦萨：共和国与行会、家族'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('8月末结束');await act(async()=>{});
+});
+
+it('keeps Low Countries selection through Delft and distinguishes countess from regent',async()=>{
+ setup('/?year=1429&view=partitions&kingdom=holland-late');
+ const a=screen.getByRole('article',{name:'分国地域详情'});expect(a.textContent).toContain('仍为女伯爵');
+ fireEvent.click(within(a).getByRole('button',{name:/代尔夫特：1428协议/}));expect(location.search).toContain('place=delft');expect(screen.getAllByText(/1428年7月3日协议在本城达成/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1429 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=holland-late');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1435'}});
+ fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：埃诺：蒙斯、瓦朗谢讷与伯爵'}));
+ expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('1433杰奎琳放弃');
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/瓦朗谢讷：另一座伯国城市/}));expect(location.search).toContain('place=valenciennes');expect(screen.getAllByText(/现代法国归属分开/).length).toBeGreaterThan(0);await act(async()=>{});
+});
+
+it('keeps Brabant regency, Antwerp lordship and Flanders war on separate timelines',async()=>{
+ setup('/?year=1420&view=partitions&kingdom=brabant-late');
+ expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('10月1日起代理');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1422'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：布拉班特：公爵、等级与城市'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('代理已结束');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1402'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：布拉班特：公爵、等级与城市'}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/安特卫普：不同的转移节奏/}));expect(screen.getAllByText(/1357和约之后处于佛兰德伯爵/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1402 年王权、分裂与终局'}));
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：佛兰德伯国与城市'}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/1453加弗尔会战地域/}));expect(location.search).toContain('place=gavere');expect(screen.getAllByText(/实际作战高地置于Semmerzake/).length).toBeGreaterThan(0);await act(async()=>{});
 });

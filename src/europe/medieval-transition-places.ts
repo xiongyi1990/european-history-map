@@ -26,7 +26,6 @@ export const medievalTransitionDetails:HistoricalDetail[]=medievalTransitionFram
  city('edinburgh','爱丁堡','scotland',[y<1377?'lateDavid':y<1396?'transitionRobertII':y<1409?'transitionRobertIII':y<1439?'transitionJamesI':'transitionJamesII'],['stirling','london']),
  city('prague','布拉格','bohemia',['transitionWenceslaus','transitionSigismund','transitionLadislaus'],['konstanz','frankfurt']),
  city('dijon','第戎','burgundy-duchy',['transitionBurgundy','transitionDukes','transitionArras'],['ghent','avignon']),
- city('ghent','根特','flanders',['lateFlanders','transitionBurgundy'],['dijon','bruges']),
  city('krakow','克拉科夫','poland',['transitionPoland','transitionJogaila','transitionJadwiga','transitionCasimir'],['vilnius','gniezno','buda']),
  city('trakai','特拉凯','lithuania',['transitionLithuania','transitionJogaila'],['vilnius','krakow'],'立陶宛核心中的城市参照。'+s.lithuania+'；大公头衔不等于已核验每座城堡在本年的驻军。'),
  city('vilnius','维尔纽斯','lithuania',['transitionLithuania','transitionJogaila','transitionSvitrigaila','transitionCasimir'],['krakow','trakai']),

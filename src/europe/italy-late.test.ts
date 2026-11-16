@@ -11,7 +11,7 @@ const d=(id:string,y:number)=>historicalDetail(id,y)!;
 describe('Italian city institutions, external lordship and uneven control1360-1453',()=>{
  it('adds four distinct cores at existing dates with unique city and source references',()=>{
   expect(medievalTransitionYears).toHaveLength(27);expect(italyLatePlaces).toHaveLength(8);expect(italyLateDetails).toHaveLength(352);
-  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(37);for(const id of ['milan-late','florence-late','venice-late','genoa-late'])expect(r(y,id)).toBeDefined();for(const name of ['米兰','佛罗伦萨','威尼斯','热那亚'])expect(partitionLabels(y).some(p=>p.name===name)).toBe(true);}
+  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(40);for(const id of ['milan-late','florence-late','venice-late','genoa-late'])expect(r(y,id)).toBeDefined();for(const name of ['米兰','佛罗伦萨','威尼斯','热那亚'])expect(partitionLabels(y).some(p=>p.name===name)).toBe(true);}
   for(const p of italyLatePlaces)expect(ancientPlaces.filter(x=>x.id===p.id)).toHaveLength(1);
   for(const card of italyLateDetails){expect(d(card.placeId,card.from)?.id,card.id).toBe(card.id);for(const id of card.related)expect(ancientPlaces.some(p=>p.id===id),id).toBe(true);for(const field of [card.polity,card.territory,card.people,card.language,card.nameNote]){expect(new Set(field.sources).size).toBe(field.sources.length);for(const k of field.sources)expect(historySources[k]?.url,k).toMatch(/^https:/);}}
   expect(partitionAt(1395)).toBeUndefined();expect(partitionRealmAt(1356,'milan-late')).toBeUndefined();expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);

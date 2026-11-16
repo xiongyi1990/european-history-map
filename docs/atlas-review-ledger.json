@@ -152,7 +152,7 @@
     },
     "201": {
       "status": "partial",
-      "note": "Read PDF1715 and1718. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain."
+      "note": "Read PDF1715 and1718. Selected geographic leads linked to1360-1453; independent evidence corrects dates and title/control distinctions. Complete geography, communities, borders and final novice audit remain. Read physical1713-1718 for Jacoba, Holland/Hainaut and Brabant.1420 pledge,1428 regency and1433 cession checked separately;1424 expedition not backdated to1422."
     },
     "148": {
       "status": "partial",
@@ -201,6 +201,10 @@
     "207": {
       "status": "partial",
       "note": "Read physical1769-1772. Family patronage and later descendants are separated from1434-1453 republican institutions; not used as precise frontier evidence. Full chapter geography and final audit remain."
+    },
+    "241": {
+      "status": "partial",
+      "note": "Read physical2075-2077. Later Netherlands overview is only comparison; neither16th-century provinces nor Utrecht acquisition are backdated to1360-1453. Full chapter geography and final social/border review remain."
     }
   },
   "priorityQueue": [
@@ -208,7 +212,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now27 moments/37 reading cores. Four Italian city contexts added: Milan/Pavia title-control splits, Florence republican institutions and1434 family influence, Venice elected doges/land cities, Genoa foreign lordship/1435 interim government. Pisa1406 and Livorno1421 separate. Old Italy remainder changed only at27 moments; other1513 geometry records retained. Not precise annual borders; Low Countries, remaining Balkans, Italian minor states and1453-1517 remain partial."
+      "note": "1360-1453 now27 moments/40 reading cores. Three Low Countries cores beside Flanders: Brabant1420 temporary regency/1422 restoration,1428 Jacoba title/Philip government and1433 succession, Antwerp1357-1406, cross-border Hainaut.12 new places,374 city/event entries replacing27 generic Ghent entries. Original land coverage and earlier geometry retained. Not annual verified frontiers. Remaining Balkans, minor Italy/Low Countries and1453-1517 remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
