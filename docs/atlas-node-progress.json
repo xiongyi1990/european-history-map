@@ -9,11 +9,11 @@
   "partialYears": 533,
   "pendingYears": 80,
   "politicalReadingYears": 119,
-  "coursePeriodRecords": 6267,
+  "coursePeriodRecords": 6510,
   "routeTopics": 22,
   "unresolvedReferenceIssues": 0,
   "allReviewed": false,
-  "inputHash": "4fefcc7e7cccaab05f295db4ab890523495730f78479ad934d8bfbd950eb1384",
+  "inputHash": "7fc491008c9d36ce560f47337cd91fe644da25943003254a52ef245fba950bbe",
   "completionRule": "All year facets and all course geographic leads need explicit review; links and record counts never imply completion",
   "duplicatePlaceIds": [],
   "referenceIssues": [],
@@ -22,7 +22,7 @@
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453 now27 moments/40 reading cores. Three Low Countries cores beside Flanders: Brabant1420 temporary regency/1422 restoration,1428 Jacoba title/Philip government and1433 succession, Antwerp1357-1406, cross-border Hainaut.12 new places,374 city/event entries replacing27 generic Ghent entries. Original land coverage and earlier geometry retained. Not annual verified frontiers. Remaining Balkans, minor Italy/Low Countries and1453-1517 remain partial."
+      "note": "1360-1453:27 moments/42 reading cores. Added Mistra and central Wallachia with9 places and243 exact-year city/event cards. Province vs emperor,1381 provisional governance,1402 canceled sale,1429 town/1430 fortress,1443 brothers exchange and1453/1460 survival separated. Wallachia1364yearend/1386March,1396 dispute,1435 unresolved dating and port-garrison uncertainty explicit. Remaining Albania/Moldavia, minor territories and1453-1517 remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
@@ -9074,11 +9074,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1360",
+          "acorinth-south-balkan-1360",
+          "hexamilion-south-balkan-1360",
+          "patras-south-balkan-1360",
+          "methoni-south-balkan-1360",
+          "koroni-south-balkan-1360",
+          "curtea-de-arges-south-balkan-1360",
+          "targoviste-south-balkan-1360",
+          "giurgiu-south-balkan-1360",
           "brussels-low-countries-1360",
           "leuven-low-countries-1360",
           "antwerp-low-countries-1360",
@@ -9221,11 +9232,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1364",
+          "acorinth-south-balkan-1364",
+          "hexamilion-south-balkan-1364",
+          "patras-south-balkan-1364",
+          "methoni-south-balkan-1364",
+          "koroni-south-balkan-1364",
+          "curtea-de-arges-south-balkan-1364",
+          "targoviste-south-balkan-1364",
+          "giurgiu-south-balkan-1364",
           "brussels-low-countries-1364",
           "leuven-low-countries-1364",
           "antwerp-low-countries-1364",
@@ -9368,11 +9390,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1377",
+          "acorinth-south-balkan-1377",
+          "hexamilion-south-balkan-1377",
+          "patras-south-balkan-1377",
+          "methoni-south-balkan-1377",
+          "koroni-south-balkan-1377",
+          "curtea-de-arges-south-balkan-1377",
+          "targoviste-south-balkan-1377",
+          "giurgiu-south-balkan-1377",
           "brussels-low-countries-1377",
           "leuven-low-countries-1377",
           "antwerp-low-countries-1377",
@@ -9515,11 +9548,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1378",
+          "acorinth-south-balkan-1378",
+          "hexamilion-south-balkan-1378",
+          "patras-south-balkan-1378",
+          "methoni-south-balkan-1378",
+          "koroni-south-balkan-1378",
+          "curtea-de-arges-south-balkan-1378",
+          "targoviste-south-balkan-1378",
+          "giurgiu-south-balkan-1378",
           "brussels-low-countries-1378",
           "leuven-low-countries-1378",
           "antwerp-low-countries-1378",
@@ -9664,11 +9708,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1381",
+          "acorinth-south-balkan-1381",
+          "hexamilion-south-balkan-1381",
+          "patras-south-balkan-1381",
+          "methoni-south-balkan-1381",
+          "koroni-south-balkan-1381",
+          "curtea-de-arges-south-balkan-1381",
+          "targoviste-south-balkan-1381",
+          "giurgiu-south-balkan-1381",
           "brussels-low-countries-1381",
           "leuven-low-countries-1381",
           "antwerp-low-countries-1381",
@@ -9814,11 +9869,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1385",
+          "acorinth-south-balkan-1385",
+          "hexamilion-south-balkan-1385",
+          "patras-south-balkan-1385",
+          "methoni-south-balkan-1385",
+          "koroni-south-balkan-1385",
+          "curtea-de-arges-south-balkan-1385",
+          "targoviste-south-balkan-1385",
+          "giurgiu-south-balkan-1385",
           "brussels-low-countries-1385",
           "leuven-low-countries-1385",
           "antwerp-low-countries-1385",
@@ -9967,11 +10033,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1386",
+          "acorinth-south-balkan-1386",
+          "hexamilion-south-balkan-1386",
+          "patras-south-balkan-1386",
+          "methoni-south-balkan-1386",
+          "koroni-south-balkan-1386",
+          "curtea-de-arges-south-balkan-1386",
+          "targoviste-south-balkan-1386",
+          "giurgiu-south-balkan-1386",
           "brussels-low-countries-1386",
           "leuven-low-countries-1386",
           "antwerp-low-countries-1386",
@@ -10119,11 +10196,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1389",
+          "acorinth-south-balkan-1389",
+          "hexamilion-south-balkan-1389",
+          "patras-south-balkan-1389",
+          "methoni-south-balkan-1389",
+          "koroni-south-balkan-1389",
+          "curtea-de-arges-south-balkan-1389",
+          "targoviste-south-balkan-1389",
+          "giurgiu-south-balkan-1389",
           "brussels-low-countries-1389",
           "leuven-low-countries-1389",
           "antwerp-low-countries-1389",
@@ -10273,11 +10361,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1396",
+          "acorinth-south-balkan-1396",
+          "hexamilion-south-balkan-1396",
+          "patras-south-balkan-1396",
+          "methoni-south-balkan-1396",
+          "koroni-south-balkan-1396",
+          "curtea-de-arges-south-balkan-1396",
+          "targoviste-south-balkan-1396",
+          "giurgiu-south-balkan-1396",
           "brussels-low-countries-1396",
           "leuven-low-countries-1396",
           "antwerp-low-countries-1396",
@@ -10429,11 +10528,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1397",
+          "acorinth-south-balkan-1397",
+          "hexamilion-south-balkan-1397",
+          "patras-south-balkan-1397",
+          "methoni-south-balkan-1397",
+          "koroni-south-balkan-1397",
+          "curtea-de-arges-south-balkan-1397",
+          "targoviste-south-balkan-1397",
+          "giurgiu-south-balkan-1397",
           "brussels-low-countries-1397",
           "leuven-low-countries-1397",
           "antwerp-low-countries-1397",
@@ -10585,11 +10695,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1399",
+          "acorinth-south-balkan-1399",
+          "hexamilion-south-balkan-1399",
+          "patras-south-balkan-1399",
+          "methoni-south-balkan-1399",
+          "koroni-south-balkan-1399",
+          "curtea-de-arges-south-balkan-1399",
+          "targoviste-south-balkan-1399",
+          "giurgiu-south-balkan-1399",
           "brussels-low-countries-1399",
           "leuven-low-countries-1399",
           "antwerp-low-countries-1399",
@@ -10754,11 +10875,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1402",
+          "acorinth-south-balkan-1402",
+          "hexamilion-south-balkan-1402",
+          "patras-south-balkan-1402",
+          "methoni-south-balkan-1402",
+          "koroni-south-balkan-1402",
+          "curtea-de-arges-south-balkan-1402",
+          "targoviste-south-balkan-1402",
+          "giurgiu-south-balkan-1402",
           "brussels-low-countries-1402",
           "leuven-low-countries-1402",
           "antwerp-low-countries-1402",
@@ -10911,11 +11043,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1409",
+          "acorinth-south-balkan-1409",
+          "hexamilion-south-balkan-1409",
+          "patras-south-balkan-1409",
+          "methoni-south-balkan-1409",
+          "koroni-south-balkan-1409",
+          "curtea-de-arges-south-balkan-1409",
+          "targoviste-south-balkan-1409",
+          "giurgiu-south-balkan-1409",
           "brussels-low-countries-1409",
           "leuven-low-countries-1409",
           "antwerp-low-countries-1409",
@@ -11067,11 +11210,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1410",
+          "acorinth-south-balkan-1410",
+          "hexamilion-south-balkan-1410",
+          "patras-south-balkan-1410",
+          "methoni-south-balkan-1410",
+          "koroni-south-balkan-1410",
+          "curtea-de-arges-south-balkan-1410",
+          "targoviste-south-balkan-1410",
+          "giurgiu-south-balkan-1410",
           "brussels-low-countries-1410",
           "leuven-low-countries-1410",
           "antwerp-low-countries-1410",
@@ -11224,11 +11378,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1414",
+          "acorinth-south-balkan-1414",
+          "hexamilion-south-balkan-1414",
+          "patras-south-balkan-1414",
+          "methoni-south-balkan-1414",
+          "koroni-south-balkan-1414",
+          "curtea-de-arges-south-balkan-1414",
+          "targoviste-south-balkan-1414",
+          "giurgiu-south-balkan-1414",
           "brussels-low-countries-1414",
           "leuven-low-countries-1414",
           "antwerp-low-countries-1414",
@@ -11383,11 +11548,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1415",
+          "acorinth-south-balkan-1415",
+          "hexamilion-south-balkan-1415",
+          "patras-south-balkan-1415",
+          "methoni-south-balkan-1415",
+          "koroni-south-balkan-1415",
+          "curtea-de-arges-south-balkan-1415",
+          "targoviste-south-balkan-1415",
+          "giurgiu-south-balkan-1415",
           "brussels-low-countries-1415",
           "leuven-low-countries-1415",
           "antwerp-low-countries-1415",
@@ -11543,11 +11719,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1417",
+          "acorinth-south-balkan-1417",
+          "hexamilion-south-balkan-1417",
+          "patras-south-balkan-1417",
+          "methoni-south-balkan-1417",
+          "koroni-south-balkan-1417",
+          "curtea-de-arges-south-balkan-1417",
+          "targoviste-south-balkan-1417",
+          "giurgiu-south-balkan-1417",
           "brussels-low-countries-1417",
           "leuven-low-countries-1417",
           "antwerp-low-countries-1417",
@@ -11702,11 +11889,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1420",
+          "acorinth-south-balkan-1420",
+          "hexamilion-south-balkan-1420",
+          "patras-south-balkan-1420",
+          "methoni-south-balkan-1420",
+          "koroni-south-balkan-1420",
+          "curtea-de-arges-south-balkan-1420",
+          "targoviste-south-balkan-1420",
+          "giurgiu-south-balkan-1420",
           "brussels-low-countries-1420",
           "leuven-low-countries-1420",
           "antwerp-low-countries-1420",
@@ -11861,11 +12059,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1422",
+          "acorinth-south-balkan-1422",
+          "hexamilion-south-balkan-1422",
+          "patras-south-balkan-1422",
+          "methoni-south-balkan-1422",
+          "koroni-south-balkan-1422",
+          "curtea-de-arges-south-balkan-1422",
+          "targoviste-south-balkan-1422",
+          "giurgiu-south-balkan-1422",
           "brussels-low-countries-1422",
           "leuven-low-countries-1422",
           "antwerp-low-countries-1422",
@@ -12019,11 +12228,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1429",
+          "acorinth-south-balkan-1429",
+          "hexamilion-south-balkan-1429",
+          "patras-south-balkan-1429",
+          "methoni-south-balkan-1429",
+          "koroni-south-balkan-1429",
+          "curtea-de-arges-south-balkan-1429",
+          "targoviste-south-balkan-1429",
+          "giurgiu-south-balkan-1429",
           "brussels-low-countries-1429",
           "leuven-low-countries-1429",
           "antwerp-low-countries-1429",
@@ -12179,11 +12399,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1431",
+          "acorinth-south-balkan-1431",
+          "hexamilion-south-balkan-1431",
+          "patras-south-balkan-1431",
+          "methoni-south-balkan-1431",
+          "koroni-south-balkan-1431",
+          "curtea-de-arges-south-balkan-1431",
+          "targoviste-south-balkan-1431",
+          "giurgiu-south-balkan-1431",
           "brussels-low-countries-1431",
           "leuven-low-countries-1431",
           "antwerp-low-countries-1431",
@@ -12338,11 +12569,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1435",
+          "acorinth-south-balkan-1435",
+          "hexamilion-south-balkan-1435",
+          "patras-south-balkan-1435",
+          "methoni-south-balkan-1435",
+          "koroni-south-balkan-1435",
+          "curtea-de-arges-south-balkan-1435",
+          "targoviste-south-balkan-1435",
+          "giurgiu-south-balkan-1435",
           "brussels-low-countries-1435",
           "leuven-low-countries-1435",
           "antwerp-low-countries-1435",
@@ -12497,11 +12739,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1439",
+          "acorinth-south-balkan-1439",
+          "hexamilion-south-balkan-1439",
+          "patras-south-balkan-1439",
+          "methoni-south-balkan-1439",
+          "koroni-south-balkan-1439",
+          "curtea-de-arges-south-balkan-1439",
+          "targoviste-south-balkan-1439",
+          "giurgiu-south-balkan-1439",
           "brussels-low-countries-1439",
           "leuven-low-countries-1439",
           "antwerp-low-countries-1439",
@@ -12656,11 +12909,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1440",
+          "acorinth-south-balkan-1440",
+          "hexamilion-south-balkan-1440",
+          "patras-south-balkan-1440",
+          "methoni-south-balkan-1440",
+          "koroni-south-balkan-1440",
+          "curtea-de-arges-south-balkan-1440",
+          "targoviste-south-balkan-1440",
+          "giurgiu-south-balkan-1440",
           "brussels-low-countries-1440",
           "leuven-low-countries-1440",
           "antwerp-low-countries-1440",
@@ -12815,11 +13079,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1444",
+          "acorinth-south-balkan-1444",
+          "hexamilion-south-balkan-1444",
+          "patras-south-balkan-1444",
+          "methoni-south-balkan-1444",
+          "koroni-south-balkan-1444",
+          "curtea-de-arges-south-balkan-1444",
+          "targoviste-south-balkan-1444",
+          "giurgiu-south-balkan-1444",
           "brussels-low-countries-1444",
           "leuven-low-countries-1444",
           "antwerp-low-countries-1444",
@@ -12975,11 +13250,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1450",
+          "acorinth-south-balkan-1450",
+          "hexamilion-south-balkan-1450",
+          "patras-south-balkan-1450",
+          "methoni-south-balkan-1450",
+          "koroni-south-balkan-1450",
+          "curtea-de-arges-south-balkan-1450",
+          "targoviste-south-balkan-1450",
+          "giurgiu-south-balkan-1450",
           "brussels-low-countries-1450",
           "leuven-low-countries-1450",
           "antwerp-low-countries-1450",
@@ -13136,11 +13422,22 @@
             "genoa-late",
             "brabant-late",
             "holland-late",
-            "hainaut-late"
+            "hainaut-late",
+            "morea-late",
+            "wallachia-late"
           ],
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "mystras-south-balkan-1453",
+          "acorinth-south-balkan-1453",
+          "hexamilion-south-balkan-1453",
+          "patras-south-balkan-1453",
+          "methoni-south-balkan-1453",
+          "koroni-south-balkan-1453",
+          "curtea-de-arges-south-balkan-1453",
+          "targoviste-south-balkan-1453",
+          "giurgiu-south-balkan-1453",
           "brussels-low-countries-1453",
           "leuven-low-countries-1453",
           "antwerp-low-countries-1453",
@@ -17132,10 +17429,10 @@
         1769
       ],
       "status": "partial",
-      "linkedEvidenceCount": 884,
+      "linkedEvidenceCount": 1127,
       "review": {
         "status": "partial",
-        "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain."
+        "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain. Read physical1757,1759-1768 this batch:1761 explicitly locates Mistra west of Sparta. Do not use1764 broad Balkan-conquest wording to annex1453 Morea or Wallachia. Nine local points and27 moments supplement independent academic/archival evidence; precise frontiers and full communities audit remain."
       }
     },
     {

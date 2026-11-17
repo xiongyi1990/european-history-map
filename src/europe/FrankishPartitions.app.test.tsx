@@ -169,7 +169,7 @@ describe('Frankish atlas integration',()=>{
 it('connects the final medieval stage to a joint-crown region, city return and exact-year control changes',async()=>{
  setup('/?year=1356&view=partitions&kingdom=west-francia');
  fireEvent.click(screen.getByRole('button',{name:'1360—1453 王权与分裂'}));expect(location.search).toContain('year=1360');
- expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(40);
+ expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1386'}});
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：波兰王国：核心地域'}));
  expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('雅德维加与');
@@ -198,7 +198,7 @@ it('preserves Iberian crown selection through city return and distinguishes the 
 
 it('opens1397 Nordic union, preserves crown through Stockholm and distinguishes the1439 Norwegian transition',async()=>{
  setup('/?year=1396&view=partitions&kingdom=sweden-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(40);
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：瑞典王国：本土核心与东部联系'}));
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/斯德哥尔摩/}));expect(location.search).toContain('place=stockholm');expect(screen.getByText(/斯德哥尔摩仍由梅克伦堡派/)).toBeTruthy();
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1397 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=sweden-late');
@@ -228,7 +228,7 @@ it('preserves an Italian core through Pavia and explains the1435 Genoese interim
  setup('/?year=1410&view=partitions&kingdom=milan-late');
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/帕维亚：伯爵头衔与城内权力/}));expect(location.search).toContain('place=pavia');expect(screen.getAllByText(/城内实际权力转入法奇诺/).length).toBeGreaterThan(0);
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1410 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=milan-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1435'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：热那亚：总督、外来领主与商贸'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('八位自由队长');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(40);await act(async()=>{});
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1435'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：热那亚：总督、外来领主与商贸'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('八位自由队长');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);await act(async()=>{});
 });
 
 it('keeps Padua city control independent of the fixed Venetian reading core',async()=>{
@@ -256,4 +256,19 @@ it('keeps Brabant regency, Antwerp lordship and Flanders war on separate timelin
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1402'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：布拉班特：公爵、等级与城市'}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/安特卫普：不同的转移节奏/}));expect(screen.getAllByText(/1357和约之后处于佛兰德伯爵/).length).toBeGreaterThan(0);
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1402 年王权、分裂与终局'}));
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：佛兰德伯国与城市'}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/1453加弗尔会战地域/}));expect(location.search).toContain('place=gavere');expect(screen.getAllByText(/实际作战高地置于Semmerzake/).length).toBeGreaterThan(0);await act(async()=>{});
+});
+
+it('keeps Morea selection and separates Patras town and fortress',async()=>{
+ setup('/?year=1429&view=partitions&kingdom=morea-late');
+ expect(screen.getByRole('heading',{name:'东罗马摩里亚：米斯特拉核心'})).toBeTruthy();
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/帕特雷：城镇与城堡不同步/}));expect(location.search).toContain('place=patras');expect(screen.getAllByText(/山顶城堡尚未归降/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1429 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=morea-late');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：东罗马摩里亚：米斯特拉核心'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('1460才陷落');await act(async()=>{});
+});
+it('uses March1386 for Wallachia and preserves core on a riverport return',async()=>{
+ setup('/?year=1386&view=partitions&kingdom=wallachia-late');
+ expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('丹一世');
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/久尔久：多瑙河港口与驻军/}));expect(location.search).toContain('place=giurgiu');expect(screen.getAllByText(/首份内部文书在1409/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1386 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=wallachia-late');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：瓦拉几亚：喀尔巴阡山与多瑙河之间'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('弗拉迪斯拉夫二世');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);await act(async()=>{});
 });

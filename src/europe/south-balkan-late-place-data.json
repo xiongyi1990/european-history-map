@@ -1,0 +1,11 @@
+[
+ {"id":"mystras","name":"米斯特拉（米斯特拉斯）","modern":"希腊 · 伯罗奔尼撒半岛拉科尼亚","aliases":["Mystras","Mistra","Mistras","米斯特拉斯","摩里亚"],"coords":[22.3667,37.0806],"key":"southUnesco"},
+ {"id":"acorinth","name":"科林斯卫城","modern":"希腊 · 古科林斯西南山顶","aliases":["Acrocorinth","Akrokorinthos","阿克罗科林斯","科林斯卫城"],"coords":[22.879,37.906],"key":"southCorinth"},
+ {"id":"hexamilion","name":"六英里长墙（科林斯地峡）","modern":"希腊 · 科林斯地峡、伊斯特米亚方向","aliases":["Hexamilion","Hexamilion wall","六英里墙","科林斯地峡"],"coords":[22.991,37.928],"key":"southCorinth"},
+ {"id":"patras","name":"帕特雷城堡与城镇","modern":"希腊 · 伯罗奔尼撒西北帕特雷","aliases":["Patras","Patrai","帕特拉","亚该亚"],"coords":[21.741,38.244],"key":"southPatras"},
+ {"id":"methoni","name":"莫东（今迈索尼）","modern":"希腊 · 伯罗奔尼撒西南麦西尼亚","aliases":["Modon","Methoni","迈索尼","梅索尼","莫东"],"coords":[21.705,36.814],"key":"southMethoni"},
+ {"id":"koroni","name":"科龙（今科罗尼）","modern":"希腊 · 麦西尼亚湾西南岸","aliases":["Coron","Koroni","科龙","科罗尼"],"coords":[21.959,36.796],"key":"southKoroni"},
+ {"id":"curtea-de-arges","name":"库尔泰亚德阿尔杰什","modern":"罗马尼亚 · 阿尔杰什县","aliases":["Curtea de Arges","Curtea de Argeș","Argeș","阿尔杰什王廷"],"coords":[24.683,45.139],"key":"southWallDocs"},
+ {"id":"targoviste","name":"特尔戈维什泰","modern":"罗马尼亚 · 登博维察县","aliases":["Targoviste","Târgoviște","Tîrgoviște","特尔戈维什特"],"coords":[25.456,44.925],"key":"southWallDocs"},
+ {"id":"giurgiu","name":"久尔久岛堡","modern":"罗马尼亚 · 多瑙河畔久尔久","aliases":["Giurgiu","Giurgiu fortress","久尔久","Yergöğü"],"coords":[25.971,43.89],"key":"southGiurgiu"}
+]
