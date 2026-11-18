@@ -169,7 +169,7 @@ describe('Frankish atlas integration',()=>{
 it('connects the final medieval stage to a joint-crown region, city return and exact-year control changes',async()=>{
  setup('/?year=1356&view=partitions&kingdom=west-francia');
  fireEvent.click(screen.getByRole('button',{name:'1360—1453 王权与分裂'}));expect(location.search).toContain('year=1360');
- expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);
+ expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(44);
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1386'}});
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：波兰王国：核心地域'}));
  expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('雅德维加与');
@@ -198,7 +198,7 @@ it('preserves Iberian crown selection through city return and distinguishes the 
 
 it('opens1397 Nordic union, preserves crown through Stockholm and distinguishes the1439 Norwegian transition',async()=>{
  setup('/?year=1396&view=partitions&kingdom=sweden-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1397'}});expect(location.search).toContain('year=1397');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(44);
  fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：瑞典王国：本土核心与东部联系'}));
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/斯德哥尔摩/}));expect(location.search).toContain('place=stockholm');expect(screen.getByText(/斯德哥尔摩仍由梅克伦堡派/)).toBeTruthy();
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1397 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=sweden-late');
@@ -228,7 +228,7 @@ it('preserves an Italian core through Pavia and explains the1435 Genoese interim
  setup('/?year=1410&view=partitions&kingdom=milan-late');
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/帕维亚：伯爵头衔与城内权力/}));expect(location.search).toContain('place=pavia');expect(screen.getAllByText(/城内实际权力转入法奇诺/).length).toBeGreaterThan(0);
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1410 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=milan-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1435'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：热那亚：总督、外来领主与商贸'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('八位自由队长');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);await act(async()=>{});
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1435'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：热那亚：总督、外来领主与商贸'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('八位自由队长');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(44);await act(async()=>{});
 });
 
 it('keeps Padua city control independent of the fixed Venetian reading core',async()=>{
@@ -270,5 +270,19 @@ it('uses March1386 for Wallachia and preserves core on a riverport return',async
  expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('丹一世');
  fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/久尔久：多瑙河港口与驻军/}));expect(location.search).toContain('place=giurgiu');expect(screen.getAllByText(/首份内部文书在1409/).length).toBeGreaterThan(0);
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1386 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=wallachia-late');
- fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：瓦拉几亚：喀尔巴阡山与多瑙河之间'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('弗拉迪斯拉夫二世');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(42);await act(async()=>{});
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：瓦拉几亚：喀尔巴阡山与多瑙河之间'}));expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('弗拉迪斯拉夫二世');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(44);await act(async()=>{});
+});
+
+it('keeps Albanian coastal cities separate through the alliance and garrison years',async()=>{
+ setup('/?year=1444&view=partitions&kingdom=albania-late');
+ expect(screen.getByRole('heading',{name:'阿尔巴尼亚地域：克鲁亚与沿海诸城'})).toBeTruthy();
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/莱什：威尼斯城市中的1444盟会/}));expect(location.search).toContain('place=lezhe');expect(screen.getAllByText(/不是选他为全阿尔巴尼亚国王|而非全境国王/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1444 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=albania-late');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：阿尔巴尼亚地域：克鲁亚与沿海诸城'}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/克鲁亚：山城、围攻与驻军/}));expect(screen.getAllByText(/加泰罗尼亚驻军/).length).toBeGreaterThan(0);await act(async()=>{});
+});
+it('preserves Moldavia and distinguishes an agreement from performed homage',async()=>{
+ setup('/?year=1435&view=partitions&kingdom=moldavia-late');
+ expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('8月26日');
+ fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：摩尔达维亚：苏恰瓦与锡雷特河地域'}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/锡雷特：河流、城镇与教会/}));expect(location.search).toContain('place=siret');expect(screen.getAllByText(/不是已在锡雷特完成亲身臣服/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1453 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=moldavia-late');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(44);await act(async()=>{});
 });

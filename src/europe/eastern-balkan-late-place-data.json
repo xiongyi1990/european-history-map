@@ -1,0 +1,9 @@
+[
+ {"id":"kruja","name":"克鲁亚","modern":"阿尔巴尼亚 · 克鲁亚","aliases":["Krujë","Kruja","Kruje","Croia","Akçahisar","斯坎德培"],"coords":[19.797,41.508],"key":"eastAlbanianPlaces"},
+ {"id":"durres","name":"都拉斯","modern":"阿尔巴尼亚 · 都拉斯","aliases":["Durrës","Durres","Durazzo","Dyrrhachion","都拉佐"],"coords":[19.446,41.313],"key":"eastAlbanianHistory"},
+ {"id":"shkoder","name":"斯库台","modern":"阿尔巴尼亚 · 斯库台","aliases":["Shkodër","Shkoder","Skadar","Scutari","Rozafa","罗扎法"],"coords":[19.493,42.046],"key":"eastSkadar"},
+ {"id":"lezhe","name":"莱什","modern":"阿尔巴尼亚 · 莱什","aliases":["Lezhë","Lezhe","Alessio","Lissos","勒热","莱什联盟"],"coords":[19.644,41.781],"key":"eastLezhe"},
+ {"id":"suceava","name":"苏恰瓦","modern":"罗马尼亚 · 苏恰瓦","aliases":["Suceava","Suczawa","Sutschawa","苏恰瓦堡"],"coords":[26.27,47.644],"key":"eastSuceava"},
+ {"id":"siret","name":"锡雷特","modern":"罗马尼亚 · 锡雷特","aliases":["Siret","Sereth","锡雷特河"],"coords":[26.073,47.95],"key":"eastSiret"},
+ {"id":"baia","name":"巴亚","modern":"罗马尼亚 · 苏恰瓦县巴亚","aliases":["Baia","Moldavienmarkt","Moldenmarkt","巴亚教区"],"coords":[26.226,47.42],"key":"eastMoldaviaChurch"}
+]

@@ -11,7 +11,7 @@ const d=(id:string,y:number)=>historicalDetail(id,y)!;
 describe('Low Countries titles, regencies and cities1360-1453',()=>{
  it('makes the three new cores navigable without inventing other annual maps',()=>{
   expect(medievalTransitionYears).toHaveLength(27);expect(lowCountriesPlaces).toHaveLength(12);expect(lowCountriesDetails).toHaveLength(374);
-  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(42);for(const id of ['brabant-late','holland-late','hainaut-late'])expect(r(y,id)).toBeDefined();for(const name of ['布拉班特','荷兰与泽兰','埃诺'])expect(partitionLabels(y).some(p=>p.name===name)).toBe(true);}
+  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(44);for(const id of ['brabant-late','holland-late','hainaut-late'])expect(r(y,id)).toBeDefined();for(const name of ['布拉班特','荷兰与泽兰','埃诺'])expect(partitionLabels(y).some(p=>p.name===name)).toBe(true);}
   for(const p of lowCountriesPlaces)expect(ancientPlaces.filter(x=>x.id===p.id),p.id).toHaveLength(1);
   for(const card of lowCountriesDetails){expect(d(card.placeId,card.from)?.id,card.id).toBe(card.id);for(const id of card.related)expect(ancientPlaces.some(p=>p.id===id),id).toBe(true);for(const field of [card.polity,card.territory,card.people,card.language,card.nameNote]){expect(new Set(field.sources).size).toBe(field.sources.length);for(const k of field.sources)expect(historySources[k]?.url,k).toMatch(/^https:/);}}
   expect(partitionAt(1428)).toBeUndefined();expect(partitionRealmAt(1356,'holland-late')).toBeUndefined();expect(progress.unresolvedReferenceIssues).toBe(0);expect(progress.allReviewed).toBe(false);

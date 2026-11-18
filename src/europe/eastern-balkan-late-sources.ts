@@ -1,0 +1,17 @@
+export const easternBalkanSources={
+ eastBaiaArchaeology:{title:'罗马尼亚国家考古登记146913.06：巴亚15世纪教堂，确切建年未知',url:'https://ran.cimec.ro/sel.asp?descript=baia-baia-suceava-ruinele-bisericii-cu-hramul--sfanta-fecioara--de-la-baia-cod-sit-ran-146913.06'},
+ eastSuceavaArchaeology:{title:'罗马尼亚国家考古登记146272.33：苏恰瓦城堡为14世纪末遗址',url:'https://ran.cimec.ro/sel.asp?Lang=EN&descript=suceava-municipiul-suceava-suceava-situl-arheologic-de-la-suceava-cetatea-de-scaun-a-sucevei-cod-sit-ran-146272.33'},
+ eastDurresMercenaries:{title:'Floristan，Studia Albanica2018：物理1—2页，1376都拉斯夺城及雇佣军离开',url:'https://albanica.al/studialbanica/article/download/325/7239/10597'},
+ eastThopia:{title:'奥地利科学院出版社人物词典预览：物理28页，托皮亚1368与1385都拉斯阶段',url:'https://www.vandenhoeck-ruprecht-verlage.com/downloads/productPreviewFiles/LP_978-3-205-78667-2.pdf'},
+ eastMoldaviaDiplomacy:{title:'Pungă与Platon：物理22、25页，1387臣服礼、1435和解及1439兄弟誓信',url:'https://editurapalatulculturii.ro/wpcms/wp-content/uploads/2022/08/CI-1998-01-Punga-Platon.pdf'},
+ eastSkanderbeg:{title:'IOS Peter Bartl：斯坎德培、1444盟会、1450围攻与1451加埃塔安排',url:'https://biolex.ios-regensburg.de/BioLexViewview.php?ID=1659'},
+ eastAlbanianHistory:{title:'Schmitt《东南欧史手册》：物理40、45页，沿海交接和1394克鲁亚地方权力',url:'https://www.hgsoe.ios-regensburg.de/fileadmin/doc/texte/Band1/Oliver_Jens_Schmitt_Ereignisgeschichte_Teil2.pdf'},
+ eastKrujaRegister:{title:'Ferit Duka：克鲁亚奥斯曼治理与1431税册（物理2—3页）',url:'https://konferenca.al/ih-rks/article/download/223/218/421'},
+ eastSkadar:{title:'黑山科学院：斯库台、巴尔沙家族及1392/1395/1396交接',url:'https://leks.canu.ac.me/web/lcd.php?OID=5468'},
+ eastLezhe:{title:'莱什市政沿革：1393移交、杜卡金家族关税权与盟会',url:'https://lezha.gov.al/njihni-lezhen/'},
+ eastAlbanianPlaces:{title:'奥地利科学院TIB：阿尔巴尼亚历史地理索引与定位',url:'https://tib.oeaw.ac.at/balkan/explore/entity/120876'},
+ eastMoldaviaRulers:{title:'HGSOE第二卷附录：物理49—50方法、53页摩尔达维亚王公；争位简表不等于城市实控',url:'https://www.degruyterbrill.com/document/doi/10.1515/9783110744392-012/pdf?licenseType=free'},
+ eastSuceava:{title:'布科维纳国家博物馆：苏恰瓦1388文书、王廷迁移与城堡',url:'https://muzeulbucovinei.ro/pagina/24618'},
+ eastSiret:{title:'锡雷特市政报告：物理2页，1371教区、学校与1377铸币',url:'https://siretromania.ro/web/wp-content/uploads/2024/06/Raport-Primar-2023.pdf'},
+ eastMoldaviaChurch:{title:'CEU Daniel2006：物理5、11—15页，锡雷特1421、巴亚教区及苏恰瓦亚美尼亚教会文书研究',url:'https://ams.ceu.edu/2006/Daniel.pdf'},
+};

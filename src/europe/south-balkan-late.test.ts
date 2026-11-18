@@ -10,7 +10,7 @@ const d=(id:string,y:number)=>historicalDetail(id,y)!;
 describe('Mistra and Wallachia: provinces, divided courts and evidence',()=>{
  it('connects every new city and source without manufacturing extra exact years',()=>{
   expect(southBalkanPlaces).toHaveLength(9);expect(southBalkanDetails).toHaveLength(243);
-  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(42);expect(partitionPlaceIds(y)).toEqual(expect.arrayContaining(southBalkanPlaces.map(p=>p.id)));for(const n of ['摩里亚：米斯特拉','瓦拉几亚'])expect(partitionLabels(y).some(l=>l.name===n)).toBe(true);}
+  for(const y of medievalTransitionYears){expect(partitionAreas(y).features).toHaveLength(44);expect(partitionPlaceIds(y)).toEqual(expect.arrayContaining(southBalkanPlaces.map(p=>p.id)));for(const n of ['摩里亚：米斯特拉','瓦拉几亚'])expect(partitionLabels(y).some(l=>l.name===n)).toBe(true);}
   for(const p of southBalkanPlaces)expect(ancientPlaces.filter(x=>x.id===p.id),p.id).toHaveLength(1);
   for(const c of southBalkanDetails){expect(d(c.placeId,c.from).id,c.id).toBe(c.id);for(const k of c.related)expect(ancientPlaces.some(p=>p.id===k),k).toBe(true);for(const field of [c.polity,c.territory,c.people,c.language,c.nameNote])for(const k of field.sources)expect(historySources[k]?.url,k).toMatch(/^https:/);}
   expect(partitionAt(1446)).toBeUndefined();expect(partitionRealmAt(1356,'morea-late')).toBeUndefined();
