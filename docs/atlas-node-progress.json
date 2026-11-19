@@ -4,25 +4,31 @@
   "courseChapters": 260,
   "chaptersReferenced": 74,
   "chaptersReviewed": 0,
-  "targetYears": 613,
+  "targetYears": 618,
   "reviewedYears": 0,
-  "partialYears": 533,
+  "partialYears": 538,
   "pendingYears": 80,
   "politicalReadingYears": 119,
-  "coursePeriodRecords": 6699,
+  "coursePeriodRecords": 6817,
   "routeTopics": 22,
   "unresolvedReferenceIssues": 0,
   "allReviewed": false,
-  "inputHash": "b377003db4ee281584343a94eb418e8912ec27de96c152ee55f703c5b9f8fd8d",
+  "inputHash": "fef412e5c73e7a779893448de34591961c569fb987f9aea7e261f1b4fc6992da",
   "completionRule": "All year facets and all course geographic leads need explicit review; links and record counts never imply completion",
   "duplicatePlaceIds": [],
   "referenceIssues": [],
   "priorityQueue": [
     {
+      "id": "early-modern-1453-1815",
+      "title": "1453—1815：近代王朝、宗教改革、战争与革命",
+      "status": "partial",
+      "note": "Next major batch:1453-1517 regional political framework.1465/1484 port event cards are local evidence only, not a completed synchronous European map."
+    },
+    {
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453:27 moments/44 reading cores. Added Kruja and central Moldavia with7 places and189 exact-year cards. Durres1376 mercenary interruption, three Venetian city transfer years, Ottoman suzerainty/office,1444 alliance,1450 failed siege and1451 real garrison separated. Moldavia1360/1364 uncertainty,1387 homage,1435 division,1453 Alexăndrel and future homage clarified. Black Sea ports, other Albanian lords, military borders and1453-1517 remain partial; no new exact years."
+      "note": "1360-1453:27 moments/44 reading cores. River-port batch adds4 comparison places and118 local records:108 at existing moments and10 at1408/1436/1448/1465/1484. Three-port geography,1412 unimplemented partition,1436 disputed cession,1450 Khotyn rival faction and1453 Hungarian garrison vs Wallachian customs separated. No new European control polygons. Early garrisons, other Albanian powers, languages and wide final audit remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
@@ -32,11 +38,6 @@
     {
       "id": "earlier-spatial-audit",
       "title": "前2000—1183：逐时期复核政治空间与遗漏地域",
-      "status": "pending"
-    },
-    {
-      "id": "early-modern-1453-1815",
-      "title": "1453—1815：近代王朝、宗教改革、战争与革命",
       "status": "pending"
     },
     {
@@ -9083,6 +9084,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1360",
+          "chilia-moldavian-rivers-1360",
+          "khotyn-moldavian-rivers-1360",
+          "lviv-moldavian-rivers-1360",
           "kruja-eastern-balkan-1360",
           "durres-eastern-balkan-1360",
           "shkoder-eastern-balkan-1360",
@@ -9250,6 +9255,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1364",
+          "chilia-moldavian-rivers-1364",
+          "khotyn-moldavian-rivers-1364",
+          "lviv-moldavian-rivers-1364",
           "kruja-eastern-balkan-1364",
           "durres-eastern-balkan-1364",
           "shkoder-eastern-balkan-1364",
@@ -9417,6 +9426,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1377",
+          "chilia-moldavian-rivers-1377",
+          "khotyn-moldavian-rivers-1377",
+          "lviv-moldavian-rivers-1377",
           "kruja-eastern-balkan-1377",
           "durres-eastern-balkan-1377",
           "shkoder-eastern-balkan-1377",
@@ -9584,6 +9597,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1378",
+          "chilia-moldavian-rivers-1378",
+          "khotyn-moldavian-rivers-1378",
+          "lviv-moldavian-rivers-1378",
           "kruja-eastern-balkan-1378",
           "durres-eastern-balkan-1378",
           "shkoder-eastern-balkan-1378",
@@ -9753,6 +9770,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1381",
+          "chilia-moldavian-rivers-1381",
+          "khotyn-moldavian-rivers-1381",
+          "lviv-moldavian-rivers-1381",
           "kruja-eastern-balkan-1381",
           "durres-eastern-balkan-1381",
           "shkoder-eastern-balkan-1381",
@@ -9923,6 +9944,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1385",
+          "chilia-moldavian-rivers-1385",
+          "khotyn-moldavian-rivers-1385",
+          "lviv-moldavian-rivers-1385",
           "kruja-eastern-balkan-1385",
           "durres-eastern-balkan-1385",
           "shkoder-eastern-balkan-1385",
@@ -10096,6 +10121,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1386",
+          "chilia-moldavian-rivers-1386",
+          "khotyn-moldavian-rivers-1386",
+          "lviv-moldavian-rivers-1386",
           "kruja-eastern-balkan-1386",
           "durres-eastern-balkan-1386",
           "shkoder-eastern-balkan-1386",
@@ -10268,6 +10297,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1389",
+          "chilia-moldavian-rivers-1389",
+          "khotyn-moldavian-rivers-1389",
+          "lviv-moldavian-rivers-1389",
           "kruja-eastern-balkan-1389",
           "durres-eastern-balkan-1389",
           "shkoder-eastern-balkan-1389",
@@ -10442,6 +10475,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1396",
+          "chilia-moldavian-rivers-1396",
+          "khotyn-moldavian-rivers-1396",
+          "lviv-moldavian-rivers-1396",
           "kruja-eastern-balkan-1396",
           "durres-eastern-balkan-1396",
           "shkoder-eastern-balkan-1396",
@@ -10618,6 +10655,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1397",
+          "chilia-moldavian-rivers-1397",
+          "khotyn-moldavian-rivers-1397",
+          "lviv-moldavian-rivers-1397",
           "kruja-eastern-balkan-1397",
           "durres-eastern-balkan-1397",
           "shkoder-eastern-balkan-1397",
@@ -10794,6 +10835,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1399",
+          "chilia-moldavian-rivers-1399",
+          "khotyn-moldavian-rivers-1399",
+          "lviv-moldavian-rivers-1399",
           "kruja-eastern-balkan-1399",
           "durres-eastern-balkan-1399",
           "shkoder-eastern-balkan-1399",
@@ -10983,6 +11028,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1402",
+          "chilia-moldavian-rivers-1402",
+          "khotyn-moldavian-rivers-1402",
+          "lviv-moldavian-rivers-1402",
           "kruja-eastern-balkan-1402",
           "durres-eastern-balkan-1402",
           "shkoder-eastern-balkan-1402",
@@ -11106,6 +11155,24 @@
       "review": null
     },
     {
+      "year": 1408,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": null,
+        "exactCityRecordIds": [
+          "suceava-moldavian-rivers-1408",
+          "lviv-moldavian-rivers-1408",
+          "khotyn-moldavian-rivers-1408",
+          "cetatea-alba-moldavian-rivers-1408"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
       "year": 1409,
       "status": "partial",
       "evidence": {
@@ -11160,6 +11227,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1409",
+          "chilia-moldavian-rivers-1409",
+          "khotyn-moldavian-rivers-1409",
+          "lviv-moldavian-rivers-1409",
           "kruja-eastern-balkan-1409",
           "durres-eastern-balkan-1409",
           "shkoder-eastern-balkan-1409",
@@ -11336,6 +11407,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1410",
+          "chilia-moldavian-rivers-1410",
+          "khotyn-moldavian-rivers-1410",
+          "lviv-moldavian-rivers-1410",
           "kruja-eastern-balkan-1410",
           "durres-eastern-balkan-1410",
           "shkoder-eastern-balkan-1410",
@@ -11513,6 +11588,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1414",
+          "chilia-moldavian-rivers-1414",
+          "khotyn-moldavian-rivers-1414",
+          "lviv-moldavian-rivers-1414",
           "kruja-eastern-balkan-1414",
           "durres-eastern-balkan-1414",
           "shkoder-eastern-balkan-1414",
@@ -11692,6 +11771,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1415",
+          "chilia-moldavian-rivers-1415",
+          "khotyn-moldavian-rivers-1415",
+          "lviv-moldavian-rivers-1415",
           "kruja-eastern-balkan-1415",
           "durres-eastern-balkan-1415",
           "shkoder-eastern-balkan-1415",
@@ -11872,6 +11955,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1417",
+          "chilia-moldavian-rivers-1417",
+          "khotyn-moldavian-rivers-1417",
+          "lviv-moldavian-rivers-1417",
           "kruja-eastern-balkan-1417",
           "durres-eastern-balkan-1417",
           "shkoder-eastern-balkan-1417",
@@ -12051,6 +12138,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1420",
+          "chilia-moldavian-rivers-1420",
+          "khotyn-moldavian-rivers-1420",
+          "lviv-moldavian-rivers-1420",
           "kruja-eastern-balkan-1420",
           "durres-eastern-balkan-1420",
           "shkoder-eastern-balkan-1420",
@@ -12230,6 +12321,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1422",
+          "chilia-moldavian-rivers-1422",
+          "khotyn-moldavian-rivers-1422",
+          "lviv-moldavian-rivers-1422",
           "kruja-eastern-balkan-1422",
           "durres-eastern-balkan-1422",
           "shkoder-eastern-balkan-1422",
@@ -12408,6 +12503,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1429",
+          "chilia-moldavian-rivers-1429",
+          "khotyn-moldavian-rivers-1429",
+          "lviv-moldavian-rivers-1429",
           "kruja-eastern-balkan-1429",
           "durres-eastern-balkan-1429",
           "shkoder-eastern-balkan-1429",
@@ -12588,6 +12687,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1431",
+          "chilia-moldavian-rivers-1431",
+          "khotyn-moldavian-rivers-1431",
+          "lviv-moldavian-rivers-1431",
           "kruja-eastern-balkan-1431",
           "durres-eastern-balkan-1431",
           "shkoder-eastern-balkan-1431",
@@ -12767,6 +12870,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1435",
+          "chilia-moldavian-rivers-1435",
+          "khotyn-moldavian-rivers-1435",
+          "lviv-moldavian-rivers-1435",
           "kruja-eastern-balkan-1435",
           "durres-eastern-balkan-1435",
           "shkoder-eastern-balkan-1435",
@@ -12892,6 +12999,22 @@
       "review": null
     },
     {
+      "year": 1436,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": null,
+        "exactCityRecordIds": [
+          "khotyn-moldavian-rivers-1436",
+          "lviv-moldavian-rivers-1436"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
       "year": 1439,
       "status": "partial",
       "evidence": {
@@ -12946,6 +13069,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1439",
+          "chilia-moldavian-rivers-1439",
+          "khotyn-moldavian-rivers-1439",
+          "lviv-moldavian-rivers-1439",
           "kruja-eastern-balkan-1439",
           "durres-eastern-balkan-1439",
           "shkoder-eastern-balkan-1439",
@@ -13125,6 +13252,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1440",
+          "chilia-moldavian-rivers-1440",
+          "khotyn-moldavian-rivers-1440",
+          "lviv-moldavian-rivers-1440",
           "kruja-eastern-balkan-1440",
           "durres-eastern-balkan-1440",
           "shkoder-eastern-balkan-1440",
@@ -13304,6 +13435,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1444",
+          "chilia-moldavian-rivers-1444",
+          "khotyn-moldavian-rivers-1444",
+          "lviv-moldavian-rivers-1444",
           "kruja-eastern-balkan-1444",
           "durres-eastern-balkan-1444",
           "shkoder-eastern-balkan-1444",
@@ -13430,6 +13565,21 @@
       "review": null
     },
     {
+      "year": 1448,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": null,
+        "exactCityRecordIds": [
+          "chilia-moldavian-rivers-1448"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
       "year": 1450,
       "status": "partial",
       "evidence": {
@@ -13484,6 +13634,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1450",
+          "chilia-moldavian-rivers-1450",
+          "khotyn-moldavian-rivers-1450",
+          "lviv-moldavian-rivers-1450",
           "kruja-eastern-balkan-1450",
           "durres-eastern-balkan-1450",
           "shkoder-eastern-balkan-1450",
@@ -13665,6 +13819,10 @@
           "precision": "reading-envelope-not-annual-control"
         },
         "exactCityRecordIds": [
+          "cetatea-alba-moldavian-rivers-1453",
+          "chilia-moldavian-rivers-1453",
+          "khotyn-moldavian-rivers-1453",
+          "lviv-moldavian-rivers-1453",
           "kruja-eastern-balkan-1453",
           "durres-eastern-balkan-1453",
           "shkoder-eastern-balkan-1453",
@@ -13820,6 +13978,21 @@
       "review": null
     },
     {
+      "year": 1465,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": null,
+        "exactCityRecordIds": [
+          "chilia-moldavian-rivers-1465"
+        ],
+        "periodCityRecordCount": 0,
+        "turningPoint": null,
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
       "year": 1477,
       "status": "pending",
       "evidence": {
@@ -13840,6 +14013,22 @@
         "exactCityRecordIds": [],
         "periodCityRecordCount": 1,
         "turningPoint": "格拉纳达战争开始",
+        "referenceSnapshot": false,
+        "realmGuide": false
+      },
+      "review": null
+    },
+    {
+      "year": 1484,
+      "status": "partial",
+      "evidence": {
+        "regionalFrame": null,
+        "exactCityRecordIds": [
+          "chilia-moldavian-rivers-1484",
+          "cetatea-alba-moldavian-rivers-1484"
+        ],
+        "periodCityRecordCount": 1,
+        "turningPoint": null,
         "referenceSnapshot": false,
         "realmGuide": false
       },
@@ -17133,10 +17322,10 @@
         1315
       ],
       "status": "partial",
-      "linkedEvidenceCount": 797,
+      "linkedEvidenceCount": 915,
       "review": {
         "status": "partial",
-        "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain."
+        "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain. Read physical1309-1310 on2026-11-19. Earlier Dnieper/Don/Volga trade geography is context only; not evidence for late-medieval Dniester/Danube port control. Added four comparison cities and five explicitlylocal evidence years using independent sources; full chapter and community/border review remain."
       }
     },
     {
@@ -17672,10 +17861,10 @@
         1769
       ],
       "status": "partial",
-      "linkedEvidenceCount": 1316,
+      "linkedEvidenceCount": 1434,
       "review": {
         "status": "partial",
-        "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain. Read physical1757,1759-1768 this batch:1761 explicitly locates Mistra west of Sparta. Do not use1764 broad Balkan-conquest wording to annex1453 Morea or Wallachia. Nine local points and27 moments supplement independent academic/archival evidence; precise frontiers and full communities audit remain. Re-read physical1759/1760/1761/1764 on2026-11-18. Added Albania and central Moldavia at27 existing moments using independent sources;1764 is broad context only, not direct local chronology. Three Venetian city handovers,1444 alliance,1451 garrison,1435 Moldavian division and1453 future homage distinguished. Precise frontiers/full social review remain partial."
+        "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain. Read physical1757,1759-1768 this batch:1761 explicitly locates Mistra west of Sparta. Do not use1764 broad Balkan-conquest wording to annex1453 Morea or Wallachia. Nine local points and27 moments supplement independent academic/archival evidence; precise frontiers and full communities audit remain. Re-read physical1759/1760/1761/1764 on2026-11-18. Added Albania and central Moldavia at27 existing moments using independent sources;1764 is broad context only, not direct local chronology. Three Venetian city handovers,1444 alliance,1451 garrison,1435 Moldavian division and1453 future homage distinguished. Precise frontiers/full social review remain partial. Re-read1764 on2026-11-19; broad regional wording does not annex the lowerDanube/Dniester ports. Khotyn local faction,Chilia garrison and1484 two-port chronology checked independently. Wide audit remains partial."
       }
     },
     {

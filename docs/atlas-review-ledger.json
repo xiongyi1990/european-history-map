@@ -34,6 +34,7 @@
     1397,
     1399,
     1402,
+    1408,
     1409,
     1410,
     1414,
@@ -44,14 +45,18 @@
     1429,
     1431,
     1435,
+    1436,
     1439,
     1440,
     1444,
+    1448,
     1450,
     1453,
     1455,
     1461,
+    1465,
     1477,
+    1484,
     1485,
     1494,
     1519,
@@ -184,7 +189,7 @@
     },
     "156": {
       "status": "partial",
-      "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain."
+      "note": "Read PDF1307-1314: early Rus forest/steppe and river/sea geography; no direct14th-15th-century local ruler/frontier evidence. Course early-person and identity simplifications require separate audit. Wider chapter geography and final review remain. Read physical1309-1310 on2026-11-19. Earlier Dnieper/Don/Volga trade geography is context only; not evidence for late-medieval Dniester/Danube port control. Added four comparison cities and five explicitlylocal evidence years using independent sources; full chapter and community/border review remain."
     },
     "154": {
       "status": "partial",
@@ -192,7 +197,7 @@
     },
     "206": {
       "status": "partial",
-      "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain. Read physical1757,1759-1768 this batch:1761 explicitly locates Mistra west of Sparta. Do not use1764 broad Balkan-conquest wording to annex1453 Morea or Wallachia. Nine local points and27 moments supplement independent academic/archival evidence; precise frontiers and full communities audit remain. Re-read physical1759/1760/1761/1764 on2026-11-18. Added Albania and central Moldavia at27 existing moments using independent sources;1764 is broad context only, not direct local chronology. Three Venetian city handovers,1444 alliance,1451 garrison,1435 Moldavian division and1453 future homage distinguished. Precise frontiers/full social review remain partial."
+      "note": "Read physical PDF1757,1758,1759,1760,1761,1764. Distinguish1369 personal conversion,1439 church agreement,1453 siege and continuing Morea/Trebizond. These pages contain no direct Kosovo/Nicopolis/Varna or Bosnia annual sequence. Wider chapter and social/boundary review remain. Read physical1757,1759-1768 this batch:1761 explicitly locates Mistra west of Sparta. Do not use1764 broad Balkan-conquest wording to annex1453 Morea or Wallachia. Nine local points and27 moments supplement independent academic/archival evidence; precise frontiers and full communities audit remain. Re-read physical1759/1760/1761/1764 on2026-11-18. Added Albania and central Moldavia at27 existing moments using independent sources;1764 is broad context only, not direct local chronology. Three Venetian city handovers,1444 alliance,1451 garrison,1435 Moldavian division and1453 future homage distinguished. Precise frontiers/full social review remain partial. Re-read1764 on2026-11-19; broad regional wording does not annex the lowerDanube/Dniester ports. Khotyn local faction,Chilia garrison and1484 two-port chronology checked independently. Wide audit remains partial."
     },
     "205": {
       "status": "partial",
@@ -209,10 +214,16 @@
   },
   "priorityQueue": [
     {
+      "id": "early-modern-1453-1815",
+      "title": "1453—1815：近代王朝、宗教改革、战争与革命",
+      "status": "partial",
+      "note": "Next major batch:1453-1517 regional political framework.1465/1484 port event cards are local evidence only, not a completed synchronous European map."
+    },
+    {
       "id": "late-medieval-1282-1453",
       "title": "1282—1453：地中海分治、英法战争、教会分裂与东罗马终局",
       "status": "partial",
-      "note": "1360-1453:27 moments/44 reading cores. Added Kruja and central Moldavia with7 places and189 exact-year cards. Durres1376 mercenary interruption, three Venetian city transfer years, Ottoman suzerainty/office,1444 alliance,1450 failed siege and1451 real garrison separated. Moldavia1360/1364 uncertainty,1387 homage,1435 division,1453 Alexăndrel and future homage clarified. Black Sea ports, other Albanian lords, military borders and1453-1517 remain partial; no new exact years."
+      "note": "1360-1453:27 moments/44 reading cores. River-port batch adds4 comparison places and118 local records:108 at existing moments and10 at1408/1436/1448/1465/1484. Three-port geography,1412 unimplemented partition,1436 disputed cession,1450 Khotyn rival faction and1453 Hungarian garrison vs Wallachian customs separated. No new European control polygons. Early garrisons, other Albanian powers, languages and wide final audit remain partial."
     },
     {
       "id": "high-medieval-contemporary-regions",
@@ -222,11 +233,6 @@
     {
       "id": "earlier-spatial-audit",
       "title": "前2000—1183：逐时期复核政治空间与遗漏地域",
-      "status": "pending"
-    },
-    {
-      "id": "early-modern-1453-1815",
-      "title": "1453—1815：近代王朝、宗教改革、战争与革命",
       "status": "pending"
     },
     {

@@ -286,3 +286,18 @@ it('preserves Moldavia and distinguishes an agreement from performed homage',asy
  fireEvent.change(screen.getByRole('combobox',{name:'跳转王权与分裂年份'}),{target:{value:'1453'}});fireEvent.click(within(screen.getByTestId('partition-map')).getByRole('button',{name:'地图：摩尔达维亚：苏恰瓦与锡雷特河地域'}));fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/锡雷特：河流、城镇与教会/}));expect(location.search).toContain('place=siret');expect(screen.getAllByText(/不是已在锡雷特完成亲身臣服/).length).toBeGreaterThan(0);
  fireEvent.click(screen.getByRole('button',{name:'← 返回 1453 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=moldavia-late');expect(within(screen.getByTestId('partition-map')).getAllByRole('button')).toHaveLength(44);await act(async()=>{});
 });
+
+it('keeps river comparison selection and shows an opposing local faction',async()=>{
+ setup('/?year=1450&view=partitions&kingdom=moldavia-late');
+ expect(screen.getByRole('article',{name:'分国地域详情'}).textContent).toContain('博格丹二世');
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/霍京：河堡与地方阵营/}));expect(location.search).toContain('place=khotyn');expect(screen.getAllByText(/对抗博格丹二世/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:'← 返回 1450 年王权、分裂与终局'}));expect(location.search).toContain('kingdom=moldavia-late');
+ fireEvent.click(within(screen.getByRole('article',{name:'分国地域详情'})).getByRole('button',{name:/基利亚：驻军、税关与定位争论/}));
+ fireEvent.click(screen.getByRole('button',{name:/1448年：军援与港堡安排/}));expect(location.search).toContain('year=1448');expect(location.search).toContain('place=chilia');expect(location.search).not.toContain('view=partitions');expect(screen.queryByTestId('partition-map')?.childElementCount??0).toBe(0);expect(screen.getAllByText(/本条只补这一地点与这次事件/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:/1465年：取得基利亚/}));expect(location.search).toContain('year=1465');expect(screen.getAllByText(/1462尝试失败/).length).toBeGreaterThan(0);
+ fireEvent.click(screen.getByRole('button',{name:/1484年：两港先后失守/}));expect(location.search).toContain('year=1484');expect(screen.getAllByText(/本条取7月基利亚失守之后/).length).toBeGreaterThan(0);await act(async()=>{});
+});
+it('opens the1408 customs detail without manufacturing a political frame',async()=>{
+ setup('/?year=1408&place=suceava');
+ expect(screen.getByRole('heading',{name:'苏恰瓦：1408贸易特许的发文中心'})).toBeTruthy();expect(screen.getAllByText(/本轮未直接查验原始特许全文/).length).toBeGreaterThan(0);expect(location.search).not.toContain('view=partitions');expect(screen.queryByTestId('partition-map')?.childElementCount??0).toBe(0);await act(async()=>{});
+});

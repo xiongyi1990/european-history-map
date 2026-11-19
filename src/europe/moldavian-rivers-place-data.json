@@ -1,0 +1,6 @@
+[
+ {"id":"cetatea-alba","name":"白堡（切塔泰亚阿尔伯）","modern":"乌克兰 · 比尔霍罗德德尼斯特罗夫斯基","aliases":["Cetatea Albă","Cetatea Alba","Moncastro","Maurocastro","Asprokastron","Akkerman","Ak-Kerman","Bilhorod-Dnistrovskyi","别尔哥罗德德涅斯特罗夫斯基","阿克尔曼","白城"],"coords":[30.35,46.2],"key":"riverWhiteTown"},
+ {"id":"chilia","name":"基利亚（河段约略定位）","modern":"多瑙河基利亚支汊 · 今乌克兰基利亚与罗马尼亚基利亚韦凯附近","aliases":["Chilia","Kilia","Kiliya","Chilia Veche","Kilia Nouă","基利亚韦凯","旧基利亚","新基利亚"],"coords":[29.26,45.44],"key":"riverChiliaLocation"},
+ {"id":"khotyn","name":"霍京","modern":"乌克兰 · 霍京","aliases":["Khotyn","Khotin","Hotin","Chocim","霍廷","霍汀"],"coords":[26.498,48.522],"key":"riverHotinFort"},
+ {"id":"lviv","name":"利沃夫","modern":"乌克兰 · 利沃夫","aliases":["Lviv","Lwów","Lvov","Lemberg","Leopolis","Lwow","里沃夫","利维夫"],"coords":[24.031,49.842],"key":"riverLvivSite"}
+]
